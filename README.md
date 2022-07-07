@@ -1,1 +1,1 @@
-# silab
+Sistem Informasi Laboratorium QC
