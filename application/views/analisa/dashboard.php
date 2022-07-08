@@ -54,6 +54,33 @@
                 <!------------------------------------------------------------->
                 <?php endfor; ?>
 
+                <?php for($i=0; $i < count($id_ampas_gilingan); $i++): ?>
+                <!------------------------------------------------------------->
+
+                <div class="col-md-4">
+                  
+                  <h5>Ampas Gilingan <?=$i+1;?></h5>
+
+                  <table class="table table-sm table-bordered table-hover">
+                    <tr>
+                      <th>Time</th>
+                      <th>Pol</th>
+                      <th>ZK</th>
+                    </tr>
+                    <?php foreach($ampas_gilingan[$i+1] as $ampas_gilingan[$i+1]): ?>
+                    <tr>
+                      <td><?=date('H:i', strtotime($ampas_gilingan[$i+2]->waktu));?></td>
+                      <td><?=number_format($ampas_gilingan[$i+2]->kadar_gula,2);?></td>
+                      <td><?=number_format($ampas_gilingan[$i+2]->zk,2);?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </table>
+
+                </div>
+
+                <!------------------------------------------------------------->
+                <?php endfor; ?>
+
             </div>
 
         </div>
