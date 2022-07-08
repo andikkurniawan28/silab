@@ -3,9 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Faktor_Model extends CI_Model {
 
-    public function getIdForGilingan()
-    {
-        return array(13,14,15,16);
-    }
+    public const faktor_brix = 0.05;
 
 }

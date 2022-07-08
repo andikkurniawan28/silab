@@ -25,8 +25,6 @@ class Welcome extends CI_Controller {
 
 	public function monitoring()
 	{
-		$this->load->model('Analisa_Model');
-
 		$data['page_title'] = ucfirst('monitoring');
 
 		$this->load->view('static/header', $data);
@@ -36,15 +34,16 @@ class Welcome extends CI_Controller {
 
 	public function analisa()
 	{
-		$this->load->model('Analisa_Model');
-		$this->load->model('Faktor_Model');
+		$data['page_title'] 	= ucfirst('analisa');
 		
-		$id_gilingan		= $this->Faktor_Model->getIdForGilingan();
-		$data['page_title'] = ucfirst('analisa');
-		$data['npp']		= $this->Analisa_Model->getAnalisaNppLatest5();
+		$this->load->model('Analisa_Model');
+		$this->load->model('ID_Sampel_Model');
+		
+		$data['id_gilingan']	= $this->ID_Sampel_Model->getIdForGilingan();
+		$data['npp']			= $this->Analisa_Model->getAnalisaNppLatest5();
 
-		for($i=0; $i<4; $i++)
-			$data['nira_gilingan'][$i+2] = $this->Analisa_Model->getAnalisaBrixPolLatest5($id_gilingan[$i]);
+		for($i=0; $i < count($data['id_gilingan']); $i++)
+			$data['nira_gilingan'][$i+2] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_gilingan'][$i]);
 
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/dashboard', $data);
