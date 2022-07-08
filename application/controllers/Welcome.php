@@ -12,9 +12,7 @@ class Welcome extends CI_Controller {
 	public function check_login()
 	{
 		if($this->session->status != 'login')
-		{
 			redirect(base_url('auth'));
-		}
 	}
 
 	public function index()
@@ -45,7 +43,8 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = ucfirst('analisa');
 		$data['npp']		= $this->Analisa_Model->getAnalisaNppLatest5();
 
-		for($i=0; $i < 4; $i++) $data['nira_gilingan'][$i+2] = $this->Analisa_Model->getAnalisaBrixPolLatest5($id_gilingan[$i]);
+		for($i=0; $i<4; $i++)
+			$data['nira_gilingan'][$i+2] = $this->Analisa_Model->getAnalisaBrixPolLatest5($id_gilingan[$i]);
 
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/dashboard', $data);
