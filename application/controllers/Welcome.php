@@ -49,7 +49,6 @@ class Welcome extends CI_Controller {
 		// Load Model 
 		$this->load->model('Analisa_Model');
 		$this->load->model('ID_Sampel_Model');
-		$this->load->view('static/header', $data);
 
 		// Determine which data will be parsed
 		switch($stasiun)
@@ -69,6 +68,7 @@ class Welcome extends CI_Controller {
 		}
 
 		// Load View Here
+		$this->load->view('static/header', $data);
 		$this->load->view('analisa/'.$stasiun, $data);
 		$this->load->view('static/footer');
 
