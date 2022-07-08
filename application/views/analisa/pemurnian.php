@@ -8,7 +8,7 @@
                     <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
                 </ol>
             </nav>
-            <hr>
+            <hr><br>
 
           <div class="row">
 
