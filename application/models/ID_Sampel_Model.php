@@ -28,4 +28,19 @@ class ID_Sampel_Model extends CI_Model {
         return array(69,70,71,72,73,74);
     }
 
+    public function getIDForMasakan()
+    {
+        return array();
+    }
+
+    public function getIDForStroop()
+    {
+        return array();
+    }
+
+    public function getIDForGula()
+    {
+        return array();
+    }
+
 }
