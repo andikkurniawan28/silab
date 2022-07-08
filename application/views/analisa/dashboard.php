@@ -1,7 +1,60 @@
 
           <div class="container-fluid">
 
-          This is Analisa
+            <div class="row">
+
+                <div class="col-md-4">
+                  
+                  <h5>NPP</h5>
+                  <table class="table table-sm table-bordered table-hover">
+                    <tr>
+                      <th>Time</th>
+                      <th>Brix</th>
+                      <th>Pol</th>
+                      <th>Rendemen</th>
+                    </tr>
+                    <?php foreach($npp as $npp): ?>
+                    <tr>
+                      <td><?=date('H:i', strtotime($npp->time));?></td>
+                      <td><?=number_format($npp->brix,2);?></td>
+                      <td><?=number_format($npp->pol,2);?></td>
+                      <td><?=number_format($npp->rendemen,2);?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </table>
+
+                </div>
+
+                <?php for($i=0; $i<4; $i++): ?>
+                <!------------------------------------------------------------->
+
+                <div class="col-md-4">
+                  
+                  <h5>Nira Gilingan <?=$i+2;?></h5>
+
+                  <table class="table table-sm table-bordered table-hover">
+                    <tr>
+                      <th>Time</th>
+                      <th>Brix</th>
+                      <th>Pol</th>
+                      <th>HK</th>
+                    </tr>
+                    <?php foreach($nira_gilingan[$i+2] as $nira_gilingan[$i+2]): ?>
+                    <tr>
+                      <td><?=date('H:i', strtotime($nira_gilingan[$i+2]->waktu));?></td>
+                      <td><?=number_format($nira_gilingan[$i+2]->brix,2);?></td>
+                      <td><?=number_format($nira_gilingan[$i+2]->pol,2);?></td>
+                      <td><?=number_format($nira_gilingan[$i+2]->hk,2);?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </table>
+
+                </div>
+
+                <!------------------------------------------------------------->
+                <?php endfor; ?>
+
+            </div>
 
         </div>
 
