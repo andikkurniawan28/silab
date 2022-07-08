@@ -38,12 +38,12 @@ class Welcome extends CI_Controller {
 
 	public function analisa()
 	{
-		$id_gilingan 			= array(13,14,15,16);
-
 		$this->load->model('Analisa_Model');
+		$this->load->model('Faktor_Model');
 		
-		$data['page_title'] 	= ucfirst('analisa');
-		$data['npp']			= $this->Analisa_Model->getAnalisaNppLatest5();
+		$id_gilingan		= $this->Faktor_Model->getIdForGilingan();
+		$data['page_title'] = ucfirst('analisa');
+		$data['npp']		= $this->Analisa_Model->getAnalisaNppLatest5();
 
 		for($i=0; $i < 4; $i++)
 		{
