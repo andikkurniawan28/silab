@@ -110,6 +110,32 @@
 
                 <!------------------------------------------------------------->
                 <?php endfor; ?>
+
+                <?php for($i=0; $i < count($id_blotong); $i++): ?>
+                <!------------------------------------------------------------->
+
+                <div class="col-md-4">
+                  
+                  <h5>Blotong <?=$i;?></h5>
+
+                  <table class="table table-sm table-bordered table-hover">
+                    <tr>
+                      <th>Time</th>
+                      <th>Pol</th>
+                    </tr>
+                    <?php foreach($blotong[$i] as $blotong[$i]): ?>
+                    <tr>
+                      <td><?=date('H:i', strtotime($blotong[$i]->waktu));?></td>
+                      <td><?=number_format($blotong[$i]->Z,2);?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </table>
+
+                </div>
+
+                <!------------------------------------------------------------->
+                <?php endfor; ?>
+
             </div>
 
         </div>

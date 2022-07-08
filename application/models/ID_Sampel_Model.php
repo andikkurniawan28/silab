@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class ID_Sampel_Model extends CI_Model {
 
-    public function getIdForGilingan()
+    public function getIDForGilingan()
     {
         return array(13,14,15,16);
     }
@@ -16,6 +16,11 @@ class ID_Sampel_Model extends CI_Model {
     public function getIDForNiraPemurnian()
     {
         return array(17,19,20,21,23,24);
+    }
+
+    public function getIDForBlotong()
+    {
+        return array(1,2,25,89,90,91,98);
     }
 
 }
