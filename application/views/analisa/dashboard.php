@@ -136,6 +136,32 @@
                 <!------------------------------------------------------------->
                 <?php endfor; ?>
 
+
+                <?php for($i=0; $i < count($id_penguapan); $i++): ?>
+                <!------------------------------------------------------------->
+
+                <div class="col-md-4">
+                  
+                  <h5>Evaporator <?=$i;?></h5>
+
+                  <table class="table table-sm table-bordered table-hover">
+                    <tr>
+                      <th>Time</th>
+                      <th>Brix</th>
+                    </tr>
+                    <?php foreach($penguapan[$i] as $penguapan[$i]): ?>
+                    <tr>
+                      <td><?=date('H:i', strtotime($penguapan[$i]->waktu));?></td>
+                      <td><?=number_format($penguapan[$i]->brix,2);?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </table>
+
+                </div>
+
+                <!------------------------------------------------------------->
+                <?php endfor; ?>
+
             </div>
 
         </div>

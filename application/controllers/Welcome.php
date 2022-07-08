@@ -43,6 +43,7 @@ class Welcome extends CI_Controller {
 		$data['id_ampas_gilingan']	= $this->ID_Sampel_Model->getIDForAmpasGilingan();
 		$data['id_nira_pemurnian']	= $this->ID_Sampel_Model->getIDForNiraPemurnian();
 		$data['id_blotong']			= $this->ID_Sampel_Model->getIDForBlotong();
+		$data['id_penguapan']		= $this->ID_Sampel_Model->getIDForPenguapan();
 
 		$data['npp']				= $this->Analisa_Model->getAnalisaNppLatest5();
 
@@ -57,6 +58,9 @@ class Welcome extends CI_Controller {
 
 		for($i=0; $i < count($data['id_blotong']); $i++)
 			$data['blotong'][$i] = $this->Analisa_Model->getAnalisaBlotongLatest5($data['id_blotong'][$i]);
+
+		for($i=0; $i < count($data['id_penguapan']); $i++)
+			$data['penguapan'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_penguapan'][$i]);
 
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/dashboard', $data);

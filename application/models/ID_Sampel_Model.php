@@ -23,4 +23,9 @@ class ID_Sampel_Model extends CI_Model {
         return array(1,2,25,89,90,91,98);
     }
 
+    public function getIDForPenguapan()
+    {
+        return array(69,70,71,72,73,74);
+    }
+
 }
