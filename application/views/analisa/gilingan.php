@@ -81,7 +81,7 @@
                             <?php foreach($ampas_gilingan[$i+1] as $ampas_gilingan[$i+1]): ?>
                             <tr>
                                 <td><?=date('H:i', strtotime($ampas_gilingan[$i+1]->waktu));?></td>
-                                <td><?=number_format($ampas_gilingan[$i+1]->kadar_gula,2);?></td>
+                                <td><?=number_format($ampas_gilingan[$i+1]->pol_koreksi,2);?></td>
                                 <td><?=number_format($ampas_gilingan[$i+1]->zk,2);?></td>
                             </tr>
                             <?php endforeach; ?>

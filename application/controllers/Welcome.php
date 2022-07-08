@@ -73,7 +73,7 @@ class Welcome extends CI_Controller {
 					$data['nira_pemurnian'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_nira_pemurnian'][$i]);
 
 				for($i=0; $i < count($data['id_blotong']); $i++) 
-					$data['blotong'][$i] = $this->Analisa_Model->getAnalisaBlotongLatest5($data['id_blotong'][$i]);
+					$data['blotong'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_blotong'][$i]);
 			break;
 
 			case 'penguapan' :
