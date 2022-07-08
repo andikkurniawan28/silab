@@ -49,6 +49,7 @@ class Welcome extends CI_Controller {
 		// Load Model 
 		$this->load->model('Analisa_Model');
 		$this->load->model('ID_Sampel_Model');
+		$this->load->view('static/header', $data);
 
 		// Determine which data will be parsed
 		switch($stasiun)
@@ -57,16 +58,18 @@ class Welcome extends CI_Controller {
 				$data['id_gilingan']		= $this->ID_Sampel_Model->getIDForGilingan();
 				$data['id_ampas_gilingan']	= $this->ID_Sampel_Model->getIDForAmpasGilingan();
 				$data['npp']				= $this->Analisa_Model->getAnalisaNppLatest5();
-				for($i=0; $i < count($data['id_gilingan']); $i++)
-					$data['nira_gilingan'][$i+2] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_gilingan'][$i]);
-				for($i=0; $i < count($data['id_ampas_gilingan']); $i++)
-					$data['ampas_gilingan'][$i+1] = $this->Analisa_Model->getAnalisaAmpasLatest5($data['id_ampas_gilingan'][$i]);
+				for($i=0; $i < count($data['id_gilingan']); $i++) $data['nira_gilingan'][$i+2] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_gilingan'][$i]);
+				for($i=0; $i < count($data['id_ampas_gilingan']); $i++) $data['ampas_gilingan'][$i+1] = $this->Analisa_Model->getAnalisaAmpasLatest5($data['id_ampas_gilingan'][$i]);
+			break;
+
+			case 'pemurnian' :
+				$data['id_nira_pemurnian']	= $this->ID_Sampel_Model->getIDForNiraPemurnian();
+				for($i=0; $i < count($data['id_nira_pemurnian']); $i++)$data['nira_pemurnian'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_nira_pemurnian'][$i]);
 			break;
 		}
 
 		// Load View Here
-		$this->load->view('static/header', $data);
-		$this->load->view('analisa/hasil_analisa', $data);
+		$this->load->view('analisa/'.$stasiun, $data);
 		$this->load->view('static/footer');
 
 	}

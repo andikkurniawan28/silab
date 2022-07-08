@@ -3,11 +3,6 @@
 
           <div class="row">
 
-
-
-            <!--------- It's a PHP --------------------------------->
-            <?php if($page_title = "gilingan") : ?>
-
                 <div class="col-md-4">
                 
                     <h5>NPP</h5>
@@ -87,11 +82,6 @@
 
                 </div>
                 <?php endfor; ?>
-
-            <?php endif; ?>
-            <!--------- It's a PHP --------------------------------->
-
-
 
           </div>
 
