@@ -1,6 +1,15 @@
 
           <div class="container-fluid">
 
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?=base_url('welcome/analisa');?>">Analisa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
+                </ol>
+            </nav>
+            <hr>
+
           <div class="row">
 
             <?php for($i=0; $i < count($nira_pemurnian); $i++): ?>
