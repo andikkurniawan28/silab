@@ -10,7 +10,12 @@ class ID_Sampel_Model extends CI_Model {
 
     public function getIDForAmpasGilingan()
     {
-        return array(26,27,28,29, 30);
+        return array(26,27,28,29,30);
+    }
+
+    public function getIDForNiraPemurnian()
+    {
+        return array(17,19,20,21,23,24);
     }
 
 }
