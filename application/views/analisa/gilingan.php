@@ -14,7 +14,7 @@
 
                 <div class="col-md-4">
                 
-                    <h5>NPP</h5>
+                    <a href="<?=base_url('welcome/show_analisa/0/npp/0');?>"><h5>NPP</h5></a>
 
                         <table class="table table-sm table-bordered table-hover">
                             <tr>

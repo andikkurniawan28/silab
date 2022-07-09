@@ -126,5 +126,52 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');
 
 	}
+
+	public function show_analisa($id, $material, $status)
+	{
+		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['status'] 	= $status;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		$this->load->model('ID_Sampel_Model');
+
+		$this->load->view('static/header', $data);
+		
+		// Switch ID
+		switch($id)
+		{
+			case 0 : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
+				$this->load->view('analisa/show_analisa/analisa_npp', $data);
+				break;
+			case 13 : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll();
+				$this->load->view('analisa/show_analisa/analisa_nira_gilingan', $data);
+				break;
+		}
+		
+		$this->load->view('static/footer');
+	}
+
+	public function download_analisa($id, $material, $status)
+	{
+		// Page Title
+		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['status'] 	= $status;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		$this->load->model('ID_Sampel_Model');
+		
+		// Switch ID
+		switch($id)
+		{
+			case 0 : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
+				$this->load->view('analisa/show_analisa/analisa_npp', $data);
+				break;
+		}
+	}
 	
 }
