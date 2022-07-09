@@ -89,17 +89,47 @@ class ID_Sampel_Model extends CI_Model {
 
     public function getIDForMasakan()
     {
-        return array();
+        return array(65,53,56,57,48,82);
+        /*
+            65 -> Masakan A
+            53 -> Masakan A Raw
+            56 -> Masakan C
+            57 -> Masakan C
+            48 -> Masakan R1
+            82 -> Masakan R2
+        */
     }
 
     public function getIDForStroop()
     {
-        return array();
+        return array(83,47,52,41,50,55,59,60,40,61);
+        /*
+            83 -> Klare RS
+            47 -> R1 Mol
+            52 -> R2 Mol
+            41 -> Remelter A
+            50 -> Remelter CD
+            55 -> Stroop A
+            59 -> Stroop C
+            60 -> Klare D
+            40 -> Klare SHS
+            61 -> Tetes
+        */
     }
 
     public function getIDForGula()
     {
-        return array();
+        return array(51,84,54,39,62,63,64,46);
+        /*
+            51 -> Gula R1
+            84 -> Gula R2
+            54 -> Gula A Raw
+            39 -> Gula RS
+            62 -> Gula C
+            63 -> Gula D1
+            64 -> Gula D2
+            46 -> Gula SHS
+        */
     }
 
 }

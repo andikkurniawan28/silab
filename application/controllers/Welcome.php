@@ -82,6 +82,42 @@ class Welcome extends CI_Controller {
 				for($i=0; $i < count($data['id_penguapan']); $i++)
 					$data['penguapan'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_penguapan'][$i]);
 			break;
+
+			case 'drk' :
+				$data['id_drk']				= $this->ID_Sampel_Model->getIDForDRK();
+				$data['id_cake']			= $this->ID_Sampel_Model->getIDForCake();
+
+				for($i=0; $i < count($data['id_drk']); $i++)
+					$data['drk'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_drk'][$i]);
+
+				for($i=0; $i < count($data['id_cake']); $i++)
+					$data['cake'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_cake'][$i]);
+			break;
+
+			case 'masakan' :
+				$data['id_masakan']				= $this->ID_Sampel_Model->getIDForMasakan();
+
+				for($i=0; $i < count($data['id_masakan']); $i++)
+					$data['masakan'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_masakan'][$i]);
+			break;
+
+			case 'stroop' :
+				$data['id_stroop']				= $this->ID_Sampel_Model->getIDForStroop();
+
+				for($i=0; $i < count($data['id_stroop']); $i++)
+					$data['stroop'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_stroop'][$i]);
+			break;
+
+			case 'gula' :
+				$data['id_gula']				= $this->ID_Sampel_Model->getIDForGula();
+
+				for($i=0; $i < count($data['id_gula']); $i++)
+					$data['gula'][$i] = $this->Analisa_Model->getAnalisaIcumsaLatest5($data['id_gula'][$i]);
+			break;
+
+			case 'ketel' :
+					$data['ketel']				= $this->Analisa_Model->getAnalisaKetelLatest5();
+			break;
 		}
 
 		// Load View Here
