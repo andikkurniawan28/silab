@@ -17,20 +17,34 @@
 
           <div class="col-md-12">
 
+            <?= $this->session->flashdata("message"); ?>
+
                 <table class="table table-sm table-bordered table-hover text-xs">
                       <tr>
-                          <th>#</th>
-                          <th>Time</th>
-                          <th>Pol</th>
-                          <th>ZK</th>
+                            <th>#</th>
+                            <th>Time</th>
+                            <th>Pol</th>
+                            <th>ZK</th>
+
+                            <?php if($this->session->userdata('role') == "admin"): ?>
+                            <th>Control</th>
+                            <?php endif; ?>
                       </tr>
 
                       <?php foreach($hasil_analisa as $hasil_analisa): ?>
                       <tr>
-                          <td><?=$hasil_analisa->id;?></td>
-                          <td><?=$hasil_analisa->waktu;?></td>
-                          <td><?=number_format($hasil_analisa->pol_koreksi,2);?></td>
-                          <td><?=number_format($hasil_analisa->zk,2);?></td>
+                            <td><?=$hasil_analisa->id;?></td>
+                            <td><?=$hasil_analisa->waktu;?></td>
+                            <td><?=number_format($hasil_analisa->pol_koreksi,2);?></td>
+                            <td><?=number_format($hasil_analisa->zk,2);?></td>
+
+                            <?php if($this->session->userdata('role') == "admin"): ?>
+                            <td>
+                                <a href="<?=base_url('analisa/edit_analisa_ampas/'.$hasil_analisa->id.'/'.$hasil_analisa->pol_koreksi.'/'.$hasil_analisa->zk.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="<?=base_url('analisa/hapus_analisa_ampas/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
+                            </td>
+                            <?php endif; ?>
+
                       </tr>
                       <?php endforeach; ?>
 

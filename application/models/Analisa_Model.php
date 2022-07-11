@@ -209,4 +209,14 @@ class Analisa_Model extends CI_Model {
         $this->db->query("delete from `saccharomat` where `id` = $id");
     }
 
+    public function editAnalisaAmpas($id, $pol_koreksi, $zk, $kadar_air)
+    {
+        $this->db->query("update `analisa_ampas` set `pol_koreksi` = '$pol_koreksi', `zk` = '$zk', `kadar_air` = '$kadar_air' where `id` = '$id'");
+    }
+
+    public function deleteAnalisaAmpas($id)
+    {
+        $this->db->query("delete from `analisa_ampas` where `id` = $id");
+    }
+
 }
