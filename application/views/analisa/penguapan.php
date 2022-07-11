@@ -17,7 +17,7 @@
               <div class="col-md-4">
                               
                   <h5>Evaporator <?=$i;?></h5>
-                      <table class="table table-sm table-bordered table-hover">
+                      <table class="table table-sm table-bordered table-hover text-xs">
 
                           <tr>
                               <th>Time</th>

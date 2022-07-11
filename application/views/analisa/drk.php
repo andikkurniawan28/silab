@@ -14,24 +14,32 @@
 
           <?php for($i=0; $i < count($drk); $i++): ?>
 
-              <div class="col-md-4">
+              <div class="col-md-6">
                               
                   <h5>DRK <?=$i;?></h5>
-                      <table class="table table-sm table-bordered table-hover">
+                      <table class="table table-sm table-bordered table-hover text-xs">
 
                           <tr>
                               <th>Time</th>
                               <th>Brix</th>
                               <th>Pol</th>
                               <th>HK</th>
+                              <th>IU</th>
+                              <th>CaO</th>
+                              <th>pH</th>
+                              <th>Turb</th>
                           </tr>
 
                           <?php foreach($drk[$i] as $drk[$i]): ?>
                           <tr>
-                              <td><?=date('H:i', strtotime($drk[$i]->waktu));?></td>
-                              <td><?=number_format($drk[$i]->brix,2);?></td>
-                              <td><?=number_format($drk[$i]->pol,2);?></td>
-                              <td><?=number_format($drk[$i]->hk,2);?></td>
+                                <td><?=date('H:i', strtotime($drk[$i]->waktu));?></td>
+                                <td><?=number_format($drk[$i]->brix,2);?></td>
+                                <td><?=number_format($drk[$i]->pol,2);?></td>
+                                <td><?=number_format($drk[$i]->hk,2);?></td>
+                                <td><?=$drk[$i]->IU;?></td>
+                                <td><?=$drk[$i]->cao;?></td>
+                                <td><?=$drk[$i]->ph;?></td>
+                                <td><?=$drk[$i]->tur;?></td>
                           </tr>
                           <?php endforeach; ?>
 
@@ -47,17 +55,19 @@
               <div class="col-md-4">
                               
                   <h5>Cake <?=$i;?></h5>
-                      <table class="table table-sm table-bordered table-hover">
+                      <table class="table table-sm table-bordered table-hover text-xs">
 
                           <tr>
                               <th>Time</th>
                               <th>Pol</th>
+                              <th>Air</th>
                           </tr>
 
                           <?php foreach($cake[$i] as $cake[$i]): ?>
                           <tr>
                               <td><?=date('H:i', strtotime($cake[$i]->waktu));?></td>
                               <td><?=number_format($cake[$i]->Z,2);?></td>
+                                <td><?=$cake[$i]->kadar_air;?></td>
                           </tr>
                           <?php endforeach; ?>
 

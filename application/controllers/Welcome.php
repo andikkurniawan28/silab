@@ -70,10 +70,10 @@ class Welcome extends CI_Controller {
 				$data['id_blotong']			= $this->ID_Sampel_Model->getIDForBlotong();
 
 				for($i=0; $i < count($data['id_nira_pemurnian']); $i++)
-					$data['nira_pemurnian'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_nira_pemurnian'][$i]);
+					$data['nira_pemurnian'][$i] = $this->Analisa_Model->getAnalisaPemurnianLatest5($data['id_nira_pemurnian'][$i]);
 
 				for($i=0; $i < count($data['id_blotong']); $i++) 
-					$data['blotong'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_blotong'][$i]);
+					$data['blotong'][$i] = $this->Analisa_Model->getAnalisaBlotongLatest5($data['id_blotong'][$i]);
 			break;
 
 			case 'penguapan' :
@@ -88,10 +88,10 @@ class Welcome extends CI_Controller {
 				$data['id_cake']			= $this->ID_Sampel_Model->getIDForCake();
 
 				for($i=0; $i < count($data['id_drk']); $i++)
-					$data['drk'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_drk'][$i]);
+					$data['drk'][$i] = $this->Analisa_Model->getAnalisaPemurnianLatest5($data['id_drk'][$i]);
 
 				for($i=0; $i < count($data['id_cake']); $i++)
-					$data['cake'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_cake'][$i]);
+					$data['cake'][$i] = $this->Analisa_Model->getAnalisaCakeLatest5($data['id_cake'][$i]);
 			break;
 
 			case 'masakan' :
@@ -213,4 +213,22 @@ class Welcome extends CI_Controller {
 		$this->load->view('analisa/download_analisa/analisa_ampas', $data);
 	}
 	
+	public function tes($id)
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
+
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaPemurnianLatest5($id);
+
+		var_dump($data['hasil_analisa']);
+		
+		foreach($data['hasil_analisa'] as $data)
+		{
+			echo $data->brix." | ".$data->pol."<br>";
+		}
+
+		echo $data['hasil_analisa'][0];
+
+		
+	}
 }

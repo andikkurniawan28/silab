@@ -47,10 +47,10 @@
                                 <td><?=number_format($nira_pemurnian[$i]->brix,2);?></td>
                                 <td><?=number_format($nira_pemurnian[$i]->pol,2);?></td>
                                 <td><?=number_format($nira_pemurnian[$i]->hk,2);?></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?=$nira_pemurnian[$i]->IU;?></td>
+                                <td><?=$nira_pemurnian[$i]->cao;?></td>
+                                <td><?=$nira_pemurnian[$i]->ph;?></td>
+                                <td><?=$nira_pemurnian[$i]->tur;?></td>
                             </tr>
                             <?php endforeach; ?>
 
@@ -83,12 +83,14 @@
                             <tr>
                                 <th>Time</th>
                                 <th>Pol</th>
+                                <th>Air</th>
                             </tr>
 
                             <?php foreach($blotong[$i] as $blotong[$i]): ?>
                             <tr>
                                 <td><?=date('H:i', strtotime($blotong[$i]->waktu));?></td>
                                 <td><?=number_format($blotong[$i]->Z,2);?></td>
+                                <td><?=$blotong[$i]->kadar_air?></td>
                             </tr>
                             <?php endforeach; ?>
 

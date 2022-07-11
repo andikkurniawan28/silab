@@ -31,10 +31,42 @@ class Analisa_Model extends CI_Model {
         $max_id = ($id + 1) * 10000;
         $min_id = $id * 10000;
 
-        return $this->db->query("select * from `saccharomat` 
-        left join `coloromat` on `saccharomat`.`bahan` = `coloromat`.`bahan` 
-        left join `analisa_umum` on `coloromat`.`bahan` = `analisa_umum`.`bahan` 
-        where `saccharomat`.`bahan` between $min_id and $max_id  order by `saccharomat`.`id` desc limit 0,5")->result();
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `coloromat`.`IU`,
+            `analisa_umum`.`cao`,
+            `analisa_umum`.`ph`,
+            `analisa_umum`.`tur`
+            from `saccharomat` 
+            LEFT OUTER JOIN `coloromat` ON `saccharomat`.`bahan` = `coloromat`.`bahan` 
+            LEFT OUTER JOIN `analisa_umum` ON `saccharomat`.`bahan` = `analisa_umum`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaBlotongLatest5($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `analisa_ampas`.`kadar_air`
+            from `saccharomat` 
+            LEFT OUTER JOIN `analisa_ampas` ON `saccharomat`.`bahan` = `analisa_ampas`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaCakeLatest5($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `moisture`.`kadar_air`
+            from `saccharomat` 
+            LEFT OUTER JOIN `moisture` ON `saccharomat`.`bahan` = `moisture`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc limit 0,5")->result();
     }
 
     public function getAnalisaIcumsaLatest5($id)
