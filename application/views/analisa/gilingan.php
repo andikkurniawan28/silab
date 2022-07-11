@@ -14,7 +14,7 @@
 
                 <div class="col-md-4">
                 
-                    <a href="<?=base_url('welcome/show_analisa_npp/NPP');?>"><h5>NPP</h5></a>
+                    <a href="<?=base_url('welcome/show_analisa_npp/NPP');?>"><h5>Nira Perahan Pertama</h5></a>
 
                         <table class="table table-sm table-bordered table-hover text-xs">
                             <tr>

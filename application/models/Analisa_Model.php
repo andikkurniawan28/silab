@@ -26,6 +26,17 @@ class Analisa_Model extends CI_Model {
         return $this->db->query("select * from `analisa_ampas` where `bahan` between $min_id and $max_id order by `id` desc limit 0,5")->result();
     }
 
+    public function getAnalisaPemurnianLatest5($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select * from `saccharomat` 
+        left join `coloromat` on `saccharomat`.`bahan` = `coloromat`.`bahan` 
+        left join `analisa_umum` on `coloromat`.`bahan` = `analisa_umum`.`bahan` 
+        where `saccharomat`.`bahan` between $min_id and $max_id  order by `saccharomat`.`id` desc limit 0,5")->result();
+    }
+
     public function getAnalisaIcumsaLatest5($id)
     {
         $max_id = ($id + 1) * 10000;
