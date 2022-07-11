@@ -194,4 +194,19 @@ class Analisa_Model extends CI_Model {
         return $rendemen = number_format(0.7 * ($pol - 0.5 * ($brix - $pol)),2);
     }
 
+    public function hitungHKNonGula($brix, $pol)
+    {
+        return $hk = number_format(($pol/$brix * 100),2);
+    }
+
+    public function editAnalisaGilingan($id, $brix, $pol, $hk)
+    {
+        $this->db->query("update `saccharomat` set `brix` = '$brix', `pol` = '$pol', `hk` = '$hk' where `id` = '$id'");
+    }
+
+    public function deleteSaccharomat($id)
+    {
+        $this->db->query("delete from `saccharomat` where `id` = $id");
+    }
+
 }

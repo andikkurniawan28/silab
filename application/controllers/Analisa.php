@@ -47,4 +47,56 @@ class Analisa extends CI_Controller {
         redirect(base_url('welcome/show_analisa_npp/NPP'));
     }
 
+    public function edit_analisa_gilingan($id, $brix, $pol, $bahan)
+    {
+		$data['page_title'] = "Edit Data";
+		$data['id'] 		= $id;
+		$data['brix'] 		= $brix;
+		$data['pol'] 		= $pol;
+		$data['bahan'] 		= $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_gilingan', $data);
+		$this->load->view('static/footer');	
+    }
+
+    public function proses_edit_analisa_gilingan()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $brix       = $this->input->post('brix', TRUE);
+        $pol        = $this->input->post('pol', TRUE);
+        $hk         = $this->Analisa_Model->hitungHKNonGula($brix, $pol);
+        $kode       = substr($bahan,0,2);
+        
+        switch($kode)
+        {
+            case 13 : $material = "NG2"; break;
+            case 14 : $material = "NG3"; break;
+            case 15 : $material = "NG4"; break;
+            case 16 : $material = "NG5"; break;
+        }
+        
+        $this->Analisa_Model->editAnalisaGilingan($id, $brix, $pol, $hk);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Data berhasil diubah</div>");
+        redirect(base_url('welcome/show_analisa_gilingan/'.$kode.'/'.$material));
+    }
+
+    public function hapus_analisa_gilingan($id, $bahan)
+    {
+        $kode       = substr($bahan,0,2);
+        
+        switch($kode)
+        {
+            case 13 : $material = "NG2"; break;
+            case 14 : $material = "NG3"; break;
+            case 15 : $material = "NG4"; break;
+            case 16 : $material = "NG5"; break;
+        }
+
+        $this->Analisa_Model->deleteSaccharomat($id);
+        $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Data berhasil dihapus</div>");
+        redirect(base_url('welcome/show_analisa_gilingan/'.$kode.'/'.$material));
+    }
+
 }
