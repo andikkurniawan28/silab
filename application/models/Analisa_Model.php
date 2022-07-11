@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Analisa_Model extends CI_Model {
 
+    protected $start_giling = "2022-05-20 05:00";
+
     public function getAnalisaNppLatest5()
     {
         return $this->db->query("select * from `analisa_npp` order by `id` desc limit 0,5")->result();

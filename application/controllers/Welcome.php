@@ -141,12 +141,12 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/show_analisa/analisa_npp', $data);
 		$this->load->view('static/footer');
-		
 	}
 
 	public function show_analisa_gilingan($id, $material)
 	{
 		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['id'] 		= $id;
 
 		// Load Model 
 		$this->load->model('Analisa_Model');
@@ -157,13 +157,13 @@ class Welcome extends CI_Controller {
 		// Render View and Data
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/show_analisa/analisa_nira_gilingan', $data);
-		$this->load->view('static/footer');
-		
+		$this->load->view('static/footer');	
 	}
 
 	public function show_analisa_ampas_gilingan($id, $material)
 	{
 		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['id'] 		= $id;
 
 		// Load Model 
 		$this->load->model('Analisa_Model');
@@ -174,8 +174,43 @@ class Welcome extends CI_Controller {
 		// Render View and Data
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/show_analisa/analisa_ampas', $data);
-		$this->load->view('static/footer');
+		$this->load->view('static/footer');	
+	}
+
+	public function download_analisa_npp()
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
 		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_npp', $data);
+	}
+
+	public function download_analisa_gilingan($id)
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll($id);
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_nira_gilingan', $data);
+	}
+
+	public function download_analisa_ampas_gilingan($id)
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaAmpasAll($id);
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_ampas', $data);
 	}
 	
 }
