@@ -5,7 +5,7 @@ class Auth_Model extends CI_Model {
 
     public function checkUser($username, $password)
     {
-        return $this->db->query("select * from `username` where `username` = '$username' and `password` = '$password'");
+        return $this->db->query("select * from `user` where `username` = '$username' and `password` = '$password'");
     }
 
 }

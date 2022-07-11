@@ -18,10 +18,10 @@ class Auth extends CI_Controller {
     {
         $username   = $this->input->post('username', TRUE);
         
-        //$password   = md5($this->input->post('password', TRUE));
+        $password   = md5($this->input->post('password', TRUE));
         // .. Masih menggunakan table lama tanpa enkripsi, tahun depan menggunakan table enkripsi
 
-        $password   = $this->input->post('password', TRUE);
+        //$password   = $this->input->post('password', TRUE);
         $check_user = $this->Auth_Model->checkUser($username, $password);
 
         if($check_user->num_rows() > 0)
@@ -29,7 +29,7 @@ class Auth extends CI_Controller {
             foreach($check_user->result() as $user)
             {
                 $this->session->set_userdata('nama', $user->nama);
-                $this->session->set_userdata('role', $user->level);
+                $this->session->set_userdata('role', $user->role);
                 $this->session->set_userdata('status', 'login');
                 redirect(base_url());
             }
