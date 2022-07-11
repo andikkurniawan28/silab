@@ -127,51 +127,55 @@ class Welcome extends CI_Controller {
 
 	}
 
-	public function show_analisa($id, $material, $status)
+	public function show_analisa_npp($material)
 	{
 		$data['page_title'] = "Analisa ".ucfirst($material);
-		$data['status'] 	= $status;
 
 		// Load Model 
 		$this->load->model('Analisa_Model');
-		$this->load->model('ID_Sampel_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
 
+		// Render View and Data
 		$this->load->view('static/header', $data);
-		
-		// Switch ID
-		switch($id)
-		{
-			case 0 : 
-				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
-				$this->load->view('analisa/show_analisa/analisa_npp', $data);
-				break;
-			case 13 : 
-				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll();
-				$this->load->view('analisa/show_analisa/analisa_nira_gilingan', $data);
-				break;
-		}
-		
+		$this->load->view('analisa/show_analisa/analisa_npp', $data);
 		$this->load->view('static/footer');
+		
 	}
 
-	public function download_analisa($id, $material, $status)
+	public function show_analisa_gilingan($id, $material)
 	{
-		// Page Title
 		$data['page_title'] = "Analisa ".ucfirst($material);
-		$data['status'] 	= $status;
 
 		// Load Model 
 		$this->load->model('Analisa_Model');
-		$this->load->model('ID_Sampel_Model');
 		
-		// Switch ID
-		switch($id)
-		{
-			case 0 : 
-				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
-				$this->load->view('analisa/show_analisa/analisa_npp', $data);
-				break;
-		}
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll($id);
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_nira_gilingan', $data);
+		$this->load->view('static/footer');
+		
+	}
+
+	public function show_analisa_ampas_gilingan($id, $material)
+	{
+		$data['page_title'] = "Analisa ".ucfirst($material);
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaAmpasAll($id);
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_ampas', $data);
+		$this->load->view('static/footer');
+		
 	}
 	
 }

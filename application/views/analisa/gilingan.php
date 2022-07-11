@@ -14,9 +14,9 @@
 
                 <div class="col-md-4">
                 
-                    <a href="<?=base_url('welcome/show_analisa/0/npp/0');?>"><h5>NPP</h5></a>
+                    <a href="<?=base_url('welcome/show_analisa_npp/NPP');?>"><h5>NPP</h5></a>
 
-                        <table class="table table-sm table-bordered table-hover">
+                        <table class="table table-sm table-bordered table-hover text-xs">
                             <tr>
                                 <th>Time</th>
                                 <th>Brix</th>
@@ -41,8 +41,8 @@
                 <?php for($i=0; $i < count($nira_gilingan); $i++): ?>
                 <div class="col-md-4">
                                 
-                    <h5>Nira Gilingan <?=$i+2;?></h5>
-                        <table class="table table-sm table-bordered table-hover">
+                    <a href="<?=base_url('welcome/show_analisa_gilingan/'.$id_gilingan[$i]."/NG".$i+2);?>"><h5>Nira Gilingan <?=$i+2;?></h5></a>
+                        <table class="table table-sm table-bordered table-hover text-xs">
 
                             <tr>
                                 <th>Time</th>
@@ -69,8 +69,8 @@
                 <?php for($i=0; $i < count($ampas_gilingan); $i++): ?>
                 <div class="col-md-4">
                                 
-                    <h5>Ampas Gilingan <?=$i+1;?></h5>
-                        <table class="table table-sm table-bordered table-hover">
+                    <a href="<?=base_url('welcome/show_analisa_ampas_gilingan/'.$id_ampas_gilingan[$i]."/AG".$i+1);?>"><h5>Ampas Gilingan <?=$i+1;?></h5></a>
+                        <table class="table table-sm table-bordered table-hover text-xs">
 
                             <tr>
                                 <th>Time</th>

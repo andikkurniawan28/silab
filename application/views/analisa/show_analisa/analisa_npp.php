@@ -2,21 +2,20 @@
 
     <div class="container-fluid">
 
-        <p align="right">
-            <a class="btn btn-sm btn-warning" href="<?=base_url('welcome/download_analisa/0/npp/1');?>">Download Excel</a>
-        </p>
-
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url('welcome/analisa');?>">Analisa</a></li>
+                <li class="breadcrumb-item"><a href="<?=base_url('welcome/hasil_analisa/gilingan');?>">Gilingan</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
+                <li class="breadcrumb-item"><a href="">Download Excel</a></li>
+            </ol>
+        </nav>
+        <hr><br>
+        
         <div class="row">
 
               <div class="col-md-12">
-
-                    <?php 
-                        if($status == 1)
-                        {
-                            header("Content-type: application/vnd-ms-excel");
-                            header("Content-Disposition: attachment; filename=SILAB_Download.xls");
-                        }
-                    ?>
 
                     <table class="table table-sm table-bordered table-hover text-xs">
                           <tr>
