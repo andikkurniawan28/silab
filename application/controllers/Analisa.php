@@ -16,6 +16,8 @@ class Analisa extends CI_Controller {
 			redirect(base_url('auth'));
 	}
 
+    /************************************************* */
+
     public function edit_analisa_npp($id, $brix, $pol)
     {
 		$data['page_title'] = "Edit Data";
@@ -27,6 +29,53 @@ class Analisa extends CI_Controller {
 		$this->load->view('edit/edit_npp', $data);
 		$this->load->view('static/footer');	
     }
+
+    public function hapus_analisa_npp($id)
+    {
+        $this->Analisa_Model->deleteAnalisaNPP($id);
+        $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Data berhasil dihapus</div>");
+        redirect(base_url('welcome/show_analisa_npp/NPP'));
+    }
+
+    public function edit_saccharomat($id, $brix, $pol, $bahan)
+    {
+		$data['page_title'] = "Edit Data";
+		$data['id'] 		= $id;
+		$data['brix'] 		= $brix;
+		$data['pol'] 		= $pol;
+		$data['bahan'] 		= $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_saccharomat', $data);
+		$this->load->view('static/footer');	
+    }
+
+    public function edit_coloromat($id, $iu, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		    = $id;
+		$data['iu'] 	        = $iu;
+		$data['bahan'] 		    = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_coloromat', $data);
+		$this->load->view('static/footer');	
+    }
+
+    public function edit_analisa_umum($id, $cao, $ph, $tur, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		    = $id;
+		$data['cao'] 	        = $cao;
+		$data['ph'] 	        = $ph;
+		$data['tur'] 	        = $tur;
+		$data['bahan'] 		    = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_analisa_umum', $data);
+		$this->load->view('static/footer');	
+    }
+    /********************************************************** */
 
     public function proses_edit_analisa_npp()
     {
@@ -40,27 +89,7 @@ class Analisa extends CI_Controller {
         redirect(base_url('welcome/show_analisa_npp/NPP'));
     }
 
-    public function hapus_analisa_npp($id)
-    {
-        $this->Analisa_Model->deleteAnalisaNPP($id);
-        $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Data berhasil dihapus</div>");
-        redirect(base_url('welcome/show_analisa_npp/NPP'));
-    }
-
-    public function edit_analisa_gilingan($id, $brix, $pol, $bahan)
-    {
-		$data['page_title'] = "Edit Data";
-		$data['id'] 		= $id;
-		$data['brix'] 		= $brix;
-		$data['pol'] 		= $pol;
-		$data['bahan'] 		= $bahan;
-
-		$this->load->view('static/header', $data);
-		$this->load->view('edit/edit_gilingan', $data);
-		$this->load->view('static/footer');	
-    }
-
-    public function proses_edit_analisa_gilingan()
+    public function proses_edit_saccharomat()
     {
         $id         = $this->input->post('id', TRUE);
         $bahan      = $this->input->post('bahan', TRUE);
@@ -82,7 +111,7 @@ class Analisa extends CI_Controller {
         redirect(base_url('welcome/show_analisa_gilingan/'.$kode.'/'.$material));
     }
 
-    public function hapus_analisa_gilingan($id, $bahan)
+    public function hapus_saccharomat($id, $bahan)
     {
         $kode       = substr($bahan,0,2);
         
@@ -151,32 +180,6 @@ class Analisa extends CI_Controller {
         $this->Analisa_Model->deleteAnalisaAmpas($id);
         $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Data berhasil dihapus</div>");
         redirect(base_url('welcome/show_analisa_ampas_gilingan/'.$kode.'/'.$material));
-    }
-
-    public function edit_analisa_icumsa_pemurnian($id, $iu, $bahan)
-    {
-		$data['page_title']     = "Edit Data";
-		$data['id'] 		    = $id;
-		$data['iu'] 	        = $iu;
-		$data['bahan'] 		    = $bahan;
-
-		$this->load->view('static/header', $data);
-		$this->load->view('edit/edit_pemurnian', $data);
-		$this->load->view('static/footer');	
-    }
-
-    public function edit_analisa_umum_pemurnian($id, $cao, $ph, $tur, $bahan)
-    {
-		$data['page_title']     = "Edit Data";
-		$data['id'] 		    = $id;
-		$data['cao'] 	        = $cao;
-		$data['ph'] 	        = $ph;
-		$data['tur'] 	        = $tur;
-		$data['bahan'] 		    = $bahan;
-
-		$this->load->view('static/header', $data);
-		$this->load->view('edit/edit_umum_pemurnian', $data);
-		$this->load->view('static/footer');	
     }
 
 }

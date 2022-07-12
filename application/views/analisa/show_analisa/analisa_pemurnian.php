@@ -51,22 +51,22 @@
 
                             <?php if($this->session->userdata('role') == "admin"): ?>
                             <td>
-                                <a href="<?=base_url('analisa/edit_analisa_gilingan/'.
+                                <a href="<?=base_url('analisa/edit_saccharomat/'.
                                     $hasil_analisa->id.'/'.
                                     $hasil_analisa->brix.'/'.
                                     $hasil_analisa->pol.'/'.
                                     $hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">Brix Pol</a>
-                                <a href="<?=base_url('analisa/edit_analisa_icumsa_pemurnian/'.
+                                <a href="<?=base_url('analisa/edit_coloromat/'.
                                     $hasil_analisa->id.'/'.
                                     $hasil_analisa->IU.'/'.
                                     $hasil_analisa->bahan);?>" class="btn btn-sm btn-success">ICUMSA</a>
-                                <a href="<?=base_url('analisa/edit_analisa_umum_pemurnian/'.
+                                <a href="<?=base_url('analisa/edit_analisa_umum/'.
                                     $hasil_analisa->id.'/'.
                                     $hasil_analisa->cao.'/'.
                                     $hasil_analisa->ph.'/'.
                                     $hasil_analisa->tur.'/'.
                                     $hasil_analisa->bahan);?>" class="btn btn-sm btn-secondary">CaO pH Turb</a>
-                                <a href="<?=base_url('analisa/hapus_analisa_pemurnian/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="<?=base_url('analisa/hapus_saccharomat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
                             <?php endif; ?>
 

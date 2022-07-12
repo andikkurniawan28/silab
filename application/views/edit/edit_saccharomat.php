@@ -7,13 +7,17 @@
 
         <div class="card">
             <div class="card-header">
-                <h6>Analisa Nira Gilingan</h6>
+                <h6>Saccharomat</h6>
             </div>
             <div class="card-body pt-0">
-                <form action="<?=base_url('analisa/proses_edit_analisa_gilingan');?>" method="post">
+                <form action="<?=base_url('analisa/proses_edit_saccharomat');?>" method="post">
                     
                     <input type="hidden" name="id" value="<?=$id;?>">
-                    <input type="hidden" name="bahan" value="<?=$bahan;?>">
+
+                    <div class="mb-3">
+                        <label class="form-label" for="exampleInputEmail1">ID Sampel</label>
+                        <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$bahan;?>" name="bahan" required>
+                    </div>
 
                     <div class="mb-3">
                         <label class="form-label" for="exampleInputEmail1">Brix</label>

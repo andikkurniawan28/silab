@@ -43,8 +43,8 @@
 
                                 <?php if($this->session->userdata('role') == "admin"): ?>
                                 <td>
-                                    <a href="<?=base_url('analisa/edit_analisa_gilingan/'.$hasil_analisa->id.'/'.$hasil_analisa->brix.'/'.$hasil_analisa->pol.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?=base_url('analisa/hapus_analisa_gilingan/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
+                                    <a href="<?=base_url('analisa/edit_saccharomat/'.$hasil_analisa->id.'/'.$hasil_analisa->brix.'/'.$hasil_analisa->pol.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">Edit</a>
+                                    <a href="<?=base_url('analisa/hapus_saccharomat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
                                 </td>
                                 <?php endif; ?>
 
