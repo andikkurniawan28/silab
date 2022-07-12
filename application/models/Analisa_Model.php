@@ -316,6 +316,14 @@ class Analisa_Model extends CI_Model {
         where `id` = '$id'");
     }
 
+    public function editPenguapan($id, $brix, $bahan)
+    {
+        $this->db->query("update `saccharomat` set 
+            `brix`     = '$brix', 
+            `bahan` = '$bahan'
+        where `id` = '$id'");
+    }
+
     public function deleteSaccharomat($id)
     {
         $this->db->query("delete from `saccharomat` where `id` = $id");

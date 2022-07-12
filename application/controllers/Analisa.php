@@ -11,20 +11,20 @@ class Analisa extends CI_Controller {
         $this->load->library('user_agent');
     }
 
-	public function check_login()
-	{
-		if($this->session->status != 'login')
-			redirect(base_url('auth'));
-	}
+    public function check_login()
+    {
+      if($this->session->status != 'login')
+        redirect(base_url('auth'));
+    }
 
     /************************************************* */
 
     public function edit_analisa_npp($id, $brix, $pol)
     {
 		$data['page_title'] = "Edit Data";
-		$data['id'] 		= $id;
+		$data['id'] 		  = $id;
 		$data['brix'] 		= $brix;
-		$data['pol'] 		= $pol;
+		$data['pol'] 		  = $pol;
 
 		$this->load->view('static/header', $data);
 		$this->load->view('edit/edit_npp', $data);
@@ -36,9 +36,9 @@ class Analisa extends CI_Controller {
     public function edit_saccharomat($id, $brix, $pol, $bahan)
     {
 		$data['page_title'] = "Edit Data";
-		$data['id'] 		= $id;
+		$data['id'] 		  = $id;
 		$data['brix'] 		= $brix;
-		$data['pol'] 		= $pol;
+		$data['pol'] 		  = $pol;
 		$data['bahan'] 		= $bahan;
 
 		$this->load->view('static/header', $data);
@@ -51,9 +51,9 @@ class Analisa extends CI_Controller {
     public function edit_coloromat($id, $iu, $bahan)
     {
 		$data['page_title']     = "Edit Data";
-		$data['id'] 		    = $id;
-		$data['iu'] 	        = $iu;
-		$data['bahan'] 		    = $bahan;
+		$data['id'] 		        = $id;
+		$data['iu'] 	          = $iu;
+		$data['bahan'] 		      = $bahan;
 
 		$this->load->view('static/header', $data);
 		$this->load->view('edit/edit_coloromat', $data);
@@ -65,11 +65,11 @@ class Analisa extends CI_Controller {
     public function edit_analisa_umum($id, $cao, $ph, $tur, $bahan)
     {
 		$data['page_title']     = "Edit Data";
-		$data['id'] 		    = $id;
-		$data['cao'] 	        = $cao;
-		$data['ph'] 	        = $ph;
-		$data['tur'] 	        = $tur;
-		$data['bahan'] 		    = $bahan;
+		$data['id'] 		        = $id;
+		$data['cao'] 	          = $cao;
+		$data['ph'] 	          = $ph;
+		$data['tur'] 	          = $tur;
+		$data['bahan'] 		      = $bahan;
 
 		$this->load->view('static/header', $data);
 		$this->load->view('edit/edit_analisa_umum', $data);
@@ -81,10 +81,10 @@ class Analisa extends CI_Controller {
     public function edit_analisa_ampas($id, $pol_koreksi, $zk, $bahan)
     {
 		$data['page_title']     = "Edit Data";
-		$data['id'] 		    = $id;
-		$data['pol_koreksi'] 	= $pol_koreksi;
-		$data['zk'] 		    = $zk;
-		$data['bahan'] 		    = $bahan;
+		$data['id'] 		        = $id;
+		$data['pol_koreksi'] 	  = $pol_koreksi;
+		$data['zk'] 		        = $zk;
+		$data['bahan'] 		      = $bahan;
 
 		$this->load->view('static/header', $data);
 		$this->load->view('edit/edit_analisa_ampas', $data);
@@ -96,12 +96,26 @@ class Analisa extends CI_Controller {
     public function edit_analisa_blotong($id, $Z, $bahan)
     {
 		$data['page_title']     = "Edit Data";
-		$data['id'] 		    = $id;
+		$data['id'] 		        = $id;
 		$data['Z'] 	            = $Z;
-		$data['bahan'] 		    = $bahan;
+		$data['bahan'] 		      = $bahan;
 
 		$this->load->view('static/header', $data);
 		$this->load->view('edit/edit_analisa_blotong', $data);
+		$this->load->view('static/footer');	
+
+		$this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
+    }
+
+    public function edit_penguapan($id, $brix, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		        = $id;
+		$data['brix'] 	        = $brix;
+		$data['bahan'] 		      = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_penguapan', $data);
 		$this->load->view('static/footer');	
 
 		$this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
@@ -175,10 +189,21 @@ class Analisa extends CI_Controller {
     {
         $id         = $this->input->post('id', TRUE);
         $bahan      = $this->input->post('bahan', TRUE);
-        $z        = $this->input->post('Z', TRUE);
+        $z          = $this->input->post('Z', TRUE);
         
         $this->Analisa_Model->editAnalisaBlotong($id, $z, $bahan);
         $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Pol berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function proses_edit_penguapan()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $brix       = $this->input->post('brix', TRUE);
+        
+        $this->Analisa_Model->editPenguapan($id, $brix, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Brix berhasil diubah.</div>");
         redirect($this->session->userdata('referrer_url'));
     }
 
