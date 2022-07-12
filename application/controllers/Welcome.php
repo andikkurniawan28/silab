@@ -177,6 +177,23 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');	
 	}
 
+	public function show_analisa_pemurnian($id, $material)
+	{
+		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['id'] 		= $id;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaPemurnianAll($id);
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_pemurnian', $data);
+		$this->load->view('static/footer');	
+	}
+
 	public function download_analisa_npp()
 	{
 		// Load Model 
@@ -212,23 +229,17 @@ class Welcome extends CI_Controller {
 		// Render View and Data
 		$this->load->view('analisa/download_analisa/analisa_ampas', $data);
 	}
-	
-	public function tes($id)
+
+	public function download_analisa_pemurnian($id)
 	{
 		// Load Model 
 		$this->load->model('Analisa_Model');
-
-		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaPemurnianLatest5($id);
-
-		var_dump($data['hasil_analisa']);
 		
-		foreach($data['hasil_analisa'] as $data)
-		{
-			echo $data->brix." | ".$data->pol."<br>";
-		}
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaPemurnianAll($id);
 
-		echo $data['hasil_analisa'][0];
-
-		
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_pemurnian', $data);
 	}
+	
 }

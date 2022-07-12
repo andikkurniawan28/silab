@@ -18,16 +18,34 @@
 
                     <?php switch($i)
                         {
-                            case 0 : $sampel = "Nira Mentah"; break;
-                            case 1 : $sampel = "Nira Mentah Sulfitasi"; break;
-                            case 2 : $sampel = "Nira Encer"; break;
-                            case 3 : $sampel = "Nira Tapis"; break;
-                            case 4 : $sampel = "Nira Kental"; break;
-                            case 5 : $sampel = "Nira Kental Sulfitasi"; break;
+                            case 0 : 
+                                $sampel = "Nira Mentah"; 
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_nira_pemurnian[0].'/Nira_Mentah');
+                                break;
+                            case 1 : 
+                                $sampel = "Nira Mentah Sulfitasi";
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_nira_pemurnian[1].'/Nira_Mentah_Sulfitasi');
+                                break;
+                            case 2 : 
+                                $sampel = "Nira Encer"; 
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_nira_pemurnian[2].'/Nira_Encer');
+                                break;
+                            case 3 : 
+                                $sampel = "Nira Tapis";
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_nira_pemurnian[3].'/Nira_Tapis');
+                                break;
+                            case 4 : 
+                                $sampel = "Nira Kental"; 
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_nira_pemurnian[4].'/Nira_Kental');
+                                break;
+                            case 5 : 
+                                $sampel = "Nira Kental Sulfitasi"; 
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_nira_pemurnian[5].'/Nira_Kental_Sulfitasi');
+                                break;
                         }
                     ?>
                                 
-                    <h5><?=$sampel;?></h5>
+                    <a href="<?=$url;?>"><h5><?=$sampel;?></h5></a>
                         <table class="table table-sm table-bordered table-hover text-xs">
 
                             <tr>

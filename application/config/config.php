@@ -23,7 +23,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://rawsugar.ptkebonagung.com/project_2023/silab/';
+//$config['base_url'] = 'http://rawsugar.ptkebonagung.com/project_2023/silab/';
+//$config['base_url'] = 'http://192.168.29.231/project_2023/silab/';
+$config['base_url'] = 'http://localhost/project_2023/silab/';
 
 /*
 |--------------------------------------------------------------------------

@@ -153,4 +153,30 @@ class Analisa extends CI_Controller {
         redirect(base_url('welcome/show_analisa_ampas_gilingan/'.$kode.'/'.$material));
     }
 
+    public function edit_analisa_icumsa_pemurnian($id, $iu, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		    = $id;
+		$data['iu'] 	        = $iu;
+		$data['bahan'] 		    = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_pemurnian', $data);
+		$this->load->view('static/footer');	
+    }
+
+    public function edit_analisa_umum_pemurnian($id, $cao, $ph, $tur, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		    = $id;
+		$data['cao'] 	        = $cao;
+		$data['ph'] 	        = $ph;
+		$data['tur'] 	        = $tur;
+		$data['bahan'] 		    = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_umum_pemurnian', $data);
+		$this->load->view('static/footer');	
+    }
+
 }

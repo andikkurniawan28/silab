@@ -103,6 +103,23 @@ class Analisa_Model extends CI_Model {
         return $this->db->query("select * from `analisa_ampas` where `bahan` between $min_id and $max_id order by `id` desc")->result();
     }
 
+    public function getAnalisaPemurnianAll($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `coloromat`.`IU`,
+            `analisa_umum`.`cao`,
+            `analisa_umum`.`ph`,
+            `analisa_umum`.`tur`
+            from `saccharomat` 
+            LEFT OUTER JOIN `coloromat` ON `saccharomat`.`bahan` = `coloromat`.`bahan` 
+            LEFT OUTER JOIN `analisa_umum` ON `saccharomat`.`bahan` = `analisa_umum`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc")->result();
+    }
+
     public function deleteAnalisaNPP($id)
     {
         $this->db->query("delete from `analisa_npp` where `id` = $id");
