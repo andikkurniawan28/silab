@@ -7,6 +7,7 @@
             <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
             <li class="breadcrumb-item"><a href="<?=base_url('welcome/analisa');?>">Analisa</a></li>
             <li class="breadcrumb-item"><a href="<?=base_url('welcome/hasil_analisa/pemurnian');?>">Pemurnian</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('welcome/hasil_analisa/drk');?>">Drk</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
             <li class="breadcrumb-item"><a href="<?=base_url('welcome/download_analisa_pemurnian/'.$id);?>">Download Excel</a></li>
         </ol>
