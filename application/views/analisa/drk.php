@@ -15,8 +15,29 @@
           <?php for($i=0; $i < count($drk); $i++): ?>
 
               <div class="col-md-6">
-                              
-                  <h5>DRK <?=$i;?></h5>
+
+                    <?php switch($i)
+                        {
+                            case 0 : 
+                                $sampel = "Remelter In"; 
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_drk[0].'/Remelter_In');
+                                break;
+                            case 1 : 
+                                $sampel = "Reaction Tank";
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_drk[1].'/Reaction_Tank');
+                                break;
+                            case 2 : 
+                                $sampel = "Carbonated Liquor"; 
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_drk[2].'/Carbonated_Liquor');
+                                break;
+                            case 3 : 
+                                $sampel = "Clear Liquor";
+                                $url    = base_url('welcome/show_analisa_pemurnian/'.$id_drk[3].'/Clear_Liquor');
+                                break;
+                        }
+                    ?>
+                                
+                    <a href="<?=$url;?>"><h5><?=$sampel;?></h5></a>
                       <table class="table table-sm table-bordered table-hover text-xs">
 
                           <tr>
