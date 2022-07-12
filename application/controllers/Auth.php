@@ -28,7 +28,7 @@ class Auth extends CI_Controller {
                 $this->session->set_userdata('nama', $user->nama);
                 $this->session->set_userdata('role', $user->role);
                 $this->session->set_userdata('status', 'login');
-                redirect($this->agent->referrer());
+                redirect(base_url());
             }
         }
         else

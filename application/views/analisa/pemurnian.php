@@ -85,17 +85,38 @@
 
                     <?php switch($i)
                         {
-                            case 0 : $sampel = "Truk Timur"; break;
-                            case 1 : $sampel = "Truk Barat"; break;
-                            case 2 : $sampel = "RVF 1"; break;
-                            case 3 : $sampel = "RVF 2"; break;
-                            case 4 : $sampel = "RVF 3"; break;
-                            case 5 : $sampel = "RVF 4"; break;
-                            case 6 : $sampel = "Request"; break;
+                            case 0 : 
+                                $sampel = "Truk Timur";
+                                $url    = base_url('welcome/show_analisa_blotong/'.$id_blotong[0].'/Blotong_Truk_Timur');
+                                break;
+                            case 1 : 
+                                $sampel = "Truk Barat";
+                                $url    = base_url('welcome/show_analisa_blotong/'.$id_blotong[1].'/Blotong_Truk_Barat');
+                                break;
+                            case 2 : 
+                                $sampel = "RVF 1";
+                                $url    = base_url('welcome/show_analisa_blotong/'.$id_blotong[2].'/Blotong_RVF1');
+                                break;
+                            case 3 : 
+                                $sampel = "RVF 2"; 
+                                $url    = base_url('welcome/show_analisa_blotong/'.$id_blotong[3].'/Blotong_RVF2');
+                                break;
+                            case 4 : 
+                                $sampel = "RVF 3";
+                                $url    = base_url('welcome/show_analisa_blotong/'.$id_blotong[4].'/Blotong_RVF3');
+                                break;
+                            case 5 : 
+                                $sampel = "RVF 4"; 
+                                $url    = base_url('welcome/show_analisa_blotong/'.$id_blotong[5].'/Blotong_RVF4');
+                                break;
+                            case 6 : 
+                                $sampel = "Request";
+                                $url    = base_url('welcome/show_analisa_blotong/'.$id_blotong[6].'/Blotong_Request');
+                                break;
                         }
                     ?>
                                 
-                    <h5>Blotong <?=$sampel;?></h5>
+                    <a href="<?=$url;?>"><h5>Blotong <?=$sampel;?></h5></a>
                         <table class="table table-sm table-bordered table-hover text-xs">
 
                             <tr>

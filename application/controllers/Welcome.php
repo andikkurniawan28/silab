@@ -197,6 +197,23 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function show_analisa_blotong($id, $material)
+	{
+		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['id'] 		= $id;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBlotongAll($id);
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_blotong', $data);
+		$this->load->view('static/footer');
+	}
+
 	/**************************************************************************** */
 
 	public function download_analisa_npp()
@@ -246,6 +263,19 @@ class Welcome extends CI_Controller {
 		// Render View and Data
 		$this->load->view('analisa/download_analisa/analisa_pemurnian', $data);
 	}
+
+	public function download_analisa_blotong($id)
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBlotongAll($id);
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_blotong', $data);
+	}
+
 	/********************************************************************************* */
 	
 }

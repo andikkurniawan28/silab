@@ -120,6 +120,20 @@ class Analisa_Model extends CI_Model {
             where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc")->result();
     }
 
+    public function getAnalisaBlotongAll($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `analisa_ampas`.`zk`,
+            `analisa_ampas`.`kadar_air`
+            from `saccharomat` 
+            LEFT OUTER JOIN `analisa_ampas` ON `saccharomat`.`bahan` = `analisa_ampas`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc")->result();
+    }
+
     public function deleteAnalisaNPP($id)
     {
         $this->db->query("delete from `analisa_npp` where `id` = $id");
@@ -292,6 +306,14 @@ class Analisa_Model extends CI_Model {
             `ph`    = '$ph', 
             `tur`   = '$tur'
         where `bahan` = '$bahan'");
+    }
+
+    public function editAnalisaBlotong($id, $z, $bahan)
+    {
+        $this->db->query("update `saccharomat` set 
+            `Z`     = '$z', 
+            `bahan` = '$bahan'
+        where `id` = '$id'");
     }
 
     public function deleteSaccharomat($id)

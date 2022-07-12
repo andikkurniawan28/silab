@@ -92,6 +92,21 @@ class Analisa extends CI_Controller {
 
 		$this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
     }
+
+    public function edit_analisa_blotong($id, $Z, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		    = $id;
+		$data['Z'] 	            = $Z;
+		$data['bahan'] 		    = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_analisa_blotong', $data);
+		$this->load->view('static/footer');	
+
+		$this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
+    }
+
     /********************************************************** */
 
     public function proses_edit_analisa_npp()
@@ -156,48 +171,38 @@ class Analisa extends CI_Controller {
         redirect($this->session->userdata('referrer_url'));
     }
 
+    public function proses_edit_analisa_blotong()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $z        = $this->input->post('Z', TRUE);
+        
+        $this->Analisa_Model->editAnalisaBlotong($id, $z, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Pol berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
     /****************************************************************************** */
 
     public function hapus_analisa_npp($id)
     {
         $this->Analisa_Model->deleteAnalisaNPP($id);
         $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Data berhasil dihapus</div>");
-        redirect(base_url('welcome/show_analisa_npp/NPP'));
+        redirect($this->agent->referrer());
     }
 
     public function hapus_saccharomat($id, $bahan)
     {
-        $kode       = substr($bahan,0,2);
-        
-        switch($kode)
-        {
-            case 13 : $material = "NG2"; break;
-            case 14 : $material = "NG3"; break;
-            case 15 : $material = "NG4"; break;
-            case 16 : $material = "NG5"; break;
-        }
-
         $this->Analisa_Model->deleteSaccharomat($id);
         $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Data berhasil dihapus</div>");
-        redirect(base_url('welcome/show_analisa_gilingan/'.$kode.'/'.$material));
+        redirect($this->agent->referrer());
     }
 
     public function hapus_analisa_ampas($id, $bahan)
     {
-        $kode       = substr($bahan,0,2);
-        
-        switch($kode)
-        {
-            case 26 : $material = "AG1"; break;
-            case 27 : $material = "AG2"; break;
-            case 28 : $material = "AG3"; break;
-            case 29 : $material = "AG4"; break;
-            case 30 : $material = "AG5"; break;
-        }
-
         $this->Analisa_Model->deleteAnalisaAmpas($id);
         $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Data berhasil dihapus</div>");
-        redirect(base_url('welcome/show_analisa_ampas_gilingan/'.$kode.'/'.$material));
+        redirect($this->agent->referrer());
     }
     /************************************************************************************** */
 
