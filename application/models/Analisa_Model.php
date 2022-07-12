@@ -259,19 +259,29 @@ class Analisa_Model extends CI_Model {
         return $hk = number_format(($pol/$brix * 100),2);
     }
 
-    public function editAnalisaGilingan($id, $brix, $pol, $hk)
+    public function editSaccharomat($id, $brix, $pol, $hk, $bahan)
     {
-        $this->db->query("update `saccharomat` set `brix` = '$brix', `pol` = '$pol', `hk` = '$hk' where `id` = '$id'");
+        $this->db->query("update `saccharomat` set 
+            `brix`  = '$brix', 
+            `pol`   = '$pol', 
+            `hk`    = '$hk',
+            `bahan` = '$bahan'
+        where `id` = '$id'");
+    }
+
+    public function editAnalisaAmpas($id, $pol_koreksi, $zk, $kadar_air, $bahan)
+    {
+        $this->db->query("update `analisa_ampas` set 
+            `pol_koreksi`   = '$pol_koreksi', 
+            `zk`            = '$zk', 
+            `kadar_air`     = '$kadar_air',
+            `bahan`         = '$bahan'
+        where `id` = '$id'");
     }
 
     public function deleteSaccharomat($id)
     {
         $this->db->query("delete from `saccharomat` where `id` = $id");
-    }
-
-    public function editAnalisaAmpas($id, $pol_koreksi, $zk, $kadar_air)
-    {
-        $this->db->query("update `analisa_ampas` set `pol_koreksi` = '$pol_koreksi', `zk` = '$zk', `kadar_air` = '$kadar_air' where `id` = '$id'");
     }
 
     public function deleteAnalisaAmpas($id)

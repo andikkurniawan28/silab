@@ -7,6 +7,7 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		$this->check_login();
+		$this->load->library('user_agent');
 	}
 
 	public function check_login()
@@ -127,6 +128,8 @@ class Welcome extends CI_Controller {
 
 	}
 
+	/******************************************************************** */
+
 	public function show_analisa_npp($material)
 	{
 		$data['page_title'] = "Analisa ".ucfirst($material);
@@ -191,8 +194,10 @@ class Welcome extends CI_Controller {
 		// Render View and Data
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/show_analisa/analisa_pemurnian', $data);
-		$this->load->view('static/footer');	
+		$this->load->view('static/footer');
 	}
+
+	/**************************************************************************** */
 
 	public function download_analisa_npp()
 	{
@@ -241,5 +246,6 @@ class Welcome extends CI_Controller {
 		// Render View and Data
 		$this->load->view('analisa/download_analisa/analisa_pemurnian', $data);
 	}
+	/********************************************************************************* */
 	
 }

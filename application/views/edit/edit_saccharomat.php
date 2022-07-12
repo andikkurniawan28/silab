@@ -10,6 +10,7 @@
                 <h6>Saccharomat</h6>
             </div>
             <div class="card-body pt-0">
+
                 <form action="<?=base_url('analisa/proses_edit_saccharomat');?>" method="post">
                     
                     <input type="hidden" name="id" value="<?=$id;?>">
