@@ -279,6 +279,21 @@ class Analisa_Model extends CI_Model {
         where `id` = '$id'");
     }
 
+    public function editColoromat($iu, $bahan)
+    {
+        $this->db->query("update `coloromat` set `IU` = '$iu'
+        where `bahan` = '$bahan'");
+    }
+
+    public function editAnalisaUmum($cao, $ph, $tur, $bahan)
+    {
+        $this->db->query("update `analisa_umum` set 
+            `cao`   = '$cao', 
+            `ph`    = '$ph', 
+            `tur`   = '$tur'
+        where `bahan` = '$bahan'");
+    }
+
     public function deleteSaccharomat($id)
     {
         $this->db->query("delete from `saccharomat` where `id` = $id");

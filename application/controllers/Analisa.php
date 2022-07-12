@@ -102,7 +102,7 @@ class Analisa extends CI_Controller {
         $rendemen   = $this->Analisa_Model->hitungRendemenNPP($brix, $pol);
         
         $this->Analisa_Model->editAnalisaNPP($id, $brix, $pol, $rendemen);
-        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Data berhasil diubah.</div>");
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Brix, Pol berhasil diubah.</div>");
         redirect($this->session->userdata('referrer_url'));
     }
 
@@ -113,18 +113,9 @@ class Analisa extends CI_Controller {
         $brix       = $this->input->post('brix', TRUE);
         $pol        = $this->input->post('pol', TRUE);
         $hk         = $this->Analisa_Model->hitungHKNonGula($brix, $pol);
-        $kode       = substr($bahan,0,2);
-        
-        switch($kode)
-        {
-            case 13 : $material = "NG2"; break;
-            case 14 : $material = "NG3"; break;
-            case 15 : $material = "NG4"; break;
-            case 16 : $material = "NG5"; break;
-        }
         
         $this->Analisa_Model->editSaccharomat($id, $brix, $pol, $hk, $bahan);
-        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Data berhasil diubah.</div>");
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Brix, Pol berhasil diubah.</div>");
         redirect($this->session->userdata('referrer_url'));
     }
 
@@ -135,19 +126,33 @@ class Analisa extends CI_Controller {
         $pol_koreksi= $this->input->post('pol_koreksi', TRUE);
         $zk         = $this->input->post('zk', TRUE);
         $kadar_air  = 100 - $zk;
-        $kode       = substr($bahan,0,2);
-        
-        switch($kode)
-        {
-            case 26 : $material = "AG1"; break;
-            case 27 : $material = "AG2"; break;
-            case 28 : $material = "AG3"; break;
-            case 29 : $material = "AG4"; break;
-            case 30 : $material = "AG5"; break;
-        }
         
         $this->Analisa_Model->editAnalisaAmpas($id, $pol_koreksi, $zk, $kadar_air, $bahan);
-        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Data berhasil diubah.</div>");
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Pol, Zat Kering berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function proses_edit_coloromat()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $iu         = $this->input->post('iu', TRUE);
+        
+        $this->Analisa_Model->editColoromat($iu, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>ICUMSA berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function proses_edit_analisa_umum()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $cao        = $this->input->post('cao', TRUE);
+        $ph         = $this->input->post('ph', TRUE);
+        $tur        = $this->input->post('tur', TRUE);
+        
+        $this->Analisa_Model->editAnalisaUmum($cao, $ph, $tur, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>CaO, pH, Turbidity berhasil diubah.</div>");
         redirect($this->session->userdata('referrer_url'));
     }
 
