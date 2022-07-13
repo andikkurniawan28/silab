@@ -121,6 +121,34 @@ class Analisa extends CI_Controller {
 		$this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
     }
 
+    public function edit_analisa_kadar_air_blotong($id, $kadar_air, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		        = $id;
+		$data['kadar_air'] 	    = $kadar_air;
+		$data['bahan'] 		      = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_analisa_kadar_air_blotong', $data);
+		$this->load->view('static/footer');	
+
+		$this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
+    }
+
+    public function edit_analisa_kadar_air_cake($id, $kadar_air, $bahan)
+    {
+		$data['page_title']     = "Edit Data";
+		$data['id'] 		        = $id;
+		$data['kadar_air'] 	    = $kadar_air;
+		$data['bahan'] 		      = $bahan;
+
+		$this->load->view('static/header', $data);
+		$this->load->view('edit/edit_analisa_kadar_air_cake', $data);
+		$this->load->view('static/footer');	
+
+		$this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
+    }
+
     /********************************************************** */
 
     public function proses_edit_analisa_npp()
@@ -204,6 +232,28 @@ class Analisa extends CI_Controller {
         
         $this->Analisa_Model->editPenguapan($id, $brix, $bahan);
         $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Brix berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function proses_edit_kadar_air_blotong()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $kadar_air  = $this->input->post('kadar_air', TRUE);
+        
+        $this->Analisa_Model->editKadarAirBlotong($kadar_air, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Kadar Air berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function proses_edit_kadar_air_cake()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $kadar_air  = $this->input->post('kadar_air', TRUE);
+        
+        $this->Analisa_Model->editMoistureCake($kadar_air, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>Kadar Air berhasil diubah.</div>");
         redirect($this->session->userdata('referrer_url'));
     }
 

@@ -134,15 +134,105 @@ class Analisa_Model extends CI_Model {
             where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc")->result();
     }
 
-    public function deleteAnalisaNPP($id)
+    public function getAnalisaCakeAll($id)
     {
-        $this->db->query("delete from `analisa_npp` where `id` = $id");
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `moisture`.`kadar_air`
+            from `saccharomat` 
+            LEFT OUTER JOIN `moisture` ON `saccharomat`.`bahan` = `moisture`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc")->result();
     }
+
+    /****************************************************************************** */
 
     public function editAnalisaNPP($id, $brix, $pol, $rendemen)
     {
         $this->db->query("update `analisa_npp` set `brix` = '$brix', `pol` = '$pol', `rendemen` = '$rendemen' where `id` = '$id'");
     }
+
+    public function editSaccharomat($id, $brix, $pol, $hk, $bahan)
+    {
+        $this->db->query("update `saccharomat` set 
+            `brix`  = '$brix', 
+            `pol`   = '$pol', 
+            `hk`    = '$hk',
+            `bahan` = '$bahan'
+        where `id` = '$id'");
+    }
+
+    public function editAnalisaAmpas($id, $pol_koreksi, $zk, $kadar_air, $bahan)
+    {
+        $this->db->query("update `analisa_ampas` set 
+            `pol_koreksi`   = '$pol_koreksi', 
+            `zk`            = '$zk', 
+            `kadar_air`     = '$kadar_air',
+            `bahan`         = '$bahan'
+        where `id` = '$id'");
+    }
+
+    public function editColoromat($iu, $bahan)
+    {
+        $this->db->query("update `coloromat` set `IU` = '$iu'
+        where `bahan` = '$bahan'");
+    }
+
+    public function editAnalisaUmum($cao, $ph, $tur, $bahan)
+    {
+        $this->db->query("update `analisa_umum` set 
+            `cao`   = '$cao', 
+            `ph`    = '$ph', 
+            `tur`   = '$tur'
+        where `bahan` = '$bahan'");
+    }
+
+    public function editAnalisaBlotong($id, $z, $bahan)
+    {
+        $this->db->query("update `saccharomat` set 
+            `Z`     = '$z', 
+            `bahan` = '$bahan'
+        where `id` = '$id'");
+    }
+
+    public function editKadarAirBlotong($kadar_air, $bahan)
+    {
+        $this->db->query("update `analisa_ampas` set `kadar_air` = '$kadar_air' where `bahan` = '$bahan'");
+    }
+
+    public function editMoistureCake($kadar_air, $bahan)
+    {
+        $this->db->query("update `moisture` set `kadar_air` = '$kadar_air' where `bahan` = '$bahan'");
+    }
+
+    public function editPenguapan($id, $brix, $bahan)
+    {
+        $this->db->query("update `saccharomat` set 
+            `brix`     = '$brix', 
+            `bahan` = '$bahan'
+        where `id` = '$id'");
+    }
+
+    /******************************************************************* */
+
+    public function deleteAnalisaNPP($id)
+    {
+        $this->db->query("delete from `analisa_npp` where `id` = $id");
+    }
+
+    public function deleteSaccharomat($id)
+    {
+        $this->db->query("delete from `saccharomat` where `id` = $id");
+    }
+
+    public function deleteAnalisaAmpas($id)
+    {
+        $this->db->query("delete from `analisa_ampas` where `id` = $id");
+    }
+
+    /***************************************************************** */
 
     public function hitungRendemenNPP($brix, $pol)
     {
@@ -271,67 +361,6 @@ class Analisa_Model extends CI_Model {
     public function hitungHKNonGula($brix, $pol)
     {
         return $hk = number_format(($pol/$brix * 100),2);
-    }
-
-    public function editSaccharomat($id, $brix, $pol, $hk, $bahan)
-    {
-        $this->db->query("update `saccharomat` set 
-            `brix`  = '$brix', 
-            `pol`   = '$pol', 
-            `hk`    = '$hk',
-            `bahan` = '$bahan'
-        where `id` = '$id'");
-    }
-
-    public function editAnalisaAmpas($id, $pol_koreksi, $zk, $kadar_air, $bahan)
-    {
-        $this->db->query("update `analisa_ampas` set 
-            `pol_koreksi`   = '$pol_koreksi', 
-            `zk`            = '$zk', 
-            `kadar_air`     = '$kadar_air',
-            `bahan`         = '$bahan'
-        where `id` = '$id'");
-    }
-
-    public function editColoromat($iu, $bahan)
-    {
-        $this->db->query("update `coloromat` set `IU` = '$iu'
-        where `bahan` = '$bahan'");
-    }
-
-    public function editAnalisaUmum($cao, $ph, $tur, $bahan)
-    {
-        $this->db->query("update `analisa_umum` set 
-            `cao`   = '$cao', 
-            `ph`    = '$ph', 
-            `tur`   = '$tur'
-        where `bahan` = '$bahan'");
-    }
-
-    public function editAnalisaBlotong($id, $z, $bahan)
-    {
-        $this->db->query("update `saccharomat` set 
-            `Z`     = '$z', 
-            `bahan` = '$bahan'
-        where `id` = '$id'");
-    }
-
-    public function editPenguapan($id, $brix, $bahan)
-    {
-        $this->db->query("update `saccharomat` set 
-            `brix`     = '$brix', 
-            `bahan` = '$bahan'
-        where `id` = '$id'");
-    }
-
-    public function deleteSaccharomat($id)
-    {
-        $this->db->query("delete from `saccharomat` where `id` = $id");
-    }
-
-    public function deleteAnalisaAmpas($id)
-    {
-        $this->db->query("delete from `analisa_ampas` where `id` = $id");
     }
 
 }

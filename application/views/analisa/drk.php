@@ -74,8 +74,24 @@
           <?php for($i=0; $i < count($cake); $i++): ?>
 
               <div class="col-md-4">
-                              
-                  <h5>Cake <?=$i;?></h5>
+
+                <?php switch($i)
+                {
+                    case 0 :
+                        $sampel = "Cake Head";
+                        $url    = base_url('welcome/show_analisa_cake/'.$id_cake[0].'/Cake_Head');
+                        break;
+                    case 1 :
+                        $sampel = "Cake Mid";
+                        $url    = base_url('welcome/show_analisa_cake/'.$id_cake[1].'/Cake_Mid');
+                        break;
+                    case 2 :
+                        $sampel = "Cake End";
+                        $url    = base_url('welcome/show_analisa_cake/'.$id_cake[2].'/Cake_End');
+                        break;
+                }
+                ?>
+                    <a href="<?=$url;?>"><h5><?=$sampel;?></h5></a>
                       <table class="table table-sm table-bordered table-hover text-xs">
 
                           <tr>

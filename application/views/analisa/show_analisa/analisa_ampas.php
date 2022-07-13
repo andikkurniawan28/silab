@@ -25,6 +25,7 @@
                             <th>Time</th>
                             <th>Pol</th>
                             <th>ZK</th>
+                            <th>Kadar Air</th>
 
                             <?php if($this->session->userdata('role') == "admin"): ?>
                             <th>Control</th>
@@ -37,6 +38,7 @@
                             <td><?=$hasil_analisa->waktu;?></td>
                             <td><?=number_format($hasil_analisa->pol_koreksi,2);?></td>
                             <td><?=number_format($hasil_analisa->zk,2);?></td>
+                            <td><?=number_format($hasil_analisa->kadar_air,2);?></td>
 
                             <?php if($this->session->userdata('role') == "admin"): ?>
                             <td>
