@@ -7,80 +7,318 @@
                   <li class="breadcrumb-item"><a href="<?=base_url('welcome/analisa');?>">Analisa</a></li>
                   <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
               </ol>
-          </nav>
-          <hr><br>
+            </nav>
+            <hr><br>
 
-        <div class="row">
+            <div class="row">
 
-              <div class="col-md-12">
-                              
-                    <h5>Analisa Ketel</h5>
-                        <table class="table table-sm table-bordered table-hover text-xs">
+                <div class="col-md-4">
+                                
+                        <a href="<?=base_url('welcome/show_analisa_ketel/jj');?>"><h5>JJ</h5></a>
+                            <table class="table table-sm table-bordered table-hover text-xs">
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Hardness</th>
+                                    <th>pH</th>
+                                    <th>TDS</th>
+                                    <th>Phospat</th>
+                                </tr>
 
-                            <tr>
-                                <th rowspan="2">Time</th>
-                                <th colspan="4">JJ</th>
-                                <th colspan="4">Yosh1</th>
-                                <th colspan="4">Yosh2</th>
-                                <!-- <th colspan="2">Daert JJ</th>
-                                <th colspan="2">Daert Yosh</th>
-                                <th colspan="2">WTP</th>
-                                <th colspan="2">HW</th> -->
-                            </tr>
-                            <tr>
-                                <th>Hardness</th>
-                                <th>pH</th>
-                                <th>TDS</th>
-                                <th>Phospat</th>
-                                <th>Hardness</th>
-                                <th>pH</th>
-                                <th>TDS</th>
-                                <th>Phospat</th>
-                                <th>Hardness</th>
-                                <th>pH</th>
-                                <th>TDS</th>
-                                <th>Phospat</th>
-                                <!-- <th>pH</th>
-                                <th>TDS</th>
-                                <th>pH</th>
-                                <th>TDS</th>
-                                <th>pH</th>
-                                <th>TDS</th>
-                                <th>pH</th>
-                                <th>TDS</th> -->
-                            </tr>
+                                <?php foreach($ketel['jj'] as $data): ?>
+                                <tr>
+                                    <td><?=date('H:i', strtotime($data->waktu));?></td>
+                                    <td>
+                                        <?php switch($data->sadah_jj)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->sadah_jj; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->ph_jj)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->ph_jj; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->tds_jj)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->tds_jj; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->phospat_jj)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->phospat_jj; break;
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
 
-                            <?php foreach($ketel as $ketel): ?>
-                            <tr>
-                                <td><?=$ketel->waktu;?></td>
-                                <td><?=number_format($ketel->sadah_jj,2);?>
-                                <td><?=number_format($ketel->ph_jj,2);?>
-                                <td><?=number_format($ketel->tds_jj,2);?>
-                                <td><?=number_format($ketel->phospat_jj,2);?>
-                                <td><?=number_format($ketel->sadah_y1,2);?>
-                                <td><?=number_format($ketel->ph_y1,2);?>
-                                <td><?=number_format($ketel->tds_y1,2);?>
-                                <td><?=number_format($ketel->phospat_y1,2);?>
-                                <td><?=number_format($ketel->sadah_y2,2);?>
-                                <td><?=number_format($ketel->ph_y2,2);?>
-                                <td><?=number_format($ketel->tds_y2,2);?>
-                                <td><?=number_format($ketel->phospat_y2,2);?>
-                                <!-- <td><?=number_format($ketel->ph_djj,2);?>
-                                <td><?=number_format($ketel->tds_djj,2);?>
-                                <td><?=number_format($ketel->ph_dy,2);?>
-                                <td><?=number_format($ketel->tds_dy,2);?>
-                                <td><?=number_format($ketel->ph_wtp,2);?>
-                                <td><?=number_format($ketel->tds_wtp,2);?>
-                                <td><?=number_format($ketel->ph_hw,2);?>
-                                <td><?=number_format($ketel->tds_hw,2);?> -->
-                            </tr>
-                            <?php endforeach; ?>
+                            </table>
+                        <br>
+                </div>
 
-                        </table>
+                <div class="col-md-4">
+                                
+                        <a href="<?=base_url('welcome/show_analisa_ketel/y1');?>"><h5>Yoshimine1</h5></a>
+                            <table class="table table-sm table-bordered table-hover text-xs">
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Hardness</th>
+                                    <th>pH</th>
+                                    <th>TDS</th>
+                                    <th>Phospat</th>
+                                </tr>
 
-              </div>
+                                <?php foreach($ketel['y1'] as $data): ?>
+                                <tr>
+                                    <td><?=date('H:i', strtotime($data->waktu));?></td>
+                                    <td>
+                                        <?php switch($data->sadah_y1)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->sadah_y1; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->ph_y1)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->ph_y1; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->tds_y1)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->tds_y1; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->phospat_y1)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->phospat_y1; break;
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
 
-        </div>
+                            </table>
+                        <br>
+                </div>
+
+                <div class="col-md-4">
+                                
+                        <a href="<?=base_url('welcome/show_analisa_ketel/y2');?>"><h5>Yoshimine2</h5></a>
+                            <table class="table table-sm table-bordered table-hover text-xs">
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>Hardness</th>
+                                    <th>pH</th>
+                                    <th>TDS</th>
+                                    <th>Phospat</th>
+                                </tr>
+
+                                <?php foreach($ketel['y2'] as $data): ?>
+                                <tr>
+                                    <td><?=date('H:i', strtotime($data->waktu));?></td>
+                                    <td>
+                                        <?php switch($data->sadah_y2)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->sadah_y2; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->ph_y2)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->ph_y2; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->tds_y2)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->tds_y2; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->phospat_y2)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->phospat_y2; break;
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+
+                            </table>
+                        <br>
+                </div>
+
+                <div class="col-md-3">
+                                
+                        <a href="<?=base_url('welcome/show_analisa_ketel/djj');?>"><h5>Daert JJ</h5></a>
+                            <table class="table table-sm table-bordered table-hover text-xs">
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>pH</th>
+                                    <th>TDS</th>
+                                </tr>
+
+                                <?php foreach($ketel['djj'] as $data): ?>
+                                <tr>
+                                    <td><?=date('H:i', strtotime($data->waktu));?></td>
+                                    <td>
+                                        <?php switch($data->ph_djj)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->ph_djj; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->tds_djj)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->tds_djj; break;
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+
+                            </table>
+                        <br>
+                </div>
+
+                <div class="col-md-3">
+                                
+                        <a href="<?=base_url('welcome/show_analisa_ketel/dy');?>"><h5>Daert Yoshimine</h5></a>
+                            <table class="table table-sm table-bordered table-hover text-xs">
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>pH</th>
+                                    <th>TDS</th>
+                                </tr>
+
+                                <?php foreach($ketel['dy'] as $data): ?>
+                                <tr>
+                                    <td><?=date('H:i', strtotime($data->waktu));?></td>
+                                    <td>
+                                        <?php switch($data->ph_dy)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->ph_dy; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->tds_dy)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->tds_dy; break;
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+
+                            </table>
+                        <br>
+                </div>
+
+                <div class="col-md-3">
+                                
+                        <a href="<?=base_url('welcome/show_analisa_ketel/wtp');?>"><h5>WTP</h5></a>
+                            <table class="table table-sm table-bordered table-hover text-xs">
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>pH</th>
+                                    <th>TDS</th>
+                                </tr>
+
+                                <?php foreach($ketel['wtp'] as $data): ?>
+                                <tr>
+                                    <td><?=date('H:i', strtotime($data->waktu));?></td>
+                                    <td>
+                                        <?php switch($data->ph_wtp)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->ph_wtp; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->tds_wtp)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->tds_wtp; break;
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+
+                            </table>
+                        <br>
+                </div>
+
+                <div class="col-md-3">
+                                
+                        <a href="<?=base_url('welcome/show_analisa_ketel/hw');?>"><h5>HW</h5></a>
+                            <table class="table table-sm table-bordered table-hover text-xs">
+                                <tr>
+                                    <th>Waktu</th>
+                                    <th>pH</th>
+                                    <th>TDS</th>
+                                </tr>
+
+                                <?php foreach($ketel['hw'] as $data): ?>
+                                <tr>
+                                    <td><?=date('H:i', strtotime($data->waktu));?></td>
+                                    <td>
+                                        <?php switch($data->ph_hw)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->ph_hw; break;
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php switch($data->tds_hw)
+                                        {
+                                            case 0  : echo "-"; break;
+                                            default : echo $data->tds_hw; break;
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+
+                            </table>
+                        <br>
+                </div>
+
+            </div>
 
     </div>
 

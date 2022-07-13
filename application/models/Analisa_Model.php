@@ -109,9 +109,73 @@ class Analisa_Model extends CI_Model {
             where `coloromat`.`bahan` between $min_id and $max_id order by `coloromat`.`id` desc limit 0,5")->result();
     }
 
-    public function getAnalisaKetelLatest5()
+    public function getAnalisaKetelJJLatest5()
     {
-        return $this->db->query("select * from `analisa_ketel` order by `id_analisa` desc limit 0,100")->result();
+        return $this->db->query("select `waktu`, `sadah_jj`, `tds_jj`, `ph_jj`, `phospat_jj` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaKetelY1Latest5()
+    {
+        return $this->db->query("select `waktu`, `sadah_y1`, `tds_y1`, `ph_y1`, `phospat_y1` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaKetelY2Latest5()
+    {
+        return $this->db->query("select `waktu`, `sadah_y2`, `tds_y2`, `ph_y2`, `phospat_y2` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaKetelDJJLatest5()
+    {
+        return $this->db->query("select `waktu`, `tds_djj`, `ph_djj` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaKetelDYLatest5()
+    {
+        return $this->db->query("select `waktu`, `tds_dy`, `ph_dy` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaKetelWTPLatest5()
+    {
+        return $this->db->query("select `waktu`, `tds_wtp`, `ph_wtp` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
+    }
+
+    public function getAnalisaKetelHWLatest5()
+    {
+        return $this->db->query("select `waktu`, `tds_hw`, `ph_hw` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
+    }
+    public function getAnalisaKetelJJAll()
+    {
+        return $this->db->query("select `waktu`, `sadah_jj`, `tds_jj`, `ph_jj`, `phospat_jj` from `analisa_ketel` order by `id_analisa` desc")->result();
+    }
+
+    public function getAnalisaKetelY1All()
+    {
+        return $this->db->query("select `waktu`, `sadah_y1`, `tds_y1`, `ph_y1`, `phospat_y1` from `analisa_ketel` order by `id_analisa` desc")->result();
+    }
+
+    public function getAnalisaKetelY2All()
+    {
+        return $this->db->query("select `waktu`, `sadah_y2`, `tds_y2`, `ph_y2`, `phospat_y2` from `analisa_ketel` order by `id_analisa` desc")->result();
+    }
+
+    public function getAnalisaKetelDJJAll()
+    {
+        return $this->db->query("select `waktu`, `tds_djj`, `ph_djj` from `analisa_ketel` order by `id_analisa` desc")->result();
+    }
+
+    public function getAnalisaKetelDYAll()
+    {
+        return $this->db->query("select `waktu`, `tds_dy`, `ph_dy` from `analisa_ketel` order by `id_analisa` desc")->result();
+    }
+
+    public function getAnalisaKetelWTPAll()
+    {
+        return $this->db->query("select `waktu`, `tds_wtp`, `ph_wtp` from `analisa_ketel` order by `id_analisa` desc")->result();
+    }
+
+    public function getAnalisaKetelHWAll()
+    {
+        return $this->db->query("select `waktu`, `tds_hw`, `ph_hw` from `analisa_ketel` order by `id_analisa` desc")->result();
     }
 
     public function getAnalisaNppAll()

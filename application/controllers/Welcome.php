@@ -36,7 +36,7 @@ class Welcome extends CI_Controller {
 	public function analisa()
 	{
 		$data['page_title'] = ucfirst('analisa');
-		$data['card_title']	= array('rs', 'gilingan', 'pemurnian', 'penguapan', 'drk', 'masakan', 'stroop', 'gula', 'ketel');
+		$data['card_title']	= array('rs', 'gilingan', 'pemurnian', 'penguapan', 'drk', 'masakan', 'stroop', 'gula', 'tetes', 'ketel');
 
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/dashboard', $data);
@@ -124,7 +124,13 @@ class Welcome extends CI_Controller {
 			break;
 
 			case 'ketel' :
-					$data['ketel']				= $this->Analisa_Model->getAnalisaKetelLatest5();
+					$data['ketel']['jj']				= $this->Analisa_Model->getAnalisaKetelJJLatest5();
+					$data['ketel']['y1']				= $this->Analisa_Model->getAnalisaKetelY1Latest5();
+					$data['ketel']['y2']				= $this->Analisa_Model->getAnalisaKetelY2Latest5();
+					$data['ketel']['djj']				= $this->Analisa_Model->getAnalisaKetelDJJLatest5();
+					$data['ketel']['dy']				= $this->Analisa_Model->getAnalisaKetelDYLatest5();
+					$data['ketel']['wtp']				= $this->Analisa_Model->getAnalisaKetelWTPLatest5();
+					$data['ketel']['hw']				= $this->Analisa_Model->getAnalisaKetelHWLatest5();
 			break;
 		}
 
@@ -289,6 +295,46 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function show_analisa_ketel($id)
+	{
+		$data['page_title'] = "Analisa Ketel ".ucfirst($id);
+		$data['id'] 		= $id;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+
+		switch($id)
+		{
+			case 'jj' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelJJAll($id);
+				break;
+			case 'y1' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelY1All($id);
+				break;
+			case 'y2' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelY2All($id);
+				break;
+			case 'djj' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelDJJAll($id);
+				break;
+			case 'dy' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelDYAll($id);
+				break;
+			case 'wtp' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelWTPAll($id);
+				break;
+			case 'hw' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelHWAll($id);
+				break;
+
+		}
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_ketel', $data);
+		$this->load->view('static/footer');
+	}
+
 	/**************************************************************************** */
 
 	public function download_analisa_npp()
@@ -397,6 +443,42 @@ class Welcome extends CI_Controller {
 
 		// Render View and Data
 		$this->load->view('analisa/download_analisa/analisa_gula', $data);
+	}
+
+	public function download_analisa_ketel($id)
+	{
+		$data['id'] = $id;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+
+		switch($id)
+		{
+			case 'jj' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelJJAll($id);
+				break;
+			case 'y1' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelY1All($id);
+				break;
+			case 'y2' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelY2All($id);
+				break;
+			case 'djj' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelDJJAll($id);
+				break;
+			case 'dy' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelDYAll($id);
+				break;
+			case 'wtp' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelWTPAll($id);
+				break;
+			case 'hw' : 
+				$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaKetelHWAll($id);
+				break;
+		}
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_ketel', $data);
 	}
 
 	/********************************************************************************* */
