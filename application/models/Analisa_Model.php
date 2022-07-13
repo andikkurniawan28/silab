@@ -279,6 +279,27 @@ class Analisa_Model extends CI_Model {
         where `id` = '$id'");
     }
 
+    public function editAnalisaSO2($so2, $bahan)
+    {
+        $this->db->query("update `analisa_so2` set 
+            `so2`     = '$so2'
+        where `bahan` = '$bahan'");
+    }
+
+    public function editAnalisaBJB($bjb, $bahan)
+    {
+        $this->db->query("update `analisa_bjb` set 
+            `bjb`     = '$bjb'
+        where `bahan` = '$bahan'");
+    }
+
+    public function editHKGula($hk, $bahan)
+    {
+        $this->db->query("update `saccharomat` set 
+            `hk`     = '$hk'
+        where `bahan` = '$bahan'");
+    }
+
     /******************************************************************* */
 
     public function deleteAnalisaNPP($id)

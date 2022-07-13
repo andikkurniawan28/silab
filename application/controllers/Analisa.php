@@ -149,15 +149,43 @@ class Analisa extends CI_Controller {
       $this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
     }
 
-    public function edit_icumsa_gula($id, $iu, $bahan)
+    public function edit_analisa_so2($id, $so2, $bahan)
     {
       $data['page_title']     = "Edit Data";
       $data['id'] 		        = $id;
-      $data['iu'] 	          = $iu;
+      $data['so2'] 	          = $so2;
       $data['bahan'] 		      = $bahan;
 
       $this->load->view('static/header', $data);
-      $this->load->view('edit/edit_icumsa_gula', $data);
+      $this->load->view('edit/edit_analisa_so2', $data);
+      $this->load->view('static/footer');	
+
+      $this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
+    }
+
+    public function edit_analisa_bjb($id, $bjb, $bahan)
+    {
+      $data['page_title']     = "Edit Data";
+      $data['id'] 		        = $id;
+      $data['bjb'] 	          = $bjb;
+      $data['bahan'] 		      = $bahan;
+
+      $this->load->view('static/header', $data);
+      $this->load->view('edit/edit_analisa_bjb', $data);
+      $this->load->view('static/footer');	
+
+      $this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
+    }
+
+    public function edit_hk_gula($id, $hk, $bahan)
+    {
+      $data['page_title']     = "Edit Data";
+      $data['id'] 		        = $id;
+      $data['hk'] 	          = $hk;
+      $data['bahan'] 		      = $bahan;
+
+      $this->load->view('static/header', $data);
+      $this->load->view('edit/edit_hk_gula', $data);
       $this->load->view('static/footer');	
 
       $this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
@@ -271,14 +299,36 @@ class Analisa extends CI_Controller {
         redirect($this->session->userdata('referrer_url'));
     }
 
-    public function proses_edit_icumsa_gula()
+    public function proses_edit_analisa_so2()
     {
         $id         = $this->input->post('id', TRUE);
         $bahan      = $this->input->post('bahan', TRUE);
-        $iu         = $this->input->post('iu', TRUE);
+        $so2        = $this->input->post('so2', TRUE);
         
-        $this->Analisa_Model->editICUMSAGula($iu, $bahan);
-        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>ICUMSA berhasil diubah.</div>");
+        $this->Analisa_Model->editAnalisaSO2($so2, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>SO2 berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function proses_edit_analisa_bjb()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $bjb        = $this->input->post('bjb', TRUE);
+        
+        $this->Analisa_Model->editAnalisaBJB($bjb, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>BJB berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function proses_edit_hk_gula()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $hk         = $this->input->post('hk', TRUE);
+        
+        $this->Analisa_Model->editHKGula($hk, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>HK berhasil diubah.</div>");
         redirect($this->session->userdata('referrer_url'));
     }
 

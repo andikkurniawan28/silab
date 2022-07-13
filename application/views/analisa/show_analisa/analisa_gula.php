@@ -23,7 +23,7 @@
                   <tr>
                       <th>#</th>
                       <th>Time</th>
-                      <th>ICUMSA</th>
+                      <th>IU</th>
                       <th>Air</th>
                       <th>Brix</th>
                       <th>Pol</th>
@@ -59,6 +59,18 @@
                                     $hasil_analisa->id.'/'.
                                     $hasil_analisa->kadar_air.'/'.
                                     $hasil_analisa->bahan);?>" class="btn btn-sm btn-secondary">Kadar Air</a>
+                                <a href="<?=base_url('analisa/edit_hk_gula/'.
+                                    $hasil_analisa->id.'/'.
+                                    $hasil_analisa->hk.'/'.
+                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-primary">HK</a>
+                                <a href="<?=base_url('analisa/edit_analisa_so2/'.
+                                    $hasil_analisa->id.'/'.
+                                    $hasil_analisa->so2.'/'.
+                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-success">SO<sub>2</sub></a>
+                                <a href="<?=base_url('analisa/edit_analisa_bjb/'.
+                                    $hasil_analisa->id.'/'.
+                                    $hasil_analisa->bjb.'/'.
+                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-info">BJB</a>
                                 <a href="<?=base_url('analisa/hapus_coloromat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
                             <?php endif; ?>
