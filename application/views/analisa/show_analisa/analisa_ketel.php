@@ -28,9 +28,6 @@
                             <th>Hardness</th>
                             <th>Phospat</th>
                         <?php endif; ?>
-                        <?php if($this->session->userdata('role') == "admin"): ?>
-                            <th>Control</th>
-                        <?php endif; ?>
                     </tr>
 
                     <?php foreach($hasil_analisa as $data): ?>

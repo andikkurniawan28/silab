@@ -109,6 +109,19 @@ class Analisa_Model extends CI_Model {
             where `coloromat`.`bahan` between $min_id and $max_id order by `coloromat`.`id` desc limit 0,5")->result();
     }
 
+    public function getAnalisaTetesLatest5($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `analisa_tsai`.`tsai`
+            from `saccharomat` 
+            LEFT OUTER JOIN `analisa_tsai` ON `analisa_tsai`.`bahan` = `analisa_tsai`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc limit 0,5")->result();
+    }
+
     public function getAnalisaKetelJJLatest5()
     {
         return $this->db->query("select `waktu`, `sadah_jj`, `tds_jj`, `ph_jj`, `phospat_jj` from `analisa_ketel` order by `id_analisa` desc limit 0,5")->result();
@@ -275,6 +288,19 @@ class Analisa_Model extends CI_Model {
             where `coloromat`.`bahan` between $min_id and $max_id order by `coloromat`.`id` desc")->result();
     }
 
+    public function getAnalisaTetesAll($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `saccharomat`.*, 
+            `analisa_tsai`.`tsai`
+            from `saccharomat` 
+            LEFT OUTER JOIN `analisa_tsai` ON `analisa_tsai`.`bahan` = `analisa_tsai`.`bahan` 
+            where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc")->result();
+    }
+
     /****************************************************************************** */
 
     public function editAnalisaNPP($id, $brix, $pol, $rendemen)
@@ -361,6 +387,13 @@ class Analisa_Model extends CI_Model {
     {
         $this->db->query("update `saccharomat` set 
             `hk`     = '$hk'
+        where `bahan` = '$bahan'");
+    }
+
+    public function editAnalisaTSAI($tsai, $bahan)
+    {
+        $this->db->query("update `analisa_tsai` set 
+            `tsai`     = '$tsai'
         where `bahan` = '$bahan'");
     }
 

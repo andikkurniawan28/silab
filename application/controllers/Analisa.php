@@ -191,6 +191,20 @@ class Analisa extends CI_Controller {
       $this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
     }
 
+    public function edit_analisa_tsai($id, $tsai, $bahan)
+    {
+      $data['page_title']     = "Edit Data";
+      $data['id'] 		        = $id;
+      $data['tsai'] 	        = $tsai;
+      $data['bahan'] 		      = $bahan;
+
+      $this->load->view('static/header', $data);
+      $this->load->view('edit/edit_analisa_tsai', $data);
+      $this->load->view('static/footer');	
+
+      $this->session->set_userdata('referrer_url', $this->agent->referrer() ); 
+    }
+
     /********************************************************** */
 
     public function proses_edit_analisa_npp()
@@ -329,6 +343,17 @@ class Analisa extends CI_Controller {
         
         $this->Analisa_Model->editHKGula($hk, $bahan);
         $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>HK berhasil diubah.</div>");
+        redirect($this->session->userdata('referrer_url'));
+    }
+
+    public function prosess_edit_analisa_tsai()
+    {
+        $id         = $this->input->post('id', TRUE);
+        $bahan      = $this->input->post('bahan', TRUE);
+        $tsai       = $this->input->post('tsai', TRUE);
+        
+        $this->Analisa_Model->editAnalisaTSAI($tsai, $bahan);
+        $this->session->set_flashdata('message', "<div class='alert alert-warning' role='alert'>TSAI berhasil diubah.</div>");
         redirect($this->session->userdata('referrer_url'));
     }
 

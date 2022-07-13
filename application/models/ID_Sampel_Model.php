@@ -141,4 +141,16 @@ class ID_Sampel_Model extends CI_Model {
         */
     }
 
+    public function getIDForTetes()
+    {
+        return array(75,92,77,93,76);
+        /*
+            75 -> Tangki1
+            92 -> Tangki2
+            77 -> Tangki3
+            93 -> Kumpulan
+            76 -> Tandon
+        */
+    }
+
 }

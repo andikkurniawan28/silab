@@ -123,6 +123,13 @@ class Welcome extends CI_Controller {
 					$data['rs'][$i] = $this->Analisa_Model->getAnalisaGulaLatest5($data['id_rs'][$i]);
 			break;
 
+			case 'tetes' :
+				$data['id_tetes']				= $this->ID_Sampel_Model->getIDForTetes();
+
+				for($i=0; $i < count($data['id_tetes']); $i++)
+					$data['tetes'][$i] = $this->Analisa_Model->getAnalisaTetesLatest5($data['id_tetes'][$i]);
+			break;
+
 			case 'ketel' :
 					$data['ketel']['jj']				= $this->Analisa_Model->getAnalisaKetelJJLatest5();
 					$data['ketel']['y1']				= $this->Analisa_Model->getAnalisaKetelY1Latest5();
@@ -295,6 +302,23 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function show_analisa_tetes($id, $material)
+	{
+		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['id'] 		= $id;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaTetesAll($id);
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_tetes', $data);
+		$this->load->view('static/footer');
+	}
+
 	public function show_analisa_ketel($id)
 	{
 		$data['page_title'] = "Analisa Ketel ".ucfirst($id);
@@ -443,6 +467,18 @@ class Welcome extends CI_Controller {
 
 		// Render View and Data
 		$this->load->view('analisa/download_analisa/analisa_gula', $data);
+	}
+
+	public function download_analisa_tetes($id)
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaTetesAll($id);
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_tetes', $data);
 	}
 
 	public function download_analisa_ketel($id)
