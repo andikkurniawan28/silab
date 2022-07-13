@@ -113,7 +113,7 @@ class Welcome extends CI_Controller {
 				$data['id_gula']				= $this->ID_Sampel_Model->getIDForGula();
 
 				for($i=0; $i < count($data['id_gula']); $i++)
-					$data['gula'][$i] = $this->Analisa_Model->getAnalisaIcumsaLatest5($data['id_gula'][$i]);
+					$data['gula'][$i] = $this->Analisa_Model->getAnalisaGulaLatest5($data['id_gula'][$i]);
 			break;
 
 			case 'ketel' :
@@ -265,6 +265,23 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function show_analisa_gula($id, $material)
+	{
+		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['id'] 		= $id;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaGulaAll($id);
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_gula', $data);
+		$this->load->view('static/footer');
+	}
+
 	/**************************************************************************** */
 
 	public function download_analisa_npp()
@@ -361,6 +378,18 @@ class Welcome extends CI_Controller {
 
 		// Render View and Data
 		$this->load->view('analisa/download_analisa/analisa_stroop', $data);
+	}
+
+	public function download_analisa_gula($id)
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaGulaAll($id);
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_gula', $data);
 	}
 
 	/********************************************************************************* */

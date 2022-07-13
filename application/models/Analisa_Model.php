@@ -90,6 +90,25 @@ class Analisa_Model extends CI_Model {
             where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc limit 0,5")->result();
     }
 
+    public function getAnalisaGulaLatest5($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `coloromat`.*, 
+            `moisture`.`kadar_air`,
+            `saccharomat`.`hk`,
+            `analisa_so2`.`so2`,
+            `analisa_bjb`.`bjb`
+            from `coloromat` 
+            LEFT OUTER JOIN `moisture` ON `coloromat`.`bahan` = `moisture`.`bahan` 
+            LEFT OUTER JOIN `saccharomat` ON `coloromat`.`bahan` = `saccharomat`.`bahan` 
+            LEFT OUTER JOIN `analisa_so2` ON `coloromat`.`bahan` = `analisa_so2`.`bahan` 
+            LEFT OUTER JOIN `analisa_bjb` ON `coloromat`.`bahan` = `analisa_bjb`.`bahan` 
+            where `coloromat`.`bahan` between $min_id and $max_id order by `coloromat`.`id` desc limit 0,5")->result();
+    }
+
     public function getAnalisaKetelLatest5()
     {
         return $this->db->query("select * from `analisa_ketel` order by `id_analisa` desc limit 0,100")->result();
@@ -173,6 +192,25 @@ class Analisa_Model extends CI_Model {
             where `saccharomat`.`bahan` between $min_id and $max_id order by `saccharomat`.`id` desc")->result();
     }
 
+    public function getAnalisaGulaAll($id)
+    {
+        $max_id = ($id + 1) * 10000;
+        $min_id = $id * 10000;
+
+        return $this->db->query("select 
+            `coloromat`.*, 
+            `moisture`.`kadar_air`,
+            `saccharomat`.`hk`,
+            `analisa_so2`.`so2`,
+            `analisa_bjb`.`bjb`
+            from `coloromat` 
+            LEFT OUTER JOIN `moisture` ON `coloromat`.`bahan` = `moisture`.`bahan` 
+            LEFT OUTER JOIN `saccharomat` ON `coloromat`.`bahan` = `saccharomat`.`bahan` 
+            LEFT OUTER JOIN `analisa_so2` ON `coloromat`.`bahan` = `analisa_so2`.`bahan` 
+            LEFT OUTER JOIN `analisa_bjb` ON `coloromat`.`bahan` = `analisa_bjb`.`bahan` 
+            where `coloromat`.`bahan` between $min_id and $max_id order by `coloromat`.`id` desc")->result();
+    }
+
     /****************************************************************************** */
 
     public function editAnalisaNPP($id, $brix, $pol, $rendemen)
@@ -249,6 +287,11 @@ class Analisa_Model extends CI_Model {
     }
 
     public function deleteSaccharomat($id)
+    {
+        $this->db->query("delete from `saccharomat` where `id` = $id");
+    }
+
+    public function deleteColoromat($id)
     {
         $this->db->query("delete from `saccharomat` where `id` = $id");
     }
