@@ -6,6 +6,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
             <li class="breadcrumb-item"><a href="<?=base_url('welcome/analisa');?>">Analisa</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('welcome/hasil_analisa/rs');?>">RS</a></li>
             <li class="breadcrumb-item"><a href="<?=base_url('welcome/hasil_analisa/gula');?>">Gula</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
             <li class="breadcrumb-item"><a href="<?=base_url('welcome/download_analisa_gula/'.$id);?>">Download Excel</a></li>

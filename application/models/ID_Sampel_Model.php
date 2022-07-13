@@ -132,4 +132,13 @@ class ID_Sampel_Model extends CI_Model {
         */
     }
 
+    public function getIDForRS()
+    {
+        return array(37,42);
+        /*
+            37 -> Raw Sugar Kedatangan
+            42 -> Raw Sugar Silo
+        */
+    }
+
 }

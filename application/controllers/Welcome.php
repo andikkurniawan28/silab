@@ -36,7 +36,7 @@ class Welcome extends CI_Controller {
 	public function analisa()
 	{
 		$data['page_title'] = ucfirst('analisa');
-		$data['card_title']	= array('gilingan', 'pemurnian', 'penguapan', 'drk', 'masakan', 'stroop', 'gula', 'ketel');
+		$data['card_title']	= array('rs', 'gilingan', 'pemurnian', 'penguapan', 'drk', 'masakan', 'stroop', 'gula', 'ketel');
 
 		$this->load->view('static/header', $data);
 		$this->load->view('analisa/dashboard', $data);
@@ -114,6 +114,13 @@ class Welcome extends CI_Controller {
 
 				for($i=0; $i < count($data['id_gula']); $i++)
 					$data['gula'][$i] = $this->Analisa_Model->getAnalisaGulaLatest5($data['id_gula'][$i]);
+			break;
+
+			case 'rs' :
+				$data['id_rs']				= $this->ID_Sampel_Model->getIDForRS();
+
+				for($i=0; $i < count($data['id_rs']); $i++)
+					$data['rs'][$i] = $this->Analisa_Model->getAnalisaGulaLatest5($data['id_rs'][$i]);
 			break;
 
 			case 'ketel' :
