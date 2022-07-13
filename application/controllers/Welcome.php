@@ -99,14 +99,14 @@ class Welcome extends CI_Controller {
 				$data['id_masakan']				= $this->ID_Sampel_Model->getIDForMasakan();
 
 				for($i=0; $i < count($data['id_masakan']); $i++)
-					$data['masakan'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_masakan'][$i]);
+					$data['masakan'][$i] = $this->Analisa_Model->getAnalisaStroopLatest5($data['id_masakan'][$i]);
 			break;
 
 			case 'stroop' :
 				$data['id_stroop']				= $this->ID_Sampel_Model->getIDForStroop();
 
 				for($i=0; $i < count($data['id_stroop']); $i++)
-					$data['stroop'][$i] = $this->Analisa_Model->getAnalisaBrixPolLatest5($data['id_stroop'][$i]);
+					$data['stroop'][$i] = $this->Analisa_Model->getAnalisaStroopLatest5($data['id_stroop'][$i]);
 			break;
 
 			case 'gula' :
@@ -248,6 +248,23 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function show_analisa_stroop($id, $material)
+	{
+		$data['page_title'] = "Analisa ".ucfirst($material);
+		$data['id'] 		= $id;
+
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaStroopAll($id);
+
+		// Render View and Data
+		$this->load->view('static/header', $data);
+		$this->load->view('analisa/show_analisa/analisa_stroop', $data);
+		$this->load->view('static/footer');
+	}
+
 	/**************************************************************************** */
 
 	public function download_analisa_npp()
@@ -332,6 +349,18 @@ class Welcome extends CI_Controller {
 
 		// Render View and Data
 		$this->load->view('analisa/download_analisa/analisa_blotong', $data);
+	}
+
+	public function download_analisa_stroop($id)
+	{
+		// Load Model 
+		$this->load->model('Analisa_Model');
+		
+		// Retrieve Data
+		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaStroopAll($id);
+
+		// Render View and Data
+		$this->load->view('analisa/download_analisa/analisa_stroop', $data);
 	}
 
 	/********************************************************************************* */
