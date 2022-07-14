@@ -8,6 +8,7 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		$this->check_login();
 		$this->load->library('user_agent');
+		$this->load->model('Analisa_Model');
 	}
 
 	public function check_login()
@@ -43,12 +44,21 @@ class Welcome extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function input()
+	{
+		$data['page_title'] = ucfirst('input data');
+		$data['card_title']	= array('saccharomat', 'coloromat', 'moisture', 'analisa_umum', 'analisa_ampas', 'analisa_ketel', 'analisa_tsai', 'analisa_so2', 'analisa_bjb');
+
+		$this->load->view('static/header', $data);
+		$this->load->view('input/dashboard', $data);
+		$this->load->view('static/footer');
+	}
+
+	/*********************************************************************************************** */
+
 	public function hasil_analisa($stasiun)
 	{
 		$data['page_title'] = ucfirst($stasiun);
-
-		// Load Model 
-		$this->load->model('Analisa_Model');
 		$this->load->model('ID_Sampel_Model');
 
 		// Determine which data will be parsed
@@ -154,9 +164,6 @@ class Welcome extends CI_Controller {
 	{
 		$data['page_title'] = "Analisa ".ucfirst($material);
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
 
@@ -171,9 +178,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll($id);
 
@@ -188,9 +192,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaAmpasAll($id);
 
@@ -205,9 +206,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaPemurnianAll($id);
 
@@ -222,9 +220,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBlotongAll($id);
 
@@ -239,9 +234,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll($id);
 
@@ -256,9 +248,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaCakeAll($id);
 
@@ -273,9 +262,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaStroopAll($id);
 
@@ -290,9 +276,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaGulaAll($id);
 
@@ -307,9 +290,6 @@ class Welcome extends CI_Controller {
 		$data['page_title'] = "Analisa ".ucfirst($material);
 		$data['id'] 		= $id;
 
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaTetesAll($id);
 
@@ -363,9 +343,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_npp()
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaNppAll();
 
@@ -375,9 +352,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_gilingan($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll($id);
 
@@ -387,9 +361,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_ampas_gilingan($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaAmpasAll($id);
 
@@ -399,9 +370,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_pemurnian($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaPemurnianAll($id);
 
@@ -411,9 +379,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_blotong($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBlotongAll($id);
 
@@ -423,9 +388,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_penguapan($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaBrixPolAll($id);
 
@@ -435,9 +397,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_cake($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaCakeAll($id);
 
@@ -447,9 +406,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_stroop($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaStroopAll($id);
 
@@ -459,9 +415,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_gula($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaGulaAll($id);
 
@@ -471,9 +424,6 @@ class Welcome extends CI_Controller {
 
 	public function download_analisa_tetes($id)
 	{
-		// Load Model 
-		$this->load->model('Analisa_Model');
-		
 		// Retrieve Data
 		$data['hasil_analisa'] = $this->Analisa_Model->getAnalisaTetesAll($id);
 

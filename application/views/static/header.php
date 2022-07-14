@@ -83,7 +83,7 @@
 
                 <!---------------------------------------------------------->
 
-                <li class="sidebar-item"><a class="sidebar-link" href=""> 
+                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('welcome/input');?>"> 
                     <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                         <use xlink:href="#ballpoint-pen-1"> </use>
                     </svg>
