@@ -2,27 +2,46 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Moisture extends CI_Model {
+
+    public function defineTable()
+    {
+        return 'moisture';
+    }
     
     public function createData($bahan, $kadar_air)
     {
-        $waktu = date('Y-m-d H:i');
-        $this->db->query("insert into `moisture`
-            (`waktu`, `bahan`, `kadar_air`) values
-            ('$waktu', $bahan, $kadar_air)");
+        $table = $this->defineTable();
+        $data = array(
+            'waktu'     => date('Y-m-d H:i'),
+            'bahan'     => $bahan,
+            'kadar_air' => $kadar_air,
+        );
+        $this->db->insert($table, $data);
     }
 
     public function readData()
     {
-        return $this->db->query("select * from `moisture` order by `id` desc limit 0,600")->result();
+        $table = $this->defineTable();
+        $this->db->from($table);
+        $this->db->limit('5000');
+        $this->db->order_by('id','DESC');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function updateData($id, $bahan, $kadar_air)
     {   
-        $this->db->query("update `moisture` set `bahan`= '$bahan', `kadar_air`= $kadar_air where `id` = '$id'");
+        $table = $this->defineTable();
+        $data = array(
+            'bahan'     => $bahan,
+            'kadar_air' => $kadar_air,
+        );
+        $this->db->update($table, $data, array('id' => $id));
     }
 
     public function deleteData($id)
     {
-        $this->db->query("delete from `moisture` where `id` = '$id'");
+        $table = $this->defineTable();
+        $this->db->delete($table, array('id'=>$id));
     }
 }
