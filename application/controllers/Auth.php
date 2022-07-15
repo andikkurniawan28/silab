@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Auth_Model');
+        $this->load->model('user');
         $this->load->library('user_agent');
     }
 
@@ -19,7 +19,7 @@ class Auth extends CI_Controller {
     {
         $username   = $this->input->post('username', TRUE);
         $password   = md5($this->input->post('password', TRUE));
-        $check_user = $this->Auth_Model->checkUser($username, $password);
+        $check_user = $this->user->checkUser($username, $password);
 
         if($check_user->num_rows() > 0)
         {
