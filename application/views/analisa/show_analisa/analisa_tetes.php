@@ -25,11 +25,6 @@
                       <th>Time</th>
                       <th>Brix</th>
                       <th>TSAI</th>
-
-                        <?php if($this->session->userdata('role') == "admin"): ?>
-                            <th>Control</th>
-                        <?php endif; ?>
-                        
                   </tr>
 
                     <?php foreach($hasil_analisa as $hasil_analisa): ?>
@@ -38,23 +33,6 @@
                             <td><?=$hasil_analisa->waktu;?></td>
                             <td><?=number_format($hasil_analisa->brix,2);?></td>
                             <td><?=$hasil_analisa->tsai;?></td>
-
-                            <?php if($this->session->userdata('role') == "admin"): ?>
-                            <td>
-                                <a href="<?=base_url('analisa/edit_penguapan/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->brix.'/'.
-                                    $hasil_analisa->bahan
-                                    );?>" class="btn btn-sm btn-warning">Brix</a>
-                                <a href="<?=base_url('analisa/edit_analisa_tsai/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->tsai.'/'.
-                                    $hasil_analisa->bahan
-                                    );?>" class="btn btn-sm btn-success">TSAI</a>
-                                <a href="<?=base_url('analisa/hapus_saccharomat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
-                            </td>
-                            <?php endif; ?>
-
                         </tr>
                   <?php endforeach; ?>
 

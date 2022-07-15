@@ -24,12 +24,7 @@
                       <th>#</th>
                       <th>Time</th>
                       <th>Pol</th>
-                      <th>Kadar Air</th>
-
-                        <?php if($this->session->userdata('role') == "admin"): ?>
-                            <th>Control</th>
-                        <?php endif; ?>
-                        
+                      <th>Air</th>
                   </tr>
 
                     <?php foreach($hasil_analisa as $hasil_analisa): ?>
@@ -38,21 +33,6 @@
                             <td><?=$hasil_analisa->waktu;?></td>
                             <td><?=$hasil_analisa->Z;?></td>
                             <td><?=$hasil_analisa->kadar_air;?></td>
-
-                            <?php if($this->session->userdata('role') == "admin"): ?>
-                            <td>
-                                <a href="<?=base_url('analisa/edit_analisa_blotong/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->Z.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">Pol</a>
-                                <a href="<?=base_url('analisa/edit_analisa_kadar_air_cake/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->kadar_air.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-secondary">Kadar Air</a>
-                                <a href="<?=base_url('analisa/hapus_saccharomat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
-                            </td>
-                            <?php endif; ?>
-
                         </tr>
                   <?php endforeach; ?>
 

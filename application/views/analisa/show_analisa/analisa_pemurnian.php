@@ -31,11 +31,6 @@
                       <th>CaO</th>
                       <th>ph</th>
                       <th>Turb</th>
-
-                        <?php if($this->session->userdata('role') == "admin"): ?>
-                            <th>Control</th>
-                        <?php endif; ?>
-                        
                   </tr>
 
                     <?php foreach($hasil_analisa as $hasil_analisa): ?>
@@ -49,28 +44,6 @@
                             <td><?=$hasil_analisa->cao;?></td>
                             <td><?=$hasil_analisa->ph;?></td>
                             <td><?=$hasil_analisa->tur;?></td>
-
-                            <?php if($this->session->userdata('role') == "admin"): ?>
-                            <td>
-                                <a href="<?=base_url('analisa/edit_saccharomat/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->brix.'/'.
-                                    $hasil_analisa->pol.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">Brix Pol</a>
-                                <a href="<?=base_url('analisa/edit_coloromat/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->IU.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-success">ICUMSA</a>
-                                <a href="<?=base_url('analisa/edit_analisa_umum/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->cao.'/'.
-                                    $hasil_analisa->ph.'/'.
-                                    $hasil_analisa->tur.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-secondary">CaO pH Turb</a>
-                                <a href="<?=base_url('analisa/hapus_saccharomat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
-                            </td>
-                            <?php endif; ?>
-
                         </tr>
                   <?php endforeach; ?>
 

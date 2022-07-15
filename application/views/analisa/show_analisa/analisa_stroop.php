@@ -28,11 +28,6 @@
                       <th>Pol</th>
                       <th>HK</th>
                       <th>IU</th>
-
-                        <?php if($this->session->userdata('role') == "admin"): ?>
-                            <th>Control</th>
-                        <?php endif; ?>
-                        
                   </tr>
 
                     <?php foreach($hasil_analisa as $hasil_analisa): ?>
@@ -43,22 +38,6 @@
                             <td><?=number_format($hasil_analisa->pol,2);?></td>
                             <td><?=number_format($hasil_analisa->hk,2);?></td>
                             <td><?=$hasil_analisa->IU;?></td>
-
-                            <?php if($this->session->userdata('role') == "admin"): ?>
-                            <td>
-                                <a href="<?=base_url('analisa/edit_saccharomat/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->brix.'/'.
-                                    $hasil_analisa->pol.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">Brix Pol</a>
-                                <a href="<?=base_url('analisa/edit_coloromat/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->IU.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-success">ICUMSA</a>
-                                <a href="<?=base_url('analisa/hapus_saccharomat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
-                            </td>
-                            <?php endif; ?>
-
                         </tr>
                   <?php endforeach; ?>
 

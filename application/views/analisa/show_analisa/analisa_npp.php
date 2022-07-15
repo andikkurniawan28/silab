@@ -26,11 +26,6 @@
                                 <th>Brix</th>
                                 <th>Pol</th>
                                 <th>Rendemen</th>
-
-                            <?php if($this->session->userdata('role') == "admin"): ?>
-                                <th>Control</th>
-                            <?php endif; ?>
-
                           </tr>
 
                           <?php foreach($hasil_analisa as $hasil_analisa): ?>
@@ -40,14 +35,6 @@
                                 <td><?=number_format($hasil_analisa->brix,2);?></td>
                                 <td><?=number_format($hasil_analisa->pol,2);?></td>
                                 <td><?=number_format($hasil_analisa->rendemen,2);?></td>
-
-                                <?php if($this->session->userdata('role') == "admin"): ?>
-                                <td>
-                                    <a href="<?=base_url('analisa/edit_analisa_npp/'.$hasil_analisa->id.'/'.$hasil_analisa->brix.'/'.$hasil_analisa->pol);?>" class="btn btn-sm btn-warning">Edit</a>
-                                    <a href="<?=base_url('analisa/hapus_analisa_npp/'.$hasil_analisa->id);?>" class="btn btn-sm btn-danger">Hapus</a>
-                                </td>
-                                <?php endif; ?>
-                              
                             </tr>
                           <?php endforeach; ?>
 

@@ -31,11 +31,6 @@
                       <th>HK</th>
                       <th>SO<sub>2</sub></th>
                       <th>SD</th>
-
-                        <?php if($this->session->userdata('role') == "admin"): ?>
-                            <th>Control</th>
-                        <?php endif; ?>
-                        
                   </tr>
 
                     <?php foreach($hasil_analisa as $hasil_analisa): ?>
@@ -49,33 +44,6 @@
                             <td><?=$hasil_analisa->hk;?></td>
                             <td><?=$hasil_analisa->so2;?></td>
                             <td><?=$hasil_analisa->bjb;?></td>
-
-                            <?php if($this->session->userdata('role') == "admin"): ?>
-                            <td>
-                                <a href="<?=base_url('analisa/edit_coloromat/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->IU.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-warning">ICUMSA</a>
-                                <a href="<?=base_url('analisa/edit_analisa_kadar_air_cake/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->kadar_air.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-secondary">Kadar Air</a>
-                                <a href="<?=base_url('analisa/edit_hk_gula/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->hk.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-primary">HK</a>
-                                <a href="<?=base_url('analisa/edit_analisa_so2/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->so2.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-success">SO<sub>2</sub></a>
-                                <a href="<?=base_url('analisa/edit_analisa_bjb/'.
-                                    $hasil_analisa->id.'/'.
-                                    $hasil_analisa->bjb.'/'.
-                                    $hasil_analisa->bahan);?>" class="btn btn-sm btn-info">BJB</a>
-                                <a href="<?=base_url('analisa/hapus_coloromat/'.$hasil_analisa->id.'/'.$hasil_analisa->bahan);?>" class="btn btn-sm btn-danger">Hapus</a>
-                            </td>
-                            <?php endif; ?>
-
                         </tr>
                   <?php endforeach; ?>
 
