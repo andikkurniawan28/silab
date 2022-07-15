@@ -25,17 +25,30 @@ class Coloromat_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title']             = "Coloromat";
+        $data['page_title']             = ucfirst("coloromat");
         $data['hasil_analisa']          = $this->coloromat->readData();
         $data['form_handler_create']    = base_url('coloromat_control/create_coloromat/');
-        $data['form_handler_update']    = base_url('coloromat_control/update_coloromat/');
+        $data['form_handler_update']    = base_url('coloromat_control/edit_coloromat/');
         $data['form_handler_delete']    = base_url('coloromat_control/delete_coloromat/');
 
-        $this->load->view('layout/header');
-		$this->load->view('coloromat/dashboard',$data);
+        $this->load->view('static/header', $data);
+		$this->load->view('input/coloromat',$data);
 		$this->load->view('modal/coloromat',$data);
-		$this->load->view('layout/footer');
+		$this->load->view('static/footer');
 	}
+
+    public function edit_coloromat($id, $bahan, $IU)
+    {
+        $data['page_title']             = ucfirst("coloromat");
+        $data['form_handler_update']    = base_url('coloromat_control/update_coloromat/');
+        $data['id']                     = $id;
+        $data['bahan']                  = $bahan;
+        $data['IU']                     = $IU;
+
+        $this->load->view('static/header',$data);
+        $this->load->view('edit/edit_coloromat',$data);
+		$this->load->view('static/footer');
+    }
 
     public function create_coloromat()
     {

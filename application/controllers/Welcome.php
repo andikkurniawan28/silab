@@ -47,7 +47,7 @@ class Welcome extends CI_Controller {
 	public function input()
 	{
 		$data['page_title'] = ucfirst('input data');
-		$data['card_title']	= array('saccharomat', 'coloromat', 'moisture', 'analisa_umum', 'analisa_ampas', 'analisa_ketel', 'analisa_tsai', 'analisa_so2', 'analisa_bjb');
+	$data['card_title']	= array('saccharomat', 'coloromat' , 'moisture'/*, 'analisa_umum', 'analisa_ampas', 'analisa_ketel', 'analisa_tsai', 'analisa_so2', 'analisa_bjb'*/);
 
 		$this->load->view('static/header', $data);
 		$this->load->view('input/dashboard', $data);

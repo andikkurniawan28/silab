@@ -20,8 +20,8 @@
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="exampleInputEmail1">ICUMSA</label>
-                        <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$IU;?>" name="IU" required>
+                        <label class="form-label" for="exampleInputEmail1">Kadar Air</label>
+                        <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$kadar_air;?>" name="kadar_air" required>
                     </div>
 
                     <button class="btn btn-warning" type="submit">Simpan</button>

@@ -25,17 +25,30 @@ class Moisture_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title']             = "Moisture";
+        $data['page_title']             = ucfirst("moisture");
         $data['hasil_analisa']          = $this->moisture->readData();
         $data['form_handler_create']    = base_url('moisture_control/create_moisture/');
-        $data['form_handler_update']    = base_url('moisture_control/update_moisture/');
+        $data['form_handler_update']    = base_url('moisture_control/edit_moisture/');
         $data['form_handler_delete']    = base_url('moisture_control/delete_moisture/');
 
-        $this->load->view('layout/header');
-		$this->load->view('moisture/dashboard',$data);
+        $this->load->view('static/header', $data);
+		$this->load->view('input/moisture',$data);
 		$this->load->view('modal/moisture',$data);
-		$this->load->view('layout/footer');
+		$this->load->view('static/footer');
 	}
+
+    public function edit_moisture($id, $bahan, $kadar_air)
+    {
+        $data['page_title']             = ucfirst("moisture");
+        $data['form_handler_update']    = base_url('moisture_control/update_moisture/');
+        $data['id']                     = $id;
+        $data['bahan']                  = $bahan;
+        $data['kadar_air']              = $kadar_air;
+
+        $this->load->view('static/header',$data);
+        $this->load->view('edit/edit_moisture',$data);
+		$this->load->view('static/footer');
+    }
 
     public function create_moisture()
     {

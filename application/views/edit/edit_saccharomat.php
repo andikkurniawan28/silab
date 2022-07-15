@@ -7,7 +7,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h6>Saccharomat</h6>
+                <h6><?=$page_title;?></h6>
             </div>
             <div class="card-body pt-0">
 

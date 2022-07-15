@@ -2,27 +2,46 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Coloromat extends CI_Model {
+
+    public function defineTable()
+    {
+        return 'coloromat';
+    }
     
     public function createData($bahan, $IU)
     {
-        $waktu = date('Y-m-d H:i');
-        $this->db->query("insert into `coloromat`
-            (`waktu`, `bahan`, `IU`) values
-            ('$waktu', $bahan, $IU)");
+        $table = $this->defineTable();
+        $data = array(
+            'waktu' => date('Y-m-d H:i'),
+            'bahan' => $bahan,
+            'IU'    => $IU,
+        );
+        $this->db->insert($table, $data);
     }
 
     public function readData()
     {
-        return $this->db->query("select * from `coloromat` order by `id` desc limit 0,600")->result();
+        $table = $this->defineTable();
+        $this->db->from($table);
+        $this->db->limit('5000');
+        $this->db->order_by('id','DESC');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function updateData($id, $bahan, $IU)
     {   
-        $this->db->query("update `coloromat` set `bahan`= '$bahan', `IU`= $IU where `id` = '$id'");
+        $table = $this->defineTable();
+        $data = array(
+            'bahan'    => $bahan,
+            'IU'        => $IU,
+        );
+        $this->db->update($table, $data, array('id' => $id));
     }
 
     public function deleteData($id)
     {
-        $this->db->query("delete from `coloromat` where `id` = '$id'");
+        $table = $this->defineTable();
+        $this->db->delete($table, array('id'=>$id));
     }
 }
