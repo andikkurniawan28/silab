@@ -33,7 +33,9 @@ class Auth extends CI_Controller {
         }
         else
         {
-            $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>Username/password salah, ulangi lagi!</div>");
+            $this->session->set_flashdata('message', "<div class='alert alert-danger' role='alert'>
+                Username/password salah, ulangi lagi!
+            </div>");
             redirect(base_url('auth'));
         }
 
