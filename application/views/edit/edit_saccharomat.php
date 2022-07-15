@@ -11,7 +11,7 @@
             </div>
             <div class="card-body pt-0">
 
-                <form action="<?=base_url('analisa/proses_edit_saccharomat');?>" method="post">
+                <form action="<?=$form_handler_update;?>" method="post">
                     
                     <input type="hidden" name="id" value="<?=$id;?>">
 
@@ -30,7 +30,14 @@
                         <input class="form-control" id="exampleInputPassword1" type="number" step="any" value="<?=$pol;?>" name="pol" required>
                     </div>
 
-                    <button class="btn btn-warning" type="submit">Simpan</button>
+                    <div class="mb-3">
+                        <label class="form-label" for="exampleInputPassword1">Z</label>
+                        <input class="form-control" id="exampleInputPassword1" type="number" step="any" value="<?=$Z;?>" name="Z" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" name="denganHK">Hitung Dengan HK</button>
+                    <button type="submit" class="btn btn-secondary" name="tanpaHK">Hitung Tanpa HK</button>
+                    
                 </form>
             </div>
         </div>

@@ -28,14 +28,29 @@ class Saccharomat_control extends CI_Controller {
         $data['page_title']             = "Saccharomat";
         $data['hasil_analisa']          = $this->saccharomat->readData();
         $data['form_handler_create']    = base_url('saccharomat_control/create_saccharomat/');
-        $data['form_handler_update']    = base_url('saccharomat_control/update_saccharomat/');
+        $data['form_handler_update']    = base_url('saccharomat_control/edit_saccharomat/');
         $data['form_handler_delete']    = base_url('saccharomat_control/delete_saccharomat/');
 
         $this->load->view('static/header',$data);
 		$this->load->view('input/saccharomat',$data);
-		//this->load->view('modal/saccharomat',$data);
+		$this->load->view('modal/saccharomat',$data);
 		$this->load->view('static/footer');
 	}
+
+    public function edit_saccharomat($id, $bahan, $brix, $pol, $Z)
+    {
+        $data['page_title']             = "Saccharomat";
+        $data['form_handler_update']    = base_url('saccharomat_control/update_saccharomat/');
+        $data['id']                     = $id;
+        $data['bahan']                  = $bahan;
+        $data['brix']                   = $brix;
+        $data['pol']                    = $pol;
+        $data['Z']                      = $Z;
+
+        $this->load->view('static/header',$data);
+        $this->load->view('edit/edit_saccharomat',$data);
+		$this->load->view('static/footer');
+    }
 
     public function create_saccharomat()
     {
@@ -75,7 +90,8 @@ class Saccharomat_control extends CI_Controller {
     }
 
     public function delete_saccharomat($id)
-    {        $this->saccharomat->deleteData($id);
+    {   
+        $this->saccharomat->deleteData($id);
         $this->session->set_flashdata("message", "<div class='alert alert-danger' role='alert'>
             Data berhasil dihapus.
         </div>");

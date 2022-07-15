@@ -2,29 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Saccharomat extends CI_Model {
+
+    public function defineTable()
+    {
+        return 'saccharomat';
+    }
     
     public function createData($bahan, $brix, $pol, $Z, $hk)
     {
-        $waktu = date('Y-m-d H:i');
-        $this->db->query("insert into `saccharomat`
-            (`waktu`, `bahan`, `brix`, `pol`, `Z`, `hk`) values
-            ('$waktu', $bahan, $brix, $pol, $Z, $hk)");
+        $table = $this->defineTable();
+        $data = array(
+            'waktu' => date('Y-m-d H:i'),
+            'bahan' => $bahan,
+            'brix'  => $brix,
+            'pol'   => $pol,
+            'Z'     => $Z,
+            'hk'    => $hk,
+        );
+        $this->db->insert($table, $data);
     }
 
     public function readData()
     {
-        return $this->db->query("select * from `saccharomat` order by `id` desc limit 0,600")->result();
+        $table = $this->defineTable();
+        $this->db->from($table);
+        $this->db->limit('5000');
+        $this->db->order_by('id','DESC');
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function updateData($id, $bahan, $brix, $pol, $Z, $hk)
     {   
-        $this->db->query("update `saccharomat` set 
-            `bahan`= $bahan, `brix`= $brix, `pol`= $pol, `Z` = $Z, `hk`= $hk 
-            where `id` = '$id'");
+        $table = $this->defineTable();
+        $data = array(
+            'bahan'    => $bahan,
+            'brix'     => $brix,
+            'pol'      => $pol,
+            'Z'        => $Z,
+            'hk'       => $hk,
+        );
+        $this->db->update($table, $data, array('id' => $id));
     }
 
     public function deleteData($id)
     {
-        $this->db->query("delete from `saccharomat` where `id` = $id");
+        $table = $this->defineTable();
+        $this->db->delete($table, array('id'=>$id));
     }
 }
