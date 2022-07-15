@@ -25,7 +25,7 @@ class Saccharomat_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title']             = "Saccharomat";
+        $data['page_title']             = ucfirst("saccharomat");
         $data['hasil_analisa']          = $this->saccharomat->readData();
         $data['form_handler_create']    = base_url('saccharomat_control/create_saccharomat/');
         $data['form_handler_update']    = base_url('saccharomat_control/edit_saccharomat/');
@@ -39,7 +39,7 @@ class Saccharomat_control extends CI_Controller {
 
     public function edit_saccharomat($id, $bahan, $brix, $pol, $Z)
     {
-        $data['page_title']             = "Saccharomat";
+        $data['page_title']             = ucfirst("saccharomat");
         $data['form_handler_update']    = base_url('saccharomat_control/update_saccharomat/');
         $data['id']                     = $id;
         $data['bahan']                  = $bahan;
