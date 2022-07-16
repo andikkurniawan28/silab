@@ -10,7 +10,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h5 class="card-title"><?=ucfirst($card_title[$i]);?></h5>
-                    <a href="<?=base_url($card_title[$i].'_control');?>" class="btn btn-primary">Enter</a>
+                    <a href="<?=base_url($url[$i].'_control');?>" class="btn btn-primary">Enter</a>
                   </div>
                 </div>
 

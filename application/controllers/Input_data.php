@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Input_control extends CI_Controller {
+class Input_data extends CI_Controller {
 
 	public function __construct()
 	{
@@ -26,15 +26,16 @@ class Input_control extends CI_Controller {
 	{
 		$data['page_title'] = 'Input Data';
 		$data['card_title']	= array(
+            'analisa NPP', 
             'saccharomat', 
-            'coloromat' , 
+            'coloromat', 
             'moisture'
-            /*, 'analisa_umum', 
-            'analisa_ampas', 
-            'analisa_ketel', 
-            'analisa_tsai', 
-            'analisa_so2', 
-            'analisa_bjb'*/
+        );
+        $data['url'] = array(
+            'analisa_npp',
+            'saccharomat',
+            'coloromat',
+            'moisture',
         );
 
 		$this->load->view('static/header', $data);

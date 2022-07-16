@@ -76,7 +76,7 @@
                     <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                         <use xlink:href="#reading-1"> </use>
                     </svg>
-                    <span>Analisa </span></a>
+                    <span>Hasil Analisa </span></a>
                 </li>
 
                 <?php if($this->session->userdata('role') == 'admin') { ?>
