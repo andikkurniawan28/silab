@@ -66,13 +66,13 @@
                     <span>Home </span></a>
                 </li>
 
-                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('welcome/monitoring');?>"> 
+                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('monitoring');?>"> 
                         <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                             <use xlink:href="#speedometer-1"> </use>
                         </svg><span>Monitoring </span></a>
                 </li>
 
-                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('welcome/analisa');?>"> 
+                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('hasil_analisa');?>"> 
                     <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                         <use xlink:href="#reading-1"> </use>
                     </svg>
@@ -83,14 +83,14 @@
 
                 <!---------------------------------------------------------->
 
-                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('input_control');?>"> 
+                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('input_data');?>"> 
                     <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                         <use xlink:href="#ballpoint-pen-1"> </use>
                     </svg>
                     <span>Input Data </span></a>
                 </li>
 
-                <li class="sidebar-item"><a class="sidebar-link" href=""> 
+                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('laporan');?>"> 
                     <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                         <use xlink:href="#survey-1"> </use>
                     </svg>

@@ -9,8 +9,8 @@
 
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title"><?=ucfirst($card_title[$i]);?></h5>
-                      <a href="<?=base_url('welcome/hasil_analisa/'.$card_title[$i]);?>" class="btn btn-warning">Enter</a>
+                      <h5 class="card-title"><?=$card_title[$i];?></h5>
+                      <a href="<?=$card_url[$i];?>" class="btn btn-warning">Enter</a>
                     </div>
                   </div>
 

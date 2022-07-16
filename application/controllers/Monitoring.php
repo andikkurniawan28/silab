@@ -15,4 +15,13 @@ class Monitoring extends CI_Controller {
 			redirect(base_url('auth'));
 	}
 
+	public function index()
+	{
+		$title 	= 'monitoring';
+		$data['page_title'] = ucfirst($title);
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/main');
+		$this->load->view('static/footer');
+	}
+
 }
