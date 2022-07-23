@@ -58,7 +58,6 @@ class Hasil_analisa extends CI_Controller {
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/mode/analisa_gula', $data);
 		$this->load->view('static/footer');
-
 	}
 
 	public function gilingan()
@@ -89,6 +88,51 @@ class Hasil_analisa extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function pemurnian()
+	{
+		$title = 'hasil_analisa';
+
+		$data['page_title'] 			= 'Pemurnian';
+		$data['sampel_pemurnian']		= array('Nira Mentah', 'Nira Mentah Sulfitasi', 'Nira Encer', 'Nira Tapis', 'Nira Kental', 'Nira Kental Sulfitasi');
+		$data['sampel_blotong']			= array('Blotong Truk Timur', 'Blotong Truk Barat', 'Blotong RVF 1', 'Blotong RVF 2', 'Blotong RVF 3', 'Blotong RVF 4', 'Blotong Request');
+		$data['id_pemurnian']			= $this->id_sampel->getIDForNiraPemurnian();
+		$data['id_blotong']				= $this->id_sampel->getIDForBlotong();
+		
+		for($i=0; $i < count($data['id_pemurnian']); $i++)
+		{
+			$data['nira_pemurnian'][$i]  	= $this->analisa->getAnalisaPemurnianLatest5($data['id_pemurnian'][$i]);
+			$data['url_nira_pemurnian'][$i] = base_url('hasil_analisa/analisa_pemurnian/'.$data['id_pemurnian'][$i]);
+		}
+		for($i=0; $i < count($data['id_blotong']); $i++)
+		{
+			$data['blotong'][$i] 		= $this->analisa->getAnalisaBlotongLatest5($data['id_blotong'][$i]);
+			$data['url_blotong'][$i]	= base_url('hasil_analisa/analisa_blotong/'.$data['id_blotong'][$i]);
+		}
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/analisa_pemurnian', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function penguapan()
+	{
+		$title = 'hasil_analisa';
+
+		$data['page_title'] 			= 'Penguapan';
+		$data['sampel_penguapan']		= array('Pre-Evaporator', 'Evap1', 'Evap2', 'Evap3', 'Evap4', 'Evap5');
+		$data['id_penguapan']			= $this->id_sampel->getIDForPenguapan();
+
+		for($i=0; $i < count($data['id_penguapan']); $i++)
+		{
+			$data['penguapan'][$i]  	= $this->analisa->getAnalisaBrixPolLatest5($data['id_penguapan'][$i]);
+			$data['url_penguapan'][$i] = base_url('hasil_analisa/analisa_penguapan/'.$data['id_penguapan'][$i]);
+		}
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/analisa_penguapan', $data);
+		$this->load->view('static/footer');
+	}
+
 	public function gula()
 	{
 		$title = 'hasil_analisa';
@@ -106,7 +150,6 @@ class Hasil_analisa extends CI_Controller {
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/mode/analisa_gula', $data);
 		$this->load->view('static/footer');
-
 	}
 
 }
