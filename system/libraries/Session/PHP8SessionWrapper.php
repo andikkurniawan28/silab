@@ -66,7 +66,6 @@ class CI_SessionWrapper implements SessionHandlerInterface, SessionUpdateTimesta
 		return $this->driver->close();
 	}
 
-	#[\ReturnTypeWillChange]
 	public function read(string $id): mixed
 	{
 		return $this->driver->read($id);

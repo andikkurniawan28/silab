@@ -80,7 +80,7 @@ class Hasil_analisa extends CI_Controller {
 		for($i=0; $i < count($data['id_ampas_gilingan']); $i++)
 		{
 			$data['ampas_gilingan'][$i] 		= $this->analisa->getAnalisaAmpasLatest5($data['id_ampas_gilingan'][$i]);
-			$data['url_ampas_gilingan'][$i]		= base_url('hasil_analisa/analisa_ampas_gilingan/'.$data['id_ampas_gilingan'][$i]);
+			$data['url_ampas_gilingan'][$i]		= base_url('hasil_analisa/analisa_ampas/'.$data['id_ampas_gilingan'][$i]);
 		}
 
 		$this->load->view('static/header', $data);
@@ -111,6 +111,32 @@ class Hasil_analisa extends CI_Controller {
 
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/mode/analisa_pemurnian', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function drk()
+	{
+		$title = 'hasil_analisa';
+
+		$data['page_title'] 			= 'DRK';
+		$data['sampel_drk']				= array('Remelter In', 'Reaction Tank', 'Carbonated Liquor', 'Clear Liquor');
+		$data['sampel_cake']			= array('Filter Cake Head', 'Filter Cake Mid', 'Filter Cake End');
+		$data['id_drk']					= $this->id_sampel->getIDForDRK();
+		$data['id_cake']				= $this->id_sampel->getIDForCake();
+		
+		for($i=0; $i < count($data['id_drk']); $i++)
+		{
+			$data['drk'][$i]  			= $this->analisa->getAnalisaPemurnianLatest5($data['id_drk'][$i]);
+			$data['url_drk'][$i]		= base_url('hasil_analisa/analisa_pemurnian/'.$data['id_drk'][$i]);
+		}
+		for($i=0; $i < count($data['id_cake']); $i++)
+		{
+			$data['cake'][$i] 			= $this->analisa->getAnalisaCakeLatest5($data['id_cake'][$i]);
+			$data['url_cake'][$i]		= base_url('hasil_analisa/analisa_cake/'.$data['id_cake'][$i]);
+		}
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/analisa_drk', $data);
 		$this->load->view('static/footer');
 	}
 
@@ -149,6 +175,131 @@ class Hasil_analisa extends CI_Controller {
 
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/mode/analisa_gula', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function masakan()
+	{
+		$title = 'hasil_analisa';
+		
+		$data['page_title'] 	= 'Masakan';
+		$data['sampel_masakan']	= array('Masakan A','Masakan A Raw','Masakan C','Masakan D','Masakan R1','Masakan R2');
+		$data['id_masakan']		= $this->id_sampel->getIDForMasakan();
+
+		for($i=0; $i < count($data['id_masakan']); $i++)
+		{
+			$data['masakan'][$i] 		= $this->analisa->getAnalisaStroopLatest5($data['id_masakan'][$i]);
+			$data['url_masakan'][$i] 	= base_url('hasil_analisa/analisa_stroop/'.$data['id_masakan'][$i]);
+		}
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/analisa_masakan', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function stroop()
+	{
+		$title = 'hasil_analisa';
+		
+		$data['page_title'] 	= 'Stroop';
+		$data['sampel_stroop']	= array('Klare RS', 'R1 Mol', 'R2 Mol', 'Remelter A', 'Remelter CD', 'Stroop A', 'Stroop C', 'Klare D', 'Klare SHS', 'Tetes');
+		$data['id_stroop']		= $this->id_sampel->getIDForStroop();
+
+		for($i=0; $i < count($data['id_stroop']); $i++)
+		{
+			$data['stroop'][$i] 		= $this->analisa->getAnalisaStroopLatest5($data['id_stroop'][$i]);
+			$data['url_stroop'][$i] 	= base_url('hasil_analisa/analisa_stroop/'.$data['id_stroop'][$i]);
+		}
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/analisa_stroop', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function tetes()
+	{
+		$title = 'hasil_analisa';
+		
+		$data['page_title'] 	= 'Tetes';
+		$data['sampel_tetes']	= array('Tetes Tangki 1', 'Tetes Tangki 2', 'Tetes Tangki 3', 'Tetes Kumpulan', 'Tetes Tandon');
+		$data['id_tetes']		= $this->id_sampel->getIDForTetes();
+
+		for($i=0; $i < count($data['id_tetes']); $i++)
+		{
+			$data['tetes'][$i] 		= $this->analisa->getAnalisaTetesLatest5($data['id_tetes'][$i]);
+			$data['url_tetes'][$i] 	= base_url('hasil_analisa/analisa_tetes/'.$data['id_tetes'][$i]);
+		}
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/analisa_tetes', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function ketel()
+	{
+		$title = 'hasil_analisa';
+		
+		$data['page_title'] 	= 'Ketel';
+		$data['sampel_tetes']	= array('JJ', 'Y1', 'Y2', 'DJJ', 'DY', 'WTP', 'HW');
+
+		$data['ketel']['jj']				= $this->analisa->getAnalisaKetelJJLatest5();
+		$data['ketel']['y1']				= $this->analisa->getAnalisaKetelY1Latest5();
+		$data['ketel']['y2']				= $this->analisa->getAnalisaKetelY2Latest5();
+		$data['ketel']['djj']				= $this->analisa->getAnalisaKetelDJJLatest5();
+		$data['ketel']['dy']				= $this->analisa->getAnalisaKetelDYLatest5();
+		$data['ketel']['wtp']				= $this->analisa->getAnalisaKetelWTPLatest5();
+		$data['ketel']['hw']				= $this->analisa->getAnalisaKetelHWLatest5();
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/ketel', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_gula($id)
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Analisa Gula';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaGulaAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_gula', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_npp()
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Analisa NPP';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaNppAll();
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_npp', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_gilingan($id)
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Analisa Gilingan';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaBrixPolAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_gilingan', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_ampas($id)
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Analisa Ampas';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaAmpasAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_ampas', $data);
 		$this->load->view('static/footer');
 	}
 
