@@ -45,9 +45,9 @@ class Hasil_analisa extends CI_Controller {
 	{
 		$title = 'hasil_analisa';
 		
-		$data['page_title'] 	= 'Raw Sugar';
-		$data['sampel']			= array('Raw Sugar Kedatangan', 'Raw Sugar Silo');
-		$data['id']				= $this->id_sampel->getIDForRS();
+		$data['page_title'] = 'Raw Sugar';
+		$data['sampel']		= array('Raw Sugar Kedatangan', 'Raw Sugar Silo');
+		$data['id']			= $this->id_sampel->getIDForRS();
 
 		for($i=0; $i < count($data['id']); $i++)
 		{
@@ -57,6 +57,37 @@ class Hasil_analisa extends CI_Controller {
 
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/mode/analisa_gula', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function gula()
+	{
+		$title = 'hasil_analisa';
+		
+		$data['page_title'] 	= 'Gula in Proses';
+		$data['sampel']			= array('Gula R1', 'Gula R2', 'Gula A Raw', 'Gula RS', 'Gula C', 'Gula D1', 'Gula D2', 'Gula SHS');
+		$data['id']				= $this->id_sampel->getIDForGula();
+
+		for($i=0; $i < count($data['id']); $i++)
+		{
+			$data['hasil_analisa'][$i] 	= $this->analisa->getAnalisaGulaLatest5($data['id'][$i]);
+			$data['url'][$i] 			= base_url('hasil_analisa/analisa_gula/'.$data['id'][$i]);
+		}
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/mode/analisa_gula', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_gula($id)
+	{
+		$title 					= 'hasil_analisa';
+		$data['page_id']		= $id;
+		$data['page_title'] 	= $this->id_sampel->identifyIDGula($id);
+		$data['hasil_analisa'] 	= $this->analisa->getAnalisaGulaAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_gula', $data);
 		$this->load->view('static/footer');
 	}
 
@@ -85,6 +116,31 @@ class Hasil_analisa extends CI_Controller {
 
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/mode/analisa_gilingan', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_npp()
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Nira Perahan Pertama';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaNppAll();
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_npp', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_gilingan($id)
+	{
+		$title 					= 'hasil_analisa';
+		$data['page_id']		= $id;
+		$data['page_title'] 	= $this->id_sampel->identifyIDGilingan($id);
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaBrixPolAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_gilingan', $data);
 		$this->load->view('static/footer');
 	}
 
@@ -156,25 +212,6 @@ class Hasil_analisa extends CI_Controller {
 
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/mode/analisa_penguapan', $data);
-		$this->load->view('static/footer');
-	}
-
-	public function gula()
-	{
-		$title = 'hasil_analisa';
-		
-		$data['page_title'] 	= 'Gula in Proses';
-		$data['sampel']			= array('Gula R1', 'Gula R2', 'Gula A Raw', 'Gula RS', 'Gula C', 'Gula D1', 'Gula D2', 'Gula SHS');
-		$data['id']				= $this->id_sampel->getIDForGula();
-
-		for($i=0; $i < count($data['id']); $i++)
-		{
-			$data['hasil_analisa'][$i] 	= $this->analisa->getAnalisaGulaLatest5($data['id'][$i]);
-			$data['url'][$i] 			= base_url('hasil_analisa/analisa_gula/'.$data['id'][$i]);
-		}
-
-		$this->load->view('static/header', $data);
-		$this->load->view($title.'/mode/analisa_gula', $data);
 		$this->load->view('static/footer');
 	}
 
@@ -255,42 +292,6 @@ class Hasil_analisa extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
-	public function analisa_gula($id)
-	{
-		$title 				= 'hasil_analisa';
-		$data['page_title'] = 'Analisa Gula';
-
-		$data['hasil_analisa'] = $this->analisa->getAnalisaGulaAll($id);
-
-		$this->load->view('static/header', $data);
-		$this->load->view($title.'/show_analisa/analisa_gula', $data);
-		$this->load->view('static/footer');
-	}
-
-	public function analisa_npp()
-	{
-		$title 				= 'hasil_analisa';
-		$data['page_title'] = 'Analisa NPP';
-
-		$data['hasil_analisa'] = $this->analisa->getAnalisaNppAll();
-
-		$this->load->view('static/header', $data);
-		$this->load->view($title.'/show_analisa/analisa_npp', $data);
-		$this->load->view('static/footer');
-	}
-
-	public function analisa_gilingan($id)
-	{
-		$title 				= 'hasil_analisa';
-		$data['page_title'] = 'Analisa Gilingan';
-
-		$data['hasil_analisa'] = $this->analisa->getAnalisaBrixPolAll($id);
-
-		$this->load->view('static/header', $data);
-		$this->load->view($title.'/show_analisa/analisa_gilingan', $data);
-		$this->load->view('static/footer');
-	}
-
 	public function analisa_ampas($id)
 	{
 		$title 				= 'hasil_analisa';
@@ -300,6 +301,42 @@ class Hasil_analisa extends CI_Controller {
 
 		$this->load->view('static/header', $data);
 		$this->load->view($title.'/show_analisa/analisa_ampas', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_pemurnian($id)
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Analisa Pemurnian';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaPemurnianAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_pemurnian', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_stroop($id)
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Analisa Masakan & Stroop';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaStroopAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_stroop', $data);
+		$this->load->view('static/footer');
+	}
+
+	public function analisa_penguapan($id)
+	{
+		$title 				= 'hasil_analisa';
+		$data['page_title'] = 'Analisa Penguapan';
+
+		$data['hasil_analisa'] = $this->analisa->getAnalisaBrixPolAll($id);
+
+		$this->load->view('static/header', $data);
+		$this->load->view($title.'/show_analisa/analisa_penguapan', $data);
 		$this->load->view('static/footer');
 	}
 

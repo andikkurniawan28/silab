@@ -7,7 +7,7 @@
             <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
         </ol>
     </nav>
-    <hr><br>
+    <hr>
 
     <div class="row">
         <?php for($i = 0; $i < count($id); $i++) : ?>

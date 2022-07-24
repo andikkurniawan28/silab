@@ -153,4 +153,49 @@ class Id_sampel extends CI_Model {
         */
     }
 
+    public function identifyIDGula($id)
+    {
+        switch($id)
+        {
+            case 37 : $data = "Raw Sugar Kedatangan"; break;
+            case 42 : $data = "Raw Sugar Silo"; break;
+            case 51 : $data = "Gula R1"; break;
+            case 84 : $data = "Gula R2"; break;
+            case 54 : $data = "Gula A Raw"; break; 
+            case 39 : $data = "Gula RS"; break; 
+            case 62 : $data = "Gula C"; break; 
+            case 63 : $data = "Gula D1"; break;
+            case 64 : $data = "Gula D2"; break;
+            case 46 : $data = "Gula SHS"; break;
+        }
+        return $data;
+    }
+
+    public function identifyIDGilingan($id)
+    {
+        switch($id)
+        {
+            case 12 : $data = "Nira Gilingan 1"; break;
+            case 13 : $data = "Nira Gilingan 2"; break;
+            case 14 : $data = "Nira Gilingan 3"; break;
+            case 15 : $data = "Nira Gilingan 4"; break;
+            case 16 : $data = "Nira Gilingan 5"; break; 
+        }
+        return $data;
+    }
+
+    public function identifyIDAmpas($id)
+    {
+        switch($id)
+        {
+            case 26 : $data = "Ampas Gilingan 1"; break;
+            case 27 : $data = "Ampas Gilingan 2"; break;
+            case 28 : $data = "Ampas Gilingan 3"; break;
+            case 29 : $data = "Ampas Gilingan 4"; break;
+            case 30 : $data = "Ampas Gilingan 5"; break; 
+        }
+        return $data;
+    }
+
+
 }

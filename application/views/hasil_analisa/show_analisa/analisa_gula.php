@@ -3,7 +3,15 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Analisa</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Hasil Analisa</a></li>
+
+            <?php if($page_id == 37 || $page_id == 42): ?>
+                <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa/rs');?>">Raw Sugar</a></li>
+            <?php else: ?>
+                <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa/gula');?>">Gula in Proses</a></li>
+            <?php endif; ?>
+
+            <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
         </ol>
     </nav>
     

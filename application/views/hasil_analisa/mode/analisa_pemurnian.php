@@ -6,7 +6,7 @@
             <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Hasil Analisa</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
         </ol>
-    </nav><hr><br>
+    </nav><hr>
 
     <div class="row">
 
