@@ -25,7 +25,7 @@ class Raw_sugar extends CI_Controller {
 
 		for($i=0; $i < count($data['id']); $i++)
 		{
-			$data['hasil_analisa'][$i] 	= $this->analisa->getAnalisaGulaLatest5($data['id'][$i]);
+			$data['hasil_analisa'][$i] = $this->analisa->getAnalisaGulaLatest5($data['id'][$i]);
 			$data['url'][$i] = base_url('hasil_analisa/raw_sugar/show/'.$data['id'][$i]);
 		}
 
