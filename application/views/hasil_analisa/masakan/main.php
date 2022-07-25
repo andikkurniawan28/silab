@@ -3,16 +3,16 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Hasil Analisa</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('home/show_hasil_analisa');?>">Hasil Analisa</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
         </ol>
     </nav><hr>
 
     <div class="row">
 
-        <?php for($i=0; $i < count($masakan); $i++): ?>
+        <?php for($i=0; $i < count($sampel_masakan); $i++): ?>
         <div class="col-md-6">
-            <a href="<?=$url_masakan[$i];?>"><h5><?=$sampel_masakan[$i];?></h5></a>
+            <a href="<?=$url[$i];?>"><h5><?=$sampel_masakan[$i];?></h5></a>
             <table class="table table-sm table-bordered table-hover text-xs">
                 <tr>
                     <th>Time</th>

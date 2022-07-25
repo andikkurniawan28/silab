@@ -249,5 +249,33 @@ class Id_sampel extends CI_Model {
         return $data;
     }
 
+    public function identifyIDPenguapan($id)
+    {
+        switch($id)
+        {
+            case 69 : $data = 'Pre-Evaporator'; break;
+            case 70 : $data = 'Evaporator 1'; break;
+            case 71 : $data = 'Evaporator 2'; break;
+            case 72 : $data = 'Evaporator 3'; break;
+            case 73 : $data = 'Evaporator 4'; break;
+            case 74 : $data = 'Evaporator 5'; break;
+        }
+        return $data;
+    }
+
+    public function identifyIDMasakan($id)
+    {
+        switch($id)
+        {
+            case 65 : $data = 'Masakan A'; break;
+            case 53 : $data = 'Masakan A Raw'; break;
+            case 56 : $data = 'Masakan C'; break;
+            case 57 : $data = 'Masakan D'; break;
+            case 48 : $data = 'Masakan R1'; break;
+            case 82 : $data = 'Masakan R2'; break;
+        }
+        return $data;
+    }
+
 
 }
