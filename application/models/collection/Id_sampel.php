@@ -68,11 +68,11 @@ class Id_sampel extends CI_Model {
 
     public function getIDForDRK()
     {
-        return array(68,33,34,35);
+        return array(68,34,33,35);
         /*
             68 -> Remelter In
-            33 -> Carbonated Liquor
             34 -> Reaction Tank
+            33 -> Carbonated Liquor
             35 -> Clear Liquor
         */
     }
@@ -222,6 +222,29 @@ class Id_sampel extends CI_Model {
             case 90 : $data = 'Blotong RVF 3'; break;
             case 91 : $data = 'Blotong RVF 4'; break;
             case 98 : $data = 'Blotong Request'; break;
+        }
+        return $data;
+    }
+
+    public function identifyIDDrk($id)
+    {
+        switch($id)
+        {
+            case 68 : $data = 'Remelter In'; break;
+            case 34 : $data = 'Reaction Tank'; break;
+            case 33 : $data = 'Carbonated Liquor'; break; 
+            case 35 : $data = 'Clear Liquor'; break;
+        }
+        return $data;
+    }
+
+    public function identifyIDCake($id)
+    {
+        switch($id)
+        {
+            case 36 : $data = 'Filter Cake Head'; break;
+            case 78 : $data = 'Filter Cake Mid'; break;
+            case 79 : $data = 'Filter Cake End'; break;
         }
         return $data;
     }
