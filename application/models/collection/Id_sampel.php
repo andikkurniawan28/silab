@@ -89,7 +89,7 @@ class Id_sampel extends CI_Model {
 
     public function getIDForMasakan()
     {
-        return array(65,53,56,57,48,82);
+        return array(65,53,56,57,48,82,38,31,32,44,45);
         /*
             65 -> Masakan A
             53 -> Masakan A Raw
@@ -97,6 +97,11 @@ class Id_sampel extends CI_Model {
             57 -> Masakan C
             48 -> Masakan R1
             82 -> Masakan R2
+            38 -> Masakan RS
+            31 -> CVP C
+            32 -> CVP D
+            44 -> Einwuurf C
+            45 -> Einwuurf D
         */
     }
 
@@ -273,6 +278,11 @@ class Id_sampel extends CI_Model {
             case 57 : $data = 'Masakan D'; break;
             case 48 : $data = 'Masakan R1'; break;
             case 82 : $data = 'Masakan R2'; break;
+            case 38 : $data = 'Magma RS'; break;
+            case 31 : $data = 'CVP C'; break;
+            case 32 : $data = 'CVP D'; break;
+            case 44 : $data = 'Einwuurf C'; break;
+            case 45 : $data = 'Einwuurf D'; break;
         }
         return $data;
     }

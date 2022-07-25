@@ -20,7 +20,7 @@ class Masakan extends CI_Controller {
 	public function index()
 	{	
 		$data['page_title'] = 'Masakan';
-		$data['sampel_masakan']	= array('Masakan A','Masakan A Raw','Masakan C','Masakan D','Masakan R1','Masakan R2');
+		$data['sampel_masakan']	= array('Masakan A','Masakan A Raw','Masakan C','Masakan D','Masakan R1','Masakan R2', 'Magma RS', 'CVP C', 'CVP D', 'Einwuurf C', 'Einwuurf D');
 		$data['id']	= $this->id_sampel->getIDForMasakan();
 
 		for($i=0; $i < count($data['id']); $i++)
