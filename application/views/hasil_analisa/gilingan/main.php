@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Hasil Analisa</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('home/show_hasil_analisa');?>">Hasil Analisa</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
         </ol>
     </nav>
@@ -11,7 +11,7 @@
 
     <div class="row">
 
-        <?php for($i=0; $i <= count($nira_gilingan)-1; $i++): ?>
+        <?php for($i=0; $i < count($nira_gilingan); $i++): ?>
         <div class="col-md-4">
                                 
             <a href="<?=$url_nira_gilingan[$i];?>"><h5><?=$sampel_ng[$i];?></h5></a>
@@ -31,7 +31,7 @@
                     <th>HK</th>
                 </tr>
                 <?php endif; ?>
-                <?php if($i==0) : ?>
+                <?php if($i == 0) : ?>
                 <?php foreach($nira_gilingan[$i] as $nira_gilingan[$i]): ?>
                 <tr>
                     <td><?=date('H:i', strtotime($nira_gilingan[$i]->time));?></td>
@@ -54,11 +54,6 @@
 
         </div>
         <?php endfor; ?>
-
-    </div>
-
-
-    <div class="row">
 
         <?php for($i=0; $i <= count($ampas_gilingan)-1; $i++): ?>
         <div class="col-md-4">

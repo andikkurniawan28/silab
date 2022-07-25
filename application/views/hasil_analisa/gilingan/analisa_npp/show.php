@@ -3,13 +3,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Hasil Analisa</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('home/show_hasil_analisa');?>">Hasil Analisa</a></li>
             <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa/gilingan');?>">Gilingan</a></li>
             <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa/gilingan/download_analisa_npp');?>">Download</a></li>
         </ol>
-    </nav>
-        
-    <hr>
+    </nav><hr>
 
     <div class="row">
         <div class="col-md-12">
