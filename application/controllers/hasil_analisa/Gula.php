@@ -14,7 +14,7 @@ class Gula extends CI_Controller {
 	public function checkUserIsLogin()
 	{
 		if($this->session->status != 'login')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function index()
