@@ -21,7 +21,7 @@ class Raw_sugar extends CI_Controller {
 	{	
 		$data['page_title'] = 'Raw Sugar';
 		$data['sampel']	= array('Raw Sugar Kedatangan', 'Raw Sugar Silo');
-		$data['id'] = $this->id_sampel->getIDForRS();
+		$data['id']	= $this->id_sampel->getIDForRS();
 
 		for($i=0; $i < count($data['id']); $i++)
 		{

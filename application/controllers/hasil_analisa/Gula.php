@@ -21,7 +21,7 @@ class Gula extends CI_Controller {
 	{	
 		$data['page_title'] = 'Gula in Proses';
 		$data['sampel']	= array('Gula R1', 'Gula R2', 'Gula A Raw', 'Gula RS', 'Gula C', 'Gula D1', 'Gula D2', 'Gula SHS');
-		$data['id'] = $this->id_sampel->getIDForGula();
+		$data['id']	= $this->id_sampel->getIDForGula();
 
 		for($i=0; $i < count($data['id']); $i++)
 		{
