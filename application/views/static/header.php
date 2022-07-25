@@ -72,7 +72,7 @@
                         </svg><span>Monitoring </span></a>
                 </li>
 
-                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('hasil_analisa');?>"> 
+                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('home/show_hasil_analisa');?>"> 
                     <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                         <use xlink:href="#reading-1"> </use>
                     </svg>

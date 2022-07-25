@@ -17,10 +17,44 @@ class Home extends CI_Controller {
 
 	public function index()
 	{
-		$title 	= 'home';
-		$data['page_title'] = ucfirst($title);
+		$data['page_title'] = 'Home';
 		$this->load->view('static/header', $data);
-		$this->load->view($title.'/main');
+		$this->load->view('home/main');
+		$this->load->view('static/footer');
+	}
+
+	public function show_hasil_analisa()
+	{
+		$data['page_title'] = 'Hasil Analisa';
+		
+		$data['card_title']	= array(
+			'Raw Sugar', 
+			'Gilingan', 
+			'Pemurnian', 
+			'Penguapan', 
+			'DRK', 
+			'Masakan', 
+			'Stroop', 
+			'Gula', 
+			'Tetes', 
+			'Ketel'
+		);
+
+		$data['card_url'] = array(
+			base_url('hasil_analisa/raw_sugar'),
+			base_url('hasil_analisa/gilingan'),
+			base_url('hasil_analisa/pemurnian'),
+			base_url('hasil_analisa/penguapan'),
+			base_url('hasil_analisa/drk'),
+			base_url('hasil_analisa/masakan'),
+			base_url('hasil_analisa/stroop'),
+			base_url('hasil_analisa/gula'),
+			base_url('hasil_analisa/tetes'),
+			base_url('hasil_analisa/ketel'),
+		);
+
+		$this->load->view('static/header', $data);
+		$this->load->view('hasil_analisa/main', $data);
 		$this->load->view('static/footer');
 	}
 

@@ -29,7 +29,7 @@ class Hasil_analisa extends CI_Controller {
 		);
 
 		$data['card_url']	= array(
-			'hasil_analisa/rs', 'hasil_analisa/gilingan', 
+			'hasil_analisa/raw_sugar', 'hasil_analisa/gilingan', 
 			'hasil_analisa/pemurnian', 'hasil_analisa/penguapan', 
 			'hasil_analisa/drk', 'hasil_analisa/masakan', 
 			'hasil_analisa/stroop', 'hasil_analisa/gula', 
