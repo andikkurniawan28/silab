@@ -63,4 +63,16 @@ class Pemurnian extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+    public function download_analisa_pemurnian($id)
+    {
+		$data['hasil_analisa'] = $this->analisa->getAnalisaPemurnianAll($id);
+		$this->load->view('hasil_analisa/pemurnian/analisa_pemurnian/download', $data);
+    }
+
+    public function download_analisa_blotong($id)
+    {
+		$data['hasil_analisa'] = $this->analisa->getAnalisaBlotongAll($id);
+		$this->load->view('hasil_analisa/pemurnian/analisa_blotong/download', $data);
+    }
+
 }
