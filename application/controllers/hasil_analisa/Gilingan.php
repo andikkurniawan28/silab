@@ -20,26 +20,10 @@ class Gilingan extends CI_Controller {
 	public function index()
 	{
 		$data['page_title'] = 'Gilingan';
-
-		$data['sampel_ng'] = array(
-            'Nira Perahan Pertama', 
-            'Nira Gilingan 2', 
-            'Nira Gilingan 3', 
-            'Nira Gilingan 4', 
-            'Nira Gilingan 5'
-        );
-
-		$data['sampel_ag'] = array(
-            'Ampas Gilingan 1', 
-            'Ampas Gilingan 2', 
-            'Ampas Gilingan 3', 
-            'Ampas Gilingan 4', 
-            'Ampas Gilingan 5'
-        );
-
+		$data['sampel_ng'] = array('Nira Perahan Pertama', 'Nira Gilingan 2', 'Nira Gilingan 3', 'Nira Gilingan 4', 'Nira Gilingan 5');
+		$data['sampel_ag'] = array('Ampas Gilingan 1', 'Ampas Gilingan 2', 'Ampas Gilingan 3', 'Ampas Gilingan 4', 'Ampas Gilingan 5');
 		$data['id_nira_gilingan'] = $this->id_sampel->getIDForGilingan();
 		$data['id_ampas_gilingan'] = $this->id_sampel->getIDForAmpasGilingan();
-
 		$data['nira_gilingan'][0] = $this->analisa->getAnalisaNppLatest5();
 		$data['url_nira_gilingan'][0] = base_url('hasil_analisa/gilingan/show_analisa_npp');
 		
