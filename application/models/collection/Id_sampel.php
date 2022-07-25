@@ -287,5 +287,36 @@ class Id_sampel extends CI_Model {
         return $data;
     }
 
+    public function identifyIDStroop($id)
+    {
+        switch($id)
+        {
+            case 83 : $data = 'Klare RS'; break;
+            case 47 : $data = 'R1 Mol'; break;
+            case 52 : $data = 'R2 Mol'; break;
+            case 41 : $data = 'Remelter A'; break;
+            case 50 : $data = 'Remelter CD'; break;
+            case 55 : $data = 'Stroop A'; break;
+            case 59 : $data = 'Stroop C'; break;
+            case 60 : $data = 'Klare D'; break;
+            case 40 : $data = 'Klare SHS'; break;
+            case 61 : $data = 'Tetes'; break;
+        }
+        return $data;
+    }
+
+    public function identifyIDTetes($id)
+    {
+        switch($id)
+        {
+            case 75 : $data = 'Tetes Tangki 1'; break;
+            case 92 : $data = 'Tetes Tangki 2'; break;
+            case 77 : $data = 'Tetes Tangki 3'; break;
+            case 93 : $data = 'Tetes Kumpulan'; break;
+            case 76 : $data = 'Tetes Tandon'; break;
+        }
+        return $data;
+    }
+
 
 }
