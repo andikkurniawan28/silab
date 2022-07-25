@@ -14,7 +14,7 @@
         <div class="col-md-12">
             <table class="table table-sm table-bordered table-hover text-xs">
                 <tr>
-                    <th>#</th>
+                    <!-- <th>#</th> -->
                     <th>Time</th>
                     <th>Pol</th>
                     <th>ZK</th>
@@ -22,8 +22,8 @@
                 </tr>
                 <?php foreach($hasil_analisa as $hasil_analisa): ?>
                 <tr>
-                    <td><?=$hasil_analisa->id;?></td>
-                    <td><?=$hasil_analisa->waktu;?></td>
+                    <!-- <td><?=$hasil_analisa->id;?></td> -->
+                    <td><?=date('d/m/y H:i', strtotime($hasil_analisa->waktu));?></td>
                     <td><?=number_format($hasil_analisa->pol_koreksi,2);?></td>
                     <td><?=number_format($hasil_analisa->zk,2);?></td>
                     <td><?=number_format($hasil_analisa->kadar_air,2);?></td>

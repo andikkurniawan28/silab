@@ -197,5 +197,34 @@ class Id_sampel extends CI_Model {
         return $data;
     }
 
+    public function identifyIDPemurnian($id)
+    {
+        switch($id)
+        {
+            case 17 : $data = "Nira Mentah"; break;
+            case 19 : $data = "Nira Mentah Sulfitasi"; break;
+            case 20 : $data = "Nira Encer"; break;
+            case 21 : $data = "Nira Tapis"; break;
+            case 23 : $data = "Nira Kental"; break; 
+            case 24 : $data = "Nira Kental Sulfitasi"; break; 
+        }
+        return $data;
+    }
+
+    public function identifyIDBlotong($id)
+    {
+        switch($id)
+        {
+            case 1 : $data = 'Blotong Truk Timur'; break;
+            case 2 : $data = 'Blotong Truk Barat'; break;
+            case 25 : $data = 'Blotong RVF 1'; break; 
+            case 89 : $data = 'Blotong RVF 2'; break;
+            case 90 : $data = 'Blotong RVF 3'; break;
+            case 91 : $data = 'Blotong RVF 4'; break;
+            case 98 : $data = 'Blotong Request'; break;
+        }
+        return $data;
+    }
+
 
 }

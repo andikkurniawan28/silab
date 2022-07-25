@@ -3,9 +3,10 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Hasil Analisa</a></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('home/show_hasil_analisa');?>">Hasil Analisa</a></li>
             <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa/pemurnian');?>">Pemurnian</a></li>
-            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa/drk');?>">DRK</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
+            <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa/pemurnian/download_analisa_pemurnian/'.$page_id);?>">Download</a></li>
         </ol>
     </nav>
         
@@ -15,7 +16,7 @@
         <div class="col-md-12">
             <table class="table table-sm table-bordered table-hover text-xs">
                 <tr>
-                    <th>#</th>
+                    <!-- <th>#</th> -->
                     <th>Time</th>
                     <th>Brix</th>
                     <th>Pol</th>
@@ -27,8 +28,8 @@
                 </tr>
                 <?php foreach($hasil_analisa as $hasil_analisa): ?>
                 <tr>
-                    <td><?=$hasil_analisa->id;?></td>
-                    <td><?=$hasil_analisa->waktu;?></td>
+                    <!-- <td><?=$hasil_analisa->id;?></td> -->
+                    <td><?=date('d/m/y H:i', strtotime($hasil_analisa->waktu));?></td>
                     <td><?=number_format($hasil_analisa->brix,2);?></td>
                     <td><?=number_format($hasil_analisa->pol,2);?></td>
                     <td><?=number_format($hasil_analisa->hk,2);?></td>

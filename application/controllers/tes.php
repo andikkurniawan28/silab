@@ -41,59 +41,6 @@ class Hasil_analisa extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
-	public function gilingan()
-	{
-		$title = 'hasil_analisa';
-
-		$data['page_title'] 			= 'Gilingan';
-		$data['sampel_ng']				= array('Nira Gilingan 1', 'Nira Gilingan 2', 'Nira Gilingan 3', 'Nira Gilingan 4', 'Nira Gilingan 5', );
-		$data['sampel_ag']				= array('Ampas Gilingan 1', 'Ampas Gilingan 2', 'Ampas Gilingan 3', 'Ampas Gilingan 4', 'Ampas Gilingan 5',);
-		$data['id_nira_gilingan']		= $this->id_sampel->getIDForGilingan();
-		$data['id_ampas_gilingan']		= $this->id_sampel->getIDForAmpasGilingan();
-		$data['nira_gilingan'][0]		= $this->analisa->getAnalisaNppLatest5();
-		$data['url_nira_gilingan'][0]	= base_url('hasil_analisa/analisa_npp');
-		
-		for($i=0; $i < count($data['id_nira_gilingan']); $i++)
-		{
-			$data['nira_gilingan'][$i+1] 		= $this->analisa->getAnalisaBrixPolLatest5($data['id_nira_gilingan'][$i]);
-			$data['url_nira_gilingan'][$i+1]	= base_url('hasil_analisa/analisa_gilingan/'.$data['id_nira_gilingan'][$i]);
-		}
-		for($i=0; $i < count($data['id_ampas_gilingan']); $i++)
-		{
-			$data['ampas_gilingan'][$i] 		= $this->analisa->getAnalisaAmpasLatest5($data['id_ampas_gilingan'][$i]);
-			$data['url_ampas_gilingan'][$i]		= base_url('hasil_analisa/analisa_ampas/'.$data['id_ampas_gilingan'][$i]);
-		}
-
-		$this->load->view('static/header', $data);
-		$this->load->view($title.'/mode/analisa_gilingan', $data);
-		$this->load->view('static/footer');
-	}
-
-	public function analisa_npp()
-	{
-		$title 				= 'hasil_analisa';
-		$data['page_title'] = 'Nira Perahan Pertama';
-
-		$data['hasil_analisa'] = $this->analisa->getAnalisaNppAll();
-
-		$this->load->view('static/header', $data);
-		$this->load->view($title.'/show_analisa/analisa_npp', $data);
-		$this->load->view('static/footer');
-	}
-
-	public function analisa_gilingan($id)
-	{
-		$title 					= 'hasil_analisa';
-		$data['page_id']		= $id;
-		$data['page_title'] 	= $this->id_sampel->identifyIDGilingan($id);
-
-		$data['hasil_analisa'] = $this->analisa->getAnalisaBrixPolAll($id);
-
-		$this->load->view('static/header', $data);
-		$this->load->view($title.'/show_analisa/analisa_gilingan', $data);
-		$this->load->view('static/footer');
-	}
-
 	public function pemurnian()
 	{
 		$title = 'hasil_analisa';
