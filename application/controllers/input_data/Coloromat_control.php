@@ -8,7 +8,7 @@ class Coloromat_control extends CI_Controller {
         parent::__construct();
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
-        $this->load->model('coloromat');
+        $this->load->model('table/coloromat');
     }
 
 	public function checkUserIsLogin()
@@ -27,26 +27,26 @@ class Coloromat_control extends CI_Controller {
 	{
         $data['page_title']             = ucfirst("coloromat");
         $data['hasil_analisa']          = $this->coloromat->readData();
-        $data['form_handler_create']    = base_url('coloromat_control/create_coloromat/');
-        $data['form_handler_update']    = base_url('coloromat_control/edit_coloromat/');
-        $data['form_handler_delete']    = base_url('coloromat_control/delete_coloromat/');
+        $data['form_handler_create']    = base_url('input_data/coloromat_control/create_coloromat/');
+        $data['form_handler_update']    = base_url('input_data/coloromat_control/edit_coloromat/');
+        $data['form_handler_delete']    = base_url('input_data/coloromat_control/delete_coloromat/');
 
         $this->load->view('static/header', $data);
-		$this->load->view('input/coloromat',$data);
-		$this->load->view('modal/coloromat',$data);
+		$this->load->view('input_data/coloromat/main',$data);
+		$this->load->view('input_data/coloromat/modal',$data);
 		$this->load->view('static/footer');
 	}
 
     public function edit_coloromat($id, $bahan, $IU)
     {
         $data['page_title']             = ucfirst("coloromat");
-        $data['form_handler_update']    = base_url('coloromat_control/update_coloromat/');
+        $data['form_handler_update']    = base_url('input_data/coloromat_control/update_coloromat/');
         $data['id']                     = $id;
         $data['bahan']                  = $bahan;
         $data['IU']                     = $IU;
 
         $this->load->view('static/header',$data);
-        $this->load->view('edit/edit_coloromat',$data);
+		$this->load->view('input_data/coloromat/edit',$data);
 		$this->load->view('static/footer');
     }
 
@@ -60,7 +60,7 @@ class Coloromat_control extends CI_Controller {
             Data berhasil ditambahkan.
         </div>");
 
-        redirect(base_url('coloromat_control'));
+        redirect(base_url('input_data/coloromat_control'));
     }
 
     public function update_coloromat()
@@ -74,7 +74,7 @@ class Coloromat_control extends CI_Controller {
             Data berhasil dirubah.
         </div>");
 
-        redirect(base_url('coloromat_control'));
+        redirect(base_url('input_data/coloromat_control'));
     }
 
     public function delete_coloromat($id)
@@ -84,6 +84,6 @@ class Coloromat_control extends CI_Controller {
             Data berhasil dihapus.
         </div>");
 
-        redirect(base_url('coloromat_control'));
+        redirect(base_url('input_data/coloromat_control'));
     }
 }
