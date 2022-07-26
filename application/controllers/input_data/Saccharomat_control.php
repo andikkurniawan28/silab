@@ -8,7 +8,7 @@ class Saccharomat_control extends CI_Controller {
         parent::__construct();
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
-        $this->load->model('saccharomat');
+        $this->load->model('table/saccharomat');
     }
 
 	public function checkUserIsLogin()
@@ -25,22 +25,22 @@ class Saccharomat_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title']             = ucfirst("saccharomat");
-        $data['hasil_analisa']          = $this->saccharomat->readData();
-        $data['form_handler_create']    = base_url('saccharomat_control/create_saccharomat/');
-        $data['form_handler_update']    = base_url('saccharomat_control/edit_saccharomat/');
-        $data['form_handler_delete']    = base_url('saccharomat_control/delete_saccharomat/');
+        $data['page_title'] = ucfirst("saccharomat");
+        $data['hasil_analisa'] = $this->saccharomat->readData();
+        $data['form_handler_create'] = base_url('input_data/saccharomat_control/create_saccharomat/');
+        $data['form_handler_update'] = base_url('input_data/saccharomat_control/edit_saccharomat/');
+        $data['form_handler_delete'] = base_url('input_data/saccharomat_control/delete_saccharomat/');
 
         $this->load->view('static/header',$data);
-		$this->load->view('input/saccharomat',$data);
-		$this->load->view('modal/saccharomat',$data);
+		$this->load->view('input_data/saccharomat/main',$data);
+		$this->load->view('input_data/saccharomat/modal',$data);
 		$this->load->view('static/footer');
 	}
 
     public function edit_saccharomat($id, $bahan, $brix, $pol, $Z)
     {
         $data['page_title']             = ucfirst("saccharomat");
-        $data['form_handler_update']    = base_url('saccharomat_control/update_saccharomat/');
+        $data['form_handler_update']    = base_url('input_data/saccharomat_control/update_saccharomat/');
         $data['id']                     = $id;
         $data['bahan']                  = $bahan;
         $data['brix']                   = $brix;
@@ -48,7 +48,7 @@ class Saccharomat_control extends CI_Controller {
         $data['Z']                      = $Z;
 
         $this->load->view('static/header',$data);
-        $this->load->view('edit/edit_saccharomat',$data);
+		$this->load->view('input_data/saccharomat/edit',$data);
 		$this->load->view('static/footer');
     }
 
@@ -67,7 +67,7 @@ class Saccharomat_control extends CI_Controller {
             Data berhasil ditambahkan.
         </div>");
 
-        redirect(base_url('saccharomat_control'));
+        redirect(base_url('input_data/saccharomat_control'));
     }
 
     public function update_saccharomat()
@@ -86,7 +86,7 @@ class Saccharomat_control extends CI_Controller {
             Data berhasil dirubah.
         </div>");
 
-        redirect(base_url('saccharomat_control'));
+        redirect(base_url('input_data/saccharomat_control'));
     }
 
     public function delete_saccharomat($id)
@@ -95,8 +95,8 @@ class Saccharomat_control extends CI_Controller {
         $this->session->set_flashdata("message", "<div class='alert alert-danger' role='alert'>
             Data berhasil dihapus.
         </div>");
-
-        redirect(base_url('saccharomat_control'));
+        
+        redirect(base_url('input_data/saccharomat_control'));
     }
 
     public function getHk($brix, $pol)
