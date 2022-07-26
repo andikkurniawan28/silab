@@ -37,7 +37,8 @@ class Home extends CI_Controller {
 			'Stroop', 
 			'Gula', 
 			'Tetes', 
-			'Ketel'
+			'Ketel',
+			'Request',
 		);
 
 		$data['card_url'] = array(
@@ -51,6 +52,7 @@ class Home extends CI_Controller {
 			base_url('hasil_analisa/gula'),
 			base_url('hasil_analisa/tetes'),
 			base_url('hasil_analisa/ketel'),
+			base_url('hasil_analisa/request'),
 		);
 
 		$this->load->view('static/header', $data);

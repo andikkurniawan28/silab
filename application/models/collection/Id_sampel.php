@@ -259,7 +259,7 @@ class Id_sampel extends CI_Model {
             case 93 : $data = 'Tetes Kumpulan'; break;
             case 94 : $data = "Not Registered"; break;
             case 95 : $data = "Not Registered"; break;
-            case 96 : $data = "Not Registered"; break;
+            case 96 : $data = "Request"; break;
             case 97 : $data = "Not Registered"; break;
             case 98 : $data = 'Blotong Request'; break;
         }
