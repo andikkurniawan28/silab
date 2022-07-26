@@ -37,7 +37,7 @@ class Penguapan extends CI_Controller {
 	public function show($id)
 	{
 		$data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDPenguapan($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaBrixPolAll($id);
 
 		$this->load->view('static/header', $data);

@@ -57,7 +57,7 @@ class Gilingan extends CI_Controller {
 	public function show_analisa_gilingan($id)
 	{
 		$data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDGilingan($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaBrixPolAll($id);
 
 		$this->load->view('static/header', $data);
@@ -68,7 +68,7 @@ class Gilingan extends CI_Controller {
 	public function show_analisa_ampas($id)
 	{
 		$data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDAmpas($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaAmpasAll($id);
 
 		$this->load->view('static/header', $data);

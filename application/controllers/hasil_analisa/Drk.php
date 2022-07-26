@@ -44,7 +44,7 @@ class Drk extends CI_Controller {
 	public function show_analisa_drk($id)
 	{
         $data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDDrk($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaPemurnianAll($id);
 
 		$this->load->view('static/header', $data);
@@ -55,7 +55,7 @@ class Drk extends CI_Controller {
 	public function show_analisa_cake($id)
 	{
         $data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDCake($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaCakeAll($id);
 
 		$this->load->view('static/header', $data);

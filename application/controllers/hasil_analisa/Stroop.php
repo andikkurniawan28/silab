@@ -20,7 +20,7 @@ class Stroop extends CI_Controller {
 	public function index()
 	{	
 		$data['page_title'] = 'Stroop';
-		$data['sampel_stroop']	= array('Klare RS', 'R1 Mol', 'R2 Mol', 'Remelter A', 'Remelter CD', 'Stroop A', 'Stroop C', 'Klare D', 'Klare SHS', 'Tetes');
+		$data['sampel']	= array('Klare RS', 'R1 Mol', 'R2 Mol', 'Remelter A', 'Remelter CD', 'Stroop A', 'Stroop C', 'Klare D', 'Klare SHS', 'Tetes');
 		$data['id']	= $this->id_sampel->getIDForStroop();
 
 		for($i=0; $i < count($data['id']); $i++)
@@ -37,7 +37,7 @@ class Stroop extends CI_Controller {
 	public function show($id)
 	{
 		$data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDStroop($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaStroopAll($id);
 
 		$this->load->view('static/header', $data);

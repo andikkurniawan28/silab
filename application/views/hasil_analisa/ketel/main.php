@@ -1,20 +1,17 @@
+            <div class="container-fluid">
 
-          <div class="container-fluid">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?=base_url('home/show_hasil_analisa');?>">Hasil Analisa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
+                    </ol>
+                </nav>
+                <hr>
 
-          <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-                  <li class="breadcrumb-item"><a href="<?=base_url('hasil_analisa');?>">Hasil Analisa</a></li>
-                  <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
-              </ol>
-            </nav>
-            <hr>
-
-            <div class="row">
-
-                <div class="col-md-4">
-                                
-                        <a href="<?=base_url('welcome/show_analisa_ketel/jj');?>"><h5>JJ</h5></a>
+                <div class="row">
+                    <div class="col-md-4">
+                        <a href="<?=base_url('hasil_analisa/ketel/show/jj');?>"><h5>JJ</h5></a>
                             <table class="table table-sm table-bordered table-hover text-xs">
                                 <tr>
                                     <th>Waktu</th>
@@ -68,7 +65,7 @@
 
                 <div class="col-md-4">
                                 
-                        <a href="<?=base_url('welcome/show_analisa_ketel/y1');?>"><h5>Yoshimine1</h5></a>
+                        <a href="<?=base_url('hasil_analisa/ketel/show/y1');?>"><h5>Y1</h5></a>
                             <table class="table table-sm table-bordered table-hover text-xs">
                                 <tr>
                                     <th>Waktu</th>
@@ -122,7 +119,7 @@
 
                 <div class="col-md-4">
                                 
-                        <a href="<?=base_url('welcome/show_analisa_ketel/y2');?>"><h5>Yoshimine2</h5></a>
+                        <a href="<?=base_url('hasil_analisa/ketel/show/y2');?>"><h5>Y2</h5></a>
                             <table class="table table-sm table-bordered table-hover text-xs">
                                 <tr>
                                     <th>Waktu</th>
@@ -176,7 +173,7 @@
 
                 <div class="col-md-3">
                                 
-                        <a href="<?=base_url('welcome/show_analisa_ketel/djj');?>"><h5>Daert JJ</h5></a>
+                        <a href="<?=base_url('hasil_analisa/ketel/show/djj');?>"><h5>Daert JJ</h5></a>
                             <table class="table table-sm table-bordered table-hover text-xs">
                                 <tr>
                                     <th>Waktu</th>
@@ -212,7 +209,7 @@
 
                 <div class="col-md-3">
                                 
-                        <a href="<?=base_url('welcome/show_analisa_ketel/dy');?>"><h5>Daert Yoshimine</h5></a>
+                        <a href="<?=base_url('hasil_analisa/ketel/show/dy');?>"><h5>Daert Yoshimine</h5></a>
                             <table class="table table-sm table-bordered table-hover text-xs">
                                 <tr>
                                     <th>Waktu</th>
@@ -248,7 +245,7 @@
 
                 <div class="col-md-3">
                                 
-                        <a href="<?=base_url('welcome/show_analisa_ketel/wtp');?>"><h5>WTP</h5></a>
+                        <a href="<?=base_url('hasil_analisa/ketel/show/wtp');?>"><h5>WTP</h5></a>
                             <table class="table table-sm table-bordered table-hover text-xs">
                                 <tr>
                                     <th>Waktu</th>
@@ -284,7 +281,7 @@
 
                 <div class="col-md-3">
                                 
-                        <a href="<?=base_url('welcome/show_analisa_ketel/hw');?>"><h5>HW</h5></a>
+                        <a href="<?=base_url('hasil_analisa/ketel/show/hw');?>"><h5>HW</h5></a>
                             <table class="table table-sm table-bordered table-hover text-xs">
                                 <tr>
                                     <th>Waktu</th>

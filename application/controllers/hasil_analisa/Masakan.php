@@ -20,7 +20,7 @@ class Masakan extends CI_Controller {
 	public function index()
 	{	
 		$data['page_title'] = 'Masakan';
-		$data['sampel_masakan']	= array('Masakan A','Masakan A Raw','Masakan C','Masakan D','Masakan R1','Masakan R2', 'Magma RS', 'CVP C', 'CVP D', 'Einwuurf C', 'Einwuurf D');
+		$data['sampel']	= array('Masakan A','Masakan A Raw','Masakan C','Masakan D','Masakan R1','Masakan R2', 'Magma RS', 'CVP C', 'CVP D', 'Einwuurf C', 'Einwuurf D', 'Sogokan C', 'Sogokan D');
 		$data['id']	= $this->id_sampel->getIDForMasakan();
 
 		for($i=0; $i < count($data['id']); $i++)
@@ -37,7 +37,7 @@ class Masakan extends CI_Controller {
 	public function show($id)
 	{
 		$data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDMasakan($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaStroopAll($id);
 
 		$this->load->view('static/header', $data);

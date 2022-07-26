@@ -10,9 +10,9 @@
 
     <div class="row">
 
-        <?php for($i=0; $i < count($sampel_stroop); $i++): ?>
+        <?php for($i=0; $i < count($sampel); $i++): ?>
         <div class="col-md-6">
-            <a href="<?=$url[$i];?>"><h5><?=$sampel_stroop[$i];?></h5></a>
+            <a href="<?=$url[$i];?>"><h5><?=$sampel[$i];?></h5></a>
             <table class="table table-sm table-bordered table-hover text-xs">
                 <tr>
                     <th>Time</th>

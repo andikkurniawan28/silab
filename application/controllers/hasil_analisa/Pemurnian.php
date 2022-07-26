@@ -44,7 +44,7 @@ class Pemurnian extends CI_Controller {
 	public function show_analisa_pemurnian($id)
 	{
         $data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDPemurnian($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaPemurnianAll($id);
 
 		$this->load->view('static/header', $data);
@@ -55,7 +55,7 @@ class Pemurnian extends CI_Controller {
 	public function show_analisa_blotong($id)
 	{
         $data['page_id'] = $id;
-		$data['page_title'] = $this->id_sampel->identifyIDBlotong($id);
+		$data['page_title'] = $this->id_sampel->identifyID($id);
 		$data['hasil_analisa'] = $this->analisa->getAnalisaBlotongAll($id);
 
 		$this->load->view('static/header', $data);
