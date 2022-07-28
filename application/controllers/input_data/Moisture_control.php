@@ -8,7 +8,7 @@ class Moisture_control extends CI_Controller {
         parent::__construct();
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
-        $this->load->model('moisture');
+        $this->load->model('table/moisture');
     }
 
 	public function checkUserIsLogin()
@@ -25,56 +25,56 @@ class Moisture_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title']             = ucfirst("moisture");
-        $data['hasil_analisa']          = $this->moisture->readData();
-        $data['form_handler_create']    = base_url('moisture_control/create_moisture/');
-        $data['form_handler_update']    = base_url('moisture_control/edit_moisture/');
-        $data['form_handler_delete']    = base_url('moisture_control/delete_moisture/');
+        $data['page_title'] = ucfirst("moisture");
+        $data['hasil_analisa'] = $this->moisture->readData();
+        $data['form_handler_create'] = base_url('input_data/moisture_control/create_moisture/');
+        $data['form_handler_update'] = base_url('input_data/moisture_control/edit_moisture/');
+        $data['form_handler_delete'] = base_url('input_data/moisture_control/delete_moisture/');
 
         $this->load->view('static/header', $data);
-		$this->load->view('input/moisture',$data);
-		$this->load->view('modal/moisture',$data);
+		$this->load->view('input_data/moisture/main',$data);
+		$this->load->view('input_data/moisture/modal',$data);
 		$this->load->view('static/footer');
 	}
 
     public function edit_moisture($id, $bahan, $kadar_air)
     {
-        $data['page_title']             = ucfirst("moisture");
-        $data['form_handler_update']    = base_url('moisture_control/update_moisture/');
-        $data['id']                     = $id;
-        $data['bahan']                  = $bahan;
-        $data['kadar_air']              = $kadar_air;
+        $data['page_title'] = ucfirst("moisture");
+        $data['form_handler_update'] = base_url('input_data/moisture_control/update_moisture/');
+        $data['id'] = $id;
+        $data['bahan'] = $bahan;
+        $data['kadar_air'] = $kadar_air;
 
         $this->load->view('static/header',$data);
-        $this->load->view('edit/edit_moisture',$data);
+		$this->load->view('input_data/moisture/edit',$data);
 		$this->load->view('static/footer');
     }
 
     public function create_moisture()
     {
-        $bahan      = $this->input->post('bahan', TRUE);
-        $kadar_air  = $this->input->post('kadar_air', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $kadar_air = $this->input->post('kadar_air', TRUE);
 
         $this->moisture->createData($bahan, $kadar_air);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
             Data berhasil ditambahkan.
         </div>");
 
-        redirect(base_url('moisture_control'));
+        redirect(base_url('input_data/moisture_control'));
     }
 
     public function update_moisture()
     {
-        $id         = $this->input->post('id', TRUE);
-        $bahan      = $this->input->post('bahan', TRUE);
-        $kadar_air  = $this->input->post('kadar_air', TRUE);
+        $id = $this->input->post('id', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $kadar_air = $this->input->post('kadar_air', TRUE);
 
         $this->moisture->updateData($id, $bahan, $kadar_air);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
             Data berhasil dirubah.
         </div>");
 
-        redirect(base_url('moisture_control'));
+        redirect(base_url('input_data/moisture_control'));
     }
 
     public function delete_moisture($id)
@@ -84,6 +84,6 @@ class Moisture_control extends CI_Controller {
             Data berhasil dihapus.
         </div>");
 
-        redirect(base_url('moisture_control'));
+        redirect(base_url('input_data/moisture_control'));
     }
 }

@@ -8,7 +8,7 @@ class Analisa_bjb_control extends CI_Controller {
         parent::__construct();
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
-        $this->load->model('analisa_bjb');
+        $this->load->model('table/analisa_bjb');
     }
 
 	public function checkUserIsLogin()
@@ -25,43 +25,56 @@ class Analisa_bjb_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title']             = "Analisa BJB";
-        $data['hasil_analisa']          = $this->analisa_bjb->readData();
-        $data['form_handler_create']    = base_url('analisa_bjb_control/create_analisa_bjb/');
-        $data['form_handler_update']    = base_url('analisa_bjb_control/update_analisa_bjb/');
-        $data['form_handler_delete']    = base_url('analisa_bjb_control/delete_analisa_bjb/');
+        $data['page_title'] = ucfirst("analisa_bjb");
+        $data['hasil_analisa'] = $this->analisa_bjb->readData();
+        $data['form_handler_create'] = base_url('input_data/analisa_bjb_control/create_analisa_bjb/');
+        $data['form_handler_update'] = base_url('input_data/analisa_bjb_control/edit_analisa_bjb/');
+        $data['form_handler_delete'] = base_url('input_data/analisa_bjb_control/delete_analisa_bjb/');
 
-        $this->load->view('layout/header');
-		$this->load->view('analisa_bjb/dashboard',$data);
-		$this->load->view('modal/analisa_bjb',$data);
-		$this->load->view('layout/footer');
+        $this->load->view('static/header', $data);
+		$this->load->view('input_data/analisa_bjb/main',$data);
+		$this->load->view('input_data/analisa_bjb/modal',$data);
+		$this->load->view('static/footer');
 	}
+
+    public function edit_analisa_bjb($id, $bahan, $bjb)
+    {
+        $data['page_title'] = ucfirst("analisa_bjb");
+        $data['form_handler_update'] = base_url('input_data/analisa_bjb_control/update_analisa_bjb/');
+        $data['id'] = $id;
+        $data['bahan'] = $bahan;
+        $data['bjb'] = $bjb;
+
+        $this->load->view('static/header',$data);
+		$this->load->view('input_data/analisa_bjb/edit',$data);
+		$this->load->view('static/footer');
+    }
 
     public function create_analisa_bjb()
     {
-        $bahan      = $this->input->post('bahan', TRUE);
-        $bjb        = $this->input->post('bjb', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $bjb = $this->input->post('bjb', TRUE);
 
         $this->analisa_bjb->createData($bahan, $bjb);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
             Data berhasil ditambahkan.
         </div>");
 
-        redirect(base_url('analisa_bjb_control'));
+        redirect(base_url('input_data/analisa_bjb_control'));
     }
 
     public function update_analisa_bjb()
     {
-        $id         = $this->input->post('id', TRUE);
-        $bahan      = $this->input->post('bahan', TRUE);
-        $bjb        = $this->input->post('bjb', TRUE);
+        $id = $this->input->post('id', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $bjb = $this->input->post('bjb', TRUE);
 
         $this->analisa_bjb->updateData($id, $bahan, $bjb);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
             Data berhasil dirubah.
         </div>");
 
-        redirect(base_url('analisa_bjb_control'));
+        redirect(base_url('input_data/analisa_bjb_control'));
     }
 
     public function delete_analisa_bjb($id)
@@ -71,6 +84,6 @@ class Analisa_bjb_control extends CI_Controller {
             Data berhasil dihapus.
         </div>");
 
-        redirect(base_url('analisa_bjb_control'));
+        redirect(base_url('input_data/analisa_bjb_control'));
     }
 }

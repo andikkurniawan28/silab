@@ -3,11 +3,11 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
-        <li class="breadcrumb-item"><a href="<?=base_url('input_control');?>">Input Data</a></li>
+        <li class="breadcrumb-item"><a href="<?=base_url('home/show_input_data');?>">Input Data</a></li>
         <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
         <li class="breadcrumb-item"><a href="#" data-bs-toggle="modal" data-bs-target="#inputData">Tambah Data</a></li>
     </ol>
-</nav><hr><br>
+</nav><hr>
 
 <div class="row">
 
