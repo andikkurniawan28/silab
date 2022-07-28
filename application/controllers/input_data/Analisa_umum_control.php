@@ -25,47 +25,62 @@ class Analisa_umum_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title']             = "Analisa Umum";
-        $data['hasil_analisa']          = $this->analisa_umum->readData();
-        $data['form_handler_create']    = base_url('analisa_umum_control/create_analisa_umum/');
-        $data['form_handler_update']    = base_url('analisa_umum_control/update_analisa_umum/');
-        $data['form_handler_delete']    = base_url('analisa_umum_control/delete_analisa_umum/');
+        $data['page_title'] = "Analisa Umum";
+        $data['hasil_analisa'] = $this->analisa_umum->readData();
+        $data['form_handler_create'] = base_url('input_data/analisa_umum_control/create_analisa_umum/');
+        $data['form_handler_update'] = base_url('input_data/analisa_umum_control/update_analisa_umum/');
+        $data['form_handler_delete'] = base_url('input_data/analisa_umum_control/delete_analisa_umum/');
 
         $this->load->view('layout/header');
-		$this->load->view('analisa_umum/dashboard',$data);
-		$this->load->view('modal/analisa_umum',$data);
+		$this->load->view('input_data/analisa_umum/main',$data);
+		$this->load->view('input_data/analisa_umum/modal',$data);
 		$this->load->view('layout/footer');
 	}
 
+    public function edit_analisa_umum($id, $bahan, $cao, $ph, $tur)
+    {
+        $data['page_title'] = "Analisa Umum";
+        $data['form_handler_update'] = base_url('input_data/analisa_umum_control/update_analisa_umum/');
+        $data['id'] = $id;
+        $data['bahan'] = $bahan;
+        $data['cao'] = $cao;
+        $data['ph'] = $ph;
+        $data['tur'] = $tur;
+
+        $this->load->view('static/header',$data);
+		$this->load->view('input_data/analisa_umum/edit',$data);
+		$this->load->view('static/footer');
+    }
+
     public function create_analisa_umum()
     {
-        $bahan      = $this->input->post('bahan', TRUE);
-        $cao        = $this->input->post('cao', TRUE);
-        $ph         = $this->input->post('ph', TRUE);
-        $tur        = $this->input->post('tur', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $cao = $this->input->post('cao', TRUE);
+        $ph = $this->input->post('ph', TRUE);
+        $tur = $this->input->post('tur', TRUE);
 
         $this->analisa_umum->createData($bahan, $cao, $ph, $tur);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
-            Data berhasil ditambaturan.
+            Data berhasil ditambahkan.
         </div>");
 
-        redirect(base_url('analisa_umum_control'));
+        redirect(base_url('input_data/analisa_umum_control'));
     }
 
     public function update_analisa_umum()
     {
-        $id         = $this->input->post('id', TRUE);
-        $bahan      = $this->input->post('bahan', TRUE);
-        $cao        = $this->input->post('cao', TRUE);
-        $ph         = $this->input->post('ph', TRUE);
-        $tur        = $this->input->post('tur', TRUE);
+        $id = $this->input->post('id', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $cao = $this->input->post('cao', TRUE);
+        $ph = $this->input->post('ph', TRUE);
+        $tur = $this->input->post('tur', TRUE);
 
         $this->analisa_umum->updateData($id, $bahan, $cao, $ph, $tur);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
             Data berhasil dirubah.
         </div>");
 
-        redirect(base_url('analisa_umum_control'));
+        redirect(base_url('input_data/analisa_umum_control'));
     }
 
     public function delete_analisa_umum($id)
@@ -75,6 +90,6 @@ class Analisa_umum_control extends CI_Controller {
             Data berhasil dihapus.
         </div>");
 
-        redirect(base_url('analisa_umum_control'));
+        redirect(base_url('input_data/analisa_umum_control'));
     }
 }

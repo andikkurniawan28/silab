@@ -14,13 +14,13 @@ class Analisa_npp_control extends CI_Controller {
 	public function checkUserIsLogin()
 	{
 		if($this->session->status != 'login')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function checkUserIsAdmin()
 	{
 		if($this->session->role != 'admin')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function index()
@@ -54,7 +54,7 @@ class Analisa_npp_control extends CI_Controller {
     {
         $brix = $this->input->post('brix', TRUE); 
         $pol = $this->input->post('pol', TRUE);
-        $rendemen = $this->analia->hitungRendemenNPP($brix, $pol);
+        $rendemen = $this->analisa_npp->hitungRendemenNPP($brix, $pol);
 
         $this->analisa_npp->createData($brix, $pol, $rendemen);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
@@ -69,7 +69,7 @@ class Analisa_npp_control extends CI_Controller {
         $id = $this->input->post('id', TRUE);
         $brix = $this->input->post('brix', TRUE);
         $pol = $this->input->post('pol', TRUE);
-        $rendemen = $this->analia->hitungRendemenNPP($brix, $pol);
+        $rendemen = $this->analisa_npp->hitungRendemenNPP($brix, $pol);
 
         $this->analisa_npp->updateData($id, $brix, $pol, $rendemen);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>

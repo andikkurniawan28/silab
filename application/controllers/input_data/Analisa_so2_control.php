@@ -14,13 +14,13 @@ class Analisa_so2_control extends CI_Controller {
 	public function checkUserIsLogin()
 	{
 		if($this->session->status != 'login')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function checkUserIsAdmin()
 	{
 		if($this->session->role != 'admin')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function index()

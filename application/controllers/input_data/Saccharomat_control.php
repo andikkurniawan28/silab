@@ -14,13 +14,13 @@ class Saccharomat_control extends CI_Controller {
 	public function checkUserIsLogin()
 	{
 		if($this->session->status != 'login')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function checkUserIsAdmin()
 	{
 		if($this->session->role != 'admin')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function index()
@@ -39,13 +39,13 @@ class Saccharomat_control extends CI_Controller {
 
     public function edit_saccharomat($id, $bahan, $brix, $pol, $Z)
     {
-        $data['page_title']             = ucfirst("saccharomat");
-        $data['form_handler_update']    = base_url('input_data/saccharomat_control/update_saccharomat/');
-        $data['id']                     = $id;
-        $data['bahan']                  = $bahan;
-        $data['brix']                   = $brix;
-        $data['pol']                    = $pol;
-        $data['Z']                      = $Z;
+        $data['page_title'] = ucfirst("saccharomat");
+        $data['form_handler_update'] = base_url('input_data/saccharomat_control/update_saccharomat/');
+        $data['id'] = $id;
+        $data['bahan'] = $bahan;
+        $data['brix'] = $brix;
+        $data['pol'] = $pol;
+        $data['Z'] = $Z;
 
         $this->load->view('static/header',$data);
 		$this->load->view('input_data/saccharomat/edit',$data);
@@ -54,10 +54,10 @@ class Saccharomat_control extends CI_Controller {
 
     public function create_saccharomat()
     {
-        $bahan      = $this->input->post('bahan', TRUE);
-        $brix       = $this->input->post('brix', TRUE);
-        $pol        = $this->input->post('pol', TRUE);
-        $Z          = $this->input->post('Z', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $brix = $this->input->post('brix', TRUE);
+        $pol = $this->input->post('pol', TRUE);
+        $Z = $this->input->post('Z', TRUE);
 
         if(isset($_POST['denganHK'])) $hk = $this->getHk($brix, $pol);
         elseif(isset($_POST['tanpaHK']))$hk = 0;
@@ -72,11 +72,11 @@ class Saccharomat_control extends CI_Controller {
 
     public function update_saccharomat()
     {
-        $id         = $this->input->post('id', TRUE);
-        $bahan      = $this->input->post('bahan', TRUE);
-        $brix       = $this->input->post('brix', TRUE);
-        $pol        = $this->input->post('pol', TRUE);
-        $Z          = $this->input->post('Z', TRUE);
+        $id = $this->input->post('id', TRUE);
+        $bahan = $this->input->post('bahan', TRUE);
+        $brix = $this->input->post('brix', TRUE);
+        $pol = $this->input->post('pol', TRUE);
+        $Z = $this->input->post('Z', TRUE);
 
         if(isset($_POST['denganHK'])) $hk = $this->getHk($brix, $pol);
         elseif(isset($_POST['tanpaHK']))$hk = 0;
