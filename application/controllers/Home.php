@@ -68,6 +68,10 @@ class Home extends CI_Controller {
 			'Analisa TSAI',
 			'Analisa HPLC',
 			'Analisa Ketel',
+			'Analisa Kapur',
+			'Analisa Sabut',
+			'Analisa PI',
+			'Analisa Nira Kotor',
 		);
 
         $data['url'] = array(
@@ -82,6 +86,10 @@ class Home extends CI_Controller {
 			'input_data/analisa_tsai',
 			'input_data/analisa_hplc',
 			'input_data/analisa_ketel',
+			'input_data/analisa_kapur',
+			'input_data/analisa_sabut',
+			'input_data/analisa_pi',
+			'input_data/analisa_nira_kotor',
 		);
 		$this->load->view('static/header', $data);
 		$this->load->view('input_data/main', $data);
