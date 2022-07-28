@@ -55,6 +55,7 @@ class Home extends CI_Controller {
 	{
 		$this->checkUserIsAdmin();
 		$data['page_title'] = 'Input Data';
+
 		$data['card_title']	= array(
 			'Analisa NPP', 
 			'Saccharomat', 
@@ -65,7 +66,10 @@ class Home extends CI_Controller {
 			'Analisa SO2', 
 			'Analisa BJB',
 			'Analisa TSAI',
+			'Analisa HPLC',
+			'Analisa Ketel',
 		);
+
         $data['url'] = array(
 			'input_data/analisa_npp',
 			'input_data/saccharomat',
@@ -76,6 +80,8 @@ class Home extends CI_Controller {
 			'input_data/analisa_so2',
 			'input_data/analisa_bjb',
 			'input_data/analisa_tsai',
+			'input_data/analisa_hplc',
+			'input_data/analisa_ketel',
 		);
 		$this->load->view('static/header', $data);
 		$this->load->view('input_data/main', $data);
