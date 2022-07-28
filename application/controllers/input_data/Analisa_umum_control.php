@@ -8,19 +8,19 @@ class Analisa_umum_control extends CI_Controller {
         parent::__construct();
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
-        $this->load->model('analisa_umum');
+        $this->load->model('table/analisa_umum');
     }
 
 	public function checkUserIsLogin()
 	{
 		if($this->session->status != 'login')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function checkUserIsAdmin()
 	{
 		if($this->session->role != 'admin')
-			redirect(base_url('auth'));
+		redirect(base_url('auth'));
 	}
 
 	public function index()
@@ -28,13 +28,13 @@ class Analisa_umum_control extends CI_Controller {
         $data['page_title'] = "Analisa Umum";
         $data['hasil_analisa'] = $this->analisa_umum->readData();
         $data['form_handler_create'] = base_url('input_data/analisa_umum_control/create_analisa_umum/');
-        $data['form_handler_update'] = base_url('input_data/analisa_umum_control/update_analisa_umum/');
+        $data['form_handler_update'] = base_url('input_data/analisa_umum_control/edit_analisa_umum/');
         $data['form_handler_delete'] = base_url('input_data/analisa_umum_control/delete_analisa_umum/');
 
-        $this->load->view('layout/header');
+        $this->load->view('static/header', $data);
 		$this->load->view('input_data/analisa_umum/main',$data);
 		$this->load->view('input_data/analisa_umum/modal',$data);
-		$this->load->view('layout/footer');
+		$this->load->view('static/footer');
 	}
 
     public function edit_analisa_umum($id, $bahan, $cao, $ph, $tur)

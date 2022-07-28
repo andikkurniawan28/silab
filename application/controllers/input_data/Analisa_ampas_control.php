@@ -8,7 +8,7 @@ class Analisa_ampas_control extends CI_Controller {
         parent::__construct();
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
-        $this->load->model('analisa_ampas');
+        $this->load->model('table/analisa_ampas');
     }
 
 	public function checkUserIsLogin()
@@ -25,22 +25,22 @@ class Analisa_ampas_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title'] = "Analisa Ampas";
+        $data['page_title'] = ucfirst("Analisa Ampas");
         $data['hasil_analisa'] = $this->analisa_ampas->readData();
         $data['form_handler_create'] = base_url('input_data/analisa_ampas_control/create_analisa_ampas/');
-        $data['form_handler_update'] = base_url('input_data/analisa_ampas_control/update_analisa_ampas/');
+        $data['form_handler_update'] = base_url('input_data/analisa_ampas_control/edit_analisa_ampas/');
         $data['form_handler_delete'] = base_url('input_data/analisa_ampas_control/delete_analisa_ampas/');
 
-        $this->load->view('layout/header');
+        $this->load->view('static/header', $data);
 		$this->load->view('input_data/analisa_ampas/main',$data);
 		$this->load->view('input_data/analisa_ampas/modal',$data);
-		$this->load->view('layout/footer');
+		$this->load->view('static/footer');
 	}
 
     public function edit_analisa_ampas($id, $bahan, $pol_koreksi, $zk, $kadar_air)
     {
-        $data['page_title'] = "Analisa Ampas";
-        $data['form_handler_update'] = base_url('input_data/input_data/analisa_ampas_control/update_analisa_ampas/');
+        $data['page_title'] = ucfirst("Analisa Ampas");
+        $data['form_handler_update'] = base_url('input_data/analisa_ampas_control/update_analisa_ampas/');
         $data['id'] = $id;
         $data['bahan'] = $bahan;
         $data['pol_koreksi'] = $pol_koreksi;

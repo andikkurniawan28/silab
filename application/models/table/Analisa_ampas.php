@@ -8,7 +8,7 @@ class Analisa_ampas extends CI_Model {
         return 'analisa_ampas';
     }
     
-    public function createData($bahan, $zk, $pol_koreksi, $kadar_air)
+    public function createData($bahan, $pol_koreksi, $zk, $kadar_air)
     {
         $table = $this->defineTable();
         $data = array(
@@ -31,7 +31,7 @@ class Analisa_ampas extends CI_Model {
         return $query->result();
     }
 
-    public function updateData($id, $bahan, $zk, $pol_koreksi, $kadar_air)
+    public function updateData($id, $bahan, $pol_koreksi, $zk, $kadar_air)
     {   
         $table = $this->defineTable();
         $data = array(
