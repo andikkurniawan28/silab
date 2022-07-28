@@ -14,10 +14,10 @@ class Saccharomat extends CI_Model {
         $data = array(
             'waktu' => date('Y-m-d H:i'),
             'bahan' => $bahan,
-            'brix'  => $brix,
-            'pol'   => $pol,
-            'Z'     => $Z,
-            'hk'    => $hk,
+            'brix' => $brix,
+            'pol' => $pol,
+            'Z' => $Z,
+            'hk' => $hk,
         );
         $this->db->insert($table, $data);
     }
@@ -36,11 +36,11 @@ class Saccharomat extends CI_Model {
     {   
         $table = $this->defineTable();
         $data = array(
-            'bahan'    => $bahan,
-            'brix'     => $brix,
-            'pol'      => $pol,
-            'Z'        => $Z,
-            'hk'       => $hk,
+            'bahan' => $bahan,
+            'brix' => $brix,
+            'pol' => $pol,
+            'Z' => $Z,
+            'hk' => $hk,
         );
         $this->db->update($table, $data, array('id' => $id));
     }

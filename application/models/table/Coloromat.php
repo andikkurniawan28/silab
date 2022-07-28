@@ -14,7 +14,7 @@ class Coloromat extends CI_Model {
         $data = array(
             'waktu' => date('Y-m-d H:i'),
             'bahan' => $bahan,
-            'IU'    => $IU,
+            'IU' => $IU,
         );
         $this->db->insert($table, $data);
     }
@@ -33,8 +33,8 @@ class Coloromat extends CI_Model {
     {   
         $table = $this->defineTable();
         $data = array(
-            'bahan'    => $bahan,
-            'IU'        => $IU,
+            'bahan' => $bahan,
+            'IU' => $IU,
         );
         $this->db->update($table, $data, array('id' => $id));
     }

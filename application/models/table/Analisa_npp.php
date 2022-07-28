@@ -8,12 +8,11 @@ class Analisa_npp extends CI_Model {
         return 'analisa_npp';
     }
     
-    public function createData($bahan, $brix, $pol, $rendemen)
+    public function createData($brix, $pol, $rendemen)
     {
         $table = $this->defineTable();
         $data = array(
-            'waktu' => date('Y-m-d H:i'),
-            'bahan' => $bahan,
+            'time' => date('Y-m-d H:i'),
             'brix' => $brix,
             'pol' => $pol,
             'rendemen' => $rendemen,
@@ -31,11 +30,10 @@ class Analisa_npp extends CI_Model {
         return $query->result();
     }
 
-    public function updateData($id, $bahan, $brix, $pol, $rendemen)
+    public function updateData($id, $brix, $pol, $rendemen)
     {   
         $table = $this->defineTable();
         $data = array(
-            'bahan' => $bahan,
             'brix' => $brix,
             'pol' => $pol,
             'rendemen' => $rendemen,
@@ -47,5 +45,10 @@ class Analisa_npp extends CI_Model {
     {
         $table = $this->defineTable();
         $this->db->delete($table, array('id'=>$id));
+    }
+
+    public function hitungRendemenNPP($brix, $pol)
+    {
+        return $rendemen = number_format(0.7 * ($pol - 0.4 * ($brix - $pol)),2);
     }
 }

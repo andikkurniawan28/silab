@@ -12,8 +12,8 @@ class Moisture extends CI_Model {
     {
         $table = $this->defineTable();
         $data = array(
-            'waktu'     => date('Y-m-d H:i'),
-            'bahan'     => $bahan,
+            'waktu' => date('Y-m-d H:i'),
+            'bahan' => $bahan,
             'kadar_air' => $kadar_air,
         );
         $this->db->insert($table, $data);
@@ -33,7 +33,7 @@ class Moisture extends CI_Model {
     {   
         $table = $this->defineTable();
         $data = array(
-            'bahan'     => $bahan,
+            'bahan' => $bahan,
             'kadar_air' => $kadar_air,
         );
         $this->db->update($table, $data, array('id' => $id));

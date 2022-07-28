@@ -25,7 +25,7 @@ class Analisa_npp_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title'] = ucfirst("analisa_npp");
+        $data['page_title'] = "Analisa NPP";
         $data['hasil_analisa'] = $this->analisa_npp->readData();
         $data['form_handler_create'] = base_url('input_data/analisa_npp_control/create_analisa_npp/');
         $data['form_handler_update'] = base_url('input_data/analisa_npp_control/edit_analisa_npp/');
@@ -39,7 +39,7 @@ class Analisa_npp_control extends CI_Controller {
 
     public function edit_analisa_npp($id, $brix, $pol)
     {
-        $data['page_title'] = ucfirst("analisa_npp");
+        $data['page_title'] = "Analisa NPP";
         $data['form_handler_update'] = base_url('input_data/analisa_npp_control/update_analisa_npp/');
         $data['id'] = $id;
         $data['brix'] = $brix;
