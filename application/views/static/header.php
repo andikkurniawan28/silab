@@ -31,12 +31,12 @@
                 </div>
                 <ul class="list-inline mb-0">
 
-                    <li class="list-inline-item logout px-lg-2">        
-                        <a class="nav-link text-sm text-reset px-1 px-lg-0" id="logout" data-bs-toggle="modal" data-bs-target="#logoutModal"> 
+                    <a class="nav-link text-sm text-reset px-1 px-lg-0" id="logout" data-bs-toggle="modal" data-bs-target="#logoutModal"> 
+                        <li class="list-inline-item logout px-lg-2">        
                             <span class="d-none d-sm-inline-block">Logout </span>
                             <svg class="svg-icon svg-icon-xs svg-icon-heavy"><use xlink:href="#disable-1"> </use></svg>
-                        </a>
-                    </li>
+                        </li>
+                    </a>
                     
                 </ul>
                 </div>
