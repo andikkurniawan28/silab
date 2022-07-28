@@ -1,21 +1,20 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Model {
+class Analisa_bjb extends CI_Model {
 
     public function defineTable()
     {
-        return 'user';
+        return 'analisa_bjb';
     }
-
-    public function createData($username, $password, $nama, $role)
+    
+    public function createData($bahan, $bjb)
     {
         $table = $this->defineTable();
         $data = array(
-            'username' => $username,
-            'password' => $password,
-            'nama' => $nama,
-            'role' => $role,
+            'waktu' => date('Y-m-d H:i'),
+            'bahan' => $bahan,
+            'bjb' => $bjb,
         );
         $this->db->insert($table, $data);
     }
@@ -30,14 +29,12 @@ class User extends CI_Model {
         return $query->result();
     }
 
-    public function updateData($id, $username, $password, $nama, $role)
+    public function updateData($id, $bahan, $bjb)
     {   
         $table = $this->defineTable();
         $data = array(
-            'username' => $username,
-            'password' => $password,
-            'nama' => $nama,
-            'role' => $role,
+            'bahan' => $bahan,
+            'bjb' => $bjb,
         );
         $this->db->update($table, $data, array('id' => $id));
     }
@@ -47,15 +44,4 @@ class User extends CI_Model {
         $table = $this->defineTable();
         $this->db->delete($table, array('id'=>$id));
     }
-
-    public function checkUser($username, $password)
-    {
-        $table = $this->defineTable();
-        return $this->db->get_where($table, 
-            array(
-                'username' => $username, 
-                'password' => $password
-            ));
-    }
-
 }

@@ -55,12 +55,25 @@ class Home extends CI_Controller {
 	{
 		$this->checkUserIsAdmin();
 		$data['page_title'] = 'Input Data';
-		$data['card_title']	= array('Analisa NPP', 'Saccharomat', 'Coloromat', 'Moisture');
+		$data['card_title']	= array(
+			'Analisa NPP', 
+			'Saccharomat', 
+			'Coloromat', 
+			'Moisture', 
+			'Analisa Ampas', 
+			'Analisa Umum', 
+			'Analisa SO2', 
+			'Analisa BJB',
+		);
         $data['url'] = array(
 			'input_data/analisa_npp',
 			'input_data/saccharomat',
 			'input_data/coloromat',
-			'input_data/moisture'
+			'input_data/moisture',
+			'input_data/analisa_ampas',
+			'input_data/analisa_umum',
+			'input_data/analisa_so2',
+			'input_data/analisa_bjb',
 		);
 		$this->load->view('static/header', $data);
 		$this->load->view('input_data/main', $data);

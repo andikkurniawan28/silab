@@ -25,7 +25,7 @@ class Analisa_so2_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title'] = ucfirst("analisa_so2");
+        $data['page_title'] = ucfirst("Analisa SO2");
         $data['hasil_analisa'] = $this->analisa_so2->readData();
         $data['form_handler_create'] = base_url('input_data/analisa_so2_control/create_analisa_so2/');
         $data['form_handler_update'] = base_url('input_data/analisa_so2_control/edit_analisa_so2/');
@@ -39,7 +39,7 @@ class Analisa_so2_control extends CI_Controller {
 
     public function edit_analisa_so2($id, $bahan, $so2)
     {
-        $data['page_title'] = ucfirst("analisa_so2");
+        $data['page_title'] = ucfirst("Analisa SO2");
         $data['form_handler_update'] = base_url('input_data/analisa_so2_control/update_analisa_so2/');
         $data['id'] = $id;
         $data['bahan'] = $bahan;
