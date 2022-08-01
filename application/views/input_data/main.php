@@ -58,6 +58,16 @@
                   <br>
                 </div>
 
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">User</h5>
+                      <a href="<?=base_url('input_data/user_control');?>" class="btn btn-primary">Enter</a>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+
               <?php endif; ?>
 
               
