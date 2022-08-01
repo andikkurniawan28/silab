@@ -112,7 +112,7 @@ class Data_keliling extends CI_Model {
     {
         $table = $this->defineTable();
         $this->db->from($table);
-        $this->db->limit('5000');
+        $this->db->limit('1000');
         $this->db->order_by('id_analisa','DESC');
         $query = $this->db->get();
         return $query->result();

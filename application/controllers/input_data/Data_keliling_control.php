@@ -37,13 +37,103 @@ class Data_keliling_control extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
-    public function edit_data_keliling($id, $bahan, $bjb)
+    public function edit_data_keliling(
+        $id,
+        $tekanan_hpreevap1, 
+        $tekanan_hpreevap2,
+        $tekanan_hevap1,
+        $tekanan_hevap2,
+        $tekanan_hevap3,
+        $tekanan_hevap4,
+        $tekanan_hevap5,
+        $tekanan_hevap6,
+        $tekanan_hevap7,
+        $tekanan_hmasakan1,
+        $tekanan_hmasakan2,
+        $tekanan_hmasakan3,
+        $tekanan_hmasakan4,
+        $tekanan_hmasakan5,
+        $tekanan_hmasakan6,
+        $tekanan_hmasakan7,
+        $tekanan_hmasakan8,
+        $tekanan_hmasakan9,
+        $tekanan_hmasakan10,
+        $tekanan_hmasakan11,
+        $tekanan_hmasakan12,
+        $tekanan_hmasakan13,
+        $tekanan_hmasakan14,
+        $tekanan_hmasakan15,
+        $tekanan_hmasakan16,
+        $tekanan_hmasakan17,
+        $tekanan_hmasakan18,
+        $tekanan_pompamasak,
+        $suhu_uappreevap1,
+        $suhu_uappreevap2,
+        $suhu_uapevap1,
+        $suhu_uapevap2,
+        $suhu_uapevap3,
+        $suhu_uapevap4,
+        $suhu_uapevap5,
+        $suhu_uapevap6,
+        $suhu_uapevap7,
+        $suhu_heater1,
+        $suhu_heater2,
+        $suhu_heater3,
+        $suhu_airinjeksi,
+        $suhu_airterjun,
+        $tekanan_uaptinggi,
+        $tekanan_uaprendah,
+        $tekanan_uapbekas 
+    )
     {
         $data['page_title'] = ucfirst("Data Keliling");
         $data['form_handler_update'] = base_url('input_data/data_keliling_control/update_data_keliling/');
         $data['id'] = $id;
-        $data['bahan'] = $bahan;
-        $data['bjb'] = $bjb;
+        $data['tekanan_hpreevap1'] = $tekanan_hpreevap1; 
+        $data['tekanan_hpreevap2'] = $tekanan_hpreevap2;
+        $data['tekanan_hevap1'] = $tekanan_hevap1;
+        $data['tekanan_hevap2'] = $tekanan_hevap2;
+        $data['tekanan_hevap3'] = $tekanan_hevap3;
+        $data['tekanan_hevap4'] = $tekanan_hevap4;
+        $data['tekanan_hevap5'] = $tekanan_hevap5;
+        $data['tekanan_hevap6'] = $tekanan_hevap6;
+        $data['tekanan_hevap7'] = $tekanan_hevap7;
+        $data['tekanan_hmasakan1'] = $tekanan_hmasakan1;
+        $data['tekanan_hmasakan2'] = $tekanan_hmasakan2;
+        $data['tekanan_hmasakan3'] = $tekanan_hmasakan3;
+        $data['tekanan_hmasakan4'] = $tekanan_hmasakan4;
+        $data['tekanan_hmasakan5'] = $tekanan_hmasakan5;
+        $data['tekanan_hmasakan6'] = $tekanan_hmasakan6;
+        $data['tekanan_hmasakan7'] = $tekanan_hmasakan7;
+        $data['tekanan_hmasakan8'] = $tekanan_hmasakan8;
+        $data['tekanan_hmasakan9'] = $tekanan_hmasakan9;
+        $data['tekanan_hmasakan10'] = $tekanan_hmasakan10;
+        $data['tekanan_hmasakan11'] = $tekanan_hmasakan11;
+        $data['tekanan_hmasakan12'] = $tekanan_hmasakan12;
+        $data['tekanan_hmasakan13'] = $tekanan_hmasakan13;
+        $data['tekanan_hmasakan14'] = $tekanan_hmasakan14;
+        $data['tekanan_hmasakan15'] = $tekanan_hmasakan15;
+        $data['tekanan_hmasakan16'] = $tekanan_hmasakan16;
+        $data['tekanan_hmasakan17'] = $tekanan_hmasakan17;
+        $data['tekanan_hmasakan18'] = $tekanan_hmasakan18;
+        $data['tekanan_pompamasak'] = $tekanan_pompamasak;
+        $data['suhu_uappreevap1'] = $suhu_uappreevap1;
+        $data['suhu_uappreevap2'] = $suhu_uappreevap2;
+        $data['suhu_uapevap1'] = $suhu_uapevap1;
+        $data['suhu_uapevap2'] = $suhu_uapevap2;
+        $data['suhu_uapevap3'] = $suhu_uapevap3;
+        $data['suhu_uapevap4'] = $suhu_uapevap4;
+        $data['suhu_uapevap5'] = $suhu_uapevap5;
+        $data['suhu_uapevap6'] = $suhu_uapevap6;
+        $data['suhu_uapevap7'] = $suhu_uapevap7;
+        $data['suhu_heater1'] = $suhu_heater1;
+        $data['suhu_heater2'] = $suhu_heater2;
+        $data['suhu_heater3'] = $suhu_heater3;
+        $data['suhu_airinjeksi'] = $suhu_airinjeksi;
+        $data['suhu_airterjun'] = $suhu_airterjun;
+        $data['tekanan_uaptinggi'] = $tekanan_uaptinggi;
+        $data['tekanan_uaprendah'] = $tekanan_uaprendah;
+        $data['tekanan_uapbekas'] = $tekanan_uapbekas;
 
         $this->load->view('static/header',$data);
 		$this->load->view('input_data/data_keliling/edit',$data);

@@ -32,6 +32,8 @@
                     <td><?=$hasil_analisa->id_analisa;?></td>
                     <td><?=$hasil_analisa->waktu;?></td>
                     <td>
+                        <?=$hasil_analisa->tekanan_hpreevap1;?>
+                        <?=$hasil_analisa->tekanan_hpreevap2;?>
                         <?=$hasil_analisa->tekanan_hevap1;?>
                         <?=$hasil_analisa->tekanan_hevap2;?>
                         <?=$hasil_analisa->tekanan_hevap3;?>
@@ -89,6 +91,8 @@
                     <td>
                         <a href="<?=$form_handler_update.
                             $hasil_analisa->id_analisa.'/'.
+                            $hasil_analisa->tekanan_hpreevap1.'/'.
+                            $hasil_analisa->tekanan_hpreevap2.'/'.
                             $hasil_analisa->tekanan_hevap1.'/'.
                             $hasil_analisa->tekanan_hevap2.'/'.
                             $hasil_analisa->tekanan_hevap3.'/'.
