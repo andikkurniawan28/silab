@@ -15,7 +15,12 @@
                 </div>
               <?php endfor; ?>
 
-              <?php if($this->session->userdata('nama') == 'Andik Kurniawan' || 'Muslimin') : ?>
+              <?php 
+                if(
+                    $this->session->userdata('nama') == 'Andik Kurniawan' || 
+                    $this->session->userdata('nama') == 'Muslimin'
+                ) : 
+              ?>
                 <div class="col-md-3">
                   <div class="card">
                     <div class="card-body">
@@ -27,7 +32,16 @@
                 </div>
               <?php endif; ?>
 
-              <?php if($this->session->userdata('nama') == 'Andik Kurniawan') : ?>
+              <?php 
+                if(
+                    $this->session->userdata('nama') == 'Andik Kurniawan' || 
+                    $this->session->userdata('nama') == 'Muslimin' || 
+                    $this->session->userdata('nama') == 'Risky Anggara' || 
+                    $this->session->userdata('nama') == 'Achmad Zauzi Rifqi' || 
+                    $this->session->userdata('nama') == 'M. Arvan Dwi Fatahillah' || 
+                    $this->session->userdata('nama') == 'Aris Dedi Setiawan'
+                ) : 
+              ?>
                 <div class="col-md-3">
                   <div class="card">
                     <div class="card-body">
@@ -58,6 +72,13 @@
                   <br>
                 </div>
 
+              <?php endif; ?>
+
+              <?php 
+                if(
+                    $this->session->userdata('nama') == 'Andik Kurniawan'
+                ) : 
+              ?>
                 <div class="col-md-3">
                   <div class="card">
                     <div class="card-body">
@@ -67,7 +88,6 @@
                   </div>
                   <br>
                 </div>
-
               <?php endif; ?>
 
               

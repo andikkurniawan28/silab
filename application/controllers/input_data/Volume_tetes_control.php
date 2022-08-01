@@ -8,32 +8,18 @@ class Volume_tetes_control extends CI_Controller {
         parent::__construct();
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
-		// $this->checkUserIsAndik();
-		// $this->checkUserIsMuslimin();
         $this->load->model('table/volume_tetes');
     }
 
 	public function checkUserIsLogin()
 	{
-		if($this->session->status != 'login')
+		if($this->session->userdata('status') != 'login')
 		redirect(base_url('auth'));
 	}
 
 	public function checkUserIsAdmin()
 	{
-		if($this->session->role != 'admin')
-		redirect(base_url('auth'));
-	}
-
-	public function checkUserIsAndik()
-	{
-		if($this->session->nama != 'Andik Kurniawan')
-		redirect(base_url('auth'));
-	}
-
-	public function checkUserIsMuslimin()
-	{
-		if($this->session->nama != 'Muslimin')
+		if($this->session->userdata('role') != 'admin')
 		redirect(base_url('auth'));
 	}
 
