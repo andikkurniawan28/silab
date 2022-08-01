@@ -25,7 +25,7 @@ class Analisa_pi_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title'] = ucfirst("Analisa Sabut");
+        $data['page_title'] = ucfirst("Analisa PI");
         $data['hasil_analisa'] = $this->analisa_pi->readData();
         $data['form_handler_create'] = base_url('input_data/analisa_pi_control/create_analisa_pi/');
         $data['form_handler_update'] = base_url('input_data/analisa_pi_control/edit_analisa_pi/');
@@ -39,7 +39,7 @@ class Analisa_pi_control extends CI_Controller {
 
     public function edit_analisa_pi($id, $p1, $p2, $pi)
     {
-        $data['page_title'] = ucfirst("Analisa Sabut");
+        $data['page_title'] = ucfirst("Analisa PI");
         $data['form_handler_update'] = base_url('input_data/analisa_pi_control/update_analisa_pi/');
         $data['id'] = $id;
         $data['p1'] = $p1;
