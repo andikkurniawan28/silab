@@ -72,6 +72,7 @@ class Home extends CI_Controller {
 			'Analisa Sabut',
 			'Analisa PI',
 			'Analisa Nira Kotor',
+			'Data Keliling',
 		);
 
         $data['url'] = array(
@@ -90,6 +91,7 @@ class Home extends CI_Controller {
 			'input_data/analisa_sabut',
 			'input_data/analisa_pi',
 			'input_data/analisa_nira_kotor',
+			'input_data/data_keliling',
 		);
 		$this->load->view('static/header', $data);
 		$this->load->view('input_data/main', $data);
