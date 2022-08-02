@@ -30,11 +30,6 @@
                         <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$zk;?>" name="zk" required>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label" for="exampleInputEmail1">Kadar Air</label>
-                        <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$kadar_air;?>" name="kadar_air" required>
-                    </div>
-
                     <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                     
                 </form>

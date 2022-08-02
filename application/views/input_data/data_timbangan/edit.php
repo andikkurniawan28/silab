@@ -15,12 +15,12 @@
                     <input type="hidden" name="id" value="<?=$id;?>">
 
                     <div class="mb-3">
-                        <label class="form-label" for="exampleInputEmail1">berat_tebu</label>
+                        <label class="form-label" for="exampleInputEmail1">Berat Tebu</label>
                         <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$berat_tebu;?>" name="berat_tebu" required>
                     </div>
 
                     <div class="mb-3">
-                        <label class="form-label" for="exampleInputEmail1">Totalizer</label>
+                        <label class="form-label" for="exampleInputEmail1">Totalizer Nira Mentah</label>
                         <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$totalizer;?>" name="totalizer" required>
                     </div>
 

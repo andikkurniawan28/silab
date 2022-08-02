@@ -38,7 +38,7 @@ class Analisa_ampas_control extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
-    public function edit_analisa_ampas($id, $bahan, $pol_koreksi, $zk, $kadar_air)
+    public function edit_analisa_ampas($id, $bahan, $pol_koreksi, $zk)
     {
         $data['page_title'] = ucfirst("Analisa Ampas");
         $data['form_handler_update'] = base_url('input_data/analisa_ampas_control/update_analisa_ampas/');
@@ -46,7 +46,6 @@ class Analisa_ampas_control extends CI_Controller {
         $data['bahan'] = $bahan;
         $data['pol_koreksi'] = $pol_koreksi;
         $data['zk'] = $zk;
-        $data['kadar_air'] = $kadar_air;
 
         $this->load->view('static/header',$data);
 		$this->load->view('input_data/analisa_ampas/edit',$data);
@@ -57,7 +56,6 @@ class Analisa_ampas_control extends CI_Controller {
     {
         $bahan = $this->input->post('bahan', TRUE);
         $zk = $this->input->post('zk', TRUE);
-
         $pol = $this->saccharomat->getPolByBahan($bahan);
 
         if($pol == 0)
@@ -89,7 +87,7 @@ class Analisa_ampas_control extends CI_Controller {
         $bahan = $this->input->post('bahan', TRUE);
         $pol_koreksi = $this->input->post('pol_koreksi', TRUE);
         $zk = $this->input->post('zk', TRUE);
-        $kadar_air = $this->input->post('kadar_air', TRUE);
+        $kadar_air = 100 - $zk;
 
         $this->analisa_ampas->updateData($id, $bahan, $pol_koreksi, $zk, $kadar_air);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>

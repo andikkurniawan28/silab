@@ -9,6 +9,11 @@
             <div class="modal-body">
                 <form action="<?=$form_handler_create;?>" method="post">
                     <div class="mb-3">
+                    <label for="">Time</label>
+                        <input type="date" class="form-control" id="" name="date" required>
+                        <input type="time" class="form-control" id="" name="time" required>
+                    </div>
+                    <div class="mb-3">
                     <label for="">Bruto</label>
                         <input type="number" class="form-control" id="" name="bruto" required>
                     </div>

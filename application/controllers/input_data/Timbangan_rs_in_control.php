@@ -54,11 +54,14 @@ class Timbangan_rs_in_control extends CI_Controller {
 
     public function create_timbangan_rs_in()
     {
+        $date = $this->input->post('date', TRUE);
+        $time = $this->input->post('time', TRUE);
         $bruto = $this->input->post('bruto', TRUE);
         $tara = $this->input->post('tara', TRUE);
         $netto = $this->input->post('netto', TRUE);
+        $datetime = $date.' '.$time;
 
-        $this->timbangan_rs_in->createData($bruto, $tara, $netto);
+        $this->timbangan_rs_in->createData($bruto, $tara, $netto, $datetime);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
             Data berhasil ditambahkan.
         </div>");

@@ -13,7 +13,7 @@
                         <input type="number" class="form-control" id="" name="berat_tebu" required>
                     </div>
                     <div class="mb-3">
-                        <label for="">Totalizer</label>
+                        <label for="">Totalizer Nira Mentah</label>
                         <input type="number" class="form-control" id="" name="totalizer" step="any">
                     </div>
             </div>

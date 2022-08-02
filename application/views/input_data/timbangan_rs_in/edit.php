@@ -15,6 +15,11 @@
                     <input type="hidden" name="id" value="<?=$id;?>">
 
                     <div class="mb-3">
+                        <label class="form-label" for="exampleInputEmail1">Time</label>
+                        <input class="form-control" id="exampleInputEmail1" type="text" step="any" value="<?=$time;?>" name="time" required>
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label" for="exampleInputEmail1">Bruto</label>
                         <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$bruto;?>" name="bruto" required>
                     </div>
