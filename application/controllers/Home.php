@@ -111,7 +111,7 @@ class Home extends CI_Controller {
 			base_url('monitoring/timbangan_rs_out_report'),
 			base_url('monitoring/timbangan_tetes_report'),
 			base_url('monitoring/taksasi_volume'),
-			base_url('monitoring/imbibisi'),
+			base_url('monitoring/imbibisi_control'),
 		);
 		$this->load->view('static/header', $data);
 		$this->load->view('monitoring/main', $data);
