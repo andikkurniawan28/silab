@@ -25,7 +25,7 @@ class Timbangan_rs_out_control extends CI_Controller {
 
 	public function index()
 	{
-        $data['page_title'] = ucfirst("Timbangan RS In");
+        $data['page_title'] = ucfirst("Timbangan RS Out");
         $data['hasil_analisa'] = $this->timbangan_rs_out->readData();
         $data['form_handler_create'] = base_url('input_data/timbangan_rs_out_control/create_timbangan_rs_out/');
         $data['form_handler_update'] = base_url('input_data/timbangan_rs_out_control/edit_timbangan_rs_out/');
@@ -39,7 +39,7 @@ class Timbangan_rs_out_control extends CI_Controller {
 
     public function edit_timbangan_rs_out($id, $time, $bruto, $tara, $netto)
     {
-        $data['page_title'] = ucfirst("Timbangan RS In");
+        $data['page_title'] = ucfirst("Timbangan RS Out");
         $data['form_handler_update'] = base_url('input_data/timbangan_rs_out_control/update_timbangan_rs_out/');
         $data['id'] = $id;
         $data['time'] = $time;

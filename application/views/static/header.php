@@ -66,7 +66,7 @@
                     <span>Home </span></a>
                 </li>
 
-                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('monitoring');?>"> 
+                <li class="sidebar-item"><a class="sidebar-link" href="<?=base_url('home/show_monitoring');?>"> 
                         <svg class="svg-icon svg-icon-sm svg-icon-heavy">
                             <use xlink:href="#speedometer-1"> </use>
                         </svg><span>Monitoring </span></a>

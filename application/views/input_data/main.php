@@ -18,23 +18,6 @@
               <?php 
                 if(
                     $this->session->userdata('nama') == 'Andik Kurniawan' || 
-                    $this->session->userdata('nama') == 'Muslimin'
-                ) : 
-              ?>
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Taksasi Tetes</h5>
-                      <a href="<?=base_url('input_data/volume_tetes_control');?>" class="btn btn-primary">Enter</a>
-                    </div>
-                  </div>
-                  <br>
-                </div>
-              <?php endif; ?>
-
-              <?php 
-                if(
-                    $this->session->userdata('nama') == 'Andik Kurniawan' || 
                     $this->session->userdata('nama') == 'Muslimin' || 
                     $this->session->userdata('nama') == 'Risky Anggara' || 
                     $this->session->userdata('nama') == 'Achmad Zauzi Rifqi' || 
@@ -72,6 +55,23 @@
                   <br>
                 </div>
 
+              <?php endif; ?>
+
+              <?php 
+                if(
+                    $this->session->userdata('nama') == 'Andik Kurniawan' || 
+                    $this->session->userdata('nama') == 'Muslimin'
+                ) : 
+              ?>
+                <div class="col-md-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Taksasi Tetes</h5>
+                      <a href="<?=base_url('input_data/volume_tetes_control');?>" class="btn btn-primary">Enter</a>
+                    </div>
+                  </div>
+                  <br>
+                </div>
               <?php endif; ?>
 
               <?php 

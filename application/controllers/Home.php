@@ -102,4 +102,20 @@ class Home extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
+	public function show_monitoring()
+	{
+		$data['page_title'] = 'Monitoring';
+		$data['card_title']	= array('Timbangan RS In', 'Timbangan RS Out', 'Timbangan Tetes', 'Taksasi Volume', 'Imbibisi');
+		$data['card_url'] = array(
+			base_url('monitoring/timbangan_rs_in_report'),
+			base_url('monitoring/timbangan_rs_out_report'),
+			base_url('monitoring/timbangan_tetes_report'),
+			base_url('monitoring/taksasi_volume'),
+			base_url('monitoring/imbibisi'),
+		);
+		$this->load->view('static/header', $data);
+		$this->load->view('monitoring/main', $data);
+		$this->load->view('static/footer');
+	}
+
 }

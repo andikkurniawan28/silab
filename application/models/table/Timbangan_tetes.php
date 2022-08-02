@@ -12,7 +12,6 @@ class Timbangan_tetes extends CI_Model {
     {
         $table = $this->defineTable();
         $data = array(
-            'time' => date('Y-m-d H:i'),
             'bruto' => $bruto,
             'tara' => $tara,
             'netto' => $netto,
@@ -47,4 +46,69 @@ class Timbangan_tetes extends CI_Model {
         $table = $this->defineTable();
         $this->db->delete($table, array('id'=>$id));
     }
+
+    public function totalYesterday($time)
+    {
+        $data = $this->db->query
+            ("SELECT SUM(`netto`) AS `total` FROM `timbangan_tetes` WHERE `time` BETWEEN 
+                DATE_SUB('$time', INTERVAL 1 DAY) AND 
+                '$time'
+                ")->result();
+
+        foreach($data as $data)
+            $total = $data->total;
+
+        return $total;
+    }
+
+    public function totalUntilYesterday($time)
+    {
+        $data = $this->db->query
+            ("SELECT SUM(`netto`) AS `total` FROM `timbangan_tetes` WHERE `time` BETWEEN 
+                DATE_SUB('$time', INTERVAL 2 DAY) AND 
+                DATE_SUB('$time', INTERVAL 1 DAY)
+                ")->result();
+
+        foreach($data as $data)
+            $total = $data->total;
+            
+        return $total;
+    }
+
+    public function totalUntilToday($time)
+    {
+        $data = $this->db->query
+            ("SELECT SUM(`netto`) AS `total` FROM `timbangan_tetes` WHERE `time` < '$time'")->result();
+
+        foreach($data as $data)
+            $total = $data->total;
+            
+        return $total;
+    }
+
+    public function totalUntilNow()
+    {
+        $data = $this->db->query
+            ("SELECT SUM(`netto`) AS `total` FROM `timbangan_tetes`")->result();
+
+        foreach($data as $data)
+            $total = $data->total;
+            
+        return $total;
+    }
+
+    public function totalPerHour($time)
+    {
+        $data = $this->db->query
+            ("SELECT SUM(`netto`) AS `total` FROM `timbangan_tetes` WHERE `time` BETWEEN 
+                '$time' AND 
+                DATE_ADD('$time', INTERVAL 1 HOUR)
+                ")->result();
+
+        foreach($data as $data)
+            $total = $data->total;
+
+        return $total;
+    }
+
 }
