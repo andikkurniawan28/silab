@@ -50,4 +50,15 @@ class Saccharomat extends CI_Model {
         $table = $this->defineTable();
         $this->db->delete($table, array('id'=>$id));
     }
+
+    public function getPolByBahan($bahan)
+    {
+        $table = $this->defineTable();
+        $query = $this->db->get_where($table, array('bahan' => $bahan),1,0);
+        foreach($query->result() as $result)
+        {
+            $data = $result->Z;
+        }
+        return $data;
+    }
 }

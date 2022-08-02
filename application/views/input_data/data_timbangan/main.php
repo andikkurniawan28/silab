@@ -19,7 +19,7 @@
                 <tr>
                     <th>#</th>
                     <th>Time</th>
-                    <th>berat_tebu</th>
+                    <th>Berat Tebu</th>
                     <th>Totalizer</th>
                     <th>Flow NM</th>
                     <th>NM % Tebu</th>

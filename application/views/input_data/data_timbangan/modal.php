@@ -9,20 +9,12 @@
             <div class="modal-body">
                 <form action="<?=$form_handler_create;?>" method="post">
                     <div class="mb-3">
-                    <label for="">berat_tebu</label>
+                    <label for="">Berat Tebu</label>
                         <input type="number" class="form-control" id="" name="berat_tebu" required>
                     </div>
                     <div class="mb-3">
                         <label for="">Totalizer</label>
                         <input type="number" class="form-control" id="" name="totalizer" step="any">
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Flow</label>
-                        <input type="number" class="form-control" id="" name="flow_nm" step="any">
-                    </div>
-                    <div class="mb-3">
-                        <label for="">NM % Tebu</label>
-                        <input type="number" class="form-control" id="" name="nm_tebu" step="any">
                     </div>
             </div>
             <div class="modal-footer">

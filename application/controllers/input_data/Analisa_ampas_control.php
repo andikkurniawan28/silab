@@ -9,6 +9,7 @@ class Analisa_ampas_control extends CI_Controller {
 		$this->checkUserIsLogin();
 		$this->checkUserIsAdmin();
         $this->load->model('table/analisa_ampas');
+        $this->load->model('table/saccharomat');
     }
 
 	public function checkUserIsLogin()
@@ -55,16 +56,31 @@ class Analisa_ampas_control extends CI_Controller {
     public function create_analisa_ampas()
     {
         $bahan = $this->input->post('bahan', TRUE);
-        $pol_koreksi = $this->input->post('pol_koreksi', TRUE);
         $zk = $this->input->post('zk', TRUE);
-        $kadar_air = $this->input->post('kadar_air', TRUE);
 
-        $this->analisa_ampas->createData($bahan, $pol_koreksi, $zk, $kadar_air);
-        $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
-            Data berhasil ditambahkan.
-        </div>");
+        $pol = $this->saccharomat->getPolByBahan($bahan);
 
-        redirect(base_url('input_data/analisa_ampas_control'));
+        if($pol == 0)
+        {
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                <strong>Error</strong> : Sampel dengan ID <strong>".$bahan."</strong> tidak ditemukan pada database Saccharomat, masukkan ID Sampel dengan benar.
+            </div>");
+
+            redirect(base_url('input_data/analisa_ampas_control'));
+        }
+        else
+        {
+            $faktor = 0.0286;
+            $kadar_air = 100 - $zk;
+            $pol_koreksi = number_format((($pol/2) * $faktor * ((10000+$kadar_air)/100)*2.5),2);
+
+            $this->analisa_ampas->createData($bahan, $pol_koreksi, $zk, $kadar_air);
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                Data berhasil ditambahkan.
+            </div>");
+
+            redirect(base_url('input_data/analisa_ampas_control'));
+        }
     }
 
     public function update_analisa_ampas()

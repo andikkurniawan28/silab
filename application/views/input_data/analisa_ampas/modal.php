@@ -13,18 +13,18 @@
                         <label for="">ID Sampel</label>
                         <input type="number" class="form-control" id="" name="bahan" step="any">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="">Pol</label>
                         <input type="number" class="form-control" id="" name="pol_koreksi" step="any">
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <label for="">ZK</label>
                         <input type="number" class="form-control" id="" name="zk" step="any">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="">Kadar Air</label>
                         <input type="number" class="form-control" id="" name="kadar_air" step="any">
-                    </div>
+                    </div> -->
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>

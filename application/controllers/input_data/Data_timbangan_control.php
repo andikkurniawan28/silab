@@ -54,11 +54,11 @@ class Data_timbangan_control extends CI_Controller {
 
     public function create_data_timbangan()
     {
-        $bahan = $this->input->post('bahan', TRUE);
         $berat_tebu = $this->input->post('berat_tebu', TRUE);
         $totalizer = $this->input->post('totalizer', TRUE);
-        $flow_nm = $this->input->post('flow_nm', TRUE);
-        $nm_tebu = $this->input->post('nm_tebu', TRUE);
+        $totalizer_old = $this->data_timbangan->getLastTotalizer();
+        $flow_nm = ($totalizer - $totalizer_old) * 0.85;
+        $nm_tebu = number_format(($flow_nm / $berat_tebu) * 1000,2);
 
         $this->data_timbangan->createData($berat_tebu, $totalizer, $flow_nm, $nm_tebu);
         $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>

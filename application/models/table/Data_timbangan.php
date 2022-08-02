@@ -48,4 +48,17 @@ class Data_timbangan extends CI_Model {
         $table = $this->defineTable();
         $this->db->delete($table, array('kode_analisa'=>$id));
     }
+
+    public function getLastTotalizer()
+    {
+        $table = $this->defineTable();
+        $this->db->order_by('kode_analisa', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get($table);
+        foreach($query->result() as $result)
+        {
+            $data = $result->totalizer;
+        }
+        return $data;
+    }
 }
