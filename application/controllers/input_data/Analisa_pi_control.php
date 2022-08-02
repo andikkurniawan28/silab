@@ -37,14 +37,13 @@ class Analisa_pi_control extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
-    public function edit_analisa_pi($id, $p1, $p2, $pi)
+    public function edit_analisa_pi($id, $p1, $p2)
     {
         $data['page_title'] = ucfirst("Analisa PI");
         $data['form_handler_update'] = base_url('input_data/analisa_pi_control/update_analisa_pi/');
         $data['id'] = $id;
         $data['p1'] = $p1;
         $data['p2'] = $p2;
-        $data['pi'] = $pi;
 
         $this->load->view('static/header',$data);
 		$this->load->view('input_data/analisa_pi/edit',$data);
@@ -53,17 +52,25 @@ class Analisa_pi_control extends CI_Controller {
 
     public function create_analisa_pi()
     {
-        $bahan = $this->input->post('bahan', TRUE);
         $p1 = $this->input->post('p1', TRUE);
         $p2 = $this->input->post('p2', TRUE);
-        $pi = $this->input->post('pi', TRUE);
+	    $pi = number_format(($p1/$p2)*100,2);
 
-        $this->analisa_pi->createData($p1, $p2, $pi);
-        $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
-            Data berhasil ditambahkan.
-        </div>");
-
-        redirect(base_url('input_data/analisa_pi_control'));
+        if($pi > 100)
+        {
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                <strong>Error</strong> : Preparation Index melebihi 100%, masukkan data dengan benar.
+            </div>");
+            redirect(base_url('input_data/analisa_pi_control'));
+        }
+        else
+        {
+            $this->analisa_pi->createData($p1, $p2, $pi);
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                Data berhasil ditambahkan.
+            </div>");
+            redirect(base_url('input_data/analisa_pi_control'));
+        }
     }
 
     public function update_analisa_pi()
@@ -71,14 +78,23 @@ class Analisa_pi_control extends CI_Controller {
         $id = $this->input->post('id', TRUE);
         $p1 = $this->input->post('p1', TRUE);
         $p2 = $this->input->post('p2', TRUE);
-        $pi = $this->input->post('pi', TRUE);
+	    $pi = number_format(($p1/$p2)*100,2);
 
-        $this->analisa_pi->updateData($id, $p1, $p2, $pi);
-        $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
-            Data berhasil dirubah.
-        </div>");
-
-        redirect(base_url('input_data/analisa_pi_control'));
+        if($pi > 100)
+        {
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                <strong>Error</strong> : Preparation Index melebihi 100%, masukkan data dengan benar.
+            </div>");
+            redirect(base_url('input_data/analisa_pi_control'));
+        }
+        else
+        {
+            $this->analisa_pi->updateData($id, $p1, $p2, $pi);
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                Data berhasil dirubah.
+            </div>");
+            redirect(base_url('input_data/analisa_pi_control'));
+        }
     }
 
     public function delete_analisa_pi($id)

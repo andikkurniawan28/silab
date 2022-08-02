@@ -16,10 +16,6 @@
                         <label for="">Sabut Kering</label>
                         <input type="number" class="form-control" id="" name="sabut_kering" step="any">
                     </div>
-                    <div class="mb-3">
-                        <label for="">Kadar Sabut</label>
-                        <input type="number" class="form-control" id="" name="kadar_sabut" step="any">
-                    </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>

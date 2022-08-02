@@ -16,10 +16,6 @@
                         <label for="">P2</label>
                         <input type="number" class="form-control" id="" name="p2" step="any">
                     </div>
-                    <div class="mb-3">
-                        <label for="">PI</label>
-                        <input type="number" class="form-control" id="" name="pi" step="any">
-                    </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>

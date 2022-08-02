@@ -37,14 +37,13 @@ class Analisa_sabut_control extends CI_Controller {
 		$this->load->view('static/footer');
 	}
 
-    public function edit_analisa_sabut($id, $sabut_basah, $sabut_kering, $kadar_sabut)
+    public function edit_analisa_sabut($id, $sabut_basah, $sabut_kering)
     {
         $data['page_title'] = ucfirst("Analisa Sabut");
         $data['form_handler_update'] = base_url('input_data/analisa_sabut_control/update_analisa_sabut/');
         $data['id'] = $id;
         $data['sabut_basah'] = $sabut_basah;
         $data['sabut_kering'] = $sabut_kering;
-        $data['kadar_sabut'] = $kadar_sabut;
 
         $this->load->view('static/header',$data);
 		$this->load->view('input_data/analisa_sabut/edit',$data);
@@ -53,17 +52,25 @@ class Analisa_sabut_control extends CI_Controller {
 
     public function create_analisa_sabut()
     {
-        $bahan = $this->input->post('bahan', TRUE);
         $sabut_basah = $this->input->post('sabut_basah', TRUE);
         $sabut_kering = $this->input->post('sabut_kering', TRUE);
-        $kadar_sabut = $this->input->post('kadar_sabut', TRUE);
+        $kadar_sabut = number_format(($sabut_kering / $sabut_basah) * 100,2);
 
-        $this->analisa_sabut->createData($sabut_basah, $sabut_kering, $kadar_sabut);
-        $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
-            Data berhasil ditambahkan.
-        </div>");
-
-        redirect(base_url('input_data/analisa_sabut_control'));
+        if($kadar_sabut > 100)
+        {
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                <strong>Error</strong> : Kadar Sabut melebihi 100%, masukkan data dengan benar.
+            </div>");
+            redirect(base_url('input_data/analisa_sabut_control'));
+        }
+        else
+        {   
+            $this->analisa_sabut->createData($sabut_basah, $sabut_kering, $kadar_sabut);
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                Data berhasil ditambahkan.
+            </div>");
+            redirect(base_url('input_data/analisa_sabut_control'));
+        }
     }
 
     public function update_analisa_sabut()
@@ -71,14 +78,23 @@ class Analisa_sabut_control extends CI_Controller {
         $id = $this->input->post('id', TRUE);
         $sabut_basah = $this->input->post('sabut_basah', TRUE);
         $sabut_kering = $this->input->post('sabut_kering', TRUE);
-        $kadar_sabut = $this->input->post('kadar_sabut', TRUE);
+        $kadar_sabut = number_format(($sabut_kering / $sabut_basah) * 100,2);
 
-        $this->analisa_sabut->updateData($id, $sabut_basah, $sabut_kering, $kadar_sabut);
-        $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
-            Data berhasil dirubah.
-        </div>");
-
-        redirect(base_url('input_data/analisa_sabut_control'));
+        if($kadar_sabut > 100)
+        {
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                <strong>Error</strong> : Kadar Sabut melebihi 100%, masukkan data dengan benar.
+            </div>");
+            redirect(base_url('input_data/analisa_sabut_control'));
+        }
+        else
+        {
+            $this->analisa_sabut->updateData($id, $sabut_basah, $sabut_kering, $kadar_sabut);
+            $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>
+                Data berhasil dirubah.
+            </div>");
+            redirect(base_url('input_data/analisa_sabut_control'));
+        }
     }
 
     public function delete_analisa_sabut($id)

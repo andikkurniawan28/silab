@@ -35,8 +35,7 @@
                         <a href="<?=$form_handler_update.
                             $hasil_analisa->id.'/'.
                             $hasil_analisa->p1.'/'.
-                            $hasil_analisa->p2.'/'.
-                            $hasil_analisa->pi.'/'
+                            $hasil_analisa->p2.'/'
                             ;?>" class="btn btn-sm btn-warning">Edit</a>
                         <a href="<?=$form_handler_delete.$hasil_analisa->id;?>" class="btn btn-sm btn-danger">Hapus</a>
                     </td>

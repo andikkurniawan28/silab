@@ -24,11 +24,6 @@
                         <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$sabut_kering;?>" name="sabut_kering" required>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label" for="exampleInputEmail1">Kadar Sabut</label>
-                        <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$kadar_sabut;?>" name="kadar_sabut" required>
-                    </div>
-
                     <button class="btn btn-warning" type="submit">Simpan</button>
                 </form>
             </div>

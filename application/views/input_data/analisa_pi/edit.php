@@ -24,11 +24,6 @@
                         <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$p2;?>" name="p2" required>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label" for="exampleInputEmail1">PI</label>
-                        <input class="form-control" id="exampleInputEmail1" type="number" step="any" value="<?=$pi;?>" name="pi" required>
-                    </div>
-
                     <button class="btn btn-warning" type="submit">Simpan</button>
                 </form>
             </div>
