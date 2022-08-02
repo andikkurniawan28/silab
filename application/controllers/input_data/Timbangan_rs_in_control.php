@@ -26,6 +26,8 @@ class Timbangan_rs_in_control extends CI_Controller {
 	public function index()
 	{
         $data['page_title'] = ucfirst("Timbangan RS In");
+		$data['url'] = base_url('monitoring/timbangan_rs_in_report');
+
         $data['hasil_analisa'] = $this->timbangan_rs_in->readData();
         $data['form_handler_create'] = base_url('input_data/timbangan_rs_in_control/create_timbangan_rs_in/');
         $data['form_handler_update'] = base_url('input_data/timbangan_rs_in_control/edit_timbangan_rs_in/');

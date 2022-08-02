@@ -5,9 +5,11 @@
         <li class="breadcrumb-item"><a href="<?=base_url();?>">Home</a></li>
         <li class="breadcrumb-item"><a href="<?=base_url('home/show_monitoring');?>">Monitoring</a></li>
         <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
+        
         <?php if($this->session->userdata('role') == 'admin') : ?>
-        <li class="breadcrumb-item"><a href="<?=base_url('input_data/timbangan_rs_in_control');?>">Adjust</a></li>
+            <li class="breadcrumb-item"><a href="<?=$url;?>">Adjust</a></li>
         <?php endif; ?>
+
     </ol>
 </nav><hr>
 

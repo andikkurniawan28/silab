@@ -22,7 +22,9 @@ class Timbangan_rs_in_report extends CI_Controller {
 		$now  = date('Y-m-d');
 		$yesterday = date('Y-m-d', strtotime('-1 days', strtotime($now)));
 
+		$data['url'] = base_url('input_data/timbangan_rs_in_control');
         $data['page_title'] = ucfirst("Timbangan RS In");
+		
         $data['hasil_analisa'] = $this->timbangan_rs_in->readDataLimit();
         $data['total_kemarin'] = $this->timbangan_rs_in->totalYesterday($time);
         $data['total_sd_kemarin'] = $this->timbangan_rs_in->totalUntilYesterday($time);

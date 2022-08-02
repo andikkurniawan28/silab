@@ -6,7 +6,7 @@
         <li class="breadcrumb-item"><a href="<?=base_url('home/show_input_data');?>">Input Data</a></li>
         <li class="breadcrumb-item active" aria-current="page"><?=$page_title;?></li>
         <li class="breadcrumb-item"><a href="#" data-bs-toggle="modal" data-bs-target="#inputData">Tambah Data</a></li>
-        <li class="breadcrumb-item"><a href="<?=base_url('monitoring/timbangan_rs_in_report');?>">Monitor</a></li>
+        <li class="breadcrumb-item"><a href="<?=$url;?>">Monitor</a></li>
     </ol>
 </nav><hr>
 
