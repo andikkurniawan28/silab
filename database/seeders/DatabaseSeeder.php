@@ -90,13 +90,13 @@ class DatabaseSeeder extends Seeder
             ['name' => 'NM Sulfitasi', 'station_id' => 3, 'method_id' => 4],
             ['name' => 'Nira Tapis', 'station_id' => 3, 'method_id' => 4],
             ['name' => 'Nira Encer', 'station_id' => 3, 'method_id' => 4],
-            ['name' => 'Blotong RVF 1', 'station_id' => 3, 'method_id' => 8],
-            ['name' => 'Blotong RVF 2', 'station_id' => 3, 'method_id' => 8],
-            ['name' => 'Blotong RVF 3', 'station_id' => 3, 'method_id' => 8],
-            ['name' => 'Blotong RVF 4', 'station_id' => 3, 'method_id' => 8],
-            ['name' => 'Blotong RVF Timur', 'station_id' => 3, 'method_id' => 8],
-            ['name' => 'Blotong RVF Barat', 'station_id' => 3, 'method_id' => 8],
-            ['name' => 'Blotong RVF Truk', 'station_id' => 3, 'method_id' => 8],
+            ['name' => 'Blotong RVF 1', 'station_id' => 3, 'method_id' => 3],
+            ['name' => 'Blotong RVF 2', 'station_id' => 3, 'method_id' => 3],
+            ['name' => 'Blotong RVF 3', 'station_id' => 3, 'method_id' => 3],
+            ['name' => 'Blotong RVF 4', 'station_id' => 3, 'method_id' => 3],
+            ['name' => 'Blotong RVF Timur', 'station_id' => 3, 'method_id' => 3],
+            ['name' => 'Blotong RVF Barat', 'station_id' => 3, 'method_id' => 3],
+            ['name' => 'Blotong RVF Truk', 'station_id' => 3, 'method_id' => 3],
             ['name' => 'Nira Kental', 'station_id' => 4, 'method_id' => 4],
             ['name' => 'NK Sulfitasi', 'station_id' => 4, 'method_id' => 4],
             ['name' => 'Pre-Evaporator 1', 'station_id' => 4, 'method_id' => 2],
@@ -161,7 +161,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'HW', 'station_id' => 10, 'method_id' => 9],
             ['name' => 'Gula Produksi 50Kg', 'station_id' => 11, 'method_id' => 10],
             ['name' => 'Gula Produksi Retail', 'station_id' => 11, 'method_id' => 10],
-            ['name' => 'Kapur PT Sedar', 'station_id' => 12, 'method_id' => 11],
+            ['name' => 'Kapur PT Sedar', 'station_id' => 3, 'method_id' => 11],
         ];
 
         $stations = [
@@ -176,7 +176,6 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Tangki'],
             ['name' => 'Ketel'],
             ['name' => 'Packer'],
-            ['name' => 'Kapur'],
         ];
 
         $methods = [
@@ -193,11 +192,28 @@ class DatabaseSeeder extends Seeder
             ['description' => "Kadar Kapur"],
             ['description' => "Preparation Index, Kadar Sabut"],
         ];
-
+        
         $samplings = [
             ['sample_id' => 1],
             ['sample_id' => 2],
             ['sample_id' => 3],
+            ['sample_id' => 4],
+            ['sample_id' => 5],
+            ['sample_id' => 6],
+            ['sample_id' => 7],
+            ['sample_id' => 8],
+            ['sample_id' => 9],
+            ['sample_id' => 10],
+            ['sample_id' => 11],
+            ['sample_id' => 12],
+            ['sample_id' => 13],
+            ['sample_id' => 14],
+            ['sample_id' => 15],
+            ['sample_id' => 16],
+            ['sample_id' => 17],
+            ['sample_id' => 18],
+            ['sample_id' => 19],
+            ['sample_id' => 20],
         ];
 
         User::insert($users);
