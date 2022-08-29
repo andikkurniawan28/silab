@@ -193,28 +193,10 @@ class DatabaseSeeder extends Seeder
             ['description' => "Preparation Index, Kadar Sabut"],
         ];
         
-        $samplings = [
-            ['sample_id' => 1],
-            ['sample_id' => 2],
-            ['sample_id' => 3],
-            ['sample_id' => 4],
-            ['sample_id' => 5],
-            ['sample_id' => 6],
-            ['sample_id' => 7],
-            ['sample_id' => 8],
-            ['sample_id' => 9],
-            ['sample_id' => 10],
-            ['sample_id' => 11],
-            ['sample_id' => 12],
-            ['sample_id' => 13],
-            ['sample_id' => 14],
-            ['sample_id' => 15],
-            ['sample_id' => 16],
-            ['sample_id' => 17],
-            ['sample_id' => 18],
-            ['sample_id' => 19],
-            ['sample_id' => 20],
-        ];
+        for($i = 0; $i < count($samples); $i++)
+        {
+            $samplings[$i] = ['sample_id' => $i+1];
+        }
 
         User::insert($users);
         Role::insert($roles);
