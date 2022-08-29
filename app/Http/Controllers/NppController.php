@@ -113,4 +113,11 @@ class NppController extends Controller
     {
         return number_format(0.7 * ($pol - 0.5 * ($brix - $pol)),2);
     }
+
+    public function showNPP()
+    {
+        $stations = Station::all();
+        $npps = Npp::all();
+        return view('npp.show_npp', compact('stations', 'npps'));
+    }
 }

@@ -23,6 +23,9 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('show-npp') }}">
+                    Lab NPP
+                </a>
                 @foreach ($stations as $stations)
                     <a class="collapse-item" href="{{ route('stations-result', [strtolower($stations->name), $stations->id]) }}">
                         {{ $stations->name }}
@@ -31,24 +34,6 @@
             </div>
         </div>
     </li>
-
-    @if(session('role') == 1)
-    
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-database"></i>
-            <span>Master Data</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('users.index') }}">User</a>
-                <a class="collapse-item" href="{{ route('roles.index') }}">Hak Akses</a>
-                <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
-                <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
-            </div>
-        </div>
-    </li>
-    @endif
 
     @if(session('role') == 1 or session('role') == 2)
 
@@ -78,6 +63,26 @@
             </div>
         </div>
     </li>
+
+    @endif
+
+    @if(session('role') == 1)
+    
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-database"></i>
+            <span>Master Data</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('users.index') }}">User</a>
+                <a class="collapse-item" href="{{ route('roles.index') }}">Hak Akses</a>
+                <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
+                <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
+            </div>
+        </div>
+    </li>
+    
     @endif
 
 

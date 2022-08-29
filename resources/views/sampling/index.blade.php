@@ -41,6 +41,9 @@
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $sampling->id }}">
                                     Hapus
                                 </button>
+                                <a href="{{ route('print-barcode', $sampling->id) }}" type="button" class="btn btn-info">
+                                    Cetak Ulang
+                                </a>
                             </td>
                         </tr>
                         @endforeach

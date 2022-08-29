@@ -46,7 +46,13 @@ class SamplingController extends Controller
     public function store(Request $request)
     {
         Sampling::create($request->all());
-        return redirect()->route('samplings.index')->with('success', 'Data berhasil disimpan');
+        $sample = Sample::where('id', $request->sample_id)->get();
+        $get_data = Sampling::orderBy('id', 'desc')->limit(1)->get();
+        foreach($get_data as $data)
+        {
+            $barcode = $data->id;
+        }
+        return view('sampling.barcode', compact('barcode', 'sample'));
     }
 
     /**
@@ -103,5 +109,14 @@ class SamplingController extends Controller
     {
         Sampling::where('id', $id)->delete();
         return redirect()->route('samplings.index')->with('success', 'Data berhasil dihapus');
+    }
+    
+    public function printBarcode($id)
+    {
+        $sample = Sampling::join('samples', 'samplings.sample_id', 'samples.id')
+            ->select('samplings.*', 'samples.name as sample_name')
+            ->where('samplings.id', $id)
+            ->get();
+        return view('sampling.barcode2', compact('sample'));
     }
 }

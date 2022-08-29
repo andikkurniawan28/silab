@@ -56,3 +56,5 @@ Route::resource('preparations', PreparationController::class)->middleware(['user
 
 Route::get('stations-result/{title}/{id}', [ HomeController::class, 'showStation' ])->middleware('user_is_login')->name('stations-result');
 Route::get('methods-result/{id}/{method_id}/{sample_name}', [ HomeController::class, 'showMethod' ])->middleware('user_is_login')->name('methods-result');
+Route::get('print-barcode/{id}', [ SamplingController::class, 'printBarcode' ])->middleware(['user_is_login', 'only_admin_qc'])->name('print-barcode');
+Route::get('show-npp', [NppController::class, 'showNPP'])->middleware('user_is_login')->name('show-npp');
