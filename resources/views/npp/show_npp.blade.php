@@ -21,11 +21,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Polbaca</th>
-                            <th>% Brix</th>
-                            <th>% Pol</th>
-                            <th>% HK</th>
-                            <th>Rendemen</th>
+                            <th>Brix</th>
+                            <th>Pol</th>
+                            <th>HK</th>
+                            <th>R</th>
                             <th>Pengambilan</th>
                         </tr>
                     </thead>
@@ -33,7 +32,6 @@
                         @foreach ($npps as $npp)
                         <tr>
                             <td>{{ $npp->id }}</td>
-                            <td>{{ $npp->pol }}</td>
                             <td>{{ $npp->percent_brix }}</td>
                             <td>{{ $npp->percent_pol }}</td>
                             <td>{{ $npp->purity }}</td>
