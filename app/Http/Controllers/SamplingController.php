@@ -119,4 +119,20 @@ class SamplingController extends Controller
             ->get();
         return view('sampling.barcode2', compact('sample'));
     }
+    
+    public function eRonsel()
+    {
+        $stations = Station::all();
+        $samples = Sample::where('station_id', 6)->get();
+        return view('sampling.index3', compact('stations', 'samples'));
+    }
+
+    public function saveRonsel(Request $request)
+    {
+        Sampling::create($request->all());
+        $data = Sampling::join('samples', 'samplings.sample_id', 'samples.id')
+            ->select('samplings.*', 'samples.name as sample_name')
+            ->orderBy('id', 'desc')->limit(1)->get();
+        return view('sampling.barcode3', compact('data'));
+    }
 }

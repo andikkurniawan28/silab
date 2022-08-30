@@ -45,8 +45,8 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
-                <a class="collapse-item" href="">Taksasi</a>
-                <a class="collapse-item" href="">eRonsel</a>
+                <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
+                <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
             </div>
         </div>
     </li>
@@ -79,6 +79,7 @@
                 <a class="collapse-item" href="{{ route('calciums.index') }}">Kapur</a>
                 <a class="collapse-item" href="{{ route('fibers.index') }}">Sabut</a>
                 <a class="collapse-item" href="{{ route('preparations.index') }}">PI</a>
+                <a class="collapse-item" href="{{ route('tanks.index') }}">Taksasi Tetes</a>
             </div>
         </div>
     </li>

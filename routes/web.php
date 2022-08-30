@@ -21,6 +21,8 @@ use App\Http\Controllers\SampleController;
 use App\Http\Controllers\SamplingController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\SulphurController;
+use App\Http\Controllers\TankController;
+use App\Http\Controllers\TaxationController;
 use App\Http\Controllers\TsaiController;
 use App\Http\Controllers\UmumController;
 use App\Http\Controllers\UserController;
@@ -56,9 +58,14 @@ Route::resource('calciums', CalciumController::class)->middleware(['user_is_logi
 Route::resource('fibers', FiberController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('preparations', PreparationController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('balances', BalanceController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('tanks', TankController::class)->middleware(['user_is_login', 'only_admin_qc']);
+
 Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
+Route::resource('taxations', TaxationController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
 
 Route::get('stations-result/{title}/{id}', [ HomeController::class, 'showStation' ])->middleware('user_is_login')->name('stations-result');
 Route::get('methods-result/{id}/{method_id}/{sample_name}', [ HomeController::class, 'showMethod' ])->middleware('user_is_login')->name('methods-result');
 Route::get('print-barcode/{id}', [ SamplingController::class, 'printBarcode' ])->middleware(['user_is_login', 'only_admin_qc'])->name('print-barcode');
 Route::get('show-npp', [NppController::class, 'showNPP'])->middleware('user_is_login')->name('show-npp');
+Route::get('eRonsel', [SamplingController::class, 'eRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('eRonsel');
+Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('saveRonsel');
