@@ -35,6 +35,24 @@
         </div>
     </li>
 
+    @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
+            <i class="fas fa-fw fa-eye"></i>
+            <span>Monitoring</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+                <a class="collapse-item" href="">Taksasi</a>
+                <a class="collapse-item" href="">eRonsel</a>
+            </div>
+        </div>
+    </li>
+
+    @endif
+
     @if(session('role') == 1 or session('role') == 2)
 
     <li class="nav-item">
@@ -46,6 +64,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
                 <a class="collapse-item" href="{{ route('samplings.index') }}">Barcode</a>
+                <a class="collapse-item" href="{{ route('balances.index') }}">Flow Nira Mentah</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
                 <a class="collapse-item" href="{{ route('moistures.index') }}">Moisture</a>
@@ -93,26 +112,6 @@
     <div class="sidebar-heading">
         Addons
     </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
-            </div>
-        </div>
-    </li>
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">

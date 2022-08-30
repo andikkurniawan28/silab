@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Imbibition;
+use App\Models\Station;
 use Illuminate\Http\Request;
 
 class ImbibitionController extends Controller
@@ -14,7 +15,9 @@ class ImbibitionController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $imbibitions = Imbibition::all();
+        return view('imbibition.index', compact('stations', 'imbibitions'));
     }
 
     /**
@@ -35,7 +38,25 @@ class ImbibitionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data_before = Imbibition::orderBy('id', 'desc')->limit(1)->select('totalizer');
+
+        if($data_before->count() > 0)
+        {
+            foreach($data_before->get() as $data)
+            {
+                $last_totalizer = $data->totalizer;
+            }
+        }
+        else
+        {
+            $last_totalizer = 0;
+        }
+
+        $flow = ($request->totalizer - $last_totalizer) * 1;
+        $request->request->add(['flow' => $flow]);
+
+        Imbibition::create($request->all());
+        return redirect()->back()->with('success', 'Data berhasil disimpan.');
     }
 
     /**
@@ -67,9 +88,13 @@ class ImbibitionController extends Controller
      * @param  \App\Models\Imbibition  $imbibition
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Imbibition $imbibition)
+    public function update(Request $request, $id)
     {
-        //
+        Imbibition::where('id', $id)->update([
+            'totalizer' => $request->totalizer,
+            'flow' => $request->flow,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diupdate.');
     }
 
     /**
@@ -78,8 +103,9 @@ class ImbibitionController extends Controller
      * @param  \App\Models\Imbibition  $imbibition
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Imbibition $imbibition)
+    public function destroy($id)
     {
-        //
+        Imbibition::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
 }

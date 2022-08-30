@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('sugar_cane')->nullable();
             $table->integer('totalizer_raw_juice')->nullable();
             $table->integer('flow_raw_juice')->nullable();
-            $table->integer('raw_juice_percent_sugar_cane')->nullable();
+            $table->float('raw_juice_percent_sugar_cane')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

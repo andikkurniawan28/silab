@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BaggaseController;
+use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\BoilerController;
 use App\Http\Controllers\CalciumController;
 use App\Http\Controllers\ColoromatController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\DiameterController;
 use App\Http\Controllers\FiberController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HplcController;
+use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MethodController;
 use App\Http\Controllers\MoistureController;
@@ -53,6 +55,8 @@ Route::resource('hplcs', HplcController::class)->middleware(['user_is_login', 'o
 Route::resource('calciums', CalciumController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('fibers', FiberController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('preparations', PreparationController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('balances', BalanceController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
 
 Route::get('stations-result/{title}/{id}', [ HomeController::class, 'showStation' ])->middleware('user_is_login')->name('stations-result');
 Route::get('methods-result/{id}/{method_id}/{sample_name}', [ HomeController::class, 'showMethod' ])->middleware('user_is_login')->name('methods-result');

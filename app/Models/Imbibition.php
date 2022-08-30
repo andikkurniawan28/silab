@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Imbibition extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'totalizer',
+        'flow',
+    ];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Balance;
+use App\Models\Station;
 use Illuminate\Http\Request;
 
 class BalanceController extends Controller
@@ -14,7 +15,9 @@ class BalanceController extends Controller
      */
     public function index()
     {
-        //
+        $stations = Station::all();
+        $balances = Balance::all();
+        return view('balance.index', compact('stations', 'balances'));
     }
 
     /**
@@ -35,7 +38,38 @@ class BalanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data_before = Balance::orderBy('id', 'desc')->limit(1)->select('totalizer_raw_juice');
+
+        if($data_before->count() > 0)
+        {
+            foreach($data_before->get() as $data)
+            {
+                $last_totalizer = $data->totalizer_raw_juice;
+            }
+        }
+        else
+        {
+            $last_totalizer = 0;
+        }
+
+        $flow_raw_juice = ($request->totalizer_raw_juice - $last_totalizer) * 1;
+
+        if($request->sugar_cane > 0)
+        {
+            $raw_juice_percent_sugar_cane = ($flow_raw_juice / $request->sugar_cane * 100);
+        }
+        else
+        {
+            $raw_juice_percent_sugar_cane = 0;
+        }
+
+        $request->request->add([
+            'flow_raw_juice' => $flow_raw_juice,
+            'raw_juice_percent_sugar_cane' => $raw_juice_percent_sugar_cane,
+        ]);
+
+        Balance::create($request->all());
+        return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan.');
     }
 
     /**
@@ -67,9 +101,25 @@ class BalanceController extends Controller
      * @param  \App\Models\Balance  $balance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Balance $balance)
+    public function update(Request $request, $id)
     {
-        //
+        if($request->sugar_cane > 0)
+        {
+            $raw_juice_percent_sugar_cane = ($request->flow_raw_juice / $request->sugar_cane * 100);
+        }
+        else
+        {
+            $raw_juice_percent_sugar_cane = 0;
+        }
+
+        Balance::where('id', $id)->update([
+            'sugar_cane' => $request->sugar_cane,
+            'totalizer_raw_juice' => $request->totalizer_raw_juice,
+            'flow_raw_juice' => $request->flow_raw_juice,
+            'raw_juice_percent_sugar_cane' => $raw_juice_percent_sugar_cane,
+        ]);
+        
+        return redirect()->back()->with('success', 'Sukses : Data berhasil diupdate.');
     }
 
     /**
@@ -78,8 +128,9 @@ class BalanceController extends Controller
      * @param  \App\Models\Balance  $balance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Balance $balance)
+    public function destroy($id)
     {
-        //
+        Balance::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus.');
     }
 }
