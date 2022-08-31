@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

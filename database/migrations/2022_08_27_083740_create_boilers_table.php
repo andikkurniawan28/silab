@@ -20,8 +20,8 @@ return new class extends Migration
             $table->float('pH');
             $table->float('hardness')->nullable();
             $table->float('phospate')->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

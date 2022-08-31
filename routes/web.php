@@ -26,6 +26,7 @@ use App\Http\Controllers\TaxationController;
 use App\Http\Controllers\TsaiController;
 use App\Http\Controllers\UmumController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Report;
 use Illuminate\Support\Facades\Route;
 
 Route::view('login', 'auth.login')->name('login');
@@ -69,3 +70,6 @@ Route::get('print-barcode/{id}', [ SamplingController::class, 'printBarcode' ])-
 Route::get('show-npp', [NppController::class, 'showNPP'])->middleware('user_is_login')->name('show-npp');
 Route::get('eRonsel', [SamplingController::class, 'eRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('eRonsel');
 Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('saveRonsel');
+
+Route::get('dailyReport', [ HomeController::class, 'dailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('dailyReport');
+Route::post('showDailyReport', [ Report::class, 'showDailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReport');

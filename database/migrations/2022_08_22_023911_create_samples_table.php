@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->integer('station_id')->index();
             $table->integer('method_id')->index()->nullable();
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

@@ -127,6 +127,11 @@ class HomeController extends Controller
                 ->get();
 
         return view('home.show_method', compact('stations', 'samples', 'method_id', 'sample_name'));
+    }
 
+    public function dailyReport()
+    {
+        $stations = Station::all();
+        return view('report.daily', compact('stations'));
     }
 }

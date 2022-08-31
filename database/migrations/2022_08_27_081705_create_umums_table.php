@@ -19,8 +19,8 @@ return new class extends Migration
             $table->float('cao');
             $table->float('pH');
             $table->float('turbidity');
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->dateTime('created_at')->useCurrent();
+            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
