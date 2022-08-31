@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('sampling_id')->index()->unique();
             $table->float('pi');
-            $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('role_id')->index()->default(4);
             $table->boolean('is_active')->default(1);
-            $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

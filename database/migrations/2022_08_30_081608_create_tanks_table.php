@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('volume_t2')->nullable();
             $table->integer('volume_t3')->nullable();
             $table->integer('meters')->nullable();
-            $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

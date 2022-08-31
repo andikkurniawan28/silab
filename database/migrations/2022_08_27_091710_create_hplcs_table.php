@@ -19,8 +19,8 @@ return new class extends Migration
             $table->float('fructose');
             $table->float('glucose');
             $table->float('succrose');
-            $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

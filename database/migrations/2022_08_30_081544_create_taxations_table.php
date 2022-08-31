@@ -119,8 +119,8 @@ return new class extends Migration
             $table->integer('filtered_melt_tank2')->nullable();
             $table->integer('back_wash_tank1')->nullable();
             $table->integer('back_wash_tank2')->nullable();
-            $table->dateTime('created_at')->useCurrent();
-            $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 
