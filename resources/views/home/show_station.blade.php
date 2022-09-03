@@ -72,7 +72,7 @@
                                     $sample->id, 
                                     $sample->method_id,
                                      $sample->name,
-                                ]) }}">
+                                ]) }}" target="_blank">
                                 {{ $sample->name }}
                             </a>
                         </div>

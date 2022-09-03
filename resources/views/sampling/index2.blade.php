@@ -52,7 +52,7 @@
                             <a href="#" data-toggle="modal" data-target="#edit{{ $sample->id }}"><h6 class="m-0 font-weight-bold text-white">{{ $sample->name }}</h5></a>
                         </div>
                         <div class="card-body bg-dark">
-                            <form action="{{ route('samplings.store') }}" method="POST">
+                            <form action="{{ route('samplings.store') }}" method="POST" target="_blank">
                                 @csrf
                                 @method('POST')
                                 <input type="hidden" value="{{ $sample->id }}" name="sample_id">

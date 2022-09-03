@@ -134,4 +134,10 @@ class HomeController extends Controller
         $stations = Station::all();
         return view('report.daily', compact('stations'));
     }
+
+    public function coaReport()
+    {
+        $stations = Station::all();
+        return view('coa.index', compact('stations'));
+    }
 }

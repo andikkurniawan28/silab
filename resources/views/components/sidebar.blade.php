@@ -15,6 +15,8 @@
         <i class="fas fa-fw fa-home"></i>
         <span>Home</span></a>
     </li>
+    
+    <hr class="sidebar-divider">
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -55,6 +57,8 @@
 
     @if(session('role') == 1 or session('role') == 2)
 
+    <hr class="sidebar-divider">
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-edit"></i>
@@ -62,6 +66,7 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Quality Assurance:</h6>
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
                 <a class="collapse-item" href="{{ route('samplings.index') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('balances.index') }}">Flow Nira Mentah</a>
@@ -79,6 +84,8 @@
                 <a class="collapse-item" href="{{ route('calciums.index') }}">Kapur</a>
                 <a class="collapse-item" href="{{ route('fibers.index') }}">Sabut</a>
                 <a class="collapse-item" href="{{ route('preparations.index') }}">PI</a>
+                <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling Proses</a>
+                <a class="collapse-item" href="{{ route('chemicals.index') }}">Bahan Kimia</a>
                 <a class="collapse-item" href="{{ route('tanks.index') }}">Taksasi Tetes</a>
             </div>
         </div>
@@ -106,11 +113,12 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-print"></i>
-            <span>Laporan</span>
+            <span>Report</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('dailyReport') }}">Lab</a>
+                <a class="collapse-item" href="{{ route('dailyReport') }}">Laporan QA</a>
+                <a class="collapse-item" href="{{ route('coaReport') }}">COA</a>
             </div>
         </div>
     </li>

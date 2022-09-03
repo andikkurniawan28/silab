@@ -16,7 +16,7 @@
             <h5 class="m-0 font-weight-bold text-primary">eRonsel</h5>
         </div>
         <div class="card-body">
-            <form method ="POST" action="{{ route('saveRonsel') }}">
+            <form method ="POST" action="{{ route('saveRonsel') }}" target="_blank">
             @csrf
             @method('POST')
 														

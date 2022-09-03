@@ -13,13 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('saccharomats', function (Blueprint $table) {
+        Schema::create('chemicals', function (Blueprint $table) {
             $table->id();
-            $table->integer('sampling_id')->index()->unique();
-            $table->float('pol')->nullable();
-            $table->float('percent_brix')->nullable();
-            $table->float('percent_pol')->nullable();
-            $table->float('purity')->nullable();
+            $table->integer('kapur')->nullable();
+            $table->integer('belerang')->nullable();
+            $table->integer('floc')->nullable();
+            $table->integer('naoh')->nullable();
+            $table->integer('b894')->nullable();
+            $table->integer('b895')->nullable();
+            $table->integer('b210')->nullable();
+            $table->integer('asam_phospat')->nullable();
+            $table->integer('blotong')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -32,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('saccharomats');
+        Schema::dropIfExists('chemicals');
     }
 };

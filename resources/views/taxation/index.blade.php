@@ -33,7 +33,7 @@
                             <td>{{ $taxation->opr }}</td>
                             <td>{{ $taxation->created_at }}</td>
                             <td>
-                                <a href="{{ route('taxations.show', $taxation->id) }}" type="button" class="btn btn-success">
+                                <a href="{{ route('taxations.show', $taxation->id) }}" type="button" class="btn btn-success" target="_blank">
                                     Show
                                 </a>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $taxation->id }}">

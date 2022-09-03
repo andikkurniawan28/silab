@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AroundController;
 use App\Http\Controllers\BaggaseController;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\BoilerController;
 use App\Http\Controllers\CalciumController;
+use App\Http\Controllers\ChemicalController;
 use App\Http\Controllers\ColoromatController;
 use App\Http\Controllers\DiameterController;
 use App\Http\Controllers\FiberController;
@@ -60,6 +62,8 @@ Route::resource('fibers', FiberController::class)->middleware(['user_is_login', 
 Route::resource('preparations', PreparationController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('balances', BalanceController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('tanks', TankController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('chemicals', ChemicalController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('arounds', AroundController::class)->middleware(['user_is_login', 'only_admin_qc']);
 
 Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
 Route::resource('taxations', TaxationController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
@@ -73,3 +77,6 @@ Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware
 
 Route::get('dailyReport', [ HomeController::class, 'dailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('dailyReport');
 Route::post('showDailyReport', [ Report::class, 'showDailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReport');
+Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('coaReport');
+Route::post('showCoaTetes', [ Report::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
+Route::post('showCoaKapur', [ Report::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');

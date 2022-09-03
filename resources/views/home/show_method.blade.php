@@ -98,6 +98,10 @@
                             @case(1)
                                 <td>{{ $sample->icumsa }}</td>
                                 <td>{{ $sample->moisture_content }}</td>
+                                <td>{{ 100 - $sample->moisture_content }}</td>
+                                <td>{{ ($sample->purity*(100-$sample->moisture_content))/100 }}</td>
+                                <td>{{ $sample->so2 }}</td>
+                                <td>{{ $sample->bjb }}</td>
                                 @break
                             @case(2)
                                 <td>{{ $sample->percent_brix }}</td>

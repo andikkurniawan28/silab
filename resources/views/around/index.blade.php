@@ -13,7 +13,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">Barcode</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('keliling') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -21,27 +21,22 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nama Sampel</th>
                             <th>Created</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($samplings as $sampling)
+                        @foreach ($arounds as $around)
                         <tr>
-                            <td>{{ $sampling->id }}</td>
-                            <td>{{ $sampling->sample_name }}</td>
-                            <td>{{ $sampling->created_at }}</td>
+                            <td>{{ $around->id }}</td>
+                            <td>{{ $around->created_at }}</td>
                             <td>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $sampling->id }}">
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $sampling->id }}">
+                                <a href="{{ route('arounds.show', $around->id) }}" type="button" class="btn btn-success">
+                                    Show
+                                </a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $around->id }}">
                                     Hapus
                                 </button>
-                                <a href="{{ route('print-barcode', $sampling->id) }}" type="button" class="btn btn-info" target="_blank">
-                                    Cetak Ulang
-                                </a>
                             </td>
                         </tr>
                         @endforeach
@@ -50,16 +45,16 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ route('samplings.index') }}" type="button" class="btn btn-primary">
-                Cetak Barcode Sampel
-            </a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+                Tambah {{ ucfirst('keliling') }}
+            </button>
         </div>
     </div>
 </div>
 @endsection
 
 @section('modal')
-{{-- @include('sampling.create') --}}
-@include('sampling.edit')
-@include('sampling.delete')
+@include('around.create')
+{{-- @include('around.edit') --}}
+@include('around.delete')
 @endsection
