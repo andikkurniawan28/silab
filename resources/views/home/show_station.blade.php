@@ -198,8 +198,8 @@
                                         <td>{{ $barcode[$sample->id][$i]['tsai'] }}</td>
                                         @break
                                     @case(7)
-                                        <td>{{ $barcode[$sample->id][$i]['corrected_pol'] }}</td>
-                                        <td>{{ $barcode[$sample->id][$i]['water'] }}</td>
+                                        <td>{{ $barcode[$sample->id][$i]['pol'] }}</td>
+                                        <td>{{ $barcode[$sample->id][$i]['moisture_content'] }}</td>
                                         @break
                                     @case(8)
                                         <td>{{ $barcode[$sample->id][$i]['pol'] }}</td>
@@ -214,6 +214,13 @@
                                     @case(10)
                                         <td>{{ $barcode[$sample->id][$i]['icumsa'] }}</td>
                                         <td>{{ $barcode[$sample->id][$i]['moisture_content'] }}</td>
+                                        @break
+                                    @case(11)
+                                        <td>{{ $barcode[$sample->id][$i]['calcium'] }}</td>
+                                        @break
+                                    @case(12)
+                                        <td>{{ $barcode[$sample->id][$i]['pi'] }}</td>
+                                        <td>{{ $barcode[$sample->id][$i]['fiber'] }}</td>
                                         @break
                                 @endswitch
                             </tr>

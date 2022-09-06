@@ -49,6 +49,9 @@
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
+                <a class="collapse-item" href="">Timbangan RS In</a>
+                <a class="collapse-item" href="">Timbangan RS Out</a>
+                <a class="collapse-item" href="">Timbangan Tetes</a>
             </div>
         </div>
     </li>

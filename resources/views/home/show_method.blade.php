@@ -154,8 +154,8 @@
                                 <td>{{ $sample->calcium }}</td>
                                 @break
                             @case(12)
-                                <td>{{ $sample->fiber }}</td>
                                 <td>{{ $sample->pi }}</td>
+                                <td>{{ $sample->fiber }}</td>
                                 @break
                             @endswitch
                         </tr>

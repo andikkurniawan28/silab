@@ -118,13 +118,16 @@ class Report extends Controller
             foreach($analysis_result[$sample->id]->select(
                 'samples.name as sample_name', 
                 'stations.name as station_name',
-                'samplings.volume',
             )->get() as $result){
                 
             $data[$sample->id]['name'] = $result->sample_name;
             $data[$sample->id]['station'] = $result->station_name;
             $data[$sample->id]['volume'] = $result->volume;
 
+            $data[$sample->id]['volume'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->sum('samplings.volume');
+            
             $data[$sample->id]['percent_brix'] = $analysis_result[$sample->id]
                 ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
                 ->avg('saccharomats.percent_brix');

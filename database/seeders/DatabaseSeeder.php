@@ -3,13 +3,27 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Around;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Sample;
 use App\Models\Station;
 use App\Models\Method;
+use App\Models\Saccharomat;
+use App\Models\Coloromat;
+use App\Models\Moisture;
 use App\Models\Sampling;
+use App\Models\Umum;
+use App\Models\Npp;
+use App\Models\Baggase;
+use App\Models\Tsai;
+use App\Models\Calcium;
+use App\Models\Boiler;
+use App\Models\Chemical;
+use App\Models\Preparation;
+use App\Models\Fiber;
 
 class DatabaseSeeder extends Seeder
 {
@@ -193,10 +207,137 @@ class DatabaseSeeder extends Seeder
             ['description' => "Preparation Index, Kadar Sabut"],
         ];
         
-        for($i = 0; $i < count($samples); $i++)
+        for($i = 0; $i <= count($samples); $i++)
         {
-            $samplings[$i] = ['sample_id' => $i+1];
+            $samplings[$i] = [
+                'sample_id' => $i+1,
+                'volume' => 300 + $i,
+            ];
+
+            $saccharomats[$i] = [
+                'sampling_id' => $i,
+                'pol' => 88,
+                'percent_brix' => 99,
+                'percent_pol' => 98,
+                'purity' => (98/99*100),
+            ];
+
+            $coloromats[$i] = [
+                'sampling_id' => $i,
+                'icumsa' => 1000 + $i,
+            ];
+            
+            $moistures[$i] = [
+                'sampling_id' => $i,
+                'moisture_content' => '0.0'.$i,
+            ];
+            
+            $umums[$i] = [
+                'sampling_id' => $i,
+                'cao' => $i,
+                'pH' => $i,
+                'turbidity' => $i,
+            ];
+            
+            $npps[$i] = [
+                'pol' => 97,
+                'percent_pol' => 98,
+                'percent_brix' => 99,
+                'purity' => (98/99*100),
+                'yield' => (98/99*100),
+            ];
+            
+            $baggases[$i] = [
+                'sampling_id' => $i,
+                'corrected_pol' => $i,
+                'dry' => $i,
+                'water' => $i,
+            ];
+            
+            $tsais[$i] = [
+                'sampling_id' => $i,
+                'tsai' => 30 + $i,
+            ];
+            
+            $calciums[$i] = [
+                'sampling_id' => $i,
+                'calcium' => 90,
+            ];
+
+            $boilers[$i] = [
+                'sampling_id' => $i,
+                'tds' => $i,
+                'pH' => $i,
+                'hardness' => $i,
+                'phospate' => $i,
+            ];
+
+            $fibers[$i] = [
+                'sampling_id' => $i,
+                'fiber' => 30,
+            ];
+
+            $preparations[$i] = [
+                'sampling_id' => $i,
+                'pi' => 97,
+            ];
         }
+
+        $chemicals = [
+            'kapur' => 1,
+            'belerang' => 2,
+            'floc' => 3,
+            'naoh' => 4,
+            'b894' => 5,
+            'b895' => 6,
+            'b210' => 7,
+            'asam_phospat' => 8,
+            'blotong' => 9,
+        ];
+
+        $arounds = [
+            'tek_pe1' => 1,
+            'tek_pe2' => 1,
+            'tek_evap1' => 1,
+            'tek_evap2' => 1,
+            'tek_evap3' => 1,
+            'tek_evap4' => 1,
+            'tek_evap5' => 1,
+            'tek_evap6' => 1,
+            'tek_evap7' => 1,
+            'tek_pan1' => 1,
+            'tek_pan2' => 1,
+            'tek_pan3' => 1,
+            'tek_pan4' => 1,
+            'tek_pan5' => 1,
+            'tek_pan6' => 1,
+            'tek_pan7' => 1,
+            'tek_pan8' => 1,
+            'tek_pan9' => 1,
+            'tek_pan10' => 1,
+            'tek_pan11' => 1,
+            'tek_pan12' => 1,
+            'tek_pan13' => 1,
+            'tek_pan14' => 1,
+            'tek_vakum' => 1,
+            'suhu_pe1' => 1,
+            'suhu_pe2' => 1,
+            'suhu_evap1' => 1,
+            'suhu_evap2' => 1,
+            'suhu_evap3' => 1,
+            'suhu_evap4' => 1,
+            'suhu_evap5' => 1,
+            'suhu_evap6' => 1,
+            'suhu_evap7' => 1,
+            'suhu_heater1' => 1,
+            'suhu_heater2' => 1,
+            'suhu_heater3' => 1,
+            'suhu_air_injeksi' => 1,
+            'suhu_air_terjun' => 1,
+            'uap_baru' => 1,
+            'uap_bekas' => 1,
+            'uap_3ato' => 1,
+        ];
 
         User::insert($users);
         Role::insert($roles);
@@ -204,5 +345,18 @@ class DatabaseSeeder extends Seeder
         Station::insert($stations);
         Method::insert($methods);
         Sampling::insert($samplings);
+        Saccharomat::insert($saccharomats);
+        Coloromat::insert($coloromats);
+        Moisture::insert($moistures);
+        Umum::insert($umums);
+        Npp::insert($npps);
+        Baggase::insert($baggases);
+        Tsai::insert($tsais);
+        Calcium::insert($calciums);
+        Boiler::insert($boilers);
+        Chemical::insert($chemicals);
+        Around::insert($arounds);
+        Fiber::insert($fibers);
+        Preparation::insert($preparations);
     }
 }

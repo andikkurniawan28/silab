@@ -100,6 +100,7 @@ class HomeController extends Controller
                     'samples.name', 
                     'coloromats.icumsa', 
                     'moistures.moisture_content', 
+                    'saccharomats.pol',
                     'saccharomats.percent_brix', 
                     'saccharomats.percent_pol', 
                     'saccharomats.purity',

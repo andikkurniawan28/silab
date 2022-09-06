@@ -62,7 +62,7 @@
                 <div class="col-5 table-responsive">
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Raw Sugar & Gula in Proses</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>IU</th>
                             <th>Air</th>
@@ -91,7 +91,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Masakan</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>Brix</th>
                             <th>Pol</th>
@@ -116,7 +116,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Stroop</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>Brix</th>
                             <th>Pol</th>
@@ -139,7 +139,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Tangki</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>Brix</th>
                             <th>TSAI</th>
@@ -158,7 +158,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Ketel</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>TDS</th>
                             <th>pH</th>
@@ -183,7 +183,7 @@
                 <div class="col-5 table-responsive">
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Gilingan</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>Brix</th>
                             <th>Pol</th>
@@ -228,7 +228,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Pemurnian</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>Brix</th>
                             <th>Pol</th>
@@ -263,7 +263,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Penguapan</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>Brix</th>
                             <th>Pol</th>
@@ -292,7 +292,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>DRK</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Sampel</th>
                             <th>Brix</th>
                             <th>Pol</th>
@@ -344,7 +344,7 @@
                     <br>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Bahan Kimia</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Chemical</th>
                             <th>Qty</th>
                         </tr>
@@ -397,7 +397,7 @@
                 <div class="col-10 table-responsive">
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Keliling</h5>
-                        <tr>
+                        <tr bgcolor="pink">
                             <th colspan="23">Tekanan</th>
                         </tr>
                         <tr>
@@ -582,7 +582,7 @@
                 <div class="col-10 table-responsive">
                     <h5>Data Analisa Harian per Unit</h5>
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Pengambilan</th>
                             <th>Barcode</th>
                             <th>Sampel</th>
@@ -648,7 +648,7 @@
 			<div class='row d-flex justify-content-center text-dark'>
                 <div class="col-10 table-responsive">
                     <table width='100%' border='1' cellpadding='5' class="text-center">
-                        <tr>
+                        <tr bgcolor="pink">
                             <th>Mandor Lab</th>
                             <th>Katim QC</th>
                             <th>Chemiker Jaga</th>
