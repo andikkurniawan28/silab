@@ -124,6 +124,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('dailyReport') }}">Laporan QA</a>
                 <a class="collapse-item" href="{{ route('coaReport') }}">COA</a>
+                {{-- <a class="collapse-item" href="">Laporan Harian</a> --}}
             </div>
         </div>
     </li>

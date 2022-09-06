@@ -4,8 +4,19 @@
     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        
+                        @if(session('role') == 1)
+                        <form method="POST" action="{{ route('showDailyReport') }}" target="_blank">
+                        @csrf
+                            <input type="hidden" name="date" value="{{ date('Y-m-d',strtotime("-1 days")) }}">
+                            <input type="hidden" name="shift" value="0">
+                            <button type="submit" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+                            </button>
+                        </form>
+                        @endif
+
+
                     </div>
 
                     @if($message = Session::get('error'))
