@@ -24,6 +24,7 @@ use App\Models\Boiler;
 use App\Models\Chemical;
 use App\Models\Preparation;
 use App\Models\Fiber;
+use App\Models\Factor;
 
 class DatabaseSeeder extends Seeder
 {
@@ -339,6 +340,24 @@ class DatabaseSeeder extends Seeder
             'uap_3ato' => 1,
         ];
 
+        $factors = [
+            [
+                'description' => 'Flow Nira Mentah',
+                'operation' => '*',
+                'value' => 0.85,
+            ],
+            [
+                'description' => 'Flow Imbibisi',
+                'operation' => '*',
+                'value' => 1,
+            ],
+            [
+                'description' => 'Faktor Saccharomat',
+                'operation' => '+ (faktor*brix)',
+                'value' => 0.03,
+            ],
+        ];
+
         User::insert($users);
         Role::insert($roles);
         Sample::insert($samples);
@@ -358,5 +377,6 @@ class DatabaseSeeder extends Seeder
         Around::insert($arounds);
         Fiber::insert($fibers);
         Preparation::insert($preparations);
+        Factor::insert($factors);
     }
 }

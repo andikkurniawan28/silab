@@ -46,6 +46,7 @@
         </a>
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('show-chemical') }}">Chemical</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
@@ -109,6 +110,7 @@
                 <a class="collapse-item" href="{{ route('roles.index') }}">Hak Akses</a>
                 <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
+                <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
             </div>
         </div>
     </li>

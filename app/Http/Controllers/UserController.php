@@ -95,7 +95,6 @@ class UserController extends Controller
         User::where('id', $id)->update([
             'name' => $request->name,
             'username' => $request->username,
-            'password' => md5($request->password),
             'role_id' => $request->role_id,
             'is_active' => $request->is_active,
         ]);
@@ -112,5 +111,15 @@ class UserController extends Controller
     {
         User::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses: User berhasil dihapus.');
+    }
+
+    public function createPassword()
+    {
+
+    }
+
+    public function activation()
+    {
+
     }
 }

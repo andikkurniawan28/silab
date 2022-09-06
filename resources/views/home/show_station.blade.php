@@ -87,8 +87,8 @@
                                         <th>Air</th>
                                         <th>Brix</th>
                                         <th>Pol</th>
-                                        <th>SO2</th>
-                                        <th>BJB</th>
+                                        {{-- <th>SO2</th>
+                                        <th>BJB</th> --}}
                                         @break
                                     @case(2)
                                         <th>Brix</th>
@@ -165,8 +165,8 @@
                                         <td>
                                             {{ number_format($barcode[$sample->id][$i]['purity'] * (100 - $barcode[$sample->id][$i]['moisture_content']) / 100,2) }}
                                         </td>
-                                        <td>{{ $barcode[$sample->id][$i]['so2'] }}</td>
-                                        <td>{{ $barcode[$sample->id][$i]['bjb'] }}</td>
+                                        {{-- <td>{{ $barcode[$sample->id][$i]['so2'] }}</td>
+                                        <td>{{ $barcode[$sample->id][$i]['bjb'] }}</td> --}}
                                         @break
                                     @case(2)
                                         <td>{{ $barcode[$sample->id][$i]['percent_brix'] }}</td>

@@ -28,14 +28,6 @@
                     'modifier' => 'required',
                 ])
 
-                @include('components.input',[
-                    'label' => 'Password',
-                    'name' => 'password',
-                    'type' => 'password',
-                    'value' => '',
-                    'modifier' => 'required',
-                ])
-
                 <div class="form-group row">
                     <label for="role_id" class="col-sm-2 col-form-label">Role</label>
                     <div class="col-sm-10">

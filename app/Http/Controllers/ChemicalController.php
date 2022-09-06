@@ -98,4 +98,11 @@ class ChemicalController extends Controller
         Chemical::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus');
     }
+
+    public function showChemical()
+    {
+        $stations = Station::all();
+        $chemicals = Chemical::all();
+        return view('chemical.show_chemical', compact('stations', 'chemicals'));
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Balance;
 use App\Models\Station;
+use App\Models\Factor;
 use Illuminate\Http\Request;
 
 class BalanceController extends Controller
@@ -38,6 +39,13 @@ class BalanceController extends Controller
      */
     public function store(Request $request)
     {
+        $find_factor = Factor::where('description', 'Flow Nira Mentah')->limit(1)->get();
+
+        foreach($find_factor as $factor)
+        {
+            $factor_nm = $factor->value;
+        }
+
         $data_before = Balance::orderBy('id', 'desc')->limit(1)->select('totalizer_raw_juice');
 
         if($data_before->count() > 0)
@@ -52,7 +60,7 @@ class BalanceController extends Controller
             $last_totalizer = 0;
         }
 
-        $flow_raw_juice = ($request->totalizer_raw_juice - $last_totalizer) * 1;
+        $flow_raw_juice = ($request->totalizer_raw_juice - $last_totalizer) * $factor_nm;
 
         if($request->sugar_cane > 0)
         {

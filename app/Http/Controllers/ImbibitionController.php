@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Imbibition;
 use App\Models\Station;
+use App\Models\Factor;
 use Illuminate\Http\Request;
 
 class ImbibitionController extends Controller
@@ -38,6 +39,13 @@ class ImbibitionController extends Controller
      */
     public function store(Request $request)
     {
+        $find_factor = Factor::where('description', 'Flow Imbibisi')->limit(1)->get();
+
+        foreach($find_factor as $factor)
+        {
+            $factor_imb = $factor->value;
+        }
+
         $data_before = Imbibition::orderBy('id', 'desc')->limit(1)->select('totalizer');
 
         if($data_before->count() > 0)
@@ -52,7 +60,7 @@ class ImbibitionController extends Controller
             $last_totalizer = 0;
         }
 
-        $flow = ($request->totalizer - $last_totalizer) * 1;
+        $flow = ($request->totalizer - $last_totalizer) * $factor_imb;
         $request->request->add(['flow' => $flow]);
 
         Imbibition::create($request->all());

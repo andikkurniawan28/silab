@@ -8,6 +8,7 @@ use App\Http\Controllers\CalciumController;
 use App\Http\Controllers\ChemicalController;
 use App\Http\Controllers\ColoromatController;
 use App\Http\Controllers\DiameterController;
+use App\Http\Controllers\FactorController;
 use App\Http\Controllers\FiberController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HplcController;
@@ -43,6 +44,7 @@ Route::resource('users', UserController::class)->middleware(['user_is_login', 'o
 Route::resource('roles', RoleController::class)->middleware(['user_is_login', 'only_admin']);
 Route::resource('stations', StationController::class)->middleware(['user_is_login', 'only_admin']);
 Route::resource('methods', MethodController::class)->middleware(['user_is_login', 'only_admin']);
+Route::resource('factors', FactorController::class)->middleware(['user_is_login', 'only_admin']);
 
 Route::resource('samples', SampleController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('samplings', SamplingController::class)->middleware(['user_is_login', 'only_admin_qc']);
@@ -72,6 +74,7 @@ Route::get('stations-result/{title}/{id}', [ HomeController::class, 'showStation
 Route::get('methods-result/{id}/{method_id}/{sample_name}', [ HomeController::class, 'showMethod' ])->middleware('user_is_login')->name('methods-result');
 Route::get('print-barcode/{id}', [ SamplingController::class, 'printBarcode' ])->middleware(['user_is_login', 'only_admin_qc'])->name('print-barcode');
 Route::get('show-npp', [NppController::class, 'showNPP'])->middleware('user_is_login')->name('show-npp');
+Route::get('show-chemical', [ChemicalController::class, 'showChemical'])->middleware('user_is_login')->name('show-chemical');
 Route::get('eRonsel', [SamplingController::class, 'eRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('eRonsel');
 Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('saveRonsel');
 
