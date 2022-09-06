@@ -99,7 +99,7 @@
                                 <td>{{ $sample->icumsa }}</td>
                                 <td>{{ $sample->moisture_content }}</td>
                                 <td>{{ 100 - $sample->moisture_content }}</td>
-                                <td>{{ ($sample->purity*(100-$sample->moisture_content))/100 }}</td>
+                                <td>{{ number_format(($sample->purity*(100-$sample->moisture_content))/100,2) }}</td>
                                 <td>{{ $sample->so2 }}</td>
                                 <td>{{ $sample->bjb }}</td>
                                 @break

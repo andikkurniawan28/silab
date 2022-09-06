@@ -17,9 +17,13 @@ class Report extends Controller
 {
     public function showDailyReport(Request $request)
     {
+        // Get date value
         $date = $request->date;
+        
+        // Get Shift value
         $shift = $request->shift;
 
+        // Switch shift, determine range_date
         switch($shift)
         {
             case 0 :
@@ -43,6 +47,7 @@ class Report extends Controller
             break;
         }
 
+        // Get analysis result between range_date choosen
         $analysis_per_unit = Sampling::join('samples', 'samplings.sample_id', 'samples.id')
             ->leftjoin('saccharomats', 'samplings.id', 'saccharomats.sampling_id')
             ->leftjoin('coloromats', 'samplings.id', 'coloromats.sampling_id')
@@ -88,9 +93,11 @@ class Report extends Controller
             ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
             ->get();
 
+        // Get sample all
         $samples = Sample::all();
         foreach($samples as $sample)
         {
+            // Each sample, store analysis data by it sample_id
             $analysis_result[$sample->id] = Sampling::leftjoin('samples', 'samplings.sample_id', 'samples.id')
                 ->leftjoin('stations', 'samples.station_id', 'stations.id')
                 ->leftjoin('saccharomats', 'samplings.id', 'saccharomats.sampling_id')
@@ -105,41 +112,107 @@ class Report extends Controller
                 ->leftjoin('preparations', 'samplings.id', 'preparations.sampling_id')
                 ->leftjoin('fibers', 'samplings.id', 'fibers.sampling_id')
                 ->leftjoin('calcia', 'samplings.id', 'calcia.sampling_id')
-                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                // ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
                 ->where('samplings.sample_id', $sample->id);
             
             foreach($analysis_result[$sample->id]->select(
                 'samples.name as sample_name', 
                 'stations.name as station_name',
                 'samplings.volume',
-            )->get() as $result)
-            {
-                $data[$sample->id]['name'] = $result->sample_name;
-                $data[$sample->id]['station'] = $result->station_name;
-                $data[$sample->id]['volume'] = $result->volume;
+            )->get() as $result){
+                
+            $data[$sample->id]['name'] = $result->sample_name;
+            $data[$sample->id]['station'] = $result->station_name;
+            $data[$sample->id]['volume'] = $result->volume;
+
+            $data[$sample->id]['percent_brix'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('saccharomats.percent_brix');
+
+            $data[$sample->id]['percent_pol'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('saccharomats.percent_pol');
+
+            $data[$sample->id]['purity'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('saccharomats.purity');
+
+            $data[$sample->id]['pol'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('saccharomats.pol');
+
+            $data[$sample->id]['icumsa'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('coloromats.icumsa');
+
+            $data[$sample->id]['moisture_content'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('moistures.moisture_content');
+
+            $data[$sample->id]['corrected_pol'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('baggases.corrected_pol');
+
+            $data[$sample->id]['dry'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('baggases.dry');
+
+            $data[$sample->id]['water'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('baggases.water');
+
+            $data[$sample->id]['so2'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('sulphurs.so2');
+
+            $data[$sample->id]['bjb'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('diameters.bjb');   
+
+            $data[$sample->id]['fiber'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('fibers.fiber');
+
+            $data[$sample->id]['pi'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('preparations.pi');
+
+            $data[$sample->id]['calcium'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('calcia.calcium');
+
+            $data[$sample->id]['cao'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('umums.cao');
+
+            $data[$sample->id]['ph'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('umums.pH');
+
+            $data[$sample->id]['turbidity'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('umums.turbidity');
+
+            $data[$sample->id]['tsai'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('tsais.tsai');
+
+            $data[$sample->id]['ph_ketel'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('boilers.pH');
+
+            $data[$sample->id]['tds'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('boilers.tds');
+                
+            $data[$sample->id]['hardness'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('boilers.hardness');
+                
+            $data[$sample->id]['phospate'] = $analysis_result[$sample->id]
+                ->whereBetween('samplings.created_at', [$range_date['min'], $range_date['max']])
+                ->avg('boilers.phospate');
             }
-            $data[$sample->id]['percent_brix'] = $analysis_result[$sample->id]->avg('saccharomats.percent_brix');
-            $data[$sample->id]['percent_pol'] = $analysis_result[$sample->id]->avg('saccharomats.percent_pol');
-            $data[$sample->id]['purity'] = $analysis_result[$sample->id]->avg('saccharomats.purity');
-            $data[$sample->id]['pol'] = $analysis_result[$sample->id]->avg('saccharomats.pol');
-            $data[$sample->id]['icumsa'] = $analysis_result[$sample->id]->avg('coloromats.icumsa');
-            $data[$sample->id]['moisture_content'] = $analysis_result[$sample->id]->avg('moistures.moisture_content');
-            $data[$sample->id]['corrected_pol'] = $analysis_result[$sample->id]->avg('baggases.corrected_pol');
-            $data[$sample->id]['dry'] = $analysis_result[$sample->id]->avg('baggases.dry');
-            $data[$sample->id]['water'] = $analysis_result[$sample->id]->avg('baggases.water');
-            $data[$sample->id]['so2'] = $analysis_result[$sample->id]->avg('sulphurs.so2');
-            $data[$sample->id]['bjb'] = $analysis_result[$sample->id]->avg('diameters.bjb');
-            $data[$sample->id]['fiber'] = $analysis_result[$sample->id]->avg('fibers.fiber');
-            $data[$sample->id]['pi'] = $analysis_result[$sample->id]->avg('preparations.pi');
-            $data[$sample->id]['calcium'] = $analysis_result[$sample->id]->avg('calcia.calcium');
-            $data[$sample->id]['cao'] = $analysis_result[$sample->id]->avg('umums.cao');
-            $data[$sample->id]['ph'] = $analysis_result[$sample->id]->avg('umums.pH');
-            $data[$sample->id]['turbidity'] = $analysis_result[$sample->id]->avg('umums.turbidity');
-            $data[$sample->id]['tsai'] = $analysis_result[$sample->id]->avg('tsais.tsai');
-            $data[$sample->id]['ph_ketel'] = $analysis_result[$sample->id]->avg('boilers.pH');
-            $data[$sample->id]['tds'] = $analysis_result[$sample->id]->avg('boilers.tds');
-            $data[$sample->id]['hardness'] = $analysis_result[$sample->id]->avg('boilers.hardness');
-            $data[$sample->id]['phospate'] = $analysis_result[$sample->id]->avg('boilers.phospate');
         }
 
         $npp['percent_brix'] = Npp::whereBetween('npps.created_at', [$range_date['min'], $range_date['max']])->avg('percent_brix');
@@ -194,6 +267,7 @@ class Report extends Controller
         $chemical['blotong'] = Chemical::whereBetween('chemicals.created_at', [$range_date['min'], $range_date['max']])->avg('blotong');
             
         return view('report.show_daily_report', compact('date', 'range_date', 'analysis_per_unit', 'data', 'npp', 'keliling', 'chemical', 'shift'));
+        // return $analysis_result;
     }
 
     public function showCoaTetes(Request $request)

@@ -162,7 +162,9 @@
                                             {{ 100 - $barcode[$sample->id][$i]['moisture_content'] }}
                                             @endif
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            {{ number_format($barcode[$sample->id][$i]['purity'] * (100 - $barcode[$sample->id][$i]['moisture_content']) / 100,2) }}
+                                        </td>
                                         <td>{{ $barcode[$sample->id][$i]['so2'] }}</td>
                                         <td>{{ $barcode[$sample->id][$i]['bjb'] }}</td>
                                         @break
