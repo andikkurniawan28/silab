@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Station;
 use Illuminate\Http\Request;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -65,11 +67,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $users = User::where('id', $id)
-            ->join('roles', 'users.role_id', 'roles.id')
-            ->select('users.*', 'roles.name as role_name')
-            ->get();
-        return view('user.show', compact('users'));
+        //
     }
 
     /**
@@ -92,7 +90,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::where('id', $id)->update([
+        User::where('users.id', $id)->update([
             'name' => $request->name,
             'username' => $request->username,
             'role_id' => $request->role_id,

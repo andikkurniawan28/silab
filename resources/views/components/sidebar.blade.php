@@ -21,10 +21,11 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Hasil Analisa</span>
+            <span>Hasil</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu:</h6>
                 <a class="collapse-item" href="{{ route('show-npp') }}">
                     Lab NPP
                 </a>
@@ -46,6 +47,7 @@
         </a>
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu:</h6>
                 <a class="collapse-item" href="{{ route('show-chemical') }}">Chemical</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
@@ -66,11 +68,11 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-edit"></i>
-            <span>Input Data</span>
+            <span>Input</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Quality Assurance:</h6>
+                <h6 class="collapse-header">Menu:</h6>
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
                 <a class="collapse-item" href="{{ route('samplings.index') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('balances.index') }}">Flow Nira Mentah</a>
@@ -94,26 +96,6 @@
             </div>
         </div>
     </li>
-
-    @endif
-
-    @if(session('role') == 1)
-    
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-database"></i>
-            <span>Master Data</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('users.index') }}">User</a>
-                <a class="collapse-item" href="{{ route('roles.index') }}">Hak Akses</a>
-                <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
-                <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
-                <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
-            </div>
-        </div>
-    </li>
     
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -122,9 +104,32 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('dailyReport') }}">Laporan QA</a>
+                <h6 class="collapse-header">Menu:</h6>
+                <a class="collapse-item" href="{{ route('dailyReport') }}">Laporan</a>
                 <a class="collapse-item" href="{{ route('coaReport') }}">COA</a>
-                {{-- <a class="collapse-item" href="">Laporan Harian</a> --}}
+            </div>
+        </div>
+    </li>
+
+    @endif
+
+    @if(session('role') == 1)
+    
+    <hr class="sidebar-divider">
+    
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-database"></i>
+            <span>Master</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu:</h6>
+                <a class="collapse-item" href="{{ route('users.index') }}">User</a>
+                <a class="collapse-item" href="{{ route('roles.index') }}">Hak Akses</a>
+                <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
+                <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
+                <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
             </div>
         </div>
     </li>

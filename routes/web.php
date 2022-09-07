@@ -16,6 +16,7 @@ use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MethodController;
 use App\Http\Controllers\MoistureController;
+use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\NppController;
 use App\Http\Controllers\PreparationController;
 use App\Http\Controllers\RoleController;
@@ -83,3 +84,5 @@ Route::post('showDailyReport', [ Report::class, 'showDailyReport' ])->middleware
 Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('coaReport');
 Route::post('showCoaTetes', [ Report::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
 Route::post('showCoaKapur', [ Report::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');
+
+Route::get('tetes', [ MollaseController::class, 'read' ])->name('tetes');
