@@ -52,9 +52,9 @@
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
-                <a class="collapse-item" href="">Timbangan RS In</a>
-                <a class="collapse-item" href="">Timbangan RS Out</a>
-                <a class="collapse-item" href="">Timbangan Tetes</a>
+                <a class="collapse-item" href="{{ route('mollase-publish') }}">Timbangan Tetes</a>
+                <a class="collapse-item" href="{{ route('rs_in-publish') }}">Timbangan RS In</a>
+                <a class="collapse-item" href="{{ route('rs_out-publish') }}">Timbangan RS Out</a>
             </div>
         </div>
     </li>
@@ -93,6 +93,9 @@
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling Proses</a>
                 <a class="collapse-item" href="{{ route('chemicals.index') }}">Bahan Kimia</a>
                 <a class="collapse-item" href="{{ route('tanks.index') }}">Taksasi Tetes</a>
+                <a class="collapse-item" href="{{ route('rs_ins.index') }}">Timbangan RS In</a>
+                <a class="collapse-item" href="{{ route('rs_outs.index') }}">Timbangan RS Out</a>
+                <a class="collapse-item" href="{{ route('mollases.index') }}">Timbangan Tetes</a>
             </div>
         </div>
     </li>

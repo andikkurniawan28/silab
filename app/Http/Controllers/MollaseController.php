@@ -38,7 +38,16 @@ class MollaseController extends Controller
      */
     public function store(Request $request)
     {
-        Mollase::create($request->all());
+        $date = $request->date;
+        $time = $request->time;
+        $created_at = $date.' '.$time;
+        $data = [
+            'created_at' => $created_at,
+            'tarra' => $request->tarra,
+            'bruto' => $request->bruto,
+            'netto' => $request->netto,
+        ];
+        Mollase::insert($data);
         return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan');
     }
 
@@ -91,5 +100,12 @@ class MollaseController extends Controller
     {
         Mollase::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus');
+    }
+
+    public function publish()
+    {
+        $stations = Station::all();
+        $data = Mollase::serveForPublish();
+        return view('mollase.publish', compact('data', 'stations'));
     }
 }

@@ -19,6 +19,8 @@ use App\Http\Controllers\MoistureController;
 use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\NppController;
 use App\Http\Controllers\PreparationController;
+use App\Http\Controllers\RawsugarInController;
+use App\Http\Controllers\RawsugarOutController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaccharomatController;
 use App\Http\Controllers\SampleController;
@@ -67,6 +69,9 @@ Route::resource('balances', BalanceController::class)->middleware(['user_is_logi
 Route::resource('tanks', TankController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('chemicals', ChemicalController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('arounds', AroundController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('mollases', MollaseController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('rs_ins', RawsugarInController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('rs_outs', RawsugarOutController::class)->middleware(['user_is_login', 'only_admin_qc']);
 
 Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
 Route::resource('taxations', TaxationController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
@@ -85,4 +90,6 @@ Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['us
 Route::post('showCoaTetes', [ Report::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
 Route::post('showCoaKapur', [ Report::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');
 
-Route::get('tetes', [ MollaseController::class, 'read' ])->name('tetes');
+Route::get('rs_out-publish', [ RawsugarOutController::class, 'publish' ])->name('rs_out-publish');
+Route::get('rs_in-publish', [ RawsugarInController::class, 'publish' ])->name('rs_in-publish');
+Route::get('mollase-publish', [ MollaseController::class, 'publish' ])->name('mollase-publish');

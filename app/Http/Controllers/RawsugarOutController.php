@@ -15,9 +15,9 @@ class RawsugarOutController extends Controller
      */
     public function index()
     {
-        $rs_out = Rawsugar_out::all();
+        $rs_outs = Rawsugar_out::all();
         $stations = Station::all();
-        return view('rs_out.index', compact('rs_out', 'stations'));
+        return view('rs_out.index', compact('rs_outs', 'stations'));
     }
 
     /**
@@ -38,7 +38,16 @@ class RawsugarOutController extends Controller
      */
     public function store(Request $request)
     {
-        Rawsugar_out::create($request->all());
+        $date = $request->date;
+        $time = $request->time;
+        $created_at = $date.' '.$time;
+        $data = [
+            'created_at' => $created_at,
+            'tarra' => $request->tarra,
+            'bruto' => $request->bruto,
+            'netto' => $request->netto,
+        ];
+        Rawsugar_out::insert($data);
         return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan');
     }
 
@@ -91,5 +100,12 @@ class RawsugarOutController extends Controller
     {
         Rawsugar_out::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus');
+    }
+
+    public function publish()
+    {
+        $stations = Station::all();
+        $data = Rawsugar_out::serveForPublish();
+        return view('rs_out.publish', compact('data', 'stations'));
     }
 }
