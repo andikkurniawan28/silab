@@ -38,8 +38,6 @@
         </div>
     </li>
 
-    @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
-
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
             <i class="fas fa-fw fa-eye"></i>
@@ -58,8 +56,6 @@
             </div>
         </div>
     </li>
-
-    @endif
 
     @if(session('role') == 1 or session('role') == 2)
 

@@ -73,14 +73,10 @@ Route::resource('mollases', MollaseController::class)->middleware(['user_is_logi
 Route::resource('rs_ins', RawsugarInController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('rs_outs', RawsugarOutController::class)->middleware(['user_is_login', 'only_admin_qc']);
 
-Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
-Route::resource('taxations', TaxationController::class)->middleware(['user_is_login', 'only_admin_qc_pabrikasi']);
-
 Route::get('stations-result/{title}/{id}', [ HomeController::class, 'showStation' ])->middleware('user_is_login')->name('stations-result');
 Route::get('methods-result/{id}/{method_id}/{sample_name}', [ HomeController::class, 'showMethod' ])->middleware('user_is_login')->name('methods-result');
 Route::get('print-barcode/{id}', [ SamplingController::class, 'printBarcode' ])->middleware(['user_is_login', 'only_admin_qc'])->name('print-barcode');
 Route::get('show-npp', [NppController::class, 'showNPP'])->middleware('user_is_login')->name('show-npp');
-Route::get('show-chemical', [ChemicalController::class, 'showChemical'])->middleware('user_is_login')->name('show-chemical');
 Route::get('eRonsel', [SamplingController::class, 'eRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('eRonsel');
 Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('saveRonsel');
 
@@ -90,6 +86,9 @@ Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['us
 Route::post('showCoaTetes', [ Report::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
 Route::post('showCoaKapur', [ Report::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');
 
-Route::get('rs_out-publish', [ RawsugarOutController::class, 'publish' ])->name('rs_out-publish');
-Route::get('rs_in-publish', [ RawsugarInController::class, 'publish' ])->name('rs_in-publish');
-Route::get('mollase-publish', [ MollaseController::class, 'publish' ])->name('mollase-publish');
+Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login']);
+Route::resource('taxations', TaxationController::class)->middleware(['user_is_login']);
+Route::get('rs_out-publish', [ RawsugarOutController::class, 'publish' ])->middleware('user_is_login')->name('rs_out-publish');
+Route::get('rs_in-publish', [ RawsugarInController::class, 'publish' ])->middleware('user_is_login')->name('rs_in-publish');
+Route::get('mollase-publish', [ MollaseController::class, 'publish' ])->middleware('user_is_login')->name('mollase-publish');
+Route::get('show-chemical', [ChemicalController::class, 'showChemical'])->middleware('user_is_login')->name('show-chemical');

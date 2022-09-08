@@ -23,8 +23,12 @@
                             <th>ID</th>
                             <th>Totalizer</th>
                             <th>Flow</th>
+
+                            @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
                             <th>Created</th>
                             <th>Action</th>
+                            @endif
+
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +38,8 @@
                             <td>{{ $imbibition->totalizer }}</td>
                             <td>{{ $imbibition->flow }}</td>
                             <td>{{ $imbibition->created_at }}</td>
+
+                            @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $imbibition->id }}">
                                     Edit
@@ -42,6 +48,8 @@
                                     Hapus
                                 </button>
                             </td>
+                            @endif
+
                         </tr>
                         @endforeach
                     </tbody>
@@ -49,16 +57,20 @@
             </div>
         </div>
         <div class="card-footer">
+            @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                 Tambah {{ ucfirst('Imbibisi') }}
             </button>
+            @endif
         </div>
     </div>
 </div>
 @endsection
 
+@if(session('role') == 1 or session('role') == 2 or session('role') == 3)
 @section('modal')
 @include('imbibition.create')
 @include('imbibition.edit')
 @include('imbibition.delete')
 @endsection
+@endif

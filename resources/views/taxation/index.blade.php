@@ -22,8 +22,12 @@
                         <tr>
                             <th>ID</th>
                             <th>PIC</th>
+
+                            @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
                             <th>Created</th>
                             <th>Action</th>
+                            @endif
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -32,6 +36,8 @@
                             <td>{{ $taxation->id }}</td>
                             <td>{{ $taxation->opr }}</td>
                             <td>{{ $taxation->created_at }}</td>
+                            
+                            @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
                             <td>
                                 <a href="{{ route('taxations.show', $taxation->id) }}" type="button" class="btn btn-success" target="_blank">
                                     Show
@@ -40,6 +46,8 @@
                                     Hapus
                                 </button>
                             </td>
+                            @endif
+
                         </tr>
                         @endforeach
                     </tbody>
@@ -47,15 +55,21 @@
             </div>
         </div>
         <div class="card-footer">
+
+            @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                 Tambah {{ ucfirst('Taksasi') }}
             </button>
+            @endif
+
         </div>
     </div>
 </div>
 @endsection
 
+@if(session('role') == 1 or session('role') == 2 or session('role') == 3)
 @section('modal')
 @include('taxation.create')
 @include('taxation.delete')
 @endsection
+@endif
