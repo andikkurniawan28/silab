@@ -92,6 +92,8 @@
                 <a class="collapse-item" href="{{ route('rs_ins.index') }}">Timbangan RS In</a>
                 <a class="collapse-item" href="{{ route('rs_outs.index') }}">Timbangan RS Out</a>
                 <a class="collapse-item" href="{{ route('mollases.index') }}">Timbangan Tetes</a>
+                <a class="collapse-item" href="{{ route('core_eks.index') }}">Core EK</a>
+                <a class="collapse-item" href="{{ route('core_ebs.index') }}">Core EB</a>
             </div>
         </div>
     </li>

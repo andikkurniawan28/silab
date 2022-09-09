@@ -38,7 +38,7 @@ class MethodController extends Controller
      */
     public function store(Request $request)
     {
-        $check = Method::where('name', $request->description)->count();
+        $check = Method::where('description', $request->description)->count();
         if($check > 0)
         {
             return redirect()->back()->with('error', 'Error : Method dengan deskripsi '.$request->description.' sudah terdaftar. Sistem tidak mengizinkan duplikasi.');

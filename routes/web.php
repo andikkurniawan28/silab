@@ -7,6 +7,8 @@ use App\Http\Controllers\BoilerController;
 use App\Http\Controllers\CalciumController;
 use App\Http\Controllers\ChemicalController;
 use App\Http\Controllers\ColoromatController;
+use App\Http\Controllers\CoreEbController;
+use App\Http\Controllers\CoreEkController;
 use App\Http\Controllers\DiameterController;
 use App\Http\Controllers\FactorController;
 use App\Http\Controllers\FiberController;
@@ -72,6 +74,8 @@ Route::resource('arounds', AroundController::class)->middleware(['user_is_login'
 Route::resource('mollases', MollaseController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('rs_ins', RawsugarInController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('rs_outs', RawsugarOutController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('core_eks', CoreEkController::class)->middleware(['user_is_login', 'only_admin_qc']);
+Route::resource('core_ebs', CoreEbController::class)->middleware(['user_is_login', 'only_admin_qc']);
 
 Route::get('stations-result/{title}/{id}', [ HomeController::class, 'showStation' ])->middleware('user_is_login')->name('stations-result');
 Route::get('methods-result/{id}/{method_id}/{sample_name}', [ HomeController::class, 'showMethod' ])->middleware('user_is_login')->name('methods-result');

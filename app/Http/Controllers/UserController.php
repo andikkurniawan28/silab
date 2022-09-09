@@ -54,6 +54,9 @@ class UserController extends Controller
         }
         else
         {
+            $request->request->add([
+                'password' => md5($request->password),
+            ]);
             User::create($request->all());
             return redirect()->back()->with('success', 'Sukses: User berhasil disimpan.');
         }
