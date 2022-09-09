@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Core_eb;
+use App\Models\Register;
 use App\Models\Station;
 use Illuminate\Http\Request;
 
-class CoreEbController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CoreEbController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $core_ebs = Core_eb::all();
-        return view('core_eb.index', compact('stations', 'core_ebs'));
+        $registers = Register::all();
+        return view('register.index', compact('stations', 'registers'));
     }
 
     /**
@@ -38,17 +38,17 @@ class CoreEbController extends Controller
      */
     public function store(Request $request)
     {
-        Core_eb::create($request->all());
-        return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan.');
+        Register::create($request->all());
+        return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Core_eb  $core_eb
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function show(Core_eb $core_eb)
+    public function show(Register $register)
     {
         //
     }
@@ -56,10 +56,10 @@ class CoreEbController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Core_eb  $core_eb
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
-    public function edit(Core_eb $core_eb)
+    public function edit(Register $register)
     {
         //
     }
@@ -68,31 +68,27 @@ class CoreEbController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Core_eb  $core_eb
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        Core_eb::where('id', $id)->update([
-            'barcode_antrian' => $request->barcode_antrian,
-            'rfid_ember' => $request->rfid_ember,
-            'register' => $request->register,
-            'brix_nira' => $request->brix_nira,
-            'pol_nira' => $request->pol_nira,
-            'rendemen' => $request->rendemen,
+        Register::where('id', $id)->update([
+            'code' => $request->code,
+            'region' => $request->region,
         ]);
-        return redirect()->back()->with('success', 'Sukses : Data berhasil diupdate.');
+        return redirect()->back()->with('success', 'Sukses : Data berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Core_eb  $core_eb
+     * @param  \App\Models\Register  $register
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Core_eb::where('id', $id)->delete();
-        return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus.');
+        Register::where('id', $id)->delete();
+        return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus');
     }
 }

@@ -22,9 +22,41 @@
                     <div class="card border-left-primary shadow h-100 py-2">
                         <div class="card-body">
                             <div class="font-weight-bold text-primary text-uppercase mb-1">
-                                Laporan
+                                Laporan Lab QA
                             </div>
                             <form action="{{ route('showDailyReport') }}" method="POST" target="_blank">
+                                @csrf
+                                @method('POST')
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="text1" name="date" type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-control" name="shift">
+                                            <option value="0">Harian</option>
+                                            <option value="1">Pagi</option>
+                                            <option value="2">Sore</option>
+                                            <option value="3">Malam</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <button name="submit" type="submit" class="btn btn-primary">Cetak Layar <i class='fas fa-print'></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="font-weight-bold text-primary text-uppercase mb-1">
+                                Laporan Core Sample
+                            </div>
+                            <form action="{{ route('showDailyReportCoreSample') }}" method="POST" target="_blank">
                                 @csrf
                                 @method('POST')
                                 <div class="form-group">

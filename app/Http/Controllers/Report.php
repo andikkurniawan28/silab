@@ -12,6 +12,8 @@ use App\Models\Sample;
 use App\Models\Sampling;
 use App\Models\Npp;
 use App\Models\Tsai;
+use App\Models\Core_ek;
+use App\Models\Core_eb;
 
 class Report extends Controller
 {
@@ -35,6 +37,23 @@ class Report extends Controller
             'chemical', 
             'shift',
         ));
+    }
+
+    public function showDailyReportCoreSample(Request $request)
+    {
+        $date = $request->date;
+        $shift = $request->shift;
+        $range_date = $this->determineRange2($date, $shift);
+        $data = $this->serveCoreSample($range_date['min'], $range_date['max']);
+        return view('report.show_daily_report_core_sample', compact(
+            'date',
+            'shift',
+            'range_date',
+            'data',
+        ));
+
+        // return $data;
+
     }
 
     public function showCoaTetes(Request $request)
@@ -88,6 +107,33 @@ class Report extends Controller
             
             case 3 : 
                 $range_date['min'] = $date.' 21:00:00'; 
+                $range_date['max'] = date('Y-m-d H:i:s',strtotime('+8 hours',strtotime($range_date['min'])));
+            break;
+        }
+        return $range_date;
+    }
+
+    public function determineRange2($date, $shift)
+    {
+        switch($shift)
+        {
+            case 0 : 
+                $range_date['min'] = $date.' 06:00:00'; 
+                $range_date['max'] = date('Y-m-d H:i:s',strtotime('+1 days',strtotime($range_date['min'])));
+            break;
+
+            case 1 : 
+                $range_date['min'] = $date.' 06:00:00'; 
+                $range_date['max'] = date('Y-m-d H:i:s',strtotime('+8 hours',strtotime($range_date['min'])));
+            break;
+            
+            case 2 : 
+                $range_date['min'] = $date.' 14:00:00'; 
+                $range_date['max'] = date('Y-m-d H:i:s',strtotime('+8 hours',strtotime($range_date['min'])));
+            break;
+            
+            case 3 : 
+                $range_date['min'] = $date.' 22:00:00'; 
                 $range_date['max'] = date('Y-m-d H:i:s',strtotime('+8 hours',strtotime($range_date['min'])));
             break;
         }
@@ -381,6 +427,23 @@ class Report extends Controller
                 ->avg('calcium');
             $i++;
         }
+        return $data;
+    }
+
+    public function serveCoreSample($min, $max)
+    {
+        $data['core_ek'] = Core_ek::whereBetween('created_at', [$min, $max])->orderBy('register', 'asc')->get();
+        $data['core_ek_aggregate']['rit'] = Core_ek::whereBetween('created_at', [$min, $max])->count('barcode_antrian');
+        $data['core_ek_aggregate']['brix'] = Core_ek::whereBetween('created_at', [$min, $max])->avg('brix_nira');
+        $data['core_ek_aggregate']['pol'] = Core_ek::whereBetween('created_at', [$min, $max])->avg('pol_nira');
+        $data['core_ek_aggregate']['rendemen'] = Core_ek::whereBetween('created_at', [$min, $max])->avg('rendemen');
+
+        $data['core_eb'] = Core_eb::whereBetween('created_at', [$min, $max])->orderBy('register', 'asc')->get();
+        $data['core_eb_aggregate']['rit'] = Core_eb::whereBetween('created_at', [$min, $max])->count('barcode_antrian');
+        $data['core_eb_aggregate']['brix'] = Core_eb::whereBetween('created_at', [$min, $max])->avg('brix_nira');
+        $data['core_eb_aggregate']['pol'] = Core_eb::whereBetween('created_at', [$min, $max])->avg('pol_nira');
+        $data['core_eb_aggregate']['rendemen'] = Core_eb::whereBetween('created_at', [$min, $max])->avg('rendemen');
+
         return $data;
     }
 }

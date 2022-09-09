@@ -131,6 +131,7 @@
                 <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
                 <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
+                <a class="collapse-item" href="{{ route('registers.index') }}">Register</a>
             </div>
         </div>
     </li>

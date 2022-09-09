@@ -23,6 +23,7 @@ use App\Http\Controllers\NppController;
 use App\Http\Controllers\PreparationController;
 use App\Http\Controllers\RawsugarInController;
 use App\Http\Controllers\RawsugarOutController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaccharomatController;
 use App\Http\Controllers\SampleController;
@@ -50,6 +51,7 @@ Route::resource('roles', RoleController::class)->middleware(['user_is_login', 'o
 Route::resource('stations', StationController::class)->middleware(['user_is_login', 'only_admin']);
 Route::resource('methods', MethodController::class)->middleware(['user_is_login', 'only_admin']);
 Route::resource('factors', FactorController::class)->middleware(['user_is_login', 'only_admin']);
+Route::resource('registers', RegisterController::class)->middleware(['user_is_login', 'only_admin']);
 
 Route::resource('samples', SampleController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('samplings', SamplingController::class)->middleware(['user_is_login', 'only_admin_qc']);
@@ -86,6 +88,7 @@ Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware
 
 Route::get('dailyReport', [ HomeController::class, 'dailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('dailyReport');
 Route::post('showDailyReport', [ Report::class, 'showDailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReport');
+Route::post('showDailyReportCoreSample', [ Report::class, 'showDailyReportCoreSample' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReportCoreSample');
 Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('coaReport');
 Route::post('showCoaTetes', [ Report::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
 Route::post('showCoaKapur', [ Report::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');
