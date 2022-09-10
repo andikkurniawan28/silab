@@ -20,7 +20,9 @@ use App\Http\Controllers\MethodController;
 use App\Http\Controllers\MoistureController;
 use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\NppController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PreparationController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RawsugarInController;
 use App\Http\Controllers\RawsugarOutController;
 use App\Http\Controllers\RegisterController;
@@ -52,6 +54,8 @@ Route::resource('stations', StationController::class)->middleware(['user_is_logi
 Route::resource('methods', MethodController::class)->middleware(['user_is_login', 'only_admin']);
 Route::resource('factors', FactorController::class)->middleware(['user_is_login', 'only_admin']);
 Route::resource('registers', RegisterController::class)->middleware(['user_is_login', 'only_admin']);
+Route::resource('posts', PostController::class)->middleware(['user_is_login', 'only_admin']);
+Route::resource('programs', ProgramController::class)->middleware(['user_is_login', 'only_admin']);
 
 Route::resource('samples', SampleController::class)->middleware(['user_is_login', 'only_admin_qc']);
 Route::resource('samplings', SamplingController::class)->middleware(['user_is_login', 'only_admin_qc']);

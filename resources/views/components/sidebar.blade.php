@@ -131,7 +131,9 @@
                 <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
                 <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
-                <a class="collapse-item" href="{{ route('registers.index') }}">Register</a>
+                <a class="collapse-item" href="{{ route('registers.index') }}">Register (KUD)</a>
+                <a class="collapse-item" href="{{ route('posts.index') }}">Post (Pantau)</a>
+                <a class="collapse-item" href="{{ route('programs.index') }}">Program</a>
             </div>
         </div>
     </li>

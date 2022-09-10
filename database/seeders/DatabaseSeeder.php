@@ -25,6 +25,9 @@ use App\Models\Chemical;
 use App\Models\Preparation;
 use App\Models\Fiber;
 use App\Models\Factor;
+use App\Models\Register;
+use App\Models\Post;
+use App\Models\Program;
 
 class DatabaseSeeder extends Seeder
 {
@@ -358,6 +361,79 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        $registers = [
+            [ 'code' => 1, 'region' => 'Gondanglegi', ],
+            [ 'code' => 2, 'region' => 'Pagelaran', ],
+            [ 'code' => 3, 'region' => 'Dampit', ],
+            [ 'code' => 4, 'region' => 'Bantur', ],
+            [ 'code' => 5, 'region' => 'Donomulyo', ],
+            [ 'code' => 'A', 'region' => 'Lawang', ],
+            [ 'code' => 'B', 'region' => 'Dengkol', ],
+            [ 'code' => 'C', 'region' => 'Karangploso', ],
+            [ 'code' => 'D', 'region' => 'Jabung', ],
+            [ 'code' => 'E', 'region' => 'Pakis', ],
+            [ 'code' => 'F', 'region' => 'Tumpang Agung', ],
+            [ 'code' => 'G', 'region' => 'Poncokusumo', ],
+            [ 'code' => 'H', 'region' => 'Wagir', ],
+            [ 'code' => 'I', 'region' => 'Tajinan', ],
+            [ 'code' => 'J', 'region' => 'Bululawang', ],
+            [ 'code' => 'K', 'region' => 'Pakisaji', ],
+            [ 'code' => 'L', 'region' => 'Kromengan', ],
+            [ 'code' => 'M', 'region' => 'Wonosari', ],
+            [ 'code' => 'N', 'region' => 'Sumberpucung', ],
+            [ 'code' => 'O', 'region' => 'Ngajum', ],
+            [ 'code' => 'P', 'region' => 'Pagak', ],
+            [ 'code' => 'Q', 'region' => 'Kalipare', ],
+            [ 'code' => 'R', 'region' => 'Sri Sedono', ],
+            [ 'code' => 'S', 'region' => 'Rekanan Utara', ],
+            [ 'code' => 'T', 'region' => 'Kesamben', ],
+            [ 'code' => 'U', 'region' => 'Kedungkandang', ],
+            [ 'code' => 'V', 'region' => 'Kepanjen', ],
+            [ 'code' => 'W', 'region' => 'Sari Madu', ],
+            [ 'code' => 'X', 'region' => 'Rekanan Selatan Timur', ],
+            [ 'code' => 'Y', 'region' => 'Rekanan Selatan Barat', ],
+            [ 'code' => 'Z', 'region' => 'Tumpang Padita', ],
+        ];
+
+        $posts = [
+            ['code' => 'O', 'region' => 'Banyuglugur'],
+            ['code' => 'P', 'region' => 'Tongas'],
+            ['code' => 'R', 'region' => 'Purwosari'],
+            ['code' => 'S', 'region' => 'Ngoro'],
+            ['code' => 'T', 'region' => 'Selorejo'],
+            ['code' => 'U', 'region' => 'Garum'],
+            ['code' => 'V', 'region' => 'Gumitir'],
+            ['code' => 'Y', 'region' => 'Pagak'],
+            ['code' => 'X', 'region' => 'Peteng'],
+            ['code' => '6', 'region' => 'Ngajum'],
+        ];
+
+        $programs = [
+            ['code' => 'A', 'name' => 'Banyuwangi'],
+            ['code' => 'B', 'name' => 'Jember'],
+            ['code' => 'C', 'name' => 'Situbondo'],
+            ['code' => 'D', 'name' => 'Bondowoso'],
+            ['code' => 'E', 'name' => 'Probolinggo'],
+            ['code' => 'F', 'name' => 'Lumajang'],
+            ['code' => 'G', 'name' => 'Pasuruan'],
+            ['code' => 'H', 'name' => 'Mojokerto'],
+            ['code' => 'I', 'name' => 'Jombang'],
+            ['code' => 'J', 'name' => 'Blitar'],
+            ['code' => 'K', 'name' => 'Kredit DW TR'],
+            ['code' => 'L', 'name' => 'Kediri'],
+            ['code' => 'M', 'name' => 'Tulungagung'],
+            ['code' => 'N', 'name' => 'Non Kredit DW'],
+            ['code' => 'Z', 'name' => 'SPT'],
+            ['code' => 'P', 'name' => 'Kebun Benih Datar'],
+            ['code' => 'Q', 'name' => 'Kebun Benih Induk'],
+            ['code' => 'R', 'name' => 'Kebun Benih Nenek'],
+            ['code' => 'S', 'name' => 'Kebun Benih Pokok'],
+            ['code' => 'T', 'name' => 'Kebun Persilangan P3GI'],
+            ['code' => 'U', 'name' => 'Kebun Percobaan'],
+            ['code' => 'V', 'name' => 'Kebun Pengenalan Jenis'],
+            ['code' => 'X', 'name' => 'Tebu Giling TS'],
+        ];
+
         User::insert($users);
         Role::insert($roles);
         Sample::insert($samples);
@@ -378,5 +454,8 @@ class DatabaseSeeder extends Seeder
         Fiber::insert($fibers);
         Preparation::insert($preparations);
         Factor::insert($factors);
+        Register::insert($registers);
+        Post::insert($posts);
+        Program::insert($programs);
     }
 }
