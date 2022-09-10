@@ -51,9 +51,9 @@
                 </div>
 
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card border-left-secondary shadow h-100 py-2">
                         <div class="card-body">
-                            <div class="font-weight-bold text-primary text-uppercase mb-1">
+                            <div class="font-weight-bold text-secondary text-uppercase mb-1">
                                 Laporan Core Sample
                             </div>
                             <form action="{{ route('showDailyReportCoreSample') }}" method="POST" target="_blank">
@@ -75,7 +75,148 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                  <button name="submit" type="submit" class="btn btn-secondary">Cetak Layar <i class='fas fa-print'></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="font-weight-bold text-success text-uppercase mb-1">
+                                Core Sample by KUD
+                            </div>
+                            <form action="{{ route('showCoreByRegister') }}" method="POST" target="_blank">
+                                @csrf
+                                @method('POST')
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="text1" name="date" type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-control" name="register">
+                                            @foreach ($registers as $register)
+                                                <option value="{{ $register->code }}">{{ $register->region }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <button name="submit" type="submit" class="btn btn-success">Cetak Layar <i class='fas fa-print'></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card border-left-danger shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="font-weight-bold text-danger text-uppercase mb-1">
+                                Core Sample by Pos
+                            </div>
+                            <form action="{{ route('showCoreByPost') }}" method="POST" target="_blank">
+                                @csrf
+                                @method('POST')
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="text1" name="date" type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-control" name="post">
+                                            @foreach ($posts as $post)
+                                                <option value="{{ $post->code }}">{{ $post->region }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <button name="submit" type="submit" class="btn btn-danger">Cetak Layar <i class='fas fa-print'></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="font-weight-bold text-info text-uppercase mb-1">
+                                Core Sample by Program
+                            </div>
+                            <form action="{{ route('showCoreByProgram') }}" method="POST" target="_blank">
+                                @csrf
+                                @method('POST')
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="text1" name="date" type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <select class="form-control" name="program">
+                                            @foreach ($programs as $program)
+                                                <option value="{{ $program->code }}">{{ $program->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <button name="submit" type="submit" class="btn btn-info">Cetak Layar <i class='fas fa-print'></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="font-weight-bold text-primary text-uppercase mb-1">
+                                Akumulatif KUD
+                            </div>
+                            <form action="{{ route('rangkingByRegister') }}" method="POST" target="_blank">
+                                @csrf
+                                @method('POST')
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="text1" name="date" type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
                                   <button name="submit" type="submit" class="btn btn-primary">Cetak Layar <i class='fas fa-print'></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
+                    <div class="card border-left-secondary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="font-weight-bold text-secondary text-uppercase mb-1">
+                                Akumulatif Pos Pantau
+                            </div>
+                            <form action="{{ route('rangkingByPost') }}" method="POST" target="_blank">
+                                @csrf
+                                @method('POST')
+
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input id="text1" name="date" type="date" class="form-control" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                  <button name="submit" type="submit" class="btn btn-secondary">Cetak Layar <i class='fas fa-print'></i></button>
                                 </div>
                             </form>
                         </div>

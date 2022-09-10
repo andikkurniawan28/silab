@@ -14,6 +14,9 @@ use App\Models\Npp;
 use App\Models\Tsai;
 use App\Models\Core_ek;
 use App\Models\Core_eb;
+use App\Models\Register;
+use App\Models\Post;
+use App\Models\Program;
 
 class Report extends Controller
 {
@@ -37,23 +40,6 @@ class Report extends Controller
             'chemical', 
             'shift',
         ));
-    }
-
-    public function showDailyReportCoreSample(Request $request)
-    {
-        $date = $request->date;
-        $shift = $request->shift;
-        $range_date = $this->determineRange2($date, $shift);
-        $data = $this->serveCoreSample($range_date['min'], $range_date['max']);
-        return view('report.show_daily_report_core_sample', compact(
-            'date',
-            'shift',
-            'range_date',
-            'data',
-        ));
-
-        // return $data;
-
     }
 
     public function showCoaTetes(Request $request)
@@ -446,4 +432,102 @@ class Report extends Controller
 
         return $data;
     }
+
+    public function showCoreByRegister(Request $request)
+    {
+        $register = $request->register;
+        $date = $request->date;
+
+        $range_date['min'] = $date.' 06:00:00';
+        $range_date['max'] = $this->plusTimeStampWithSomeDay($range_date['min'], 1);
+        
+        foreach(Register::where('code', $register)->select('region')->latest()->get() as $region)
+        {
+            $data['region'] = $region->region;
+        }
+        $data['core_ek'] = Core_ek::serveByRegister($register, $range_date['min'], $range_date['max']);
+        $data['core_eb'] = Core_eb::serveByRegister($register, $range_date['min'], $range_date['max']);
+
+        return view('report.core_sample_by_register', compact('date', 'data'));
+        // return $data;
+    }
+
+    public function showCoreByPost(Request $request)
+    {
+        $post = $request->post;
+        $date = $request->date;
+
+        $range_date['min'] = $date.' 06:00:00';
+        $range_date['max'] = $this->plusTimeStampWithSomeDay($range_date['min'], 1);
+        
+        foreach(Post::where('code', $post)->select('region')->latest()->get() as $region)
+        {
+            $data['region'] = $region->region;
+        }
+
+        $data['core_ek'] = Core_ek::serveByPost($post, $range_date['min'], $range_date['max']);
+        $data['core_eb'] = Core_eb::serveByPost($post, $range_date['min'], $range_date['max']);
+
+        return view('report.core_sample_by_post', compact('date', 'data'));
+        // return $data;
+    }
+
+    public function showCoreByProgram(Request $request)
+    {
+        $program = $request->program;
+        $date = $request->date;
+
+        $range_date['min'] = $date.' 06:00:00';
+        $range_date['max'] = $this->plusTimeStampWithSomeDay($range_date['min'], 1);
+        
+        foreach(Program::where('code', $program)->select('name')->latest()->get() as $name)
+        {
+            $data['name'] = $name->name;
+        }
+
+        $data['core_ek'] = Core_ek::serveByProgram($program, $range_date['min'], $range_date['max']);
+        $data['core_eb'] = Core_eb::serveByProgram($program, $range_date['min'], $range_date['max']);
+
+        return view('report.core_sample_by_program', compact('date', 'data'));
+        // return $data;
+    }
+
+    public function showDailyReportCoreSample(Request $request)
+    {
+        $date = $request->date;
+        $shift = $request->shift;
+        $range_date = $this->determineRange2($date, $shift);
+        $data = $this->serveCoreSample($range_date['min'], $range_date['max']);
+        return view('report.show_daily_report_core_sample', compact(
+            'date',
+            'shift',
+            'range_date',
+            'data',
+        ));
+    }
+
+    public function rangkingByRegister(Request $request)
+    {
+        $date = $request->date;
+        $range_date['min'] = $date.' 06:00:00';
+        $range_date['max'] = $this->plusTimeStampWithSomeDay($range_date['min'], 1);
+        $data = Register::rangkingByRegister($range_date['min'], $range_date['max']);
+        return view('report.rangkingRegister', compact(
+            'date',
+            'data',
+        ));
+    }
+
+    public function rangkingByPost(Request $request)
+    {
+        $date = $request->date;
+        $range_date['min'] = $date.' 06:00:00';
+        $range_date['max'] = $this->plusTimeStampWithSomeDay($range_date['min'], 1);
+        $data = Post::rangkingByPost($range_date['min'], $range_date['max']);
+        return view('report.rangkingPost', compact(
+            'date',
+            'data',
+        ));
+    }
+
 }

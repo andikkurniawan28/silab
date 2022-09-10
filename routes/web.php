@@ -92,7 +92,15 @@ Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware
 
 Route::get('dailyReport', [ HomeController::class, 'dailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('dailyReport');
 Route::post('showDailyReport', [ Report::class, 'showDailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReport');
+
 Route::post('showDailyReportCoreSample', [ Report::class, 'showDailyReportCoreSample' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReportCoreSample');
+Route::post('showCoreByRegister', [ Report::class, 'showCoreByRegister' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByRegister');
+Route::post('showCoreByPost', [ Report::class, 'showCoreByPost' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByPost');
+Route::post('showCoreByProgram', [ Report::class, 'showCoreByProgram' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByProgram');
+Route::post('showCoreByProgram', [ Report::class, 'showCoreByProgram' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByProgram');
+Route::post('rangkingByRegister', [ Report::class, 'rangkingByRegister' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByRegister');
+Route::post('rangkingByPost', [ Report::class, 'rangkingByPost' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByPost');
+
 Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('coaReport');
 Route::post('showCoaTetes', [ Report::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
 Route::post('showCoaKapur', [ Report::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');

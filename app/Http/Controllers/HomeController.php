@@ -8,6 +8,9 @@ use App\Models\Sample;
 use App\Models\Sampling;
 use App\Models\Coloromat;
 use App\Models\Saccharomat;
+use App\Models\Register;
+use App\Models\Post;
+use App\Models\Program;
 
 class HomeController extends Controller
 {
@@ -132,8 +135,11 @@ class HomeController extends Controller
 
     public function dailyReport()
     {
+        $registers = Register::all();
+        $posts = Post::all();
+        $programs = Program::all();
         $stations = Station::all();
-        return view('report.daily', compact('stations'));
+        return view('report.daily', compact('stations', 'registers', 'posts', 'programs'));
     }
 
     public function coaReport()
