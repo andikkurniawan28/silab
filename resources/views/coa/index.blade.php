@@ -41,9 +41,9 @@
                 </div>
 
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card border-left-secondary shadow h-100 py-2">
                         <div class="card-body">
-                            <div class="font-weight-bold text-primary text-uppercase mb-1">
+                            <div class="font-weight-bold text-secondary text-uppercase mb-1">
                                 COA Kapur
                             </div>
                             <form action="{{ route('showCoaKapur') }}" method="POST" target="_blank">
@@ -55,7 +55,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                  <button name="submit" type="submit" class="btn btn-primary">Cetak Layar <i class='fas fa-print'></i></button>
+                                  <button name="submit" type="submit" class="btn btn-secondary">Cetak Layar <i class='fas fa-print'></i></button>
                                 </div>
                             </form>
                         </div>

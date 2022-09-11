@@ -153,7 +153,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Remelter A', 'station_id' => 7, 'method_id' => 5],
             ['name' => 'Remelter CD', 'station_id' => 7, 'method_id' => 5],
             ['name' => 'Tetes Puteran', 'station_id' => 7, 'method_id' => 5],
-            ['name' => 'Magma RS', 'station_id' => 8, 'method_id' => 5],
+            ['name' => 'Magma RS', 'station_id' => 7, 'method_id' => 5],
             ['name' => 'Gula SHS', 'station_id' => 8, 'method_id' => 1],
             ['name' => 'Gula A', 'station_id' => 8, 'method_id' => 1],
             ['name' => 'Gula R1', 'station_id' => 8, 'method_id' => 1],

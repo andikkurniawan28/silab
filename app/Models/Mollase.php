@@ -36,4 +36,11 @@ class Mollase extends Model
 
         return $data;
     }
+
+    public static function serveForReport($date)
+    {
+        $today = $date." 5:00";
+        $yesterday = date('Y-m-d 5:00',strtotime('-1 days',strtotime($today)));
+        return $data = self::whereBetween('created_at', [$yesterday, $today])->sum('netto');
+    }
 }

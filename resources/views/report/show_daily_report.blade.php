@@ -21,6 +21,13 @@
 
 	<body>
 
+        @if($handling == 'export')
+            @php
+                header("Content-type: application/vnd-ms-excel");
+                header("Content-Disposition: attachment; filename=Silab_".$date.".xls");
+            @endphp
+        @endif
+
         <div class="wrapper">
 
 		  <section class="invoice">
@@ -181,6 +188,26 @@
                 </div>
 
                 <div class="col-5 table-responsive">
+                    <table width='100%' border='1' cellpadding='5' class="text-xs">
+                        <h5>Timbangan & Totalizer</h5>
+                        <tr bgcolor="pink">
+                            <th>Nira Mentah</th>
+                            <th>Imbibisi</th>
+                            <th>Tetes</th>
+                            <th>Raw Sugar In</th>
+                            <th>Raw Sugar Out</th>
+                        </tr>
+                        <tr>
+                            <td>{{ $raw_juice }}</td>
+                            <td>{{ $imb }}</td>
+                            <td>{{ $mollase }}</td>
+                            <td>{{ $rs_in }}</td>
+                            <td>{{ $rs_out }}</td>
+                        </tr>
+                    </table>
+
+                    <br>
+
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Gilingan</h5>
                         <tr bgcolor="pink">
