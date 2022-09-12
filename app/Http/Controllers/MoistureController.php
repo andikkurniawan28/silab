@@ -15,10 +15,7 @@ class MoistureController extends Controller
      */
     public function index()
     {
-        $moistures = Moisture::leftjoin('samplings', 'moistures.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('moistures.*', 'samples.name as sample_name')
-            ->get();
+        $moistures = Moisture::serve();
         $stations = Station::all();
         return view('moisture.index', compact('moistures', 'stations'));
     }

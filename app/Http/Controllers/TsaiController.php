@@ -16,10 +16,7 @@ class TsaiController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $tsais = Tsai::join('samplings', 'tsais.sampling_id', 'samplings.id')
-        ->join('samples', 'samplings.sample_id', 'samples.id')
-        ->select('tsais.*', 'samples.name as sample_name')
-        ->get();
+        $tsais = Tsai::serve();
         return view('tsai.index', compact('stations', 'tsais'));
     }
 

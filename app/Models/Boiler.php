@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Boiler extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'sampling_id',
         'tds',
@@ -15,4 +16,14 @@ class Boiler extends Model
         'hardness',
         'phospate',
     ];
+
+    public static function serve()
+    {
+        return self::leftjoin('samplings', 'boilers.sampling_id', 'samplings.id')
+            ->join('samples', 'samplings.sample_id', 'samples.id')
+            ->select('boilers.*', 'samples.name as sample_name')
+            ->limit(1000)
+            ->orderBy('id', 'desc')
+            ->get();
+    }
 }

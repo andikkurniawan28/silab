@@ -6,7 +6,6 @@ use App\Models\Baggase;
 use App\Models\Station;
 use App\Models\Saccharomat;
 use App\Models\Sampling;
-use App\Models\Sample;
 use Illuminate\Http\Request;
 
 class BaggaseController extends Controller
@@ -19,10 +18,7 @@ class BaggaseController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $baggases = Baggase::leftjoin('samplings', 'baggases.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('baggases.*', 'samples.name as sample_name')
-            ->get();
+        $baggases = Baggase::serve();
         return view('baggase.index', compact('stations', 'baggases'));
     }
 

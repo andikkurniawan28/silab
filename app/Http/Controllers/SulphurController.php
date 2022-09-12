@@ -16,10 +16,7 @@ class SulphurController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $sulphurs = Sulphur::leftjoin('samplings', 'sulphurs.sampling_id', 'samplings.id')
-        ->join('samples', 'samplings.sample_id', 'samples.id')
-        ->select('sulphurs.*', 'samples.name as sample_name')
-        ->get();
+        $sulphurs = Sulphur::serve();
         return view('sulphur.index', compact('stations', 'sulphurs'));
     }
 

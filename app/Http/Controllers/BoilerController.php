@@ -16,10 +16,7 @@ class BoilerController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $boilers = Boiler::leftjoin('samplings', 'boilers.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('boilers.*', 'samples.name as sample_name')
-            ->get();
+        $boilers = Boiler::serve();
         return view('boiler.index', compact('stations', 'boilers'));
     }
 

@@ -43,7 +43,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="handling" value="print" class="btn btn-primary">Cetak Layar <i class='fas fa-print'></i></button>
+                                    <button type="submit" name="handling" value="print" class="btn btn-primary">Print Screen <i class='fas fa-print'></i></button>
                                     <button type="submit" name="handling" value="export" class="btn btn-primary">Export <i class='fas fa-download'></i></button>
                                 </div>
                             </form>
@@ -76,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="handling" value="print" class="btn btn-secondary">Cetak Layar <i class='fas fa-print'></i></button>
+                                    <button type="submit" name="handling" value="print" class="btn btn-secondary">Print Screen <i class='fas fa-print'></i></button>
                                     <button type="submit" name="handling" value="export" class="btn btn-secondary">Export <i class='fas fa-download'></i></button>
                                 </div>
                             </form>
@@ -108,7 +108,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="handling" value="print" class="btn btn-success">Cetak Layar <i class='fas fa-print'></i></button>
+                                    <button type="submit" name="handling" value="print" class="btn btn-success">Print Screen <i class='fas fa-print'></i></button>
                                     <button type="submit" name="handling" value="export" class="btn btn-success">Export <i class='fas fa-download'></i></button>
                                 </div>
                             </form>
@@ -140,7 +140,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="handling" value="print" class="btn btn-danger">Cetak Layar <i class='fas fa-print'></i></button>
+                                    <button type="submit" name="handling" value="print" class="btn btn-danger">Print Screen <i class='fas fa-print'></i></button>
                                     <button type="submit" name="handling" value="export" class="btn btn-danger">Export <i class='fas fa-download'></i></button>
                                 </div>
                             </form>
@@ -172,7 +172,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" name="handling" value="print" class="btn btn-info">Cetak Layar <i class='fas fa-print'></i></button>
+                                    <button type="submit" name="handling" value="print" class="btn btn-info">Print Screen <i class='fas fa-print'></i></button>
                                     <button type="submit" name="handling" value="export" class="btn btn-info">Export <i class='fas fa-download'></i></button>
                                 </div>
                             </form>
@@ -197,7 +197,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button type="submit" name="handling" value="print" class="btn btn-primary">Cetak Layar <i class='fas fa-print'></i></button>
+                                    <button type="submit" name="handling" value="print" class="btn btn-primary">Print Screen <i class='fas fa-print'></i></button>
                                     <button type="submit" name="handling" value="export" class="btn btn-primary">Export <i class='fas fa-download'></i></button>
                                 </div>
                             </form>
@@ -222,7 +222,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <button type="submit" name="handling" value="print" class="btn btn-secondary">Cetak Layar <i class='fas fa-print'></i></button>
+                                    <button type="submit" name="handling" value="print" class="btn btn-secondary">Print Screen <i class='fas fa-print'></i></button>
                                     <button type="submit" name="handling" value="export" class="btn btn-secondary">Export <i class='fas fa-download'></i></button>
                                 </div>
                             </form>

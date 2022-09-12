@@ -16,10 +16,7 @@ class PreparationController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $preparations = Preparation::leftjoin('samplings', 'preparations.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('preparations.*', 'samples.name as sample_name')
-            ->get();
+        $preparations = Preparation::serve();
         return view('preparation.index', compact('stations', 'preparations'));
     }
 

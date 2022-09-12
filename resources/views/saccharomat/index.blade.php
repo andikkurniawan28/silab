@@ -23,10 +23,10 @@
                             <th>ID</th>
                             <th>Barcode</th>
                             <th>Sampel</th>
-                            <th>% Brix</th>
+                            <th>Brix</th>
                             <th>Polbaca</th>
-                            <th>% Pol</th>
-                            <th>% HK</th>
+                            <th>Pol</th>
+                            <th>HK</th>
                             <th>Created</th>
                             <th>Action</th>
                         </tr>

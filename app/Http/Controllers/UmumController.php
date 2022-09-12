@@ -16,10 +16,7 @@ class UmumController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $umums = Umum::leftjoin('samplings', 'umums.sampling_id', 'samplings.id')
-        ->join('samples', 'samplings.sample_id', 'samples.id')
-        ->select('umums.*', 'samples.name as sample_name')
-        ->get();
+        $umums = Umum::serve();
         return view('umum.index', compact('stations', 'umums'));
     }
 

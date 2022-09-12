@@ -15,10 +15,7 @@ class SaccharomatController extends Controller
      */
     public function index()
     {
-        $saccharomats = Saccharomat::leftjoin('samplings', 'saccharomats.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('saccharomats.*', 'samples.name as sample_name')
-            ->get();
+        $saccharomats = Saccharomat::serve();
         $stations = Station::all();
         return view('saccharomat.index', compact('saccharomats', 'stations'));
     }

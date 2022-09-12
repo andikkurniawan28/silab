@@ -16,10 +16,7 @@ class DiameterController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $diameters = Diameter::leftjoin('samplings', 'diameters.sampling_id', 'samplings.id')
-        ->join('samples', 'samplings.sample_id', 'samples.id')
-        ->select('diameters.*', 'samples.name as sample_name')
-        ->get();
+        $diameters = Diameter::serve();
         return view('diameter.index', compact('stations', 'diameters'));
     }
 

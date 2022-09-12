@@ -16,10 +16,7 @@ class CalciumController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $calciums = Calcium::leftjoin('samplings', 'calcia.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('calcia.*', 'samples.name as sample_name')
-            ->get();
+        $calciums = Calcium::serve();
         return view('calcium.index', compact('stations', 'calciums'));
     }
 

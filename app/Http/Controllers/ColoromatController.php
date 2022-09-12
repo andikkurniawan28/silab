@@ -15,10 +15,7 @@ class ColoromatController extends Controller
      */
     public function index()
     {
-        $coloromats = Coloromat::leftjoin('samplings', 'coloromats.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('coloromats.*', 'samples.name as sample_name')
-            ->get();
+        $coloromats = Coloromat::serve();
         $stations = Station::all();
         return view('coloromat.index', compact('coloromats', 'stations'));
     }

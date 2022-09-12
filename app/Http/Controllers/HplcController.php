@@ -16,10 +16,7 @@ class HplcController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $hplcs = hplc::join('samplings', 'hplcs.sampling_id', 'samplings.id')
-        ->join('samples', 'samplings.sample_id', 'samples.id')
-        ->select('hplcs.*', 'samples.name as sample_name')
-        ->get();
+        $hplcs = Hplc::serve();
         return view('hplc.index', compact('stations', 'hplcs'));
     }
 

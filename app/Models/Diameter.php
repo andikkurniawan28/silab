@@ -8,8 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Diameter extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'sampling_id',
         'bjb',
     ];
+
+    public static function serve()
+    {
+        return self::leftjoin('samplings', 'diameters.sampling_id', 'samplings.id')
+            ->join('samples', 'samplings.sample_id', 'samples.id')
+            ->select('diameters.*', 'samples.name as sample_name')
+            ->limit(1000)
+            ->orderBy('id', 'desc')
+            ->get();
+    }
 }

@@ -19,7 +19,7 @@ use App\Models\Program;
 use App\Models\Rawsugar_in;
 use App\Models\Rawsugar_out;
 
-class Report extends Controller
+class ReportController extends Controller
 {
     public function showDailyReport(Request $request)
     {

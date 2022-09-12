@@ -8,8 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Coloromat extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'sampling_id',
         'icumsa',
     ];
+
+    public static function serve()
+    {
+        return self::leftjoin('samplings', 'coloromats.sampling_id', 'samplings.id')
+            ->join('samples', 'samplings.sample_id', 'samples.id')
+            ->select('coloromats.*', 'samples.name as sample_name')
+            ->limit(1000)
+            ->orderBy('id','desc')
+            ->get();
+    }
 }

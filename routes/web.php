@@ -37,7 +37,7 @@ use App\Http\Controllers\TaxationController;
 use App\Http\Controllers\TsaiController;
 use App\Http\Controllers\UmumController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Report;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('login', 'auth.login')->name('login');
@@ -91,19 +91,19 @@ Route::get('eRonsel', [SamplingController::class, 'eRonsel'])->middleware(['user
 Route::post('saveRonsel', [SamplingController::class, 'saveRonsel'])->middleware(['user_is_login', 'only_admin_qc_pabrikasi'])->name('saveRonsel');
 
 Route::get('dailyReport', [ HomeController::class, 'dailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('dailyReport');
-Route::post('showDailyReport', [ Report::class, 'showDailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReport');
+Route::post('showDailyReport', [ ReportController::class, 'showDailyReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReport');
 
-Route::post('showDailyReportCoreSample', [ Report::class, 'showDailyReportCoreSample' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReportCoreSample');
-Route::post('showCoreByRegister', [ Report::class, 'showCoreByRegister' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByRegister');
-Route::post('showCoreByPost', [ Report::class, 'showCoreByPost' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByPost');
-Route::post('showCoreByProgram', [ Report::class, 'showCoreByProgram' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByProgram');
-Route::post('showCoreByProgram', [ Report::class, 'showCoreByProgram' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByProgram');
-Route::post('rangkingByRegister', [ Report::class, 'rangkingByRegister' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByRegister');
-Route::post('rangkingByPost', [ Report::class, 'rangkingByPost' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByPost');
+Route::post('showDailyReportCoreSample', [ ReportController::class, 'showDailyReportCoreSample' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showDailyReportCoreSample');
+Route::post('showCoreByRegister', [ ReportController::class, 'showCoreByRegister' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByRegister');
+Route::post('showCoreByPost', [ ReportController::class, 'showCoreByPost' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByPost');
+Route::post('showCoreByProgram', [ ReportController::class, 'showCoreByProgram' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByProgram');
+Route::post('showCoreByProgram', [ ReportController::class, 'showCoreByProgram' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoreByProgram');
+Route::post('rangkingByRegister', [ ReportController::class, 'rangkingByRegister' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByRegister');
+Route::post('rangkingByPost', [ ReportController::class, 'rangkingByPost' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByPost');
 
 Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('coaReport');
-Route::post('showCoaTetes', [ Report::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
-Route::post('showCoaKapur', [ Report::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');
+Route::post('showCoaTetes', [ ReportController::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
+Route::post('showCoaKapur', [ ReportController::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');
 
 Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login']);
 Route::resource('taxations', TaxationController::class)->middleware(['user_is_login']);

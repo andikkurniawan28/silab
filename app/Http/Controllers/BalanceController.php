@@ -17,7 +17,7 @@ class BalanceController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $balances = Balance::all();
+        $balances = Balance::limit(1000)->orderBy('id','desc')->get();
         return view('balance.index', compact('stations', 'balances'));
     }
 

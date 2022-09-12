@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SiLab</title>
+    <title>{{ env('APP_NAME') }}</title>
 
 	<link rel="icon" type="image/png" href="/admin_template/img/QC.png"/>
     <link href="/admin_template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

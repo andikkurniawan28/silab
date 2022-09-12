@@ -16,10 +16,7 @@ class FiberController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $fibers = Fiber::leftjoin('samplings', 'fibers.sampling_id', 'samplings.id')
-            ->join('samples', 'samplings.sample_id', 'samples.id')
-            ->select('fibers.*', 'samples.name as sample_name')
-            ->get();
+        $fibers = Fiber::serve();
         return view('fiber.index', compact('stations', 'fibers'));
     }
 
