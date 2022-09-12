@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://rawsugar.ptkebonagung.com/QC.png" width="400"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://rawsugar.ptkebonagung.com/silabnew/QC.png" width="400"></a></p>
 
 ## About Silab
 
