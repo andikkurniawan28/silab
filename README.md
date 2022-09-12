@@ -1,4 +1,4 @@
-<p align="center"><img src="https://rawsugar.ptkebonagung.com/silabnew/QC.png" width="100"></p>
+<p align="center"><img src="http://rawsugar.ptkebonagung.com/silabnew/QC.png" width="400"></p>
 
 ## About Silab
 
