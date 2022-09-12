@@ -16,7 +16,7 @@ class TaxationController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $taxations = Taxation::all();
+        $taxations = Taxation::limit(1000)->orderBy('id', 'desc')->get();
         return view('taxation.index', compact('stations', 'taxations'));
     }
 

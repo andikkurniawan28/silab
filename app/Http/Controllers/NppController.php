@@ -16,7 +16,7 @@ class NppController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $npps = Npp::all();
+        $npps = Npp::limit(1000)->orderBy('id', 'desc')->get();
         return view('npp.index', compact('stations', 'npps'));
     }
 

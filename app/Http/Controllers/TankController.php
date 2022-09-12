@@ -16,7 +16,7 @@ class TankController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $tanks = Tank::all();
+        $tanks = Tank::limit(1000)->orderBy('id', 'desc')->get();
         return view('tank.index', compact('stations', 'tanks'));
     }
 

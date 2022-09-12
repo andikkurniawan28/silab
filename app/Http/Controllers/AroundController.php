@@ -16,7 +16,7 @@ class AroundController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $arounds = Around::all();
+        $arounds = Around::limit(1000)->orderBy('id', 'desc')->get();
         return view('around.index', compact('stations', 'arounds'));
     }
 

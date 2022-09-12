@@ -15,7 +15,7 @@ class RawsugarInController extends Controller
      */
     public function index()
     {
-        $rs_ins = Rawsugar_in::all();
+        $rs_ins = Rawsugar_in::limit(1000)->orderBy('id', 'desc')->get();
         $stations = Station::all();
         return view('rs_in.index', compact('rs_ins', 'stations'));
     }

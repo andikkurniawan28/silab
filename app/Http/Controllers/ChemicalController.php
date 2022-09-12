@@ -16,7 +16,7 @@ class ChemicalController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $chemicals = Chemical::all();
+        $chemicals = Chemical::limit(1000)->orderBy('id', 'desc')->get();
         return view('chemical.index', compact('stations', 'chemicals'));
     }
 
@@ -102,7 +102,7 @@ class ChemicalController extends Controller
     public function showChemical()
     {
         $stations = Station::all();
-        $chemicals = Chemical::all();
+        $chemicals = Chemical::limit(1000)->orderBy('id', 'desc')->get();
         return view('chemical.show_chemical', compact('stations', 'chemicals'));
     }
 }

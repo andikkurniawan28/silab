@@ -15,7 +15,7 @@ class RawsugarOutController extends Controller
      */
     public function index()
     {
-        $rs_outs = Rawsugar_out::all();
+        $rs_outs = Rawsugar_out::limit(1000)->orderBy('id', 'desc')->get();
         $stations = Station::all();
         return view('rs_out.index', compact('rs_outs', 'stations'));
     }

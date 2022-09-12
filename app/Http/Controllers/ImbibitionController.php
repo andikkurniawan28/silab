@@ -17,7 +17,7 @@ class ImbibitionController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $imbibitions = Imbibition::all();
+        $imbibitions = Imbibition::limit(1000)->orderBy('id', 'desc')->get();
         return view('imbibition.index', compact('stations', 'imbibitions'));
     }
 
