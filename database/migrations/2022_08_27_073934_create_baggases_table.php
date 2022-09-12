@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('baggases', function (Blueprint $table) {
             $table->id();
-            $table->integer('sampling_id')->index()->unique();
+            $table->foreignId('sampling_id')->index()->unique();
             $table->float('corrected_pol');
             $table->float('dry');
             $table->float('water');

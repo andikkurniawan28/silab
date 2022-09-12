@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('samplings', function (Blueprint $table) {
             $table->id();
-            $table->integer('sample_id')->index();
+            $table->foreignId('sample_id')->index();
             $table->integer('pan')->nullable();
             $table->integer('reef')->nullable();
             $table->integer('volume')->nullable();

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('coloromats', function (Blueprint $table) {
             $table->id();
-            $table->integer('sampling_id')->index()->unique();
+            $table->foreignId('sampling_id')->index()->unique();
             $table->integer('icumsa');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

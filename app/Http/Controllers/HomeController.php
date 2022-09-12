@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $stations = Station::all();
-        return view('welcome', compact('stations'));
+        return view('home.index', compact('stations'));
     }
 
     public function showStation($title, $id)

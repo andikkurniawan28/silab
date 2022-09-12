@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('samples', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->integer('station_id')->index();
+            $table->foreignId('station_id')->index();
             $table->integer('method_id')->index()->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

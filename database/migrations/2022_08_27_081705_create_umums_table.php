@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('umums', function (Blueprint $table) {
             $table->id();
-            $table->integer('sampling_id')->index()->unique();
+            $table->foreignId('sampling_id')->index()->unique();
             $table->float('cao');
             $table->float('pH');
             $table->float('turbidity');

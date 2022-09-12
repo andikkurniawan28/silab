@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('name');
-            $table->integer('role_id')->index()->default(4);
+            $table->foreignId('role_id')->index()->default(4);
             $table->boolean('is_active')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
