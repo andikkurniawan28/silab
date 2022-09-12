@@ -1,6 +1,6 @@
 <p align="center">
+    <img src="http://rawsugar.ptkebonagung.com/silabnew/ka.jpg" width="300">
     <img src="http://rawsugar.ptkebonagung.com/silabnew/QC.png" width="200">
-    <img src="http://rawsugar.ptkebonagung.com/silabnew/ka.jpg" width="200">
 </p>
 
 ## About Silab
