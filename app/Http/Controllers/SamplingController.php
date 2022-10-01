@@ -96,7 +96,7 @@ class SamplingController extends Controller
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
         ]);
-        return redirect()->route('samplings.index')->with('success', 'Data berhasil di-update');
+        return redirect()->route('samplings.create')->with('success', 'Data berhasil di-update');
     }
 
     /**
@@ -108,7 +108,7 @@ class SamplingController extends Controller
     public function destroy($id)
     {
         Sampling::where('id', $id)->delete();
-        return redirect()->route('samplings.index')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('samplings.create')->with('success', 'Data berhasil dihapus');
     }
     
     public function printBarcode($id)

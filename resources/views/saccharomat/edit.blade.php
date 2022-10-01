@@ -29,7 +29,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Z',
+                    'label' => 'Pol Baca',
                     'name' => 'pol',
                     'type' => 'number',
                     'value' => $saccharomat->pol,
@@ -37,7 +37,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => '%Brix',
+                    'label' => 'Brix',
                     'name' => 'percent_brix',
                     'type' => 'number',
                     'value' => $saccharomat->percent_brix,
@@ -45,7 +45,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => '%Pol',
+                    'label' => 'Pol',
                     'name' => 'percent_pol',
                     'type' => 'number',
                     'value' => $saccharomat->percent_pol,

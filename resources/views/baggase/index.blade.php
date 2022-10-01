@@ -24,9 +24,11 @@
                             <th>Barcode</th>
                             <th>Sampel</th>
                             <th>Pol</th>
-                            <th>%ZK</th>
-                            <th>%Air</th>
-                            <th>Created</th>
+                            <th>Zat Kering</th>
+                            <th>Kadar Air</th>
+                            <th>Analis</th>
+                            <th>Mandor</th>
+                            <th>Jam Analisa</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,14 +41,40 @@
                             <td>{{ $baggase->corrected_pol }}</td>
                             <td>{{ $baggase->dry }}</td>
                             <td>{{ $baggase->water }}</td>
+                            <td>{{ $baggase->analyst }}</td>
+                            <td>{{ $baggase->leader }}</td>
                             <td>{{ $baggase->created_at }}</td>
                             <td>
+
+                                @if($baggase->is_verified == 0 or session('role') == 1)
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $baggase->id }}">
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $baggase->id }}">
-                                    Hapus
-                                </button>
+                                @else
+                                <span class="badge badge-info">Locked <i class="fas fa-lock"></i></span>
+                                @endif
+
+                                @if(session('role') == 1 or session('role') == 5)
+                                <form action="{{ route('verifyBaggase') }}" method="post">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="hidden" name="id" value="{{ $baggase->id }}">
+                                    <input type="hidden" name="leader" value="{{ session('name') }}">
+                                    <input type="hidden" name="role" value="{{ session('role') }}">
+                                    
+                                    @if($baggase->is_verified == 0)
+                                    <button type="submit" class="btn btn-info">Verifikasi</button>
+                                    @endif
+
+                                    @if(session('role') == 1)
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $baggase->id }}">
+                                        Hapus
+                                    </button>
+                                    @endif
+
+                                </form>
+                                @endif
+                                
                             </td>
                         </tr>
                         @endforeach

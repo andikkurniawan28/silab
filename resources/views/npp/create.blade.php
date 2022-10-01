@@ -12,7 +12,7 @@
                 @method('POST')
 
                 @include('components.input',[
-                    'label' => 'Pol',
+                    'label' => 'Pol Baca',
                     'name' => 'pol',
                     'type' => 'number',
                     'value' => '',
@@ -20,7 +20,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => '%Brix',
+                    'label' => 'Brix',
                     'name' => 'percent_brix',
                     'type' => 'number',
                     'value' => '',
@@ -28,7 +28,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => '%Pol',
+                    'label' => 'Pol',
                     'name' => 'percent_pol',
                     'type' => 'number',
                     'value' => '',

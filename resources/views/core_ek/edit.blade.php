@@ -21,7 +21,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Barcode',
+                    'label' => 'Antrian',
                     'name' => 'barcode_antrian',
                     'type' => 'text',
                     'value' => $core_ek->barcode_antrian,
@@ -57,14 +57,6 @@
                     'name' => 'pol_nira',
                     'type' => 'number',
                     'value' => $core_ek->pol_nira,
-                    'modifier' => 'required',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Rendemen',
-                    'name' => 'rendemen',
-                    'type' => 'number',
-                    'value' => $core_ek->rendemen,
                     'modifier' => 'required',
                 ])
 

@@ -18,6 +18,11 @@ class Core_ek extends Model
         'rendemen',
     ];
 
+    public static function findYield($brix, $pol)
+    {
+        return number_format(0.7 * ($pol - 0.5 * ($brix - $pol)),2);
+    }
+
     public static function serveByRegister($register, $min, $max)
     {
         $data['core_ek'] = self::whereBetween('created_at', [$min, $max])

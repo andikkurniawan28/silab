@@ -14,6 +14,10 @@ class Baggase extends Model
         'corrected_pol',
         'dry',
         'water',
+        'analyst',
+        'leader',
+        'is_corrected',
+        'is_verified',
     ];
 
     public static function serve()

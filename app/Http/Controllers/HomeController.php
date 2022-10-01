@@ -9,13 +9,22 @@ use App\Models\Sampling;
 use App\Models\Register;
 use App\Models\Post;
 use App\Models\Program;
+use App\Models\Npp;
+use App\Models\Coloromat;
+use App\Models\Saccharomat;
 
 class HomeController extends Controller
 {
     public function index()
     {
         $stations = Station::all();
-        return view('home.index', compact('stations'));
+        $samples = Sample::count();
+        // foreach(Npp::select('yield')->latest()->get() as $npps);
+        // foreach(Coloromat::latestSugarIcumsa() as $shs);
+        // foreach(Saccharomat::latestTetesPurity() as $tetes);
+        // $r_npp = Npp::limit(6)->orderBy('id', 'desc')->get();
+
+        return view('home.index', compact('stations', 'samples'));
     }
 
     public function showStation($title, $id)

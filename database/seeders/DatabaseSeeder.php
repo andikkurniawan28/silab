@@ -40,16 +40,107 @@ class DatabaseSeeder extends Seeder
     {
         $users = [
             [
-                'username' => 'admin',
-                'password' => md5('admin'),
-                'name' => 'Admin',
+                'username' => 'tri',
+                'password' => md5('tri'),
+                'name' => 'Tri Hardjanto',
                 'role_id' => 1,
                 'is_active' => 1,
             ],
             [
-                'username' => 'qc',
-                'password' => md5('qc'),
-                'name' => 'QC',
+                'username' => 'tofan',
+                'password' => md5('tofan'),
+                'name' => 'Tofan Andrew Irawan',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'ari',
+                'password' => md5('ari'),
+                'name' => 'Ari Rahman Hakim',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'yudi',
+                'password' => md5('yudi'),
+                'name' => 'Yudi Suyadi',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'tutus',
+                'password' => md5('tutus'),
+                'name' => 'Tutus Agustyn R',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'dwi',
+                'password' => md5('dwi'),
+                'name' => 'Dwi Wahyu Nugroho',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'muslimin',
+                'password' => md5('muslimin'),
+                'name' => 'Muslimin',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'nico',
+                'password' => md5('nico'),
+                'name' => 'Nico Aldy',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'awal',
+                'password' => md5('awal'),
+                'name' => 'Awaludin Rauf',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'satria',
+                'password' => md5('satria'),
+                'name' => 'Satria Adi Wicaksono',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'andik',
+                'password' => md5('andik'),
+                'name' => 'Andik Kurniawan',
+                'role_id' => 1,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'dita',
+                'password' => md5('dita'),
+                'name' => 'Dita Putri Pertiwi',
+                'role_id' => 2,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'zainul',
+                'password' => md5('zainul'),
+                'name' => 'Zainul Arifin',
+                'role_id' => 2,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'hafith',
+                'password' => md5('hafith'),
+                'name' => 'M. Nur Hafith',
+                'role_id' => 2,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'liga',
+                'password' => md5('liga'),
+                'name' => 'Liga Andrean',
                 'role_id' => 2,
                 'is_active' => 1,
             ],
@@ -75,9 +166,23 @@ class DatabaseSeeder extends Seeder
                 'is_active' => 1,
             ],
             [
-                'username' => 'core',
-                'password' => md5('core'),
-                'name' => 'Core Sample',
+                'username' => 'bambang',
+                'password' => md5('bambang'),
+                'name' => 'Bambang Sutedjo',
+                'role_id' => 5,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'muslimin2',
+                'password' => md5('muslimin2'),
+                'name' => 'Muslimin',
+                'role_id' => 5,
+                'is_active' => 1,
+            ],
+            [
+                'username' => 'wahyu',
+                'password' => md5('wahyu'),
+                'name' => 'Wahyu Santoso',
                 'role_id' => 5,
                 'is_active' => 1,
             ],
@@ -88,6 +193,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'QC'],
             ['name' => 'Pabrikasi'],
             ['name' => 'User'],
+            ['name' => 'Mandor'],
         ];
 
         $samples = [
@@ -439,23 +545,23 @@ class DatabaseSeeder extends Seeder
         Sample::insert($samples);
         Station::insert($stations);
         Method::insert($methods);
-        Sampling::insert($samplings);
-        Saccharomat::insert($saccharomats);
-        Coloromat::insert($coloromats);
-        Moisture::insert($moistures);
-        Umum::insert($umums);
-        Npp::insert($npps);
-        Baggase::insert($baggases);
-        Tsai::insert($tsais);
-        Calcium::insert($calciums);
-        Boiler::insert($boilers);
-        Chemical::insert($chemicals);
-        Around::insert($arounds);
-        Fiber::insert($fibers);
-        Preparation::insert($preparations);
         Factor::insert($factors);
         Register::insert($registers);
         Post::insert($posts);
         Program::insert($programs);
+        // Sampling::insert($samplings);
+        // Saccharomat::insert($saccharomats);
+        // Coloromat::insert($coloromats);
+        // Moisture::insert($moistures);
+        // Umum::insert($umums);
+        // Npp::insert($npps);
+        // Baggase::insert($baggases);
+        // Tsai::insert($tsais);
+        // Calcium::insert($calciums);
+        // Boiler::insert($boilers);
+        // Chemical::insert($chemicals);
+        // Around::insert($arounds);
+        // Fiber::insert($fibers);
+        // Preparation::insert($preparations);
     }
 }

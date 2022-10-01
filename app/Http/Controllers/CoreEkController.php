@@ -16,7 +16,7 @@ class CoreEkController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $core_eks = Core_ek::all();
+        $core_eks = Core_ek::limit(1000)->orderBy('id', 'desc')->get();
         return view('core_ek.index', compact('stations', 'core_eks'));
     }
 
@@ -38,6 +38,9 @@ class CoreEkController extends Controller
      */
     public function store(Request $request)
     {
+        $request->request->add([
+            'rendemen' => Core_ek::findYield($request->brix_nira, $request->pol_nira),
+        ]);
         Core_ek::create($request->all());
         return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan.');
     }
@@ -79,7 +82,7 @@ class CoreEkController extends Controller
             'register' => $request->register,
             'brix_nira' => $request->brix_nira,
             'pol_nira' => $request->pol_nira,
-            'rendemen' => $request->rendemen,
+            'rendemen' => Core_ek::findYield($request->brix_nira, $request->pol_nira),
         ]);
         return redirect()->back()->with('success', 'Sukses : Data berhasil diupdate.');
     }

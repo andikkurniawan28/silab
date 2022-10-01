@@ -21,12 +21,12 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Polbaca</th>
-                            <th>%Brix</th>
-                            <th>%Pol</th>
-                            <th>%HK</th>
+                            <th>Pol Baca</th>
+                            <th>Brix</th>
+                            <th>Pol</th>
+                            <th>HK</th>
                             <th>Rendemen</th>
-                            <th>Created</th>
+                            <th>Jam Analisa</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,12 +41,17 @@
                             <td>{{ $npp->yield }}</td>
                             <td>{{ $npp->created_at }}</td>
                             <td>
+
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $npp->id }}">
                                     Edit
                                 </button>
+
+                                @if(session('role') == 1 or session('role') == 5)
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $npp->id }}">
                                     Hapus
                                 </button>
+                                @endif
+                                
                             </td>
                         </tr>
                         @endforeach

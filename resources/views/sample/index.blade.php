@@ -24,7 +24,7 @@
                             <th>Nama</th>
                             <th>Station</th>
                             <th>Method</th>
-                            <th>Created</th>
+                            {{-- <th>Created</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,14 +35,16 @@
                             <td>{{ $sample->name }}</td>
                             <td>{{ $sample->station_name }}</td>
                             <td>{{ $sample->method_id }}</td>
-                            <td>{{ $sample->created_at }}</td>
+                            {{-- <td>{{ $sample->created_at }}</td> --}}
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $sample->id }}">
                                     Edit
                                 </button>
+                                @if(session('role') == 1)
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $sample->id }}">
                                     Hapus
                                 </button>
+                                @endif
                             </td>
                         </tr>
                         @endforeach

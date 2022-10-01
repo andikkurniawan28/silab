@@ -29,7 +29,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => '%Air',
+                    'label' => 'Kadar Air',
                     'name' => 'moisture_content',
                     'type' => 'number',
                     'value' => $moisture->moisture_content,

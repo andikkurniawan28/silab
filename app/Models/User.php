@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'username',
         'password',
@@ -15,4 +16,11 @@ class User extends Model
         'role_id',
         'is_active',
     ];
+
+    public static function serve()
+    {
+        return self::join('roles', 'users.role_id', 'roles.id')
+            ->select('users.*', 'roles.name as role_name')
+            ->get();
+    }
 }

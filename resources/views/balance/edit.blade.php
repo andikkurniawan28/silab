@@ -13,7 +13,7 @@
                 @method('PUT')
 
                 @include('components.input',[
-                    'label' => 'Tebu',
+                    'label' => 'Kuintal Tebu',
                     'name' => 'sugar_cane',
                     'type' => 'number',
                     'value' => $balance->sugar_cane,

@@ -45,6 +45,7 @@ class ColoromatController extends Controller
         }
         else
         {
+            $request->request->add(['analyst' => session('name')]);
             Coloromat::create($request->all());
             return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan.');
         }
@@ -96,7 +97,21 @@ class ColoromatController extends Controller
      */
     public function destroy($id)
     {
-        Coloromat::wehere('id', $id)->delete();
+        Coloromat::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus.');
+    }
+
+    public function verify(Request $request)
+    {
+        if($request->role == 1 OR $request->role == 5)
+        {
+            Coloromat::where('id', $request->id)->update([
+                'leader' => $request->leader,
+                'is_verified' => 1,
+            ]);
+            return redirect()->back()->with('success', 'Sukses : Data berhasil diverifikasi');
+        }
+        else
+        return redirect()->back()->with('success', 'Error : Anda tidak memiliki akses ini');
     }
 }

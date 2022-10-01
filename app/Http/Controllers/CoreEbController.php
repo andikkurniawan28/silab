@@ -16,7 +16,7 @@ class CoreEbController extends Controller
     public function index()
     {
         $stations = Station::all();
-        $core_ebs = Core_eb::all();
+        $core_ebs = Core_eb::limit(1000)->orderBy('id', 'desc')->get();
         return view('core_eb.index', compact('stations', 'core_ebs'));
     }
 
@@ -38,6 +38,9 @@ class CoreEbController extends Controller
      */
     public function store(Request $request)
     {
+        $request->request->add([
+            'rendemen' => Core_eb::findYield($request->brix_nira, $request->pol_nira),
+        ]);
         Core_eb::create($request->all());
         return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan.');
     }
@@ -79,7 +82,7 @@ class CoreEbController extends Controller
             'register' => $request->register,
             'brix_nira' => $request->brix_nira,
             'pol_nira' => $request->pol_nira,
-            'rendemen' => $request->rendemen,
+            'rendemen' => Core_eb::findYield($request->brix_nira, $request->pol_nira),
         ]);
         return redirect()->back()->with('success', 'Sukses : Data berhasil diupdate.');
     }
@@ -95,4 +98,5 @@ class CoreEbController extends Controller
         Core_eb::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus.');
     }
+
 }

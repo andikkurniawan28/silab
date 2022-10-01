@@ -45,6 +45,7 @@ class MoistureController extends Controller
         }
         else
         {
+            $request->request->add(['analyst' => session('name')]);
             Moisture::create($request->all());
             return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan.');
         }
@@ -98,5 +99,19 @@ class MoistureController extends Controller
     {
         Moisture::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan.');
+    }
+
+    public function verify(Request $request)
+    {
+        if($request->role == 1 OR $request->role == 5)
+        {
+            Moisture::where('id', $request->id)->update([
+                'leader' => $request->leader,
+                'is_verified' => 1,
+            ]);
+            return redirect()->back()->with('success', 'Sukses : Data berhasil diverifikasi');
+        }
+        else
+        return redirect()->back()->with('success', 'Error : Anda tidak memiliki akses ini');
     }
 }

@@ -47,7 +47,10 @@ class SaccharomatController extends Controller
         {
             if($request->percent_brix != '' && $request->percent_pol != '')
             {
-                $request->request->add(['purity' => $this->findPurity($request->percent_brix, $request->percent_pol)]);
+                $request->request->add([
+                    'purity' => $this->findPurity($request->percent_brix, $request->percent_pol),
+                    'analyst' => session('name'),
+                ]);
             }
             if($request->percent_pol > $request->percent_brix)
             {
@@ -55,6 +58,7 @@ class SaccharomatController extends Controller
             }
             else
             {
+                $request->request->add(['analyst' => session('name')]);
                 Saccharomat::create($request->all());
                 return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan');
             }
@@ -131,6 +135,22 @@ class SaccharomatController extends Controller
 
     public function findPurity($brix, $pol)
     {
-        return ($pol/$brix) * 100;
+        $purity = ($pol/$brix) * 100;
+        return $purity;
+    }
+
+    public function verify(Request $request)
+    {
+        if($request->role == 1 OR $request->role == 5)
+        {
+            Saccharomat::where('id', $request->id)->update([
+                'leader' => $request->leader,
+                'is_verified' => 1,
+            ]);
+            return redirect()->back()->with('success', 'Sukses : Data berhasil diverifikasi');
+        }
+        else
+        return redirect()->back()->with('success', 'Error : Anda tidak memiliki akses ini');
+        
     }
 }

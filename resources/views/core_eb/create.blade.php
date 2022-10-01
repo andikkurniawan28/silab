@@ -51,14 +51,6 @@
                     'modifier' => 'required',
                 ])
 
-                @include('components.input',[
-                    'label' => 'Rendemen',
-                    'name' => 'rendemen',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => 'required',
-                ])
-
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save 

@@ -21,8 +21,8 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nama Sampel</th>
-                            <th>Created</th>
+                            <th>Jam Cetak</th>
+                            <th>Sampel</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,18 +30,23 @@
                         @foreach ($samplings as $sampling)
                         <tr>
                             <td>{{ $sampling->id }}</td>
-                            <td>{{ $sampling->sample_name }}</td>
                             <td>{{ $sampling->created_at }}</td>
+                            <td>{{ $sampling->sample_name }}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $sampling->id }}">
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $sampling->id }}">
-                                    Hapus
-                                </button>
+                                
                                 <a href="{{ route('print-barcode', $sampling->id) }}" type="button" class="btn btn-info" target="_blank">
                                     Cetak Ulang
                                 </a>
+
+                                @if(session('role') == 1)
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $sampling->id }}">
+                                    Hapus
+                                </button>
+                                @endif
+
                             </td>
                         </tr>
                         @endforeach
@@ -59,7 +64,6 @@
 @endsection
 
 @section('modal')
-{{-- @include('sampling.create') --}}
 @include('sampling.edit')
 @include('sampling.delete')
 @endsection

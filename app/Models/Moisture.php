@@ -11,7 +11,11 @@ class Moisture extends Model
 
     protected $fillable = [
         'sampling_id',
-        'moisture_content'
+        'moisture_content',
+        'analyst',
+        'leader',
+        'is_corrected',
+        'is_verified',
     ];
 
     public static function serve()

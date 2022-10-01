@@ -17,6 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('sampling_id')->index()->unique();
             $table->float('moisture_content');
+            $table->string('analyst')->nullable();
+            $table->string('leader')->nullable();
+            $table->tinyInteger('is_corrected')->default(0);
+            $table->tinyInteger('is_verified')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

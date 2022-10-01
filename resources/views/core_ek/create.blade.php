@@ -12,7 +12,7 @@
                 @method('POST')
 
                 @include('components.input',[
-                    'label' => 'Barcode',
+                    'label' => 'Antrian',
                     'name' => 'barcode_antrian',
                     'type' => 'text',
                     'value' => '',
@@ -46,14 +46,6 @@
                 @include('components.input',[
                     'label' => 'Pol',
                     'name' => 'pol_nira',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => 'required',
-                ])
-
-                @include('components.input',[
-                    'label' => 'Rendemen',
-                    'name' => 'rendemen',
                     'type' => 'number',
                     'value' => '',
                     'modifier' => 'required',

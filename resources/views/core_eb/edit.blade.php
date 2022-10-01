@@ -60,14 +60,6 @@
                     'modifier' => 'required',
                 ])
 
-                @include('components.input',[
-                    'label' => 'Rendemen',
-                    'name' => 'rendemen',
-                    'type' => 'number',
-                    'value' => $core_eb->rendemen,
-                    'modifier' => 'required',
-                ])
-
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save 

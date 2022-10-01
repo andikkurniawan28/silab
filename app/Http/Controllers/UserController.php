@@ -6,8 +6,6 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Station;
 use Illuminate\Http\Request;
-use App\Exports\UsersExport;
-use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -20,9 +18,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $stations = Station::all();
-        $users = User::join('roles', 'users.role_id', 'roles.id')
-            ->select('users.*', 'roles.name as role_name')
-            ->get();
+        $users = User::serve();
         return view('user.index', compact('users', 'roles', 'stations'));
     }
 

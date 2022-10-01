@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'only_admin' => \App\Http\Middleware\EnsureRoleIs1::class,
         'only_admin_qc' => \App\Http\Middleware\EnsureRoleIs2::class,
         'only_admin_qc_pabrikasi' => \App\Http\Middleware\EnsureRoleIs3::class,
+        'only_admin_mandor' => \App\Http\Middleware\EnsureRoleIs5::class,
     ];
 }

@@ -13,7 +13,7 @@
                 @method('PUT')
 
                 @include('components.input',[
-                    'label' => 'Pol',
+                    'label' => 'Pol Baca',
                     'name' => 'pol',
                     'type' => 'number',
                     'value' => $npp->pol,
@@ -21,7 +21,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => '%Brix',
+                    'label' => 'Brix',
                     'name' => 'percent_brix',
                     'type' => 'number',
                     'value' => $npp->percent_brix,
@@ -29,7 +29,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => '%Pol',
+                    'label' => 'Pol',
                     'name' => 'percent_pol',
                     'type' => 'number',
                     'value' => $npp->percent_pol,

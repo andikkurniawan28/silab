@@ -21,11 +21,11 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Tebu</th>
+                            <th>Kuintal Tebu</th>
                             <th>Totalizer</th>
-                            <th>Flow NM</th>
-                            <th>NM % Tebu</th>
-                            <th>Created</th>
+                            <th>Flow Nira Mentah</th>
+                            <th>Nira Mentah % Tebu</th>
+                            <th>Jam Input</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,12 +39,16 @@
                             <td>{{ $balance->raw_juice_percent_sugar_cane }}</td>
                             <td>{{ $balance->created_at }}</td>
                             <td>
+
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $balance->id }}">
                                     Edit
                                 </button>
+                                @if(session('role') == 1 or session('role') == 5)
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $balance->id }}">
                                     Hapus
                                 </button>
+                                @endif
+                                
                             </td>
                         </tr>
                         @endforeach

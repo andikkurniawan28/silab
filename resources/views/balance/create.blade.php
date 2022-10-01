@@ -12,7 +12,7 @@
                 @method('POST')
 
                 @include('components.input',[
-                    'label' => 'Tebu',
+                    'label' => 'Kuintal Tebu',
                     'name' => 'sugar_cane',
                     'type' => 'number',
                     'value' => '',

@@ -101,6 +101,11 @@ Route::post('showCoreByProgram', [ ReportController::class, 'showCoreByProgram' 
 Route::post('rangkingByRegister', [ ReportController::class, 'rangkingByRegister' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByRegister');
 Route::post('rangkingByPost', [ ReportController::class, 'rangkingByPost' ])->middleware(['user_is_login', 'only_admin_qc'])->name('rangkingByPost');
 
+Route::post('verifySaccharomat', [ SaccharomatController::class, 'verify' ])->middleware(['user_is_login', 'only_admin_mandor'])->name('verifySaccharomat');
+Route::post('verifyColoromat', [ ColoromatController::class, 'verify' ])->middleware(['user_is_login', 'only_admin_mandor'])->name('verifyColoromat');
+Route::post('verifyMoisture', [ MoistureController::class, 'verify' ])->middleware(['user_is_login', 'only_admin_mandor'])->name('verifyMoisture');
+Route::post('verifyBaggase', [ BaggaseController::class, 'verify' ])->middleware(['user_is_login', 'only_admin_mandor'])->name('verifyBaggase');
+
 Route::get('coaReport', [ HomeController::class, 'coaReport' ])->middleware(['user_is_login', 'only_admin_qc'])->name('coaReport');
 Route::post('showCoaTetes', [ ReportController::class, 'showCoaTetes' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaTetes');
 Route::post('showCoaKapur', [ ReportController::class, 'showCoaKapur' ])->middleware(['user_is_login', 'only_admin_qc'])->name('showCoaKapur');

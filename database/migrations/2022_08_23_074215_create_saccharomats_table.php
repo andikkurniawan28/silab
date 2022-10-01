@@ -20,6 +20,10 @@ return new class extends Migration
             $table->float('percent_brix')->nullable();
             $table->float('percent_pol')->nullable();
             $table->float('purity')->nullable();
+            $table->string('analyst')->nullable();
+            $table->string('leader')->nullable();
+            $table->tinyInteger('is_corrected')->default(0);
+            $table->tinyInteger('is_verified')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

@@ -24,10 +24,12 @@
                             <th>Barcode</th>
                             <th>Sampel</th>
                             <th>Brix</th>
-                            <th>Polbaca</th>
+                            <th>Pol Baca</th>
                             <th>Pol</th>
                             <th>HK</th>
-                            <th>Created</th>
+                            <th>Analis</th>
+                            <th>Mandor</th>
+                            <th>Jam Analisa</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -41,14 +43,40 @@
                             <td>{{ $saccharomat->pol }}</td>
                             <td>{{ $saccharomat->percent_pol }}</td>
                             <td>{{ $saccharomat->purity }}</td>
+                            <td>{{ $saccharomat->analyst }}</td>
+                            <td>{{ $saccharomat->leader }}</td>
                             <td>{{ $saccharomat->created_at }}</td>
                             <td>
+
+                                @if($saccharomat->is_verified == 0 or session('role') == 1)
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $saccharomat->id }}">
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $saccharomat->id }}">
-                                    Hapus
-                                </button>
+                                @else
+                                <span class="badge badge-info">Locked <i class="fas fa-lock"></i></span>
+                                @endif
+
+                                @if(session('role') == 1 or session('role') == 5)
+                                <form action="{{ route('verifySaccharomat') }}" method="post">
+                                    @csrf
+                                    @method('POST')
+                                    <input type="hidden" name="id" value="{{ $saccharomat->id }}">
+                                    <input type="hidden" name="leader" value="{{ session('name') }}">
+                                    <input type="hidden" name="role" value="{{ session('role') }}">
+                                    
+                                    @if($saccharomat->is_verified == 0)
+                                    <button type="submit" class="btn btn-info">Verifikasi</button>
+                                    @endif
+
+                                    @if(session('role') == 1)
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $saccharomat->id }}">
+                                        Hapus
+                                    </button>
+                                    @endif
+
+                                </form>
+                                @endif
+
                             </td>
                         </tr>
                         @endforeach

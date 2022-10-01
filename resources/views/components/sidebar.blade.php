@@ -57,7 +57,7 @@
         </div>
     </li>
 
-    @if(session('role') == 1 or session('role') == 2)
+    @if(session('role') == 1 or session('role') == 2 or session('role') == 5)
 
     <hr class="sidebar-divider">
 
@@ -72,10 +72,10 @@
                 <a class="collapse-item" href="{{ route('samples.index') }}">Sampel</a>
                 <a class="collapse-item" href="{{ route('samplings.index') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('balances.index') }}">Flow Nira Mentah</a>
+                <a class="collapse-item" href="{{ route('npps.index') }}">NPP</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
                 <a class="collapse-item" href="{{ route('moistures.index') }}">Moisture</a>
-                <a class="collapse-item" href="{{ route('npps.index') }}">NPP</a>
                 <a class="collapse-item" href="{{ route('baggases.index') }}">Ampas</a>
                 <a class="collapse-item" href="{{ route('umums.index') }}">Umum</a>
                 <a class="collapse-item" href="{{ route('boilers.index') }}">Ketel</a>
@@ -131,8 +131,8 @@
                 <a class="collapse-item" href="{{ route('stations.index') }}">Stasiun</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
                 <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
-                <a class="collapse-item" href="{{ route('registers.index') }}">Register (KUD)</a>
-                <a class="collapse-item" href="{{ route('posts.index') }}">Post (Pantau)</a>
+                <a class="collapse-item" href="{{ route('registers.index') }}">KUD</a>
+                <a class="collapse-item" href="{{ route('posts.index') }}">Pos Pantau</a>
                 <a class="collapse-item" href="{{ route('programs.index') }}">Program</a>
             </div>
         </div>

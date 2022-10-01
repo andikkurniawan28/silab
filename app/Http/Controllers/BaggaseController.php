@@ -89,6 +89,7 @@ class BaggaseController extends Controller
                     'water' => $kadar_air,
                 ]);
                 
+                $request->request->add(['analyst' => session('name')]);
                 Baggase::create($request->all());
                 return redirect()->back()->with('success', 'Sukses : Data berhasil disimpan');
             }
@@ -152,5 +153,19 @@ class BaggaseController extends Controller
     {
         Baggase::where('id', $id)->delete();
         return redirect()->back()->with('success', 'Sukses : Data berhasil dihapus');
+    }
+
+    public function verify(Request $request)
+    {
+        if($request->role == 1 OR $request->role == 5)
+        {
+            Baggase::where('id', $request->id)->update([
+                'leader' => $request->leader,
+                'is_verified' => 1,
+            ]);
+            return redirect()->back()->with('success', 'Sukses : Data berhasil diverifikasi');
+        }
+        else
+        return redirect()->back()->with('success', 'Error : Anda tidak memiliki akses ini');
     }
 }
